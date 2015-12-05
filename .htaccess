@@ -1,0 +1,12 @@
+Options +FollowSymLinks -Multiviews
+Options -Indexes
+RewriteEngine On
+
+# Force HTTPS on server
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !=localhost:9090
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Find php files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ /$1.php [L,QSA]
