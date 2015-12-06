@@ -9,4 +9,4 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Find php files
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)$ /$1.php [L,QSA]
+RewriteRule ^(.+)$ /shalomshanti/$1.php [L,QSA]
