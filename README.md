@@ -1,1 +1,3 @@
-# shalomshanti
+# Shalom Shanti
+
+My wedding website!
