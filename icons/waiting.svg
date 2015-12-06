@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.2 (15857) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 13 + Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Form" sketch:type="MSArtboardGroup" transform="translate(-605.000000, -1470.000000)">
+            <g id="Oval-13-+-Group" sketch:type="MSLayerGroup" transform="translate(605.000000, 1470.000000)">
+                <circle id="Oval-13" fill="#F16342" sketch:type="MSShapeGroup" cx="35" cy="35" r="35"></circle>
+                <g id="Group" transform="translate(21.000000, 12.000000)" sketch:type="MSShapeGroup">
+                    <path d="M27.1758642,3.94285714 C26.9007925,14.9765851 18.4617909,23.8311616 14.2881067,23.8311627 C10.1144226,23.8311637 1.67542094,14.9765851 1.40034924,3.94285714 L27.1758642,3.94285714 Z" id="Oval-5" fill="#FFFFFF"></path>
+                    <path d="M1.40034924,41.5740198 C1.68322122,30.5402919 10.3585621,21.6857157 14.2879105,21.6857143 C18.2172588,21.6857129 26.8925997,30.5402918 27.1754717,41.5740198 L1.40034924,41.5740198 Z" id="Oval-5" fill="#FFFFFF"></path>
+                    <path d="M24.1849942,6.57142857 C22.9355239,14.3157762 18.0628979,20.1072281 14.326613,20.1072284 C10.5903281,20.1072286 5.71770216,14.3157763 4.46823192,6.57142857 L24.1849942,6.57142857 Z" id="Oval-5" fill="#F16342"></path>
+                    <path d="M4.40698913,38.5072284 C6.55052685,35.088837 10.0822151,32.8571429 14.0758766,32.8571429 C18.0695382,32.8571429 21.6012264,35.088837 23.7447641,38.5072284 L4.40698913,38.5072284 Z" id="Oval-5" fill="#F16342"></path>
+                    <ellipse id="Oval-9" fill="#F16342" cx="14.3333333" cy="23.3285714" rx="1" ry="0.985714286"></ellipse>
+                    <ellipse id="Oval-9-Copy" fill="#F16342" cx="14.3333333" cy="26.6142857" rx="1" ry="0.985714286"></ellipse>
+                    <ellipse id="Oval-9-Copy-2" fill="#F16342" cx="14.3333333" cy="29.9" rx="1" ry="0.985714286"></ellipse>
+                    <rect id="Rectangle-5" fill="#FFFFFF" x="0" y="0" width="28" height="2.62857143"></rect>
+                    <rect id="Rectangle-5-Copy" fill="#FFFFFF" x="0" y="42.8883055" width="28" height="2.62857143"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
