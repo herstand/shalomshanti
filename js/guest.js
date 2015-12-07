@@ -4,14 +4,14 @@ function SaveTheDate() {
         "isComplete" : true,
         responseData : {
             "id" : document.body.dataset.guest,
-            "response" : document.querySelector(".responses input[name='response']:checked").value,
-            "address-1" : document.querySelector(".physicalAddress .address-1").dataset.initialValue,
-            "address-2" : document.querySelector(".physicalAddress .address-2").dataset.initialValue,
-            "city" : document.querySelector(".physicalAddress .city").dataset.initialValue,
-            "state" : document.querySelector(".physicalAddress .state").dataset.initialValue,
-            "zip" : document.querySelector(".physicalAddress .zip").dataset.initialValue,
-            "country" : document.querySelector(".physicalAddress .country").dataset.initialValue,
-            "emailAddresses" : getInitialEmails()
+            "response" : "",
+            "address-1" : "",
+            "address-2" : "",
+            "city" : "",
+            "state" : "",
+            "zip" : "",
+            "country" : "",
+            "emailAddresses" : ""
         }
     };
 
