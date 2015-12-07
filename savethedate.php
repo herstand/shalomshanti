@@ -9,7 +9,7 @@ if (isset($_GET['id']) &&
 ) {
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
-    $response = $_SESSION['response'] = $_GET['response'];
+    $response = $_SESSION['response'] = mysqli_real_escape_string($mysqli, $_GET['response']);
 } else if (
     $_SESSION['userId'] && 
     $_SESSION['response']
@@ -19,6 +19,7 @@ if (isset($_GET['id']) &&
     $response = $_SESSION['response'];
 } else {
     $isGuest = false;
+    $safeLookupId = 0;
 }
 if ($isGuest) {
     $query = "SELECT `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
@@ -95,7 +96,7 @@ $content = array(
                 <hr />
                 <section class="responses"><?php
                     foreach ($content['responses'] as $i => $responseCopy) {
-                        if ($response && $i == $response) {
+                        if ($response !== false && $i == $response) {
                             echo "<input type='radio' class='hidden' name='response' id='{$i}' value='{$i}' checked='true' /><label for='{$i}'>{$responseCopy}</label>";
                         } else {
                             echo "<input type='radio' class='hidden' name='response' id='{$i}' value='{$i}' /><label for='{$i}'>{$responseCopy}</label>";
@@ -114,7 +115,7 @@ $content = array(
                     <div class="digitalAddress">
                         <?php
                             foreach ($emailAddressesInParts as $i => $emailAddress) {
-                                echo "<p data-email-id='$id' class='email'><span data-initial-value='{$emailAddress['username']}' class='username' contenteditable='true'>{$emailAddress['username']}</span>@<span data-initial-value='{$emailAddress['domain']}' class='domain' contenteditable='true'>{$emailAddress['domain']}</span>";
+                                echo "<p data-email-id='$i' class='email'><span data-initial-value='{$emailAddress['username']}' class='username' contenteditable='true'>{$emailAddress['username']}</span>@<span data-initial-value='{$emailAddress['domain']}' class='domain' contenteditable='true'>{$emailAddress['domain']}</span>";
                                 if ($i !== 0) {
                                     echo "<img class='removeEmail' alt='removeEmail' src='icons/x.svg' />";
                                 }
