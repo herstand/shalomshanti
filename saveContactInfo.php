@@ -10,6 +10,7 @@ if (!isset($_POST['id']) ||
     !isset($_POST['zip']) ||
     !isset($_POST['emailAddresses'])
 ) {
+    echo "Missing required data.";
     exit();
 }
 $editTimestamp = getallheaders()['SS_EDIT_TIMESTAMP'];
