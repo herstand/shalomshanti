@@ -1,4 +1,5 @@
 <?php
+include "secrets.php";
 $mysqli = new mysqli(getenv('SS_DB_SERVER'), getenv('SS_DB_USER'), getenv('SS_DB_PASS'), getenv('SS_DB_NAME'));
 // Check connection
 if (mysqli_connect_errno()) {
