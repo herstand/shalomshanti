@@ -13,9 +13,7 @@ if (!isset($_POST['id']) ||
     exit();
 }
 $editTimestamp = getallheaders()['SS_EDIT_TIMESTAMP'];
-if (!isset($_SESSION['latestEdit'])) {
-    $_SESSION['latestEdit'] = $editTimestamp;
-} else if ($_SESSION['latestEdit'] < $editTimestamp) {
+if (!isset($_SESSION['latestEdit']) || $_SESSION['latestEdit'] < $editTimestamp) {
     $_SESSION['latestEdit'] = $editTimestamp;
 } else {
     echo "Ignoring out-of-date edit.";
