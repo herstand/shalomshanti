@@ -1,5 +1,5 @@
 function SaveTheDate() {
-    var checkForm = window.setInterval(seeIfFormComplete, 2000),
+    var checkForm = window.setInterval(seeIfFormComplete, 1000),
     state = {
         "isComplete" : true,
         responseData : {
