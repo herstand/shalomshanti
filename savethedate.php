@@ -9,7 +9,7 @@ if (isset($_GET['id']) &&
 ) {
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
-    $response = $_SESSION['response'] = mysqli_real_escape_string($mysqli, $_GET['response']);
+    $response = $_SESSION['response'] = $_GET['response'];
 } else if (
     $_SESSION['userId'] && 
     $_SESSION['response']
@@ -17,14 +17,26 @@ if (isset($_GET['id']) &&
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'];
     $response = $_SESSION['response'];
+} else if (
+    isset($_GET['id']) &&
+    ctype_alnum($_GET['id'])
+) {
+    $isGuest = true;
+    $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
+    $response = -1;
+} else if (isset($_SESSION['userId'])) {
+    $isGuest = true;
+    $safeLookupId = $_SESSION['userId'];
+    $response = -1;
 } else {
     $isGuest = false;
     $safeLookupId = 0;
 }
 if ($isGuest) {
-    $query = "SELECT `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
+    $query = "SELECT `Save the date response`, `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $response = $response < 0 ? $row['Save the date response'] : $response;
         $householdName = $row['Household name'];
         $emailAddresses = $row['Email addresses'];
         $addressLine1 = $row['Address line 1'];
