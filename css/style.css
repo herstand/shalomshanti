@@ -118,6 +118,9 @@ header, main {
 .faces img {
     vertical-align:middle;
 }
+.face {
+    width:100px;
+}
 .faces img:not(:last-of-type) {
     margin-right:30px;
 }
@@ -125,6 +128,9 @@ header, main {
     .faces img:not(:last-of-type) {
         margin-right:50px;
     }   
+    .face {
+        width:auto;
+    }
 }
 .lede {
     margin-right:14px;

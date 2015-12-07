@@ -97,7 +97,7 @@ $content = array(
     <body data-guest="<?php echo $safeLookupId; ?>">
         <img class="logo" src="icons/star.svg" /><br />
         <header>
-            <span class="faces"><img src="icons/vidya.svg" /><img src="icons/ampersand.svg" /><img src="icons/micah.svg" /></span>
+            <span class="faces"><img class="face" src="icons/vidya.svg" /><img src="icons/ampersand.svg" /><img class="face" src="icons/micah.svg" /></span>
             <h1 class="fancyFont"><?php echo $content['names']; ?></h1>
             <h2 class="fancyFont"><span class="date"><?php echo $content['date']; ?></span><span class="location"><?php echo $content['location']; ?></span></h2>
             <?php if ($isGuest) {?><p class="fancyFont" class="summary"><span class="lede"><?php echo $content['title']; ?></span><?php echo $content['instructions']; ?></p><?php } ?>
