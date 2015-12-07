@@ -25,9 +25,10 @@ function cleanParams($obj) {
     $guestData = array();
     foreach($obj as $key => $value) {
         if ($key === "response") {
-            $value = intval($value);
+            $guestData[$key] = intval($value);
+        } else {
+            $guestData[$key] = mysqli_real_escape_string($mysqli, $value);
         }
-        $guestData[$key] = mysqli_real_escape_string($mysqli, $value);
     }
     if (!isset($guestData['address-2'])) {
         $guestData['address-2'] = "";
