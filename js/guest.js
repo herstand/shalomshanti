@@ -42,17 +42,30 @@ function SaveTheDate() {
             e.target.parentNode.parentNode.removeChild(e.target.parentNode);    
         });
     }
+    function setupAtJumper(username) {
+        username.addEventListener("keydown", function(e) {
+            if (e.which == 50 && e.shiftKey) {
+                e.preventDefault();
+                username.parentNode.querySelector(".domain").focus();
+                return false;
+            }
+        });
+    }
     function setEventListeners() {
         document.querySelector("#addEmail a").addEventListener("click", function(e) {
             var email = document.querySelector("#templates .email").cloneNode(true);
             e.preventDefault();
             document.querySelector(".digitalAddress").insertBefore(email, document.querySelector("#addEmail"));
             setupRemoveEmailButton(email.querySelector(".removeEmail"));
+            setupAtJumper(email.querySelector(".username"));
             return false;
         });
         utilities.toArray(document.querySelectorAll("[contenteditable='true']")).forEach(function(el){
             el.addEventListener("keyup", seeIfFormComplete);
             el.addEventListener("change", seeIfFormComplete);
+        });
+        utilities.toArray(document.querySelectorAll(".digitalAddress .username")).forEach(function(el){
+            setupAtJumper(el);
         });
         utilities.toArray(document.querySelectorAll(".removeEmail")).forEach(function(el){
             setupRemoveEmailButton(el);
@@ -92,7 +105,6 @@ function SaveTheDate() {
                 utilities.ajax(
                     "saveContactInfo", 
                     function(data) {
-                        console.log(data);
                         document.querySelector(".submitFeedback img").src = document.querySelector(".submitFeedback img").dataset.complete;
                         document.querySelector(".submitFeedback h1").innerText = document.querySelector(".submitFeedback h1").dataset.complete;    
                         state.isComplete = true;
