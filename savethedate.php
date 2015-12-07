@@ -77,7 +77,7 @@ $content = array(
     "submissionPrompt" => "Waiting on your contact info…",
     "submissionAcknowledgement" => "Thanks! We got your info",
     "nonGuestHelperText" => "Looking for a response form? Please click the link from your email directly.",
-    "nonGuestHelperText2" => "Email Micah & Vidya at <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a> if the link is not working for you."
+    "nonGuestHelperText2" => "Email Vidya &amp; Micah at <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a> if the link is not working for you."
 );
 ?>
 <!DOCTYPE HTML>
