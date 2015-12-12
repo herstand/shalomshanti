@@ -61,10 +61,15 @@ h2 {
 section > h1, span.lede, label {
     font-size:20px;
     letter-spacing:3px;
-    line-height:24px;
     color:#9B9B9B;
-
 }
+section > h1 {
+    line-height:30px;
+}
+label {
+    line-height:24px;
+}
+
 section > h1 {
     margin-bottom:20px;
 }
@@ -147,6 +152,7 @@ label {
     width:150px;
     display:inline-block;
     vertical-align:top;
+    position:relative;
 }
 label:first-of-type {
     padding-top:45px;
@@ -154,7 +160,7 @@ label:first-of-type {
 label:not(:first-of-type) {
     padding-top:36px;
 }
-input:not(:checked) + label:hover {
+input[name='response']:not(:checked) + label:hover {
     cursor:pointer;
     font-weight:bold;
 } 
