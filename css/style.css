@@ -265,7 +265,7 @@ section.address .digitalAddress {
 section.address .digitalAddress #addEmail a{
     color:#F16342;
     font-style:italic;
-    font-size:16px;
+    font-size:20px;
 }
 section.address .digitalAddress #addEmail a:before {
     content:"+";
