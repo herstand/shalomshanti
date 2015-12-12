@@ -94,7 +94,7 @@ $content = array(
             <h1 class="fancyFont"><?php echo $content['names']; ?></h1>
             <h2 class="fancyFont"><span class="date"><?php echo $content['date']; ?></span><span class="location"><?php echo $content['location']; ?></span></h2>
             <?php if ($isGuest) {?><p class="fancyFont" class="summary"><span class="lede"><?php echo $content['title']; ?></span><?php echo $content['instructions']; ?></p><?php } ?>
-            <aside class="fancyFont"><?php echo $content['downloadPrompt']; ?> <a target="_blank" href="downloadEmail.php"><?php echo $content['downloadInstructions']; ?></a></aside>
+            <?php if ($isGuest) {?><aside class="fancyFont"><?php echo $content['downloadPrompt']; ?> <a target="_blank" href="downloadEmail.php"><?php echo $content['downloadInstructions']; ?></a></aside><?php } ?>
         </header>
         <?php if ($isGuest) {?>
             <main class="fancyFont">
