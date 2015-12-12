@@ -51,6 +51,12 @@ function SaveTheDate() {
             }
         });
     }
+
+    function setupFormCompleteListener(el) {
+        el.addEventListener("keyup", seeIfFormComplete);
+        el.addEventListener("change", seeIfFormComplete);
+    }
+
     function setEventListeners() {
         document.querySelector("#addEmail a").addEventListener("click", function(e) {
             var email = document.querySelector("#templates .email").cloneNode(true);
@@ -58,18 +64,30 @@ function SaveTheDate() {
             document.querySelector(".digitalAddress").insertBefore(email, document.querySelector("#addEmail"));
             setupRemoveEmailButton(email.querySelector(".removeEmail"));
             setupAtJumper(email.querySelector(".username"));
+            setupFormCompleteListener(email.querySelector(".username"));
+            setupFormCompleteListener(email.querySelector(".domain"));
             return false;
         });
-        utilities.toArray(document.querySelectorAll("[contenteditable='true']")).forEach(function(el){
-            el.addEventListener("keyup", seeIfFormComplete);
-            el.addEventListener("change", seeIfFormComplete);
-        });
-        utilities.toArray(document.querySelectorAll(".digitalAddress .username")).forEach(function(el){
-            setupAtJumper(el);
-        });
-        utilities.toArray(document.querySelectorAll(".removeEmail")).forEach(function(el){
-            setupRemoveEmailButton(el);
-        });
+        utilities.toArray(document.querySelectorAll("[contenteditable='true']")).forEach(setupFormCompleteListener);
+        utilities.toArray(document.querySelectorAll(".digitalAddress .username")).forEach(setupAtJumper);
+        utilities.toArray(document.querySelectorAll(".removeEmail")).forEach(setupRemoveEmailButton);
+    }
+
+    function emailIsValid(username, domain) {
+        return (username.length === 0 && domain.length === 0) ||
+            (username.length > 0 && domain.length > 2 && domain.indexOf(".") < domain.length - 1);
+    }
+
+    function noEmailsPartiallyFilled() {
+        var el, 
+            emails =  utilities.toArray(document.querySelectorAll(".digitalAddress .email"));
+        for (var i in emails) {
+            el = emails[i];
+            if (!emailIsValid(utilities.getText(el.querySelector(".username")), utilities.getText(el.querySelector(".domain")))) {
+                return false;
+            }
+        }
+        return true;
     }
     
     function formIsComplete(){
@@ -78,10 +96,13 @@ function SaveTheDate() {
             !document.querySelector(".physicalAddress .city:empty") &&
             !document.querySelector(".physicalAddress .state:empty") &&
             !document.querySelector(".physicalAddress .zip:empty") &&
+            noEmailsPartiallyFilled() &&
             !document.querySelector(".digitalAddress .email:first-of-type .username:empty") &&
             !document.querySelector(".digitalAddress .email:first-of-type .domain:empty") &&
-            utilities.getText(document.querySelector(".digitalAddress .email:first-of-type .domain")).indexOf(".") !== -1 &&
-            utilities.getText(document.querySelector(".digitalAddress .email:first-of-type .domain")).indexOf(".") < utilities.getText(document.querySelector(".digitalAddress .email:first-of-type .domain")).length - 1;
+            emailIsValid(
+                utilities.getText(document.querySelector(".digitalAddress .email:first-of-type .username")),
+                utilities.getText(document.querySelector(".digitalAddress .email:first-of-type .domain"))
+            );
     }
     function getCurrentResponseData() {
         return  {
@@ -96,6 +117,13 @@ function SaveTheDate() {
             "emailAddresses" : getEmails()
         };
     }
+
+    function displayFormIsComplete() {
+        document.querySelector(".submitFeedback img").src = document.querySelector(".submitFeedback img").dataset.complete;
+        document.querySelector(".submitFeedback h1").innerText = document.querySelector(".submitFeedback h1").dataset.complete;    
+        state.isComplete = true;
+    }
+
     function seeIfFormComplete() {
         var formData, responseDataCurrent;
         if (formIsComplete()) {
@@ -105,13 +133,13 @@ function SaveTheDate() {
                 utilities.ajax(
                     "saveContactInfo", 
                     function(data) {
-                        document.querySelector(".submitFeedback img").src = document.querySelector(".submitFeedback img").dataset.complete;
-                        document.querySelector(".submitFeedback h1").innerText = document.querySelector(".submitFeedback h1").dataset.complete;    
-                        state.isComplete = true;
+                        displayFormIsComplete();
                     }, 
                     "POST", 
                     utilities.convertJsonToFormData(state.responseData)
                 );
+            } else {
+                displayFormIsComplete()
             }
         } else if (state.isComplete) {
             document.querySelector(".submitFeedback img").src = document.querySelector(".submitFeedback img").dataset.waiting;
