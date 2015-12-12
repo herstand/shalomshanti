@@ -11,13 +11,6 @@ if (isset($_GET['id']) &&
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
     $response = $_SESSION['response'] = $_GET['response'];
 } else if (
-    $_SESSION['userId'] && 
-    $_SESSION['response']
-) {
-    $isGuest = true;
-    $safeLookupId = $_SESSION['userId'];
-    $response = $_SESSION['response'];
-} else if (
     isset($_GET['id']) &&
     ctype_alnum($_GET['id'])
 ) {
