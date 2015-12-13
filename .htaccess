@@ -7,6 +7,11 @@ RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} !=localhost:9090
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Force www
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
+RewriteRule ^(.*)$ http://www.shalomshanti.com/$1 [L,R=301,NC]
+
 # Find php files
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ /shalomshanti/$1.php [L,QSA]
