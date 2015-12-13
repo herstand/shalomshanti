@@ -120,7 +120,7 @@ $content = array(
                         <p class="name"><?php echo $householdName; ?></p>
                         <p><span data-initial-value="<?php echo $addressLine1; ?>" class="address-1 addressData" contenteditable="true"><?php echo $addressLine1; ?></span></p>
                         <p><span data-initial-value="<?php echo $addressLine2; ?>" class="address-2 addressData" contenteditable="true"><?php echo $addressLine2; ?></span></p>
-                        <p><span data-initial-value="<?php echo $city; ?>" class="city addressData" contenteditable="true"><?php echo $city; ?></span>, <span class="addressData" data-initial-value="<?php echo $state; ?>" class="state" contenteditable="true"><?php echo $state; ?></span> <span class="addressData" data-initial-value="<?php echo $zip; ?>" class="zip" contenteditable="true"><?php echo $zip; ?></span></p>
+                        <p><span data-initial-value="<?php echo $city; ?>" class="city addressData" contenteditable="true"><?php echo $city; ?></span>, <span data-initial-value="<?php echo $state; ?>" class="state addressData" contenteditable="true"><?php echo $state; ?></span> <span data-initial-value="<?php echo $zip; ?>" class="zip addressData" contenteditable="true"><?php echo $zip; ?></span></p>
                         <p><span data-initial-value="<?php echo $country; ?>" class="country addressData" contenteditable="true"><?php echo $country; ?></span></p>
                     </div>
                     <div class="digitalAddress">
