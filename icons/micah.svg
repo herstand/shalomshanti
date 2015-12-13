@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="135px" height="176px" viewBox="0 0 135 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.4.3 (16618) - http://www.bohemiancoding.com/sketch -->
-    <title>Micah</title>
+    <!-- Generator: Sketch 3.4.2 (15857) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 5</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <path id="path-1" d="M0,0.336561404 L134.652918,0.336561404 L134.652918,176 L0,176"></path>
     </defs>
     <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Form" sketch:type="MSArtboardGroup" transform="translate(-720.000000, -214.000000)">
-            <g id="Micah" sketch:type="MSLayerGroup" transform="translate(720.000000, 214.000000)">
+        <g id="Artboard-5" sketch:type="MSArtboardGroup">
+            <g id="Micah" sketch:type="MSLayerGroup">
                 <g id="Group-3">
                     <mask id="mask-2" sketch:name="Clip 2" fill="white">
                         <use xlink:href="#path-1"></use>
@@ -30,8 +30,8 @@
                 <path d="M62.1498596,146.420936 L67.8269687,151.048912 L73.5040777,146.420936 L62.1498596,146.420936 Z" id="Fill-26" fill="#B58356" sketch:type="MSShapeGroup"></path>
                 <path d="M74.0885118,135.856973 L67.766148,136.777113 L61.5652197,135.856973 L45.5789581,139.177301 L67.8268657,140.177301 L90.0747734,139.177301 L74.0885118,135.856973 Z" id="Fill-28" fill="#F4623A" sketch:type="MSShapeGroup"></path>
                 <path d="M73.2960937,117.140351 L62.3581523,117.140351 L62.3581523,87.9166316 L73.2960937,87.9166316 L73.2960937,117.140351 Z" id="Fill-30" fill-opacity="0.25" fill="#F4623A" sketch:type="MSShapeGroup"></path>
-                <path d="M48.5801642,93.5640702 L36.7695338,93.5640702 L42.6751063,99.1981287 L48.5801642,93.5640702 Z" id="Fill-32" fill="#FAD7BB" sketch:type="MSShapeGroup"></path>
-                <path d="M99.0065594,93.5640702 L87.195929,93.5640702 L93.1015015,99.1981287 L99.0065594,93.5640702 Z" id="Fill-34" fill="#FAD7BB" sketch:type="MSShapeGroup"></path>
+                <path d="M48.5801642,93.5640702 L36.7695338,93.5640702 L42.6751063,99.1981287 L48.5801642,93.5640702 Z" id="Fill-32" fill="#FBD7E7" sketch:type="MSShapeGroup"></path>
+                <path d="M99.0065594,93.5640702 L87.195929,93.5640702 L93.1015015,99.1981287 L99.0065594,93.5640702 Z" id="Fill-34" fill="#FBD7E7" sketch:type="MSShapeGroup"></path>
                 <path d="M33.7392038,96.5866901 C33.7392038,97.3066433 33.155696,97.8902222 32.4358306,97.8902222 C31.7159651,97.8902222 31.1324573,97.3066433 31.1324573,96.5866901 C31.1324573,95.8667368 31.7159651,95.2831579 32.4358306,95.2831579 C33.155696,95.2831579 33.7392038,95.8667368 33.7392038,96.5866901" id="Fill-36" fill="#A78269" sketch:type="MSShapeGroup"></path>
             </g>
         </g>

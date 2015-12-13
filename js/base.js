@@ -1,7 +1,8 @@
-window.addEventListener("load", function(e) {
-    setTimeout(function(){
-        utilities.toArray(document.querySelectorAll(".fancyFont")).forEach(function(el){
-            el.classList.remove("fancyFont");
-        });
-    }, 200);
-});
+function loadPage() {
+    document.querySelector('.logoWrapper').classList.remove('preloaded');
+    setTimeout(function(e) {
+        document.querySelector('.loadCover').classList.remove('loadCover');
+    }, 1000)
+}
+
+window.addEventListener("load", loadPage);

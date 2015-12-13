@@ -147,6 +147,7 @@ function SaveTheDate() {
             state.isComplete = false;
         }
     }
+
     setEventListeners();
 
     return {

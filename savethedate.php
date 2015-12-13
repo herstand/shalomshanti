@@ -53,16 +53,16 @@ if ($isGuest) {
 
 $content = array(
     "title" => "Save the Date!",
-    "names" => "Vidya Santosh &amp; Micah Herstand",
-    "date" => "July 10, 2016",
-    "location" => "Binghamton, NY",
+    "names" => "<span class='unit'>Vidya Santosh</span> &amp; <span class='unit'>Micah Herstand</span>",
+    "date" => "<span class='unit'>July 10, 2016</span>",
+    "location" => "<span class='unit'>Binghamton, NY</span>",
     "instructions" => "We are planning our wedding, and we can't do it without you! Please take a few moments to provide us with your preliminary response and contact information below.",
     "downloadPrompt" => "Didn't get the e-card?",
     "downloadInstructions" => "Click to download.",
     "responses" => array(
-        "I'll be there!",
+        "<span class='unit'>I'll be</span><br>there!",
         "There's<br>a good chance",
-        "I'll be busy, but I'll try",
+        "<span class='unit'>I'll be</span><br><span class='unit'>busy, but</span><br><span class='unit'>I'll try</span>",
         "Sorry, probably can't"
     ),
     "addressPrompt" => "Where should we send the invitation?",
@@ -88,16 +88,17 @@ $content = array(
         <?php if ($isGuest) { echo '<script src="js/guest.js"></script>'; } ?>
     </head>
     <body data-guest="<?php echo $safeLookupId; ?>">
-        <img class="logo" src="icons/star.svg" /><br />
+        <div class="loadCover"></div>
+        <div class="logoWrapper preloaded"><img class="logo" src="icons/star.svg" /></div>
         <header>
-            <span class="faces"><img class="face" src="icons/vidya.svg" /><img src="icons/ampersand.svg" /><img class="face" src="icons/micah.svg" /></span>
-            <h1 class="fancyFont"><?php echo $content['names']; ?></h1>
-            <h2 class="fancyFont"><span class="date"><?php echo $content['date']; ?></span><span class="location"><?php echo $content['location']; ?></span></h2>
-            <?php if ($isGuest) {?><p class="fancyFont" class="summary"><span class="lede"><?php echo $content['title']; ?></span><?php echo $content['instructions']; ?></p><?php } ?>
-            <?php if ($isGuest) {?><aside class="fancyFont"><?php echo $content['downloadPrompt']; ?> <a target="_blank" href="downloadEmail.php"><?php echo $content['downloadInstructions']; ?></a></aside><?php } ?>
+            <span class="faces"><img class="face" src="icons/vidya.svg" /><img class="ampersand" src="icons/ampersand.svg" /><img class="face" src="icons/micah.svg" /></span>
+            <h1><?php echo $content['names']; ?></h1>
+            <h2><span class="date"><?php echo $content['date']; ?></span><span class="location"><?php echo $content['location']; ?></span></h2>
+            <?php if ($isGuest) {?><p class="summary"><span class="lede"><?php echo $content['title']; ?></span><?php echo $content['instructions']; ?></p><?php } ?>
+            <?php if ($isGuest) {?><aside ><?php echo $content['downloadPrompt']; ?> <a target="_blank" href="downloadEmail.php"><?php echo $content['downloadInstructions']; ?></a></aside><?php } ?>
         </header>
         <?php if ($isGuest) {?>
-            <main class="fancyFont">
+            <main>
                 <hr />
                 <section class="responses"><?php
                     foreach ($content['responses'] as $i => $responseCopy) {
