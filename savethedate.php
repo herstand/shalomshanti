@@ -65,10 +65,10 @@ $content = array(
         "<span class='unit'>I'll be</span><br><span class='unit'>busy, but</span><br><span class='unit'>I'll try</span>",
         "Sorry, probably can't"
     ),
-    "addressPrompt" => "Where should we send the invitation?",
+    "addressPrompt" => "Where should we send <span class='unit'>the invitation?</span>",
     "addEmailPrompt" => "Add another email address",
-    "submissionPrompt" => "Waiting on your contact info…",
-    "submissionAcknowledgement" => "Thanks! We got your info.",
+    "submissionPrompt" => "Waiting on your <span class='unit'>contact info…</span>",
+    "submissionAcknowledgement" => "Thanks! We got <span class='unit'>your info.</span>",
     "nonGuestHelperText" => "Looking for a response form? Please click the link from your email directly.",
     "nonGuestHelperText2" => "Email Vidya &amp; Micah at <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a> if the link is not working for you."
 );
@@ -88,40 +88,45 @@ $content = array(
         <?php if ($isGuest) { echo '<script src="js/guest.js"></script>'; } ?>
     </head>
     <body data-guest="<?php echo $safeLookupId; ?>">
-        <div class="loadCover"></div>
-        <div class="logoWrapper preloaded"><img class="logo" src="icons/star.svg" /></div>
+        <div class="cover loadCover"></div>
+        <div class="logoWrapper hidden"><img class="logo" src="icons/star.svg" /></div>
+        <div class="loader preloaded"><img class="logo" src="icons/star.svg" /></div>
         <header>
             <span class="faces"><img class="face" src="icons/vidya.svg" /><img class="ampersand" src="icons/ampersand.svg" /><img class="face" src="icons/micah.svg" /></span>
             <h1><?php echo $content['names']; ?></h1>
             <h2><span class="date"><?php echo $content['date']; ?></span><span class="location"><?php echo $content['location']; ?></span></h2>
             <?php if ($isGuest) {?><p class="summary"><span class="lede"><?php echo $content['title']; ?></span><?php echo $content['instructions']; ?></p><?php } ?>
-            <?php if ($isGuest) {?><aside ><?php echo $content['downloadPrompt']; ?> <a target="_blank" href="downloadEmail.php"><?php echo $content['downloadInstructions']; ?></a></aside><?php } ?>
+            <?php if ($isGuest) {?><aside><span class='unit'><?php echo $content['downloadPrompt']; ?></span> <a class="unit" target="_blank" href="downloadEmail.php"><?php echo $content['downloadInstructions']; ?></a></aside><?php } ?>
         </header>
         <?php if ($isGuest) {?>
+            <hr />
             <main>
-                <hr />
-                <section class="responses"><?php
+                <section class="responses"><span class='unit'><?php
                     foreach ($content['responses'] as $i => $responseCopy) {
+                        if ($i === 2) {
+                            echo "</span><span class='unit'>";
+                        }
                         if ($response !== false && $i == $response) {
                             echo "<input type='radio' class='hidden' name='response' id='{$i}' value='{$i}' checked='true' /><label for='{$i}'>{$responseCopy}</label>";
                         } else {
                             echo "<input type='radio' class='hidden' name='response' id='{$i}' value='{$i}' /><label for='{$i}'>{$responseCopy}</label>";
                         }
                     }
+                    echo "</span>";
                 ?></section>
                 <section class="address">
                     <h1><?php echo $content['addressPrompt']; ?></h1>
                     <div class="physicalAddress">
                         <p class="name"><?php echo $householdName; ?></p>
-                        <p><span data-initial-value="<?php echo $addressLine1; ?>" class="address-1" contenteditable="true"><?php echo $addressLine1; ?></span></p>
-                        <p><span data-initial-value="<?php echo $addressLine2; ?>" class="address-2" contenteditable="true"><?php echo $addressLine2; ?></span></p>
-                        <p><span data-initial-value="<?php echo $city; ?>" class="city" contenteditable="true"><?php echo $city; ?></span>, <span data-initial-value="<?php echo $state; ?>" class="state" contenteditable="true"><?php echo $state; ?></span> <span data-initial-value="<?php echo $zip; ?>" class="zip" contenteditable="true"><?php echo $zip; ?></span></p>
-                        <p><span data-initial-value="<?php echo $country; ?>" class="country" contenteditable="true"><?php echo $country; ?></span></p>
+                        <p><span data-initial-value="<?php echo $addressLine1; ?>" class="address-1 addressData" contenteditable="true"><?php echo $addressLine1; ?></span></p>
+                        <p><span data-initial-value="<?php echo $addressLine2; ?>" class="address-2 addressData" contenteditable="true"><?php echo $addressLine2; ?></span></p>
+                        <p><span data-initial-value="<?php echo $city; ?>" class="city addressData" contenteditable="true"><?php echo $city; ?></span>, <span class="addressData" data-initial-value="<?php echo $state; ?>" class="state" contenteditable="true"><?php echo $state; ?></span> <span class="addressData" data-initial-value="<?php echo $zip; ?>" class="zip" contenteditable="true"><?php echo $zip; ?></span></p>
+                        <p><span data-initial-value="<?php echo $country; ?>" class="country addressData" contenteditable="true"><?php echo $country; ?></span></p>
                     </div>
                     <div class="digitalAddress">
                         <?php
                             foreach ($emailAddressesInParts as $i => $emailAddress) {
-                                echo "<p data-email-id='$i' class='email'><span data-initial-value='{$emailAddress['username']}' class='username' contenteditable='true'>{$emailAddress['username']}</span>@<span data-initial-value='{$emailAddress['domain']}' class='domain' contenteditable='true'>{$emailAddress['domain']}</span>";
+                                echo "<p data-email-id='$i' class='email'><span class='addressData' data-initial-value='{$emailAddress['username']}' class='username' contenteditable='true'>{$emailAddress['username']}</span>@<span class='addressData' data-initial-value='{$emailAddress['domain']}' class='domain' contenteditable='true'>{$emailAddress['domain']}</span>";
                                 if ($i !== 0) {
                                     echo "<img class='removeEmail' alt='removeEmail' src='icons/x.svg' />";
                                 }

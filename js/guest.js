@@ -120,7 +120,7 @@ function SaveTheDate() {
 
     function displayFormIsComplete() {
         document.querySelector(".submitFeedback img").src = document.querySelector(".submitFeedback img").dataset.complete;
-        document.querySelector(".submitFeedback h1").innerText = document.querySelector(".submitFeedback h1").dataset.complete;    
+        document.querySelector(".submitFeedback h1").innerHTML = document.querySelector(".submitFeedback h1").dataset.complete;    
         state.isComplete = true;
     }
 
