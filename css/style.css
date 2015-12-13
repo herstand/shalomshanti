@@ -207,7 +207,7 @@ section.address span:empty:after {
     content: "Street Address";
 }
 .address-2:empty:after {
-    content: "Other Address Stuff (optional)";
+    content: "More Address Stuff (optional)";
 }
 .city:empty:after {
     content: "City";
