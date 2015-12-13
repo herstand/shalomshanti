@@ -86,6 +86,7 @@ p {
     letter-spacing:.01em;
 }
 aside {
+    font-style:italic;
     font-size:19px;
     line-height:20px;
     color:#9B9B9B;
@@ -245,10 +246,10 @@ section.address .physicalAddress {
 }
 section.address .digitalAddress .username, section.address .digitalAddress .domain {
     color:#F16342;
-    font-style:italic;
     border-bottom:1px solid #F16342;
     padding-bottom:1px;
 }
+
 section.address .digitalAddress .removeEmail {
     margin-left:10px;
     display:inline-block;
