@@ -126,7 +126,7 @@ $content = array(
                     <div class="digitalAddress">
                         <?php
                             foreach ($emailAddressesInParts as $i => $emailAddress) {
-                                echo "<p data-email-id='$i' class='email'><span class='addressData' data-initial-value='{$emailAddress['username']}' class='username' contenteditable='true'>{$emailAddress['username']}</span>@<span class='addressData' data-initial-value='{$emailAddress['domain']}' class='domain' contenteditable='true'>{$emailAddress['domain']}</span>";
+                                echo "<p data-email-id='$i' class='email'><span data-initial-value='{$emailAddress['username']}' class='username addressData' contenteditable='true'>{$emailAddress['username']}</span>@<span data-initial-value='{$emailAddress['domain']}' class='domain addressData' contenteditable='true'>{$emailAddress['domain']}</span>";
                                 if ($i !== 0) {
                                     echo "<img class='removeEmail' alt='removeEmail' src='icons/x.svg' />";
                                 }
