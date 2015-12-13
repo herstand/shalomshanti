@@ -86,7 +86,6 @@ p {
     letter-spacing:.01em;
 }
 aside {
-    font-style:italic;
     font-size:19px;
     line-height:20px;
     color:#9B9B9B;
@@ -190,7 +189,6 @@ section.address h1 {
 }
 section.address span {
     color:#F16342;
-    font-style:italic;
     border-bottom:1px solid #F16342;
     padding-bottom:1px;
     cursor:text;
@@ -199,6 +197,7 @@ section.address span {
 }
 section.address span:empty {
     opacity:.7;
+    font-style:italic;
 }
 section.address span:empty:after {
     display:inline-block;
