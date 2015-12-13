@@ -79,6 +79,7 @@ $content = array(
         <title><?php echo $content['title']; ?></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0">
+        <link rel="icon" href="/icons/star.svg">
         <script src="https://use.typekit.net/abm3mqd.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
