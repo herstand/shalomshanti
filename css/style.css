@@ -154,7 +154,7 @@ section.address .physicalAddress { margin-bottom:30px; }
 @media (min-width:376px) { 
     section.address { margin-top:70px; }
     section.address p { line-height:30px; margin-bottom:10px; }
-    section.address .addressData { line-height:6vw; }
+    section.address .addressData { line-height:24px; }
 }
 
 section.address .digitalAddress .username, section.address .digitalAddress .domain { color:#F16342; border-bottom:1px solid #F16342; padding-bottom:1px; }
