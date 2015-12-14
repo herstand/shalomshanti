@@ -65,8 +65,10 @@ h4 { font-family:garamond-premier-pro-caption; font-size:22px; margin-top:5px; c
 @media (min-width:436px) {
     h2 { font-size:24px; line-height:35px; }
 }
-@media (min-width:700px) {
+@media (min-width:458px) {
     h1 { font-size:32px; line-height:50px; }
+}
+@media (min-width:700px) {
     header > h1 span:last-of-type { display:inline; }
 }
 section > h1, span.lede { letter-spacing:3px; color:#9B9B9B; }
