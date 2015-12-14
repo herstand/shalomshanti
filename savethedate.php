@@ -63,7 +63,7 @@ $content = array(
     "names" => "<span class='unit'>Vidya Santosh</span> &amp; <span class='unit'>Micah Herstand</span>",
     "date" => "<span class='unit'>July 10, 2016</span>",
     "location" => "<span class='unit'>Binghamton, NY</span>",
-    "instructions" => "We are planning our wedding, and we can't do it without you! Please take a few moments to provide us with your preliminary response and contact information below.",
+    "instructions" => "Our wedding ceremony will take place in the morning followed by an evening reception. Children are most welcome. We busy planning away, and we can't do it without you! Please take a few moments to provide us with your preliminary response and contact information below.",
     "downloadPrompt" => "Didn't get the e-card?",
     "downloadInstructions" => "Click to download.",
     "responses" => array(
