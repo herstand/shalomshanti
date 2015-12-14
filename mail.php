@@ -14,16 +14,16 @@ $guestType = "cr";
     $bcc = ", wedding+bccsavethedate@shalomshanti.com";
     $subject = "Save the date: July 10, 2016 – Wedding of Vidya Santosh and Micah Herstand";
     $body = "
-      <a href='http://www.shalomshanti.com/savethedate?gt=c&response=-1&id={$row['hashedId']}'>
+      <a href='http://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}'>
           <img usemap='#responses' width='600' height='749' src='https://www.shalomshanti.com/savethedate-{$guestType}.png' />
       </a>
       <map name='responses'>
-        <area shape='circle' coords='145,653,55' href='http://www.shalomshanti.com/savethedate?gt={$guestType}&response=0&id={$row['hashedId']}' />
-        <area shape='circle' coords='248,653,55' href='http://www.shalomshanti.com/savethedate?gt={$guestType}&response=1&id={$row['hashedId']}' />
-        <area shape='circle' coords='353,653,55' href='http://www.shalomshanti.com/savethedate?gt={$guestType}&response=2&id={$row['hashedId']}' />
-        <area shape='circle' coords='456,653,55' href='http://www.shalomshanti.com/savethedate?gt={$guestType}&response=3&id={$row['hashedId']}' />
+        <area shape='circle' coords='145,653,55' href='http://www.shalomshanti.com/savethedate?response=0&id={$row['hashedId']}' />
+        <area shape='circle' coords='248,653,55' href='http://www.shalomshanti.com/savethedate?response=1&id={$row['hashedId']}' />
+        <area shape='circle' coords='353,653,55' href='http://www.shalomshanti.com/savethedate?response=2&id={$row['hashedId']}' />
+        <area shape='circle' coords='456,653,55' href='http://www.shalomshanti.com/savethedate?response=3&id={$row['hashedId']}' />
       </map>
-      <br><br>If the above image is not loading, please use this link to access the website: <br>http://www.shalomshanti.com/savethedate?gt={$guestType}&response=-1&id={$row['hashedId']}
+      <br><br>If the above image is not loading, please use this link to access the website: <br>http://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}
 ";
     
     $host = "ssl://smtp.gmail.com";
