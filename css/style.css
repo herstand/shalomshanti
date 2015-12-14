@@ -108,7 +108,8 @@ header, main { max-width:850px; margin:0 auto; }
 }
 
 .lede { margin-right:14px; display:inline-block; }
-.summary { margin:30px auto 10px auto; }
+.summary { margin-top:30px; margin-bottom:10px; }
+.helperText, .summary { max-width:640px; margin-left:auto; margin-right:auto; }
 
 hr { width:100px; margin:40px auto 50px auto; }
 label { white-space:normal; letter-spacing:3px; font-size:18px; line-height:24px; border:2px solid #F16342; padding:5px; display:inline-block; vertical-align:top; position:relative; }
