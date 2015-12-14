@@ -68,7 +68,7 @@ $content = array(
     "addressPrompt" => "Where should we send <span class='unit'>the invitation?</span>",
     "addEmailPrompt" => "Add another email address",
     "submissionPrompt" => "Waiting on your <span class='unit'>contact info…</span>",
-    "submissionAcknowledgement" => "Thanks! We got <span class='unit'>your info.</span>",
+    "submissionAcknowledgement" => "Thanks! We saved <span class='unit'>your info.</span>",
     "nonGuestHelperText" => "Looking for a response form? Please click the link from your email directly.",
     "nonGuestHelperText2" => "Email Vidya &amp; Micah at <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a> if the link is not working for you."
 );
