@@ -31,6 +31,7 @@ if (isset($_GET['id']) &&
 } else {
     $isGuest = false;
     $safeLookupId = 0;
+    $guestType = "";
 }
 if ($isGuest) {
     $query = "SELECT `Save the date response`, `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
