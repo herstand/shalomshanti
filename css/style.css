@@ -89,7 +89,7 @@ aside { font-style:italic; font-size:19px; line-height:24px; color:#9B9B9B; marg
 @media (min-width:400px) {
     section > h1, span.lede { font-size:20px; line-height:30px; }
 }
-header, main { max-width:850px; margin:0 auto; }
+header, main, footer { max-width:850px; margin:0 auto; }
 .date { display:block; }
 @media (min-width:620px) {
     .date { display:inline-block; }
@@ -174,4 +174,8 @@ section.submitFeedback h1 { margin-bottom:35px; }
 }
 @media (min-width:376px) { 
     section.address .digitalAddress { margin-bottom:70px; }
+}
+
+footer {
+    margin-top:80px;
 }

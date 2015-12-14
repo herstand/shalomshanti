@@ -69,6 +69,7 @@ $content = array(
     "addEmailPrompt" => "Add another email address",
     "submissionPrompt" => "Waiting on your <span class='unit'>contact info…</span>",
     "submissionAcknowledgement" => "Thanks! We saved <span class='unit'>your info.</span>",
+    "footer" => "Questions? Problems? Email: <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a>",
     "nonGuestHelperText" => "Looking for a response form? Please click the personalized link you received in your email.",
     "nonGuestHelperText2" => "Contact us at <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a> if you need further assistance."
 );
@@ -143,6 +144,9 @@ $content = array(
                     <img data-complete="icons/thanks.svg" data-waiting="icons/waiting.svg" src="icons/waiting.svg" />
                 </section>
             </main>
+            <footer>
+                <aside><?php echo $content['footer']; ?></aside>
+            </footer>
             <div id="templates">
                 <p class="email"><span class="username addressData" contenteditable="true"></span>@<span class="domain addressData" contenteditable="true"></span><img class='removeEmail' alt='removeEmail' src='icons/x.svg' /></p>
             </div>
