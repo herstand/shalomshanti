@@ -46,7 +46,7 @@ h2 { letter-spacing:4px; color:#5FBAF4; margin:30px auto 30px auto; }
 h3 { font-family:garamond-premier-pro-caption; font-size:28px; margin-top:50px; color:#9B9B9B; }
 h4 { font-family:garamond-premier-pro-caption; font-size:22px; margin-top:5px; color:#9B9B9B; }
 @media (min-width:0px) {
-    h1 { font-size:7vw; line-height:9vw; }
+    h1 { font-size:7vw; line-height:10vw; }
     h2 { font-size:5.5vw; margin-top:10vw; margin-bottom:15vw; line-height:8vw; }
 }
 @media (min-width:300px) {
@@ -66,7 +66,7 @@ h4 { font-family:garamond-premier-pro-caption; font-size:22px; margin-top:5px; c
     h2 { font-size:24px; line-height:35px; }
 }
 @media (min-width:458px) {
-    h1 { font-size:32px; line-height:50px; }
+    h1 { font-size:32px; line-height:45px; }
 }
 @media (min-width:700px) {
     header > h1 span:last-of-type { display:inline; }
