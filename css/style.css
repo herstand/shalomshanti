@@ -122,8 +122,8 @@ input:checked + label { color:white; background:#F16342; }
 input:not(:checked) + label { color:#F16342; background:white; }
 @media (min-width:0px) { 
     label { margin:10px 2.5vw; font-size:5vw; line-height:6.5vw; height:37vw; width:37vw; border-radius:37vw; }
-    label:first-of-type { padding-top:11vw; }
-    label:not(:first-of-type) { padding-top:8.5vw; }
+    .unit label { padding-top:8.5vw; }
+    .unit:first-of-type label:first-of-type { padding-top:11vw; }
 }
 @media (min-width:376px) { 
     hr { margin-bottom:70px; }
