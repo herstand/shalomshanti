@@ -18,7 +18,8 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     $headers = array (
       'From' => $from,
       'To' => $to,
-      'Subject' => $subject
+      'Subject' => $subject,
+      'Content-Type'  => 'text/html; charset=UTF-8'
     );
     $smtp = Mail::factory('smtp',
       array ('host' => $host,
