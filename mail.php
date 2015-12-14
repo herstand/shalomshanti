@@ -14,7 +14,7 @@ $row['hashedId'] = getenv("SS_TEST_ID");
     $subject = "Save the date: July 10, 2016 – Wedding of Vidya Santosh and Micah Herstand";
     $body = "
       <a href='http://www.shalomshanti.com/shalomshanti/savethedate?gt=c&response=-1&id={$row['hashedId']}'>
-          <img usemap='#responses' style='height:1000px; width:800px;' src='http://www.shalomshanti.com/shalomshanti/savethedate.png' />
+          <img usemap='#responses' width='600' src='http://www.shalomshanti.com/shalomshanti/savethedate.png' />
       </a>
       <map name='responses'>
         <area shape='circle' coords='193,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?gt=c&response=0&id={$row['hashedId']}' />
