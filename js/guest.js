@@ -118,10 +118,10 @@ function SaveTheDate() {
         };
     }
 
-    function displayFormIsComplete() {
-        document.querySelector(".submitFeedback img").src = document.querySelector(".submitFeedback img").dataset.complete;
-        document.querySelector(".submitFeedback h1").innerHTML = document.querySelector(".submitFeedback h1").dataset.complete;    
-        state.isComplete = true;
+    function displayFormSubmitMessage(msgProperty, isComplete) {
+        document.querySelector(".submitFeedback img").src = document.querySelector(".submitFeedback img").dataset[msgProperty];
+        document.querySelector(".submitFeedback h1").innerHTML = document.querySelector(".submitFeedback h1").dataset[msgProperty];
+        state.isComplete = isComplete;
     }
 
     function seeIfFormComplete() {
@@ -139,12 +139,10 @@ function SaveTheDate() {
                     utilities.convertJsonToFormData(state.responseData)
                 );
             } else {
-                displayFormIsComplete()
+                displayFormSubmitMessage('complete', true);
             }
         } else if (state.isComplete) {
-            document.querySelector(".submitFeedback img").src = document.querySelector(".submitFeedback img").dataset.waiting;
-            document.querySelector(".submitFeedback h1").innerText = document.querySelector(".submitFeedback h1").dataset.waiting;
-            state.isComplete = false;
+            displayFormSubmitMessage('waiting', false);
         }
     }
 
