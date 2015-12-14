@@ -7,7 +7,7 @@ require_once getenv("SS_PEAR_PATH")."/Mail.php";
 // while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 $row['Email addresses'] = "micah@herstand.com";
 $row['hashedId'] = getenv("SS_TEST_ID");
-$guestType = "c";
+$guestType = "cr";
 
     $from = "'Vidya Santosh & Micah Herstand' <wedding@shalomshanti.com>";
     $to = $row['Email addresses'];
@@ -23,7 +23,7 @@ $guestType = "c";
         <area shape='circle' coords='353,653,55' href='http://www.shalomshanti.com/savethedate?gt={$guestType}&response=2&id={$row['hashedId']}' />
         <area shape='circle' coords='456,653,55' href='http://www.shalomshanti.com/savethedate?gt={$guestType}&response=3&id={$row['hashedId']}' />
       </map>
-      <br>If the above image is not loading, please use this link to access the website: <br>http://www.shalomshanti.com/savethedate?gt={$guestType}&response=-1&id={$row['hashedId']}
+      <br><br>If the above image is not loading, please use this link to access the website: <br>http://www.shalomshanti.com/savethedate?gt={$guestType}&response=-1&id={$row['hashedId']}
 ";
     
     $host = "ssl://smtp.gmail.com";
