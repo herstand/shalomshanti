@@ -13,16 +13,16 @@ $row['hashedId'] = getenv("SS_TEST_ID");
     $bcc = ", wedding+bccsavethedate@shalomshanti.com";
     $subject = "Save the date: July 10, 2016 – Wedding of Vidya Santosh and Micah Herstand";
     $body = "
-      <a href='http://www.shalomshanti.com/shalomshanti/savethedate?response=-1&id={$row['hashedId']}'>
+      <a href='http://www.shalomshanti.com/shalomshanti/savethedate?gt=c&response=-1&id={$row['hashedId']}'>
           <img usemap='#responses' style='height:1000px; width:800px;' src='http://www.shalomshanti.com/shalomshanti/savethedate.png' />
       </a>
       <map name='responses'>
-        <area shape='circle' coords='193,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?response=0&id={$row['hashedId']}' />
-        <area shape='circle' coords='331,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?response=1&id={$row['hashedId']}' />
-        <area shape='circle' coords='470,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?response=2&id={$row['hashedId']}' />
-        <area shape='circle' coords='608,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?response=3&id={$row['hashedId']}' />
+        <area shape='circle' coords='193,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?gt=c&response=0&id={$row['hashedId']}' />
+        <area shape='circle' coords='331,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?gt=c&response=1&id={$row['hashedId']}' />
+        <area shape='circle' coords='470,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?gt=c&response=2&id={$row['hashedId']}' />
+        <area shape='circle' coords='608,870,55' href='http://www.shalomshanti.com/shalomshanti/savethedate?gt=c&response=3&id={$row['hashedId']}' />
       </map>
-      <br>If the above image is not loading, please use this link to access the website: <br>http://www.shalomshanti.com/shalomshanti/savethedate?response=-1&id={$row['hashedId']}
+      <br>If the above image is not loading, please use this link to access the website: <br>http://www.shalomshanti.com/shalomshanti/savethedate?gt=c&response=-1&id={$row['hashedId']}
 ";
     
     $host = "ssl://smtp.gmail.com";

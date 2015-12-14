@@ -3,23 +3,30 @@ session_start();
 include "db_access.php";
 
 if (isset($_GET['id']) &&
+    isset($_GET['gt']) &&
     isset($_GET['response']) &&
+    ctype_alnum($_GET['gt']) &&
     ctype_alnum($_GET['id']) &&
     is_numeric($_GET['response'])
 ) {
     $isGuest = true;
+    $guestType = $_SESSION['guestType'] = mysqli_real_escape_string($mysqli, $_GET['gt']);
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
     $response = $_SESSION['response'] = $_GET['response'];
 } else if (
     isset($_GET['id']) &&
-    ctype_alnum($_GET['id'])
+    ctype_alnum($_GET['id']) &&
+    isset($_GET['gt']) &&
+    ctype_alnum($_GET['gt'])
 ) {
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
+    $guestType = $_SESSION['guestType'] = mysqli_real_escape_string($mysqli, $_GET['gt']);
     $response = -1;
-} else if (isset($_SESSION['userId'])) {
+} else if (isset($_SESSION['userId']) && isset($_SESSION['guestType'])) {
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'];
+    $guestType = $_SESSION['guestType'];
     $response = -1;
 } else {
     $isGuest = false;
