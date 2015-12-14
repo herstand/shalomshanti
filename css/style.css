@@ -59,15 +59,14 @@ h4 { font-family:garamond-premier-pro-caption; font-size:22px; margin-top:5px; c
     h2 { line-height:30px; }   
 }
 @media (min-width:376px) {
-    h1 { font-size:26px; line-height:35px; }
     header > h1 span:last-of-type { display:block; }
     /*h2 { font-size:20px; }*/
 }
 @media (min-width:436px) {
-    h2 { font-size:24px; }
+    h2 { font-size:24px; line-height:35px; }
 }
 @media (min-width:700px) {
-    h1 { font-size:32px; line-height:28px; }
+    h1 { font-size:32px; line-height:50px; }
     header > h1 span:last-of-type { display:inline; }
 }
 section > h1, span.lede { letter-spacing:3px; color:#9B9B9B; }
