@@ -106,7 +106,7 @@ $content = array(
             <h1><?php echo $content['names']; ?></h1>
             <h2><span class="date"><?php echo $content['date']; ?></span><span class="location"><?php echo $content['location']; ?></span></h2>
             <?php if ($isGuest) {?><p class="summary"><span class="lede"><?php echo $content['title']; ?></span><?php echo $content['instructions']; ?></p><?php } ?>
-            <?php if ($isGuest) {?><aside><span class='unit'><?php echo $content['downloadPrompt']; ?></span> <a class="unit" target="_blank" href="downloadEmail.php?events={$guestType}"><?php echo $content['downloadInstructions']; ?></a></aside><?php } ?>
+            <?php if ($isGuest) {?><aside><span class='unit'><?php echo $content['downloadPrompt']; ?></span> <a class="unit" target="_blank" href="downloadEmail.php?events=<?php echo $guestType; ?>"><?php echo $content['downloadInstructions']; ?></a></aside><?php } ?>
         </header>
         <?php if ($isGuest) {?>
             <hr />
