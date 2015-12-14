@@ -23,7 +23,7 @@ $guestType = "cr";
         <area shape='circle' coords='353,653,55' href='http://www.shalomshanti.com/savethedate?response=2&id={$row['hashedId']}' />
         <area shape='circle' coords='456,653,55' href='http://www.shalomshanti.com/savethedate?response=3&id={$row['hashedId']}' />
       </map>
-      <br><br>If the above image is not loading, please use this link to access the website: <br>http://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}
+      <br><br>If the above image is not loading, please use this link to provide us information for planning purposes: <br><br>http://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}
 ";
     
     $host = "ssl://smtp.gmail.com";
