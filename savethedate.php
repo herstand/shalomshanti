@@ -144,7 +144,7 @@ $content = array(
                 </section>
             </main>
             <div id="templates">
-                <p class="email"><span class="username" contenteditable="true"></span>@<span class="domain" contenteditable="true"></span><img class='removeEmail' alt='removeEmail' src='icons/x.svg' /></p>
+                <p class="email"><span class="username addressData" contenteditable="true"></span>@<span class="domain addressData" contenteditable="true"></span><img class='removeEmail' alt='removeEmail' src='icons/x.svg' /></p>
             </div>
             <script type='text/javascript'>
                 var saveTheDate = SaveTheDate();
