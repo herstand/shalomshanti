@@ -3,30 +3,23 @@ session_start();
 include "db_access.php";
 
 if (isset($_GET['id']) &&
-    isset($_GET['gt']) &&
     isset($_GET['response']) &&
-    ctype_alnum($_GET['gt']) &&
     ctype_alnum($_GET['id']) &&
     is_numeric($_GET['response'])
 ) {
     $isGuest = true;
-    $guestType = $_SESSION['guestType'] = mysqli_real_escape_string($mysqli, $_GET['gt']);
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
     $response = $_SESSION['response'] = $_GET['response'];
 } else if (
     isset($_GET['id']) &&
-    ctype_alnum($_GET['id']) &&
-    isset($_GET['gt']) &&
-    ctype_alnum($_GET['gt'])
+    ctype_alnum($_GET['id'])
 ) {
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
-    $guestType = $_SESSION['guestType'] = mysqli_real_escape_string($mysqli, $_GET['gt']);
     $response = -1;
-} else if (isset($_SESSION['userId']) && isset($_SESSION['guestType'])) {
+} else if (isset($_SESSION['userId'])) {
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'];
-    $guestType = $_SESSION['guestType'];
     $response = -1;
 } else {
     $isGuest = false;
@@ -34,7 +27,7 @@ if (isset($_GET['id']) &&
     $guestType = "";
 }
 if ($isGuest) {
-    $query = "SELECT `Save the date response`, `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
+    $query = "SELECT `Save the date response`, `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country`, `Priority`, `Reception adult number` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $response = $response < 0 ? $row['Save the date response'] : $response;
@@ -46,6 +39,9 @@ if ($isGuest) {
         $state = $row['State'];
         $zip = $row['Zip'];
         $country = $row['Country'];
+        $guestType = (isset($row['Priority']) && isset($row['Reception adult number']) && 
+            $row['Priority'] === 0 && $row['Reception adult number'] > 0) 
+            ? "cr" : "c";
     }
     $emailAddressesInParts = array();
     foreach (explode(",", $emailAddresses) as $i => $email) {
