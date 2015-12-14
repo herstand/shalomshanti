@@ -63,7 +63,8 @@ $content = array(
     "names" => "<span class='unit'>Vidya Santosh</span> &amp; <span class='unit'>Micah Herstand</span>",
     "date" => "<span class='unit'>July 10, 2016</span>",
     "location" => "<span class='unit'>Binghamton, NY</span>",
-    "instructions" => "Our wedding ceremony will take place in the morning followed by an evening reception. Children are most welcome. We busy planning away, and we can't do it without you! Please take a few moments to provide us with your preliminary response and contact information below.",
+    "instructions_c" => "Our wedding ceremony will take place in the morning and children are most welcome. We busy planning away, and we can't do it without you! Please take a few moments to provide us with your preliminary response and contact information below.",
+    "instructions_cr" => "Our wedding ceremony will take place in the morning followed by an evening reception. Children are most welcome. We busy planning away, and we can't do it without you! Please take a few moments to provide us with your preliminary response and contact information below.",
     "downloadPrompt" => "Didn't get the e-card?",
     "downloadInstructions" => "Click to download.",
     "responses" => array(
@@ -105,7 +106,7 @@ $content = array(
             <span class="faces"><img class="face" src="icons/vidya.svg" /><img class="ampersand" src="icons/ampersand.svg" /><img class="face" src="icons/micah.svg" /></span>
             <h1><?php echo $content['names']; ?></h1>
             <h2><span class="date"><?php echo $content['date']; ?></span><span class="location"><?php echo $content['location']; ?></span></h2>
-            <?php if ($isGuest) {?><p class="summary"><span class="lede"><?php echo $content['title']; ?></span><?php echo $content['instructions']; ?></p><?php } ?>
+            <?php if ($isGuest) {?><p class="summary"><span class="lede"><?php echo $content['title']; ?></span><?php echo $content["instructions_{$guestType}"]; ?></p><?php } ?>
             <?php if ($isGuest) {?><aside><span class='unit'><?php echo $content['downloadPrompt']; ?></span> <a class="unit" target="_blank" href="downloadEmail.php?events=<?php echo $guestType; ?>"><?php echo $content['downloadInstructions']; ?></a></aside><?php } ?>
         </header>
         <?php if ($isGuest) {?>
