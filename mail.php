@@ -15,7 +15,7 @@ $guestType = "cr";
     $subject = "Save the date: July 10, 2016 – Wedding of Vidya Santosh and Micah Herstand";
     $body = "
       <a href='http://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}'>
-          <img alt='Save the date info and response graphic' usemap='#responses' width='600' height='749' src='saveTheDateEmailImage.png?gt={$guestType}&id={$row['hashedId']}' />
+          <img alt='Save the date info and response graphic' usemap='#responses' width='600' height='749' src='saveTheDateEmailImage.png?id={$row['hashedId']}' />
       </a>
       <map name='responses'>
         <area shape='circle' coords='145,653,55' href='http://www.shalomshanti.com/savethedate?response=0&id={$row['hashedId']}' />
