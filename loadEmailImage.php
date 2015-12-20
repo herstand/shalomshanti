@@ -1,4 +1,7 @@
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     require_once "db_access.php";
     if (
         isset($_GET['id']) && 
@@ -15,7 +18,7 @@
     $guestType = (isset($row['Priority']) && isset($row['Reception adult number']) && 
         $row['Priority'] === 0 && $row['Reception adult number'] > 0) 
         ? "cr" : "c";;
-    $query = "INSERT INTO `".getenv('SS_DB_EMAIL_OPENED_TABLE')."` SET `Guest id`={$row['id']}, `Email opened at`=FROM_UNIXTIME(".time().")";
+    $query = "INSERT INTO `".getenv('SS_DB_EMAIL_OPENED_TABLE')."` (`Guest id`, `Email opened at`) VALUES ({$row['id']}, FROM_UNIXTIME(".time()."))";
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 
     header('Content-type: image/png');
