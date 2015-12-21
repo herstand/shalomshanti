@@ -5,7 +5,7 @@ require_once getenv("SS_PEAR_PATH")."/Mail.php";
 // $query = "SELECT `hashedId`, `Email addresses` FROM `".getenv('SS_DB_GUEST_TABLE')."`";
 // $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 // while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-$row['Email addresses'] = "micah@herstand.com";
+$row['Email addresses'] = "micah@herstand.com,vidya.k.santosh@gmail.com";
 $row['hashedId'] = getenv("SS_TEST_ID");
 $guestType = "cr";
 
@@ -14,16 +14,16 @@ $guestType = "cr";
     $bcc = ", wedding+bccsavethedate@shalomshanti.com";
     $subject = "Save the date: July 10, 2016 – Wedding of Vidya Santosh and Micah Herstand";
     $body = "
-      <a href='http://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}'>
+      <a href='https://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}'>
           <img alt='Save the date info and response graphic' usemap='#responses' width='600' height='749' src='https://www.shalomshanti.com/shalomshanti/saveTheDateEmailImage.png?id={$row['hashedId']}' />
       </a>
       <map name='responses'>
-        <area shape='circle' coords='145,653,55' href='http://www.shalomshanti.com/savethedate?response=0&id={$row['hashedId']}' />
-        <area shape='circle' coords='248,653,55' href='http://www.shalomshanti.com/savethedate?response=1&id={$row['hashedId']}' />
-        <area shape='circle' coords='353,653,55' href='http://www.shalomshanti.com/savethedate?response=2&id={$row['hashedId']}' />
-        <area shape='circle' coords='456,653,55' href='http://www.shalomshanti.com/savethedate?response=3&id={$row['hashedId']}' />
+        <area shape='circle' coords='145,653,55' href='https://www.shalomshanti.com/savethedate?response=0&id={$row['hashedId']}' />
+        <area shape='circle' coords='248,653,55' href='https://www.shalomshanti.com/savethedate?response=1&id={$row['hashedId']}' />
+        <area shape='circle' coords='353,653,55' href='https://www.shalomshanti.com/savethedate?response=2&id={$row['hashedId']}' />
+        <area shape='circle' coords='456,653,55' href='https://www.shalomshanti.com/savethedate?response=3&id={$row['hashedId']}' />
       </map>
-      <br><br>If you can't see an image above, please use this link to provide us information for planning purposes: <br><br>http://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}
+      <br><br>If you can't see an image above, please use this link to provide us information for planning purposes: <br><br>https://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}
 ";
     
     $host = "ssl://smtp.gmail.com";
