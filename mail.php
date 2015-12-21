@@ -5,7 +5,7 @@ require_once getenv("SS_PEAR_PATH")."/Mail.php";
 // $query = "SELECT `hashedId`, `Email addresses` FROM `".getenv('SS_DB_GUEST_TABLE')."`";
 // $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 // while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-$row['Email addresses'] = "micah@herstand.com,vidya.k.santosh@gmail.com";
+$row['Email addresses'] = "vidyalicious@yahoo.com";
 $row['hashedId'] = getenv("SS_TEST_ID");
 $guestType = "cr";
 
@@ -15,7 +15,7 @@ $guestType = "cr";
     $subject = "Save the date: July 10, 2016 – Wedding of Vidya Santosh and Micah Herstand";
     $body = "
       <a href='https://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}'>
-          <img alt='Save the date info and response graphic' usemap='#responses' width='600' height='749' src='https://www.shalomshanti.com/shalomshanti/saveTheDateEmailImage.png?id={$row['hashedId']}' />
+          <img alt='Image: Wedding details and request for information' usemap='#responses' width='600' height='749' src='https://www.shalomshanti.com/shalomshanti/saveTheDateEmailImage.png?id={$row['hashedId']}' />
       </a>
       <map name='responses'>
         <area shape='circle' coords='145,653,55' href='https://www.shalomshanti.com/savethedate?response=0&id={$row['hashedId']}' />

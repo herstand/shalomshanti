@@ -131,9 +131,11 @@ function SaveTheDate() {
     function seeIfFormComplete() {
         var responseDataCurrent = getCurrentResponseData();
         if (!utilities.deepEquals(responseDataCurrent, state.responseData)) {
-            if (formIsComplete()) {
-               displayFormSubmitMessage('saving', false);
-            }
+            var slowConnection = window.setTimeout(function(e) {
+                if (formIsComplete() && !state.isComplete) {
+                   displayFormSubmitMessage('saving', false);
+                }
+            }, 1000);
             state.responseData = responseDataCurrent;
             utilities.ajax(
                 "saveContactInfo", 

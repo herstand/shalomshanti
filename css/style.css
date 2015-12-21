@@ -179,3 +179,95 @@ section.submitFeedback h1 { margin-bottom:35px; }
 footer {
     margin-top:80px;
 }
+
+@-webkit-keyframes color_change {
+    0% { fill: #F4623A; }
+    25% { fill: yellow; }
+    50% { fill: #5EBAF5; }
+    75% { fill: #7eD0ee; }
+    100% { fill: green; }
+}
+@-moz-keyframes color_change {
+    0% { fill: #F4623A; }
+    25% { fill: yellow; }
+    50% { fill: #5EBAF5; }
+    75% { fill: #7eD0ee; }
+    100% { fill: green; }
+}
+@-ms-keyframes color_change {
+    0% { fill: #F4623A; }
+    25% { fill: yellow; }
+    50% { fill: #5EBAF5; }
+    75% { fill: #7eD0ee; }
+    100% { fill: green; }
+}
+@-o-keyframes color_change {
+    0% { fill: #F4623A; }
+    25% { fill: yellow; }
+    50% { fill: #5EBAF5; }
+    75% { fill: #7eD0ee; }
+    100% { fill: green; }
+}
+@keyframes color_change {
+    0% { fill: #F4623A; }
+    25% { fill: yellow; }
+    50% { fill: #5EBAF5; }
+    75% { fill: #7eD0ee; }
+    100% { fill: green; }
+}
+
+
+
+@-webkit-keyframes color_change_b {
+    0% { fill: #5EBAF5; }
+    25% { fill: green; }
+    50% { fill: #7eD0ee; }
+    75% { fill: yellow; }
+    100% { fill: #F4623A; }
+}
+@-moz-keyframes color_change_b {
+    0% { fill: #5EBAF5; }
+    25% { fill: green; }
+    50% { fill: #7eD0ee; }
+    75% { fill: yellow; }
+    100% { fill: #F4623A; }
+}
+@-ms-keyframes color_change_b {
+    0% { fill: #5EBAF5; }
+    25% { fill: green; }
+    50% { fill: #7eD0ee; }
+    75% { fill: yellow; }
+    100% { fill: #F4623A; }
+}
+@-o-keyframes color_change_b {
+    0% { fill: #5EBAF5; }
+    25% { fill: green; }
+    50% { fill: #7eD0ee; }
+    75% { fill: yellow; }
+    100% { fill: #F4623A; }
+}
+@keyframes color_change_b {
+    0% { fill: #5EBAF5; }
+    25% { fill: green; }
+    50% { fill: #7eD0ee; }
+    75% { fill: yellow; }
+    100% { fill: #F4623A; }
+}
+
+.preloaded .triangle-a {
+    fill:#F4623A;
+    -webkit-animation: color_change 1s infinite alternate;
+    -moz-animation: color_change 1s infinite alternate;
+    -ms-animation: color_change 1s infinite alternate;
+    -o-animation: color_change 1s infinite alternate;
+    animation: color_change 1s infinite alternate;
+}
+
+.preloaded .triangle-b {
+    fill:#5EBAF5;
+    -webkit-animation: color_change_b 1s infinite alternate;
+    -moz-animation: color_change_b 1s infinite alternate;
+    -ms-animation: color_change_b 1s infinite alternate;
+    -o-animation: color_change_b 1s infinite alternate;
+    animation: color_change_b 1s infinite alternate;
+}
