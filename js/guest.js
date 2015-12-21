@@ -135,7 +135,7 @@ function SaveTheDate() {
                 if (formIsComplete() && !state.isComplete) {
                    displayFormSubmitMessage('saving', false);
                 }
-            }, 1000);
+            }, 500);
             state.responseData = responseDataCurrent;
             utilities.ajax(
                 "saveContactInfo", 
