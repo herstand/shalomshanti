@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include "db_access.php";
 
@@ -101,8 +102,8 @@ $content = array(
     </head>
     <body data-guest="<?php echo $safeLookupId; ?>">
         <div class="cover loadCover"></div>
-        <div class="logoWrapper hidden"><?php include "icons/star.svg"; ?></div>
-        <div class="loader preloaded"><?php include "icons/star.svg"; ?></div>
+        <div class="logoWrapper hidden"><?php include "icons/star-for-including.svg"; ?></div>
+        <div class="loader preloaded"><?php include "icons/star-for-including.svg"; ?></div>
         <header>
             <span class="faces"><img class="face" src="icons/vidya.svg" /><img class="ampersand" src="icons/ampersand.svg" /><img class="face" src="icons/micah.svg" /></span>
             <h1><?php echo $content['names']; ?></h1>
