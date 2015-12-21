@@ -125,23 +125,22 @@ function SaveTheDate() {
     }
 
     function seeIfFormComplete() {
-        var formData, responseDataCurrent;
-        if (formIsComplete()) {
-            responseDataCurrent = getCurrentResponseData();
-            if (!utilities.deepEquals(responseDataCurrent, state.responseData)) {
-                state.responseData = responseDataCurrent;
-                utilities.ajax(
-                    "saveContactInfo", 
-                    function(data) {
-                        displayFormIsComplete();
-                    }, 
-                    "POST", 
-                    utilities.convertJsonToFormData(state.responseData)
-                );
-            } else {
-                displayFormSubmitMessage('complete', true);
-            }
-        } else if (state.isComplete) {
+        var responseDataCurrent = getCurrentResponseData();
+        
+        if (!utilities.deepEquals(responseDataCurrent, state.responseData)) {
+            state.responseData = responseDataCurrent;
+            utilities.ajax(
+                "saveContactInfo", 
+                function(data) {
+                    displayFormIsComplete();
+                }, 
+                "POST", 
+                utilities.convertJsonToFormData(state.responseData)
+            );
+        } else {
+            displayFormSubmitMessage('complete', true);
+        }
+        if (state.isComplete) {
             displayFormSubmitMessage('waiting', false);
         }
     }

@@ -30,7 +30,7 @@ if ($isGuest) {
     $query = "SELECT `id`, `Save the date response`, `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country`, `Priority`, `Reception adult number` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
     $row = $result->fetch_array(MYSQLI_ASSOC);
-    $response = $response < 0 ? $row['Save the date response'] : $response;
+    $response = $response < 0 ? intval($row['Save the date response']) : $response;
     $householdName = $row['Household name'];
     $emailAddresses = $row['Email addresses'];
     $addressLine1 = $row['Address line 1'];
@@ -40,7 +40,7 @@ if ($isGuest) {
     $zip = $row['Zip'];
     $country = $row['Country'];
     $guestType = (isset($row['Priority']) && isset($row['Reception adult number']) && 
-        $row['Priority'] === 0 && $row['Reception adult number'] > 0) 
+        intval($row['Priority']) === 0 && intval($row['Reception adult number']) > 0) 
         ? "cr" : "c";
     $query = "INSERT INTO `".getenv('SS_DB_SAVE_THE_DATE_OPENED_TABLE')."` (`Guest id`, `Save the date opened at`) VALUES ({$row['id']}, FROM_UNIXTIME(".time()."))";
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
