@@ -43,8 +43,18 @@ function SaveTheDate() {
         });
     }
     function setupEnterJumper(el) {
+        setupFieldJumper(el, 13);
+    }
+    function setupSpaceJumper(el) {
+        setupFieldJumper(el, 32);
+    }
+    function setupCommaJumper(el) {
+        setupFieldJumper(el, 188);
+    }
+
+    function setupFieldJumper(el, pressedKey) {
         el.addEventListener("keydown", function(e) {
-            if (e.which == 13) {
+            if (e.which == pressedKey) {
                 e.preventDefault();
                 if (el.classList.contains("block")) {
                     el.parentNode.nextSibling.nextSibling.querySelector(".addressData").focus();
@@ -86,6 +96,37 @@ function SaveTheDate() {
         utilities.toArray(document.querySelectorAll(".digitalAddress .username")).forEach(setupAtJumper);
         utilities.toArray(document.querySelectorAll(".removeEmail")).forEach(setupRemoveEmailButton);
         utilities.toArray(document.querySelectorAll(".addressData")).forEach(setupEnterJumper);
+        document.querySelector(".city").addEventListener("keydown", function(e) {
+            setupCommaJumper(e.target);
+        });
+        document.querySelector(".state").addEventListener("keydown", function(e) {
+            setupSpaceJumper(e.target);
+            if (
+                utilities.getText(e.target).length >= 2 && 
+                utilities.isAlphaNumeric(e)
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        document.querySelector(".zip").addEventListener("keydown", function(e) {
+            setupSpaceJumper(e.target);
+            if (
+                utilities.isAlphaNumeric(e) &&
+                (
+                    utilities.getText(e.target).length >= 10
+                    ||
+                    (
+                        e.which > 64
+                        &&
+                        e.which < 91 
+                    )
+                )
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
     }
 
     function emailIsValid(username, domain) {

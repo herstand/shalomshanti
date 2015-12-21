@@ -146,7 +146,7 @@ section.address .addressData:empty:after { display:inline-block; cursor:text; }
 .address-2:empty:after { content: "More Address Stuff (optional)"; }
 .city:empty:after { content: "City"; }
 .state:empty:after { content: "State"; }
-.zip:empty:after { content: "Zip Code"; }
+.zip:empty:after { content: "Postal Code"; }
 .country:empty:after { content: "Country (if other than USA)"; }
 .username:empty:after { content: "name"; }
 .domain:empty:after { content: "domain.com"; }

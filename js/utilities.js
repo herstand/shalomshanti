@@ -49,5 +49,24 @@ var utilities = {
             formData += key + "=" + obj[key] + "&";
         }
         return formData.substring(0, formData.length - 1);
+    },
+    isAlphaNumeric : function (e) {
+        return (
+                e.which > 47 && 
+                e.which < 58
+            )
+            ||
+            (
+                e.which > 64 && 
+                e.which < 91 &&
+                !e.metaKey &&
+                !e.ctrlKey
+
+            )
+            ||
+            (
+                e.which > 95 && 
+                e.which < 106
+            );
     }
 }
