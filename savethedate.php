@@ -9,7 +9,7 @@ if (isset($_GET['id']) &&
 ) {
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
-    $response = $_GET['response'];
+    $response = intval($_GET['response']);
 } else if (
     isset($_GET['id']) &&
     ctype_alnum($_GET['id'])
