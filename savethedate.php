@@ -117,7 +117,7 @@ $content = array(
                         if ($i === 2) {
                             echo "</span><span class='unit'>";
                         }
-                        if ($i == $response) {
+                        if ($i === $response) {
                             echo "<input type='radio' class='hidden' name='response' id='{$i}' value='{$i}' checked='true' /><label for='{$i}'>{$responseCopy}</label>";
                         } else {
                             echo "<input type='radio' class='hidden' name='response' id='{$i}' value='{$i}' /><label for='{$i}'>{$responseCopy}</label>";
@@ -149,7 +149,7 @@ $content = array(
                 </section>
                 <section class="submitFeedback">
                     <h1 data-saving="<?php echo $content['submissionSaving']; ?>" data-waiting="<?php echo $content['submissionPrompt']; ?>" data-complete="<?php echo $content['submissionAcknowledgement']; ?>"><?php echo $content['submissionPrompt']; ?></h1>
-                    <img data-complete="icons/thanks.svg" data-waiting="icons/waiting.svg" src="icons/waiting.svg" />
+                    <img data-saving="icons/waiting.svg" data-complete="icons/thanks.svg" data-waiting="icons/waiting.svg" src="icons/waiting.svg" />
                 </section>
             </main>
             <footer>
