@@ -124,23 +124,30 @@ function SaveTheDate() {
         state.isComplete = isComplete;
     }
 
+    function displayFormIsComplete() {
+        displayFormSubmitMessage('complete', true);
+    }
+
     function seeIfFormComplete() {
         var responseDataCurrent = getCurrentResponseData();
-        
         if (!utilities.deepEquals(responseDataCurrent, state.responseData)) {
+            if (formIsComplete()) {
+               displayFormSubmitMessage('saving', false);
+            }
             state.responseData = responseDataCurrent;
             utilities.ajax(
                 "saveContactInfo", 
                 function(data) {
-                    displayFormIsComplete();
+                    if (formIsComplete()) {
+                        displayFormIsComplete();
+                    }
                 }, 
                 "POST", 
                 utilities.convertJsonToFormData(state.responseData)
             );
-        } else {
-            displayFormSubmitMessage('complete', true);
-        }
-        if (state.isComplete) {
+        } else if (formIsComplete()) {
+            displayFormIsComplete();
+        } else if (state.isComplete) {
             displayFormSubmitMessage('waiting', false);
         }
     }

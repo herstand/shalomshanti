@@ -75,6 +75,7 @@ $content = array(
     "addressPrompt" => "Where should we send <span class='unit'>the invitation?</span>",
     "addEmailPrompt" => "Add another email address",
     "submissionPrompt" => "Waiting on your <span class='unit'>contact info…</span>",
+    "submissionSaving" => "Saving…",
     "submissionAcknowledgement" => "Thanks! We saved <span class='unit'>your info.</span>",
     "footer" => "Questions? Problems? Email: <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a>",
     "nonGuestHelperText" => "Looking for a response form? Please click the personalized link you received in your email.",
@@ -87,8 +88,8 @@ $content = array(
         <title><?php echo $content['title']; ?></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0">
-        <link rel="icon" href="/icons/favicon.png">
-        <link rel="mask-icon" href="/icons/star.svg">
+        <link rel="icon" href="icons/favicon.png">
+        <link rel="mask-icon" href="icons/star.svg">
         <script src="https://use.typekit.net/abm3mqd.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
@@ -147,7 +148,7 @@ $content = array(
                     </div>
                 </section>
                 <section class="submitFeedback">
-                    <h1 data-waiting="<?php echo $content['submissionPrompt']; ?>" data-complete="<?php echo $content['submissionAcknowledgement']; ?>"><?php echo $content['submissionPrompt']; ?></h1>
+                    <h1 data-saving="<?php echo $content['submissionSaving']; ?>" data-waiting="<?php echo $content['submissionPrompt']; ?>" data-complete="<?php echo $content['submissionAcknowledgement']; ?>"><?php echo $content['submissionPrompt']; ?></h1>
                     <img data-complete="icons/thanks.svg" data-waiting="icons/waiting.svg" src="icons/waiting.svg" />
                 </section>
             </main>
