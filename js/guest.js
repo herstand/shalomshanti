@@ -107,7 +107,14 @@ function SaveTheDate() {
     function getCurrentResponseData() {
         return  {
             "id" : document.body.dataset.guest,
-            "response" : document.querySelector(".responses input[name='response']:checked").value,
+            "response" : 
+                (
+                    document.querySelector(".responses input[name='response']:checked") == null 
+                    ? 
+                    "" 
+                    : 
+                    document.querySelector(".responses input[name='response']:checked").value
+                ),
             "address-1" : utilities.getText(document.querySelector(".physicalAddress .address-1")),
             "address-2" : utilities.getText(document.querySelector(".physicalAddress .address-2")),
             "city" : utilities.getText(document.querySelector(".physicalAddress .city")),
