@@ -9,7 +9,7 @@ if (isset($_GET['id']) &&
 ) {
     $isGuest = true;
     $safeLookupId = $_SESSION['userId'] = mysqli_real_escape_string($mysqli, $_GET['id']);
-    $response = $_SESSION['response'] = $_GET['response'];
+    $response = $_GET['response'];
 } else if (
     isset($_GET['id']) &&
     ctype_alnum($_GET['id'])
@@ -116,7 +116,7 @@ $content = array(
                         if ($i === 2) {
                             echo "</span><span class='unit'>";
                         }
-                        if ($response !== false && $i == $response) {
+                        if ($i == $response) {
                             echo "<input type='radio' class='hidden' name='response' id='{$i}' value='{$i}' checked='true' /><label for='{$i}'>{$responseCopy}</label>";
                         } else {
                             echo "<input type='radio' class='hidden' name='response' id='{$i}' value='{$i}' /><label for='{$i}'>{$responseCopy}</label>";
