@@ -8,7 +8,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
   if (strlen($row['Email addresses']) < 1) {
     continue;
   }
-  if ($row['hashedId'] !== "f4d29bf4333a8869a34959cdfed63cd34648af8f1e4ac3efb67d1a5623b93cc4") {
+  if ($row['hashedId'] !== "f4d29bf4333a8869a34959cdfed63cd34648af8f1e4ac3efb67d1a5623b93cc6") {
     continue;
   }
   $saveSentQuery = "UPDATE `".getenv('SS_DB_GUEST_TABLE')."` SET `Save the date sent`=1 WHERE `hashedId` = \"{$row['hashedId']}\"";

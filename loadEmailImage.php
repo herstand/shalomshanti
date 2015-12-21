@@ -16,8 +16,8 @@
     $row = $result->fetch_array(MYSQLI_ASSOC);
     
     $guestType = (isset($row['Priority']) && isset($row['Reception adult number']) && 
-        $row['Priority'] === 0 && intval($row['Reception adult number']) > 0)
-        ? "cr" : "c";;
+        intval($row['Priority']) === 0 && intval($row['Reception adult number']) > 0)
+        ? "cr" : "c";
     $query = "INSERT INTO `".getenv('SS_DB_EMAIL_OPENED_TABLE')."` (`Guest id`, `Email opened at`) VALUES ({$row['id']}, FROM_UNIXTIME(".time()."))";
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 
