@@ -97,6 +97,7 @@ $content = array(
         <script src="js/utilities.js"></script>
         <script src="js/base.js"></script>
         <?php if ($isGuest) { echo '<script src="js/guest.js"></script>'; } ?>
+        <?php include_once("ga.php"); ?>
     </head>
     <body data-guest="<?php echo $safeLookupId; ?>">
         <div class="cover loadCover"></div>
