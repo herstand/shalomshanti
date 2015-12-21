@@ -42,6 +42,20 @@ function SaveTheDate() {
             e.target.parentNode.parentNode.removeChild(e.target.parentNode);    
         });
     }
+    function setupEnterJumper(el) {
+        el.addEventListener("keydown", function(e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                if (el.classList.contains("block")) {
+                    el.parentNode.nextSibling.nextSibling.querySelector(".addressData").focus();
+                } else if (el.classList.contains("inline")) {
+                    el.nextSibling.nextSibling.focus();
+                }
+                return false;
+            }
+        });
+    }
+
     function setupAtJumper(username) {
         username.addEventListener("keydown", function(e) {
             if (e.which == 50 && e.shiftKey) {
@@ -71,6 +85,7 @@ function SaveTheDate() {
         utilities.toArray(document.querySelectorAll("[contenteditable='true']")).forEach(setupFormCompleteListener);
         utilities.toArray(document.querySelectorAll(".digitalAddress .username")).forEach(setupAtJumper);
         utilities.toArray(document.querySelectorAll(".removeEmail")).forEach(setupRemoveEmailButton);
+        utilities.toArray(document.querySelectorAll(".addressData")).forEach(setupEnterJumper);
     }
 
     function emailIsValid(username, domain) {
