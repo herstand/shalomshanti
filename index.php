@@ -7,8 +7,8 @@
 <title>Shalom Shanti</title>
 <style type='text/css'>
 svg {
-  width:300px;
-  height:300px;
+  width:150px;
+  height:150px;
   max-width:95%;
   max-height:95%;
   margin:10px auto;
