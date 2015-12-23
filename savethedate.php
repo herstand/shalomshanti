@@ -43,7 +43,11 @@ if ($isGuest) {
     $guestType = (isset($row['Priority']) && isset($row['Reception adult number']) && 
         intval($row['Priority']) === 0 && intval($row['Reception adult number']) > 0) 
         ? "cr" : "c";
-    $query = "INSERT INTO `".getenv('SS_DB_SAVE_THE_DATE_OPENED_TABLE')."` (`Guest id`, `Save the date opened at`) VALUES ({$row['id']}, FROM_UNIXTIME(".time()."))";
+
+    $ipAddress = isset($_SERVER['REMOTE_ADDR']) ? mysqli_real_escape_string($mysqli, $_SERVER['REMOTE_ADDR']) : "Unknown";
+    $userAgent = isset($_SERVER['HTTP_USER_AGENT']) ? mysqli_real_escape_string($mysqli, $_SERVER['HTTP_USER_AGENT']) : "Unknown";
+    $referer = isset($_SERVER['HTTP_REFERER']) ? mysqli_real_escape_string($mysqli, $_SERVER['HTTP_REFERER']) : "Unknown";
+    $query = "INSERT INTO `".getenv('SS_DB_SAVE_THE_DATE_OPENED_TABLE')."` (`Guest id`, `Save the date opened at`, `IP Address`, `User agent`, `Referer`) VALUES ({$row['id']}, FROM_UNIXTIME(".time()."), \"{$ipAddress}\", \"{$userAgent}\", \"{$referer}\")";
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 
     $emailAddressesInParts = array();
