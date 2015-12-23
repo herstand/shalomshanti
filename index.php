@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta title="Author" content="Vidya Santosh and Micah Herstand">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="icons/favicon.png">
+<link rel="mask-icon" href="icons/star.svg">
 <title>Shalom Shanti</title>
 <style type='text/css'>
 svg {
