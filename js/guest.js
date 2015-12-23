@@ -150,7 +150,6 @@ function SaveTheDate() {
         return document.querySelector(".responses input[name='response']:checked") !== null &&
             !document.querySelector(".physicalAddress .address-1:empty") &&
             !document.querySelector(".physicalAddress .city:empty") &&
-            !document.querySelector(".physicalAddress .state:empty") &&
             !document.querySelector(".physicalAddress .zip:empty") &&
             noEmailsPartiallyFilled() &&
             !document.querySelector(".digitalAddress .email:first-of-type .username:empty") &&
