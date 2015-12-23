@@ -32,6 +32,7 @@ if ($isGuest) {
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
     $row = $result->fetch_array(MYSQLI_ASSOC);
     if ($row == null) {
+        unset($_SESSION['userId']);
         header("Location: https://www.shalomshanti.com/savethedate");
     }
     $response = $response < 0 ? intval($row['Save the date response']) : $response;
