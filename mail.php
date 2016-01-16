@@ -4,16 +4,13 @@ require_once getenv("SS_PEAR_PATH")."/Mail.php";
 $query = "SELECT `hashedId`, `Email addresses` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `Priority` = 0 AND `Save the date sent` = 0";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 
-$host = "ssl://smtp.gmail.com";
-$port = "465";
-$username = getenv("SS_EMAIL_USERNAME");
-$password = getenv("SS_EMAIL_PASS");
+$host = "localhost";
+$port = "25";
 $smtp = Mail::factory('smtp',
     array ('host' => $host,
-      'port' => $port,
-      'auth' => true,
-      'username' => $username,
-      'password' => $password));
+      'port' => $port
+    )
+);
 
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
   if (strlen($row['Email addresses']) < 1) {
