@@ -1,9 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ERROR);
 require_once "db_access.php";
 require_once getenv("SS_PEAR_PATH")."/Mail.php";
-$query = "SELECT `hashedId`, `Email addresses` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `Priority` = 0 AND `Save the date sent` = 1 AND `Save the date response` = -1";
+$query = "SELECT `hashedId`, `Email addresses` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `Priority` = 0 AND `Save the date sent` = 1 AND `Save the date reminder sent` = 0 AND `Save the date response` = -1";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
-
+echo "Don't run yet"; 
+exit();
 $host = "localhost";
 $port = "25";
 $smtp = Mail::factory('smtp',
@@ -11,22 +15,25 @@ $smtp = Mail::factory('smtp',
       'port' => $port
     )
 );
-
+$emnumsent = 0;
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
   if (strlen($row['Email addresses']) < 1) {
     continue;
   }
-  if ($row['hashedId'] !== "f4d29bf4333a8869a34959cdfed63cd34648af8f1e4ac3efb67d1a5623b93cc6") {
-    echo $row['Email addresses']."<br />";
-    continue;
+  if ($emnumsent > 20) {
+    exit();
+  } else {
+    $emnumsent++;
+    usleep(100);
   }
+  
   $from = "'Vidya Santosh & Micah Herstand' <wedding@shalomshanti.com>";
   $to = $row['Email addresses'];
   $bcc = "shalomshantiweddingsavethedate@gmail.com";
   $subject = "Save the date: July 10, 2016 – Wedding of Vidya Santosh and Micah Herstand";
   $body = "
     <p>Hello family and friends!</p>
-    <p>We noticed some of you were unable to respond to our save the date email. We think it may have gone to your spam folder. Micah had a little chat with his friends at The Internet, and if you're reading this, it worked! Please check out our Save the Date below and click through to our website to help us plan our wedding.</p>
+    <p>We noticed some of you were unable to respond to our save the date email. If this is the first time you are seeing it, sorry! It may have gone to your spam folder. Either way, please check out our Save the Date below and click through to our website to help us plan our wedding.</p>
     <p>Love,</p>
     <p>Vidya and Micah<br /></p>
     <a href='https://www.shalomshanti.com/savethedate?response=-1&id={$row['hashedId']}'>
@@ -51,7 +58,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
   if (PEAR::isError($mail)) {
     echo("<p>" . $mail->getMessage() . "</p>");
   } else {
-    $saveSentQuery = "UPDATE `".getenv('SS_DB_GUEST_TABLE')."` SET `Save the date sent`=1 WHERE `hashedId` = \"{$row['hashedId']}\"";
+    $saveSentQuery = "UPDATE `".getenv('SS_DB_GUEST_TABLE')."` SET `Save the date reminder sent`=1 WHERE `hashedId` = \"{$row['hashedId']}\"";
     $saveSentResult = $mysqli->query($saveSentQuery) or trigger_error($mysqli->error."[$saveSentQuery]");
     echo("<p>Message sent to: {$to}, {$bcc}</p>");
   }  
