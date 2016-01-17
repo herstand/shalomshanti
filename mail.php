@@ -53,7 +53,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
   } else {
     $saveSentQuery = "UPDATE `".getenv('SS_DB_GUEST_TABLE')."` SET `Save the date sent`=1 WHERE `hashedId` = \"{$row['hashedId']}\"";
     $saveSentResult = $mysqli->query($saveSentQuery) or trigger_error($mysqli->error."[$saveSentQuery]");
-    echo("<p>Message sent to: {$to}{$bcc}</p>");
+    echo("<p>Message sent to: {$to}, {$bcc}</p>");
   }  
 }
 ?>
