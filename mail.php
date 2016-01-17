@@ -6,8 +6,7 @@ require_once "db_access.php";
 require_once getenv("SS_PEAR_PATH")."/Mail.php";
 $query = "SELECT `hashedId`, `Email addresses` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `Priority` = 0 AND `Save the date sent` = 0 AND `Save the date response` = -1 and `Email addresses` not like ''";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
-echo "Don't run yet"; 
-exit();
+
 $host = "localhost";
 $port = "25";
 $smtp = Mail::factory('smtp',
