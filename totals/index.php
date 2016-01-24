@@ -94,7 +94,7 @@ error_reporting(E_ALL);
 
 require_once $_SERVER['DOCUMENT_ROOT']."/shalomshanti/db_access.php";
 echo "<div id='invitedguests'>";
-include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/totals/invitedasd.php";
+include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/totals/invited.php";
 echo "</div>";
 echo "<div id='expectedguests'>";
 include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/totals/expected.php";
