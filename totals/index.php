@@ -103,7 +103,7 @@ echo "</div>";
 ?>
 </main>
 <script type='text/javascript'>
-Array.prototype.slice.call(document.querySelectorAll('strong')).forEach(function(el) {
+Array.prototype.slice.call(document.querySelectorAll('#expectedguests strong')).forEach(function(el) {
     el.innerHTML = el.innerHTML.substring(0, el.innerHTML.length - 2);
 });
 </script>
