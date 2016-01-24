@@ -25,6 +25,7 @@ error_reporting(E_ALL);
         h1 {
             margin:0px;
             margin-top:10px;
+            margin-bottom:5px;
         }
         h1, h2 {
             text-align:center;
