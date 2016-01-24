@@ -1,3 +1,8 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,13 +91,10 @@
 <h1>Wedding Guests</h1>
 <input id='invited' name='nametype' type='radio' /><label for="invited">Invited</label><input id='expected' name='nametype' type='radio' /><label for="expected">Expected</label><br />
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ERROR);
-require_once "db_access.php";
 
+require_once $_SERVER['DOCUMENT_ROOT']."/shalomshanti/db_access.php";
 echo "<div id='invitedguests'>";
-include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/totals/invited.php";
+include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/totals/invitedasd.php";
 echo "</div>";
 echo "<div id='expectedguests'>";
 include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/totals/expected.php";

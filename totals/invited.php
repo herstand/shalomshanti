@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 echo "<section class='havdalah'>";
 echo "<h2>Havadalah / Mehendi</h2>";
 echo "<h3>Vidya</h3>";

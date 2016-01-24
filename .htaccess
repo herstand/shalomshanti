@@ -18,6 +18,9 @@ RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
 RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
 
 # Find php files
+RewriteRule ^totals$ /shalomshanti/totals/index.php [L,QSA]
+
+# Find php files
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\.(png)$
 RewriteRule ^(.+)$ $1.php [L,QSA]
