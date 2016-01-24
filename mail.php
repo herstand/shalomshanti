@@ -25,8 +25,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     $emnumsent++;
     usleep(100);
   }
-  echo $row['Email addresses']."<br>";
-  continue;
+
   $from = "'Vidya Santosh & Micah Herstand' <wedding@shalomshanti.com>";
   $to = $row['Email addresses'];
   $bcc = "shalomshantiweddingsavethedate@gmail.com";
