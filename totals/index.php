@@ -73,16 +73,16 @@ error_reporting(E_ALL);
         input:checked + label {
             background:#CCCCCC;
         }
-        #invited:checked #invitedguests {
+        #invited:checked ~ #invitedguests {
             display:block;
         }
-        #invited:not(:checked) #invitedguests {
+        #invited:not(:checked) ~ #invitedguests {
             display:none;
         }
-        #expected:checked #expectedguests {
+        #expected:checked ~ #expectedguests {
             display:block;
         }
-        #expected:not(:checked) #expectedguests {
+        #expected:not(:checked) ~ #expectedguests {
             display:none;
         }
     </style>
