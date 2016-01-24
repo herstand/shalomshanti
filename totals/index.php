@@ -90,7 +90,7 @@ error_reporting(E_ALL);
 </head>
 <body><main>
 <h1>Wedding Guests</h1>
-<input id='invited' name='nametype' type='radio' checked /><label for="invited">Invited</label><input id='expected' name='nametype' type='radio' /><label for="expected">Expected</label><br />
+<input id='invited' name='nametype' type='radio' /><label for="invited">Invited</label><input id='expected' name='nametype' type='radio' checked /><label for="expected">Expected</label><br />
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT']."/shalomshanti/db_access.php";
