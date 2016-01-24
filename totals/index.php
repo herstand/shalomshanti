@@ -31,7 +31,7 @@ error_reporting(E_ALL);
             text-align:center;
         }
         h3:nth-of-type(2) {
-            margin-top:50px;
+            margin-top:30px;
         }
         h3 {
             margin-bottom:5px;
