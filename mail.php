@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ERROR);
 require_once "db_access.php";
 require_once getenv("SS_PEAR_PATH")."/Mail.php";
-$query = "SELECT `hashedId`, `Email addresses` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `Priority` = 0 AND `Save the date sent` = 0 AND `Save the date response` = -1 and `Email addresses` not like ''";
+$query = "SELECT `hashedId`, `Email addresses` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `Priority` = 0 AND `Save the date sent` = 0 AND `Save the date reminder sent` = 0 AND `Save the date response` = -1 and `Email addresses` not like ''";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 
 $host = "localhost";
