@@ -87,6 +87,9 @@ error_reporting(E_ALL);
         #expected:not(:checked) ~ #expectedguests {
             display:none;
         }
+        hr {
+            margin-top:20px;
+        }
     </style>
 </head>
 <body><main>
