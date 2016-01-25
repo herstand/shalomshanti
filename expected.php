@@ -89,7 +89,7 @@ $query = "SELECT ROUND(SUM((`Probability` / 100.00))) as receptionAdultExpected
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and (`Havdalah adults invited` > 0 or `Havdalah children invited` > 0)";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
+echo "Priority 0: <strong style='color:#0055EE'>{$row['receptionAdultExpected']}</strong><br>";
 
 
 echo "</section><section class='ceremony'>";
@@ -194,7 +194,7 @@ $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 echo "Priority 0, 1: <strong style='color:#0055EE'>{$row['receptionAdultExpected']}</strong><br>";
 
-$query = "SELECT ROUND(SUM(`Ceremony children invited` * (`Probability` / 100.00) + `Ceremony adults invited` * (`Probability` / 100.00))) as receptionAdultExpected 
+$query = "SELECT ROUND(SUM(`Ceremony adults invited` * (`Probability` / 100.00))) as receptionAdultExpected 
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1 or Priority = 2)";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -207,7 +207,7 @@ $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 echo "Priority 0, 1: <strong style='color:#0055EE'>{$row['receptionAdultExpected']}</strong><br>";
 
-$query = "SELECT ROUND(SUM(`Ceremony children invited` * (`Probability` / 100.00) + `Ceremony adults invited` * (`Probability` / 100.00))) as receptionAdultExpected 
+$query = "SELECT ROUND(SUM(`Ceremony children invited` * (`Probability` / 100.00))) as receptionAdultExpected 
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1 or Priority = 2)";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
