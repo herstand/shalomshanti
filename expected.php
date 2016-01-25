@@ -1,7 +1,7 @@
 <?php
 
 echo "<section class='havdalah'>";
-echo "<h2>Havadalah / Mehendi</h2>";
+echo "<h2>Havdalah / Mehendi</h2>";
 echo "<h3>Vidya</h3>";
 echo "<h4>Adults</h4>";
 $query = "SELECT ROUND(SUM(`Havdalah adults invited` * (`Probability` / 100.00))) as receptionAdultExpected 

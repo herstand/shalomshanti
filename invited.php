@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 echo "<section class='havdalah'>";
-echo "<h2>Havadalah / Mehendi</h2>";
+echo "<h2>Havdalah / Mehendi</h2>";
 echo "<h3>Vidya</h3>";
 echo "<h4>Adults</h4>";
 $query = "SELECT SUM(`Havdalah adults invited`) as receptionAdultExpected 
