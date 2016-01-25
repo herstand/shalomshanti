@@ -24,5 +24,3 @@ RewriteRule ^(.+)$ $1.php [L,QSA]
 
 # Find php files
 RewriteRule ^saveTheDateEmailImage.png$ /shalomshanti/loadEmailImage.php [L,QSA]
-
-#http://localhost:9090/shalomshanti/savethedate?response=1&id=9e1e94a20f7b652317418f7e3481b59db5f415c2a564b0a9ad6acade1a5d6afc
