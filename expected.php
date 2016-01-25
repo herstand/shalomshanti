@@ -497,7 +497,6 @@ FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1 or Pr
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 echo "Priority 0, 1, and 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
-echo "</section>";
 
 echo "<h4>Household</h4>";
 $query = "SELECT ROUND(SUM((`Probability` / 100.00))) as receptionAdultExpected 
@@ -511,5 +510,6 @@ FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1 or Pr
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 echo "Priority 0, 1, and 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
+echo "</section>";
 
 ?>
