@@ -7,9 +7,6 @@ RewriteEngine On
    php_value short_open_tag 0
  </IfModule>
 
-# Find php files
-RewriteRule ^totals$ /shalomshanti/totals/index.php [L,QSA]
-
 # Force HTTPS on server
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} !=localhost:9090
