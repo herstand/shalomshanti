@@ -404,7 +404,7 @@ $query = "SELECT COUNT(`Household name`) as receptionAdultExpected
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1 or Priority = 2) and (`Reception adult number` > 0 or `Reception adult number` > 0) and List = 'Vidya'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-
+echo "Priority 0, 1, and 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 
 
@@ -461,7 +461,7 @@ $query = "SELECT COUNT(`Household name`) as receptionAdultExpected
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1 or Priority = 2) and (`Reception adult number` > 0 or `Reception adult number` > 0) and List = 'Micah'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-
+echo "Priority 0, 1, and 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 
 
@@ -517,6 +517,7 @@ $query = "SELECT COUNT(`Household name`) as receptionAdultExpected
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1 or Priority = 2) and (`Reception adult number` > 0 or `Reception adult number` > 0)";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
+echo "Priority 0, 1, and 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 
 
