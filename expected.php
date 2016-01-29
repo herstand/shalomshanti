@@ -34,24 +34,42 @@ echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
 echo "<h3>Micah</h3>";
 echo "<h4>Adults</h4>";
 $query = "SELECT ROUND(SUM(`Havdalah adults invited` * (`Probability` / 100.00))) as receptionAdultExpected 
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and List = 'Micah'";
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0) and List = 'Micah'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
+$query = "SELECT ROUND(SUM(`Havdalah adults invited` * (`Probability` / 100.00))) as receptionAdultExpected 
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and List = 'Micah'";
+$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
+$row = $result->fetch_array(MYSQLI_ASSOC);
+echo "Priority 0 and 1: <strong>{$row['receptionAdultExpected']}</strong><br>";
+
 echo "<h4>Children</h4>";
+$query = "SELECT ROUND(SUM(`Havdalah children invited` * (`Probability` / 100.00))) as receptionAdultExpected 
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0) and List = 'Micah'";
+$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
+$row = $result->fetch_array(MYSQLI_ASSOC);
+echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
+
 $query = "SELECT ROUND(SUM(`Havdalah children invited` * (`Probability` / 100.00))) as receptionAdultExpected 
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and List = 'Micah'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
+echo "Priority 0 and 1: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 echo "<h4>Adults and Children</h4>";
+$query = "SELECT ROUND(SUM(`Havdalah adults invited` * (`Probability` / 100.00) + `Havdalah children invited` * (`Probability` / 100.00))) as receptionAdultExpected 
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0) and List = 'Micah'";
+$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
+$row = $result->fetch_array(MYSQLI_ASSOC);
+echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
+
 $query = "SELECT ROUND(SUM(`Havdalah adults invited` * (`Probability` / 100.00) + `Havdalah children invited` * (`Probability` / 100.00))) as receptionAdultExpected 
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and List = 'Micah'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
+echo "Priority 0 and 1: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 echo "<h4>Household</h4>";
 $query = "SELECT ROUND(SUM((`Probability` / 100.00))) as receptionAdultExpected 
@@ -59,6 +77,12 @@ FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and 
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
+
+$query = "SELECT ROUND(SUM((`Probability` / 100.00))) as receptionAdultExpected 
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0) and (`Havdalah adults invited` > 0 or `Havdalah children invited` > 0) and List = 'Micah'";
+$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
+$row = $result->fetch_array(MYSQLI_ASSOC);
+echo "Priority 0 and 1: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 echo "<hr>";
 echo "<h3>Total</h3>";
