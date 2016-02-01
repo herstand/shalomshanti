@@ -123,6 +123,9 @@ $content = array(
             <hr />
             <main>
                 <section class="responses"><span class='unit'><?php
+                    if ($response === -1) {
+                        echo "<input type='radio' class='hidden' name='response' id='-1' value='-1' checked='true' />";
+                    }
                     foreach ($content['responses'] as $i => $responseCopy) {
                         if ($i === 2) {
                             echo "</span><span class='unit'>";
