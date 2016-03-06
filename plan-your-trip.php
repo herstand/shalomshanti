@@ -26,7 +26,6 @@
             ?><input name="view" value="map" class="view" type='radio' data-display="map" id='showMap' /><label class="typ-littleTitle" for='showMap'>Map</label><?php
         ?></nav>
         <section class="map mobileHide">
-            <span class="hideUglyGoogleHeader"></span>
             <iframe id="map" src="https://www.google.com/maps/d/embed?mid=zdT3jrYh5dp8.kUSv7mo1SndM" width="100%" height="400px"></iframe>
         </section>
         <section class="list">
