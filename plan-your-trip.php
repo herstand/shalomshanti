@@ -71,7 +71,7 @@
                         <h3 class="typ-categoryTitle">Cars &amp; Cabs</h3>
                         <img src="images/img_transport_cabs.png" />
                     </header>
-                    <p class="typ-body">At the Binghamton airport, you can arrange for a car through Avis, Budget, and Hertz. If you’re looking to take a taxi, these are the licensed companies in the area. Anytime Taxi has great Yelp reviews, though we’ve never tried them. Cabs are also regularly parked outside the bus terminal, waiting for passengers.</p>
+                    <p class="typ-body">At the Binghamton airport, you can <a href="http://binghamtonairport.com/travel/rental-cars">arrange for a car</a> through Avis, Budget, and Hertz. If you’re looking to take a taxi, these are the <a href="http://www.visitbinghamton.org/taxis/">licensed companies</a> in the area. Anytime Taxi has great <a href="http://www.yelp.com/biz/anytime-taxi-binghamton">Yelp reviews</a>, though we’ve never tried them. Cabs are also regularly parked outside the bus terminal, waiting for passengers.</p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
@@ -95,7 +95,7 @@
                         <img src="images/img_hotel_comfort.png" />
                     </header>                
                     <h4 class="typ-subsection-header"><a href="http://maps.google.com/TK"><span class="mapTitleStarter">Comfort Suites, Vestal</span></a></h4>
-                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;King or Double Queen<br><em>Price:</em>&nbsp;&nbsp;King–$110, Double–$120<br><em>Provided:</em>&nbsp;&nbsp;Breakfast<br><br><a href="http://choicehotels.com">choicehotels.com</a><br><a href="tel:16077660600">607-766-0600</a></p>
+                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;King or Double Queen<br><em>Price:</em>&nbsp;&nbsp;King–$110, Double–$120<br><em>Provided:</em>&nbsp;&nbsp;Breakfast<br><br><a href="https://www.choicehotels.com/new-york/vestal/comfort-suites-hotels/ny384?source=gglocaljn">choicehotels.com</a><br><a href="tel:16077660600">607-766-0600</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article class="hotel">
@@ -103,7 +103,7 @@
                         <img src="images/img_hotel_hampton.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a href="http://maps.google.com/TK"><span class="mapTitleStarter">Hampton Inn, Vestal</span></a></h4>
-                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;Double Standard, King Standard or King Study<br><em>Price:</em>&nbsp;&nbsp;$125<br><em>Provided:</em>&nbsp;&nbsp;Breakfast, airport shuttle service<br><br><a href="hamptoninn3.com">hamptoninn3.com</a><br><a href="tel:16077975000">607-797-5000</a></p>
+                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;Double Standard, King Standard or King Study<br><em>Price:</em>&nbsp;&nbsp;$125<br><em>Provided:</em>&nbsp;&nbsp;Breakfast, airport shuttle service<br><br><a href="http://hamptoninn3.hilton.com/en/hotels/new-york/hampton-inn-and-suites-binghamton-vestal-BGMHSHX/index.html">hamptoninn3.com</a><br><a href="tel:16077975000">607-797-5000</a></p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
@@ -118,7 +118,7 @@
                         <img src="images/img_food_lost-dog.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a href="http://maps.google.com/TK"><span class="mapTitleStarter">The Lost Dog Cafe</span></a></h4>
-                    <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting cocktail menu.<br><br><a href="http://lostdogcafe.net">lostdogcafe.net</a></p>
+                    <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting cocktail menu.<br><br><a href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
@@ -136,7 +136,7 @@
                         <img src="images/img_food_water-street.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a href="http://maps.google.com/TK"><span class="mapTitleStarter">Water Street Brewing Co.</span></a></h4>
-                    <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. Vegetarian/vegan-friendly.<br><br><a href="waterstreetbrewingco.com">waterstreetbrewingco.com</a></p>
+                    <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. Vegetarian/vegan-friendly.<br><br><a href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
@@ -176,7 +176,7 @@
                         <img src="images/img_activities_kopernik.png" />
                     </header>                
                     <h4 class="typ-subsection-header"><a href="http://maps.google.com/TK"><span class="mapTitleStarter">Kopernik Observatory &amp; Science Center</span></a></h4>
-                    <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with professional telescopes.<br><br><a href="http://kopernik.org">kopernik.org</a></p>
+                    <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with professional telescopes.<br><br><a href="http://www.kopernik.org">kopernik.org</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
@@ -185,7 +185,7 @@
                         <img src="images/img_activities_cutler.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a href="http://maps.google.com/TK"><span class="mapTitleStarter">Cutler Botanic Gardens</span></a></h4>
-                    <p class="typ-body">Run by the Cornell University Cooperative Extension, this garden is an outdoor classroom for teaching horticulture and environmentalism.<br><br><a href="http://ccebroomecounty.com">ccebroomecounty.com</a></p>
+                    <p class="typ-body">Run by the Cornell University Cooperative Extension, this garden is an outdoor classroom for teaching horticulture and environmentalism.<br><br><a href="http://ccebroomecounty.com/gardening/cutler-botanic-gardens">ccebroomecounty.com</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
@@ -196,12 +196,12 @@
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a href="http://maps.google.com/TK"><span class="mapTitleStarter">Discovery Center</span></a></h4>
-                    <p class="typ-body">A childhood favorite of Vidya’s, this center engages the mind and senses through participatory exhibits for children. Just down the road is the Ross Park Zoo, the nation’s fifth oldest zoo.<br><br><a href="http://thediscoverycenter.org">thediscoverycenter.org</a></p>
+                    <p class="typ-body">A childhood favorite of Vidya’s, this center engages the mind and senses through participatory exhibits for children. Just down the road is the <a href="http://www.rossparkzoo.com/">Ross Park Zoo</a>, the nation’s fifth oldest zoo.<br><br><a href="http://www.thediscoverycenter.org">thediscoverycenter.org</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a href="http://maps.google.com/TK"><span class="mapTitleStarter">Recreation Park</span></a></h4>
-                    <p class="typ-body">Rec Park is home to one of Binghamton’s six beautiful, functioning antique carousels. (We’re the Carousel Capital of the World!) Also has tennis courts and a swimming pool.</p>
+                    <p class="typ-body">Rec Park is home to one of Binghamton’s six beautiful, functioning <a href="http://www.visitbinghamton.org/things-to-do/carousels/">antique carousels</a>. (We’re the Carousel Capital of the World!) Also has tennis courts and a swimming pool.</p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
