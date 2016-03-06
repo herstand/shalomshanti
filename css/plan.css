@@ -201,5 +201,8 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     /* Typography */
     /* Position */
     /* Size */   
+    body {
+        max-width:1600px;
+    }
     /* Animation */
 }
