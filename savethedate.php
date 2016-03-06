@@ -44,8 +44,7 @@ if ($isGuest) {
     $state = $row['State'];
     $zip = $row['Zip'];
     $country = $row['Country'];
-    $guestType = (isset($row['Priority']) && isset($row['Reception adult number']) && 
-        intval($row['Priority']) === 0 && intval($row['Reception adult number']) > 0) 
+    $guestType = (isset($row['Reception adult number']) && intval($row['Reception adult number']) > 0)
         ? "cr" : "c";
 
     $ipAddress = isset($_SERVER['REMOTE_ADDR']) ? mysqli_real_escape_string($mysqli, $_SERVER['REMOTE_ADDR']) : "Unknown";
@@ -123,6 +122,9 @@ $content = array(
             <hr />
             <main>
                 <section class="responses"><span class='unit'><?php
+                    if ($response === -1) {
+                        echo "<input type='radio' class='hidden' name='response' id='-1' value='-1' checked='true' />";
+                    }
                     foreach ($content['responses'] as $i => $responseCopy) {
                         if ($i === 2) {
                             echo "</span><span class='unit'>";
