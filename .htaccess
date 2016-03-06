@@ -8,9 +8,9 @@ RewriteEngine On
  </IfModule>
 
 # Force HTTPS on server
-#RewriteCond %{HTTPS} off
-#RewriteCond %{HTTP_HOST} !=localhost:9090
-#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !=localhost:9090
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Force www
 RewriteEngine on
