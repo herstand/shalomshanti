@@ -8,9 +8,9 @@ RewriteEngine On
  </IfModule>
 
 # Force HTTPS on server
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} !=localhost:9090
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTPS} off
+#RewriteCond %{HTTP_HOST} !=localhost:9090
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Force www
 RewriteEngine on
@@ -19,7 +19,7 @@ RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
 
 # Find php files
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !\.(png)$
+RewriteCond %{REQUEST_URI} !\.(png|css|svg|woff|ttf|otf)$
 RewriteRule ^(.+)$ $1.php [L,QSA]
 
 # Find php files
