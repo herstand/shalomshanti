@@ -16,7 +16,7 @@
     <header>
         <nav class="primary">
             <ul>
-                <li class="homepage"><a rel="homepage" href=""><img class="logo" src="icons/star.svg" /></a></li>
+                <li class="homepage"><a rel="homepage" href="/"><img class="logo" src="icons/star.svg" /></a></li>
                 <li class="plan"><a class="typ-littleTitle" href="plan-your-trip">Plan Your Trip</a></li>
             </ul>
         </nav>
