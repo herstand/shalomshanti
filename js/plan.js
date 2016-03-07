@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     function loadExtendedFooter() {
         var heightOfPageWithoutFooter_temp;
+        if (document.querySelector("#showMap").checked) {
+            return;
+        }
         if (heightOfPageWithoutFooter === 0) {
             heightOfPageWithoutFooter_temp = Math.max( 
                 document.body.scrollHeight, 
