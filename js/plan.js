@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     function loadExtendedFooter() {
         var heightOfPageWithoutFooter_temp;
-        if (document.querySelector("#showMap").checked) {
+        if (document.querySelector("#showMap") && document.querySelector("#showMap").checked) {
             return;
         }
         if (heightOfPageWithoutFooter === 0) {
@@ -85,24 +85,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     })();
 
-    window.addEventListener("resize", loadMapIfNecessary);
+    if (document.querySelector("body.plan-your-trip")) {
+        window.addEventListener("resize", loadMapIfNecessary);
+    }
     window.addEventListener("resize", loadProperFooter);
     window.addEventListener("resize", resetHeightOfPage);
     window.addEventListener("scroll", loadExtendedFooter);
-    utilities.toArray(document.querySelectorAll(".mobile .view")).forEach(function(el) {
-        el.addEventListener("change", function(e) {
-            utilities.toArray(document.querySelectorAll("main > section")).forEach(function(el) {
-                if (!el.classList.contains(e.target.dataset.display)) {
-                    el.classList.add("mobileHide");    
-                } else {
-                    el.classList.remove("mobileHide");
-                }
-                if (el.classList.contains("map")) {
-                    document.querySelector(".map iframe").src += "";
-                }
+    if (document.querySelector("body.plan-your-trip")) {
+        utilities.toArray(document.querySelectorAll(".mobile .view")).forEach(function(el) {
+            el.addEventListener("change", function(e) {
+                utilities.toArray(document.querySelectorAll("main > section")).forEach(function(el) {
+                    if (!el.classList.contains(e.target.dataset.display)) {
+                        el.classList.add("mobileHide");    
+                    } else {
+                        el.classList.remove("mobileHide");
+                    }
+                    if (el.classList.contains("map")) {
+                        document.querySelector(".map iframe").src += "";
+                    }
+                });
             });
         });
-    });
-    loadMapIfNecessary();
+        loadMapIfNecessary();   
+    }
     loadProperFooter()
 });

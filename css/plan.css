@@ -73,7 +73,7 @@ section article h4 span { position:relative; }
 .mapTitleStarter:before { display:inline-block; position:absolute; left:-55px; top:-2px; }
 .hotel:not(.venue) .mapTitleStarter:before, #thingstodo .mapTitleStarter:before, #explore .mapTitleStarter:before, #wheretoeat .mapTitleStarter:before { left:-50px; }
 
-footer { position:fixed; left:0; bottom:-190px; text-align:center; }
+footer { position:fixed; left:0; bottom:-190px; text-align:center; z-index:10; }
 footer.showExtendedFooter { position:relative; left:0; bottom:0; }
 footer .content { position:relative; left:0px; }
 footer .content span:not(:last-of-type):after { position:relative; left:5px; top:0; }
@@ -121,7 +121,7 @@ footer .content span:not(:last-of-type) { vertical-align:middle; margin-right:10
 /* Content & Animation */
 a:hover { border-bottom:1px solid #F26342; }
 nav a:hover { border-bottom:1px solid #1B468D; }
-.homepage a:hover { border-bottom:0; }
+li.homepage a:hover { border-bottom:0; }
 nav.mobile label:hover { cursor:pointer; }
 footer .content span:not(:last-of-type):after { content:"·"; }
 
