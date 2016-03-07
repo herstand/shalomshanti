@@ -127,7 +127,7 @@
                         <img src="images/img_food_remliks.png" />
                     </header>                
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Remlik's/@42.1033678,-75.9112847,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a2feeda85:0x2718374b7e93730e"><span class="mapTitleStarter">Remlik’s Grille &amp; <span class="nobreak">Oyster Bar</span></span></a></h4>
-                    <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, and salads.<br><br><a target="_blank" href="remliks.com">remliks.com</a></p>
+                    <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, and salads.<br><br><a target="_blank" href="http://remliks.com">remliks.com</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
