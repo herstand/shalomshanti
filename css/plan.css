@@ -93,7 +93,7 @@ nav.mobile label:last-of-type { width:calc(50%); }
 
 main.stickyFooter { padding-bottom:60px; }
 main:not(.stickyFooter) { padding-bottom:30px; }
-section.map > iframe { width:100%; height:calc(100vh - 50px); }   
+section.map > iframe { width:100%; height:calc(100vh - 70px); }   
 
 nav.secondary > ul { margin-bottom:70px; }
 nav.secondary li { margin:0 20px; line-height:40px; }
