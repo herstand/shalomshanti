@@ -40,7 +40,7 @@ footer p { margin:0; padding:0; }
 .typ-title { font-weight:normal; font-family:"hera-bold"; font-size:30px; line-height:40px; letter-spacing:1px; text-transform:uppercase; -webkit-text-stroke-width:1px; text-stroke-width:1px; }
 
 /* Colors */
-a, a:link, a:hover, a:link, a:active, a, a:link span, a:hover span, a:link span, a:active span { color:#F26342; }
+a, a:link, a:hover, a:link, a:active, a span, a:link span, a:hover span, a:link span, a:active span { color:#F26342; }
 nav a, nav a:link, nav a:hover, nav a:link, nav a:active, p, span, h1, h2, h3, h4, h5, h6, hr { color:#1B468D; }
 nav.mobile { border:1px solid #1B468D; }
 nav.mobile .view { display:none; }
