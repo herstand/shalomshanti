@@ -16,7 +16,7 @@
     <header>
         <nav class="primary">
             <ul>
-                <li class="homepage"><a rel="homepage" href="/"><img class="logo" src="icons/star.svg" /></a></li>
+                <li class="homepage"><a rel="homepage" href="/"><img class="logo" src="images/star.svg" /></a></li>
                 <li class="plan"><a class="typ-littleTitle" href="plan-your-trip">Plan Your Trip</a></li>
             </ul>
         </nav>
@@ -61,7 +61,7 @@
                     <header>
                         <h3 class="typ-categoryTitle">Buses</h3>
                         <img src="images/img_transport_bus.png" />
-                    </header>                
+                    </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Greyhound/@42.1013026,-75.9122746,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a60290fad:0x880836a775e0e7e4"><span class="mapTitleStarter">Greyhound Bus Terminal</span></a></h4>
                     <p class="typ-body">Located in downtown within walking distance of the wedding venue, this terminal receives Greyound, CoachUSA, Megabus, and Adirondack Trailways buses coming from many cities including New York City (~3.5 hours), Buffalo (~5 hours), and Albany (~3.5 hours).</p>
                 </article><?php
@@ -93,7 +93,7 @@
                 ?><article class="hotel">
                     <header>
                         <img src="images/img_hotel_comfort.png" />
-                    </header>                
+                    </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Comfort+Suites/@42.097033,-75.9945977,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeea081bee36f:0x35743b1bb475c9da"><span class="mapTitleStarter">Comfort Suites, Vestal</span></a></h4>
                     <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;King or Double Queen<br><em>Price:</em>&nbsp;&nbsp;King–$110, Double–$120<br><em>Provided:</em>&nbsp;&nbsp;Breakfast<br><br><a target="_blank" href="https://www.choicehotels.com/new-york/vestal/comfort-suites-hotels/ny384?source=gglocaljn">choicehotels.com</a><br><a target="_blank" href="tel:16077660600">607-766-0600</a></p>
                 </article><?php
@@ -125,7 +125,7 @@
                 ?><article>
                     <header>
                         <img src="images/img_food_remliks.png" />
-                    </header>                
+                    </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Remlik's/@42.1033678,-75.9112847,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a2feeda85:0x2718374b7e93730e"><span class="mapTitleStarter">Remlik’s Grille &amp; <span class="nobreak">Oyster Bar</span></span></a></h4>
                     <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, and salads.<br><br><a target="_blank" href="http://remliks.com">remliks.com</a></p>
                     <hr />
@@ -174,7 +174,7 @@
                 ?><article>
                     <header>
                         <img src="images/img_activities_kopernik.png" />
-                    </header>                
+                    </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Kopernik+Observatory+%26+Science+Center/@42.001995,-76.0356557,17z/data=!3m1!4b1!4m2!3m1!1s0x89dac1d3e292570f:0xc82f6a634d345cc9"><span class="mapTitleStarter">Kopernik Observatory &amp; Science Center</span></a></h4>
                     <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with professional telescopes.<br><br><a target="_blank" href="http://www.kopernik.org">kopernik.org</a></p>
                     <hr />
