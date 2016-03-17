@@ -34,7 +34,7 @@ footer p { margin:0; padding:0; }
 
 /* Typography */
 .typ-littleTitle { font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; font-size:13px; }
-.typ-categoryTitle { font-size:14px; font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; }
+.typ-categoryTitle { font-size:15px; font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; }
 .typ-body { font-weight:normal;text-transform:none;  font-family:"garamond-premier-pro-caption"; font-size:20px; line-height:25px; margin-bottom:10px; }
 .typ-subsection-header { font-weight:normal; font-family:"garamond-premier-pro-caption"; font-size:24px; line-height:30px; margin-bottom:20px; }
 .typ-title { font-weight:normal; font-family:"hera-bold"; font-size:30px; line-height:40px; letter-spacing:1px; text-transform:uppercase; -webkit-text-stroke-width:1px; text-stroke-width:1px; }
@@ -87,9 +87,7 @@ body > header nav.primary, main > section:not(.map) { margin-top:0px; margin-bot
 body > header nav.primary ul li img { height:50px; }
 
 nav.mobile { width:150px; height:30px; margin:20px auto 30px auto; }
-nav.mobile label { height:100%; }
-nav.mobile label:first-of-type { width:calc(50% - 1px); }
-nav.mobile label:last-of-type { width:calc(50%); }
+nav.mobile label { border:none; height:100%; width:50%; }
 
 main.stickyFooter { padding-bottom:60px; }
 main:not(.stickyFooter) { padding-bottom:30px; }
@@ -101,14 +99,14 @@ nav.secondary li { margin:0 20px; line-height:40px; }
 section.list > section { margin-bottom:40px; margin: 0 auto; }
 section.list > hr.mobileOnly { margin-bottom:70px; }
 section > header hr { margin-bottom:50px; }
-section > header img.titleImage { width:100px; margin-bottom:20px; }
+section > header img.titleImage { width:100px; margin-bottom:15px; }
 section > header p { margin:0 auto; padding-bottom:40px; }
 
 section > article { width:100%; }
 .hotel:not(.venue) .mapTitleStarter:before, #thingstodo .mapTitleStarter:before, #explore .mapTitleStarter:before, #wheretoeat .mapTitleStarter:before { width:16px; }
 section > article header { margin:0; }
 section > article header img { display:none; }
-section > article h3 { margin:0 auto 40px 0; }
+section > article h3 { margin:0 auto 30px 0; }
 section > article h4 { margin-bottom:20px; }
 section > article hr { display:none; margin-top:40px; margin-bottom:40px; }
 .mapTitleStarter:before { width:25px; }
@@ -147,7 +145,7 @@ footer .content span:not(:last-of-type):after { content:"·"; }
 @media (min-width:600px) {
     /* Reset */
     /* Typography */
-    .typ-littleTitle { font-size:14px; }
+    .typ-littleTitle { font-size:15px; }
     /* Position */
     footer { bottom:-170px; }
     footer header { height:51px; padding-top:10px; }
