@@ -50,7 +50,8 @@ nav.mobile .view:not(:checked) + label { color:#1B468D; background:white; }
 footer { background:#F1F1F1; -webkit-box-shadow: 0px 4px 30px black; -moz-box-shadow: 0px 4px 30px black; box-shadow: 0px 4px 30px black; }
 footer.showExtendedFooter { -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
 hr { background-color:#1B468D; }
-article hr { background-color:#CBCBCB; color:#CBCBCB; }
+section.list > section hr.mobileOnly { background-color:#CBCBCB; color:#CBCBCB; }
+
 
 /* Position */
 header nav.primary ul li { vertical-align:middle; }
@@ -102,7 +103,7 @@ section > header hr { margin-bottom:50px; }
 section > header img.titleImage { width:100px; margin-bottom:15px; }
 section > header p { margin:0 auto; padding-bottom:40px; }
 
-section > article { width:100%; }
+section > article { width:100%; margin-bottom:40px; }
 .hotel:not(.venue) .mapTitleStarter:before, #thingstodo .mapTitleStarter:before, #explore .mapTitleStarter:before, #wheretoeat .mapTitleStarter:before { width:16px; }
 section > article header { margin:0; }
 section > article header img { display:none; }
@@ -112,7 +113,7 @@ section > article hr { display:none; margin-top:40px; margin-bottom:40px; }
 .mapTitleStarter:before { width:25px; }
 section > article p { margin:0 0 10px 0; }
 section > article p:last-of-type { margin:0; }
-section.list > section > hr.mobileOnly { margin:40px auto; }
+section.list > section > hr.mobileOnly { margin:0 auto 40px auto; }
 footer { width:100%; height:220px; line-height:30px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
 footer .content span:not(:last-of-type) { vertical-align:middle; margin-right:10px; }
 
