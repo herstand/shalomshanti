@@ -126,7 +126,6 @@
                     <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting cocktail menu.</p><p class="typ-body"><a target="_blank" href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
                     <hr />
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_food_remliks.png" />
@@ -135,7 +134,6 @@
                     <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, and salads.</p><p class="typ-body"><a target="_blank" href="http://remliks.com">remliks.com</a></p>
                     <hr />
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_food_water-street.png" />
@@ -144,17 +142,14 @@
                     <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. Vegetarian/vegan-friendly.</p><p class="typ-body"><a target="_blank" href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
                     <hr />
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Royal+Indian+Bar+and+Grill/@42.0946216,-75.9782756,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeebc3bd9c139:0xf42271997e9fc9fc"><span class="mapTitleStarter">Royal Indian Bar <span class="nobreak">and Grill</span></span></a></h4>
                     <p class="typ-body">Royal Indian is one of a number of Indian restaurants in the area, serving all the Punjabi favorites.</p><p class="typ-body"><a target="_blank" href="http://royalindianbarandgrillvestal.com">royalindianbarandgrillvestal.com</a></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/P+S+Restaurant/@42.0935619,-76.0064702,17z/data=!3m1!4b1!4m2!3m1!1s0x89daec107df6f5ef:0x7367dfdcdfb92604"><span class="mapTitleStarter">P.S. Restaurant</span></a></h4>
                     <p class="typ-body">An old family favorite, P S is a fine dining restaurant with  an eclectic assortment of French, Thai, and continental cuisine.</p><p class="typ-body"><a target="_blank" href="http://psrestaurant.com">psrestaurant.com</a></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Number+5+Restaurant/@42.0902162,-75.9157402,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef67a98a3801:0xdb31386822cbb6dd"><span class="mapTitleStarter">Number 5 Restaurant</span></a></h4>
                     <p class="typ-body">Number 5 RestaurantFrom firehouse to steakhouse, this building has been serving Greater Binghamton for nearly 120 years. South Side.</p><p class="typ-body"><a target="_blank" href="http://number5restaurant.com">number5restaurant.com</a></p>
@@ -175,16 +170,14 @@
                     <p class="typ-body">A long-standing fixture of the city, this is a wonderful place for adults and children to engage with history and science in the mansion, museum, and planetarium.</p><p class="typ-body"><a target="_blank" href="http://roberson.org">roberson.org</a></p>
                     <hr />
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_activities_kopernik.png" />
                     </header>
-                    <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Kopernik+Observatory+%26+Science+Center/@42.001995,-76.0356557,17z/data=!3m1!4b1!4m2!3m1!1s0x89dac1d3e292570f:0xc82f6a634d345cc9"><span class="mapTitleStarter">Kopernik Observatory &amp; Science Center</span></a></h4>
+                    <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Kopernik+Observatory+%26+Science+Center/@42.001995,-76.0356557,17z/data=!3m1!4b1!4m2!3m1!1s0x89dac1d3e292570f:0xc82f6a634d345cc9"><span class="mapTitleStarter">Kopernik Observatory &amp; <span class="nobreak">Science Center</span></span></a></h4>
                     <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with professional telescopes.</p><p class="typ-body"><a target="_blank" href="http://www.kopernik.org">kopernik.org</a></p>
                     <hr />
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_activities_cutler.png" />
@@ -193,17 +186,14 @@
                     <p class="typ-body">Run by the Cornell University Cooperative Extension, this garden is an outdoor classroom for teaching horticulture and environmentalism.</p><p class="typ-body"><a target="_blank" href="http://ccebroomecounty.com/gardening/cutler-botanic-gardens">ccebroomecounty.com</a></p>
                     <hr />
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Apple+Hills+Farm+Market+%26+Gift+Shop/@42.2071812,-75.9514931,17z/data=!4m6!1m3!3m2!1s0x89daf11fb735e851:0x9bfb79a116390f6c!2sApple+Dumpling+Cafe!3m1!1s0x0000000000000000:0xe7cf172f4637027f"><span class="mapTitleStarter">Apple Hills</span></span></a></h4>
                     <p class="typ-body">At Apple Hills you can pick your own fresh fruit from the orchards and enjoy the farm market and cafe. Just a 10-minute drive from the airport.</p><p class="typ-body"><a target="_blank" href="http://applehills.com">applehills.com</a></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/The+Discovery+Center+of+the+Southern+Tier/@42.0737874,-75.9059245,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef5188ab5705:0xc8b8bf7a1de8c1f6"><span class="mapTitleStarter">Discovery Center</span></a></h4>
                     <p class="typ-body">A childhood favorite of Vidya’s, this center engages the mind and senses through participatory exhibits for children. Just down the road is the <a target="_blank" href="http://www.rossparkzoo.com/">Ross Park Zoo</a>, the nation’s fifth oldest zoo.</p><p class="typ-body"><a target="_blank" href="http://www.thediscoverycenter.org">thediscoverycenter.org</a></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Recreation+Park/@42.0989995,-75.951495,14z/data=!4m5!1m2!2m1!1sRecreation+Park+binghamton!3m1!1s0x89daef10f51b0027:0x278ad1fe1ff276d9"><span class="mapTitleStarter">Recreation Park</span></a></h4>
                     <p class="typ-body">Rec Park is home to one of Binghamton’s six beautiful, functioning <a target="_blank" href="http://www.visitbinghamton.org/things-to-do/carousels/">antique carousels</a>. (We’re the Carousel Capital of the World!) Also has tennis courts and a swimming pool.</p>
@@ -213,7 +203,7 @@
             <section id="explore" class=""><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_new-york.svg" ?/><?php
-                ?><h2 class="typ-title">Explore Upstate NY</h2><?php
+                ?><h2 class="typ-title">Explore <span class="nobreak">Upstate NY</span></h2><?php
                 ?><hr /><?php
                 ?><p class="typ-subsection-header">We know Binghamton is a long way to travel for some of you. Consider making the most of your trip by exploring more of what upstate New York has to offer!</p><?php
                 ?></header><?php
