@@ -113,6 +113,7 @@ section > article hr { display:none; margin-top:40px; margin-bottom:40px; }
 .mapTitleStarter:before { width:25px; }
 section > article p { margin:0 0 10px 0; }
 section > article p:last-of-type { margin:0; }
+section > article p.contact { margin-top:10px;  }
 section.list > section > hr.mobileOnly { margin:0 auto 40px auto; }
 footer { width:100%; height:220px; line-height:30px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
 footer .content span:not(:last-of-type) { vertical-align:middle; margin-right:10px; }

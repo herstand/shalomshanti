@@ -86,8 +86,13 @@
                     <header>
                         <img src="images/img_hotel_holiday.png" />
                     </header>
-                    <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Holiday+Inn+Binghamton/@42.0970519,-75.9173509,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6e4e78b8ab:0x7775d5f3b0bf4bee"><span class="mapTitleStarter">Holiday Inn Downtown Binghamton</span></a></h4>
-                    <p class="typ-body">This is the wedding venue!<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;Double Queen<br><em>Price:</em>&nbsp;&nbsp;July 9–$139, July 10–$115<br><br><a target="_blank" href="http://holidayinnbinghamton.com">holidayinnbinghamton.com</a><br><a target="_blank" href="tel:16077221212">607-722-1212</a></p>
+                    <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Holiday+Inn+Binghamton/@42.0970519,-75.9173509,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6e4e78b8ab:0x7775d5f3b0bf4bee"><span class="mapTitleStarter">Holiday Inn Downtown Binghamton</span></a></h4><?php
+                    ?><p class="typ-body">This is the wedding venue!<br /><?php
+                    ?><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br /><?php
+                    ?><em>Availability:</em>&nbsp;&nbsp;Double Queen<br /><?php
+                    ?><em>Price:</em>&nbsp;&nbsp;July 9–$139, July 10–$115</p><?php
+                    ?><p class='contact typ-body'><a target="_blank" href="http://holidayinnbinghamton.com">holidayinnbinghamton.com</a><br /><?php
+                    ?><a target="_blank" href="tel:16077221212">607-722-1212</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article class="hotel">
@@ -95,7 +100,7 @@
                         <img src="images/img_hotel_comfort.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Comfort+Suites/@42.097033,-75.9945977,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeea081bee36f:0x35743b1bb475c9da"><span class="mapTitleStarter">Comfort Suites, Vestal</span></a></h4>
-                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;King or Double Queen<br><em>Price:</em>&nbsp;&nbsp;King–$110, Double–$120<br><em>Provided:</em>&nbsp;&nbsp;Breakfast<br><br><a target="_blank" href="https://www.choicehotels.com/new-york/vestal/comfort-suites-hotels/ny384?source=gglocaljn">choicehotels.com</a><br><a target="_blank" href="tel:16077660600">607-766-0600</a></p>
+                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;King or Double Queen<br><em>Price:</em>&nbsp;&nbsp;King–$110, Double–$120<br><em>Provided:</em>&nbsp;&nbsp;Breakfast</p><p class="typ-body"><a target="_blank" href="https://www.choicehotels.com/new-york/vestal/comfort-suites-hotels/ny384?source=gglocaljn">choicehotels.com</a><br><a target="_blank" href="tel:16077660600">607-766-0600</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article class="hotel">
@@ -103,7 +108,7 @@
                         <img src="images/img_hotel_hampton.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Hampton+Inn+%26+Suites+Binghamton%2FVestal/@42.0943721,-75.9846275,17z/data=!4m6!1m3!3m2!1s0x0:0xc6e61c38f412b3a6!2sHampton+Inn+%26+Suites+Binghamton%2FVestal!3m1!1s0x0:0xc6e61c38f412b3a6"><span class="mapTitleStarter">Hampton Inn, Vestal</span></a></h4>
-                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;Double Standard, King Standard or King Study<br><em>Price:</em>&nbsp;&nbsp;$125<br><em>Provided:</em>&nbsp;&nbsp;Breakfast, airport shuttle service<br><br><a target="_blank" href="http://hamptoninn3.hilton.com/en/hotels/new-york/hampton-inn-and-suites-binghamton-vestal-BGMHSHX/index.html">hamptoninn3.com</a><br><a target="_blank" href="tel:16077975000">607-797-5000</a></p>
+                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;Double Standard, King Standard or King Study<br><em>Price:</em>&nbsp;&nbsp;$125<br><em>Provided:</em>&nbsp;&nbsp;Breakfast, airport shuttle service</p><p class="typ-body"><a target="_blank" href="http://hamptoninn3.hilton.com/en/hotels/new-york/hampton-inn-and-suites-binghamton-vestal-BGMHSHX/index.html">hamptoninn3.com</a><br><a target="_blank" href="tel:16077975000">607-797-5000</a></p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
@@ -118,7 +123,7 @@
                         <img src="images/img_food_lost-dog.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Lost+Dog+Cafe/@42.0992896,-75.9232469,16z/data=!4m5!1m2!2m1!1sThe+Lost+Dog+Cafe!3m1!1s0x89daef7048b8fc37:0x178a7cdbcb429c7d"><span class="mapTitleStarter">The Lost Dog Cafe</span></a></h4>
-                    <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting cocktail menu.<br><br><a target="_blank" href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
+                    <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting cocktail menu.</p><p class="typ-body"><a target="_blank" href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
@@ -127,7 +132,7 @@
                         <img src="images/img_food_remliks.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Remlik's/@42.1033678,-75.9112847,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a2feeda85:0x2718374b7e93730e"><span class="mapTitleStarter">Remlik’s Grille &amp; <span class="nobreak">Oyster Bar</span></span></a></h4>
-                    <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, and salads.<br><br><a target="_blank" href="http://remliks.com">remliks.com</a></p>
+                    <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, and salads.</p><p class="typ-body"><a target="_blank" href="http://remliks.com">remliks.com</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
@@ -136,23 +141,23 @@
                         <img src="images/img_food_water-street.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Water+Street+Brewing+Co./@42.0993967,-75.9164326,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6fd38ab363:0x16156ea205dabe7"><span class="mapTitleStarter">Water Street Brewing Co.</span></a></h4>
-                    <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. Vegetarian/vegan-friendly.<br><br><a target="_blank" href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
+                    <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. Vegetarian/vegan-friendly.</p><p class="typ-body"><a target="_blank" href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Royal+Indian+Bar+and+Grill/@42.0946216,-75.9782756,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeebc3bd9c139:0xf42271997e9fc9fc"><span class="mapTitleStarter">Royal Indian Bar <span class="nobreak">and Grill</span></span></a></h4>
-                    <p class="typ-body">Royal Indian is one of a number of Indian restaurants in the area, serving all the Punjabi favorites.<br><br><a target="_blank" href="http://royalindianbarandgrillvestal.com">royalindianbarandgrillvestal.com</a></p>
+                    <p class="typ-body">Royal Indian is one of a number of Indian restaurants in the area, serving all the Punjabi favorites.</p><p class="typ-body"><a target="_blank" href="http://royalindianbarandgrillvestal.com">royalindianbarandgrillvestal.com</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/P+S+Restaurant/@42.0935619,-76.0064702,17z/data=!3m1!4b1!4m2!3m1!1s0x89daec107df6f5ef:0x7367dfdcdfb92604"><span class="mapTitleStarter">P.S. Restaurant</span></a></h4>
-                    <p class="typ-body">An old family favorite, P S is a fine dining restaurant with  an eclectic assortment of French, Thai, and continental cuisine.<br><br><a target="_blank" href="http://psrestaurant.com">psrestaurant.com</a></p>
+                    <p class="typ-body">An old family favorite, P S is a fine dining restaurant with  an eclectic assortment of French, Thai, and continental cuisine.</p><p class="typ-body"><a target="_blank" href="http://psrestaurant.com">psrestaurant.com</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Number+5+Restaurant/@42.0902162,-75.9157402,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef67a98a3801:0xdb31386822cbb6dd"><span class="mapTitleStarter">Number 5 Restaurant</span></a></h4>
-                    <p class="typ-body">Number 5 RestaurantFrom firehouse to steakhouse, this building has been serving Greater Binghamton for nearly 120 years. South Side.<br><br><a target="_blank" href="http://number5restaurant.com">number5restaurant.com</a></p>
+                    <p class="typ-body">Number 5 RestaurantFrom firehouse to steakhouse, this building has been serving Greater Binghamton for nearly 120 years. South Side.</p><p class="typ-body"><a target="_blank" href="http://number5restaurant.com">number5restaurant.com</a></p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
@@ -167,7 +172,7 @@
                         <img src="images/img_activities_roberson.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Roberson+Museum+and+Science+Center/@42.094004,-75.9208437,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6b95e8b39b:0x153378bde204bc9d"><span class="mapTitleStarter">Roberson Museum &amp; Mansion</span></a></h4>
-                    <p class="typ-body">A long-standing fixture of the city, this is a wonderful place for adults and children to engage with history and science in the mansion, museum, and planetarium.<br><br><a target="_blank" href="http://roberson.org">roberson.org</a></p>
+                    <p class="typ-body">A long-standing fixture of the city, this is a wonderful place for adults and children to engage with history and science in the mansion, museum, and planetarium.</p><p class="typ-body"><a target="_blank" href="http://roberson.org">roberson.org</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
@@ -176,7 +181,7 @@
                         <img src="images/img_activities_kopernik.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Kopernik+Observatory+%26+Science+Center/@42.001995,-76.0356557,17z/data=!3m1!4b1!4m2!3m1!1s0x89dac1d3e292570f:0xc82f6a634d345cc9"><span class="mapTitleStarter">Kopernik Observatory &amp; Science Center</span></a></h4>
-                    <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with professional telescopes.<br><br><a target="_blank" href="http://www.kopernik.org">kopernik.org</a></p>
+                    <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with professional telescopes.</p><p class="typ-body"><a target="_blank" href="http://www.kopernik.org">kopernik.org</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
@@ -185,18 +190,18 @@
                         <img src="images/img_activities_cutler.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Cutler+Botanic+Garden/@42.1286195,-75.9080941,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeff4a0350e55:0x98169ce76a69b242"><span class="mapTitleStarter">Cutler Botanic Gardens</span></a></h4>
-                    <p class="typ-body">Run by the Cornell University Cooperative Extension, this garden is an outdoor classroom for teaching horticulture and environmentalism.<br><br><a target="_blank" href="http://ccebroomecounty.com/gardening/cutler-botanic-gardens">ccebroomecounty.com</a></p>
+                    <p class="typ-body">Run by the Cornell University Cooperative Extension, this garden is an outdoor classroom for teaching horticulture and environmentalism.</p><p class="typ-body"><a target="_blank" href="http://ccebroomecounty.com/gardening/cutler-botanic-gardens">ccebroomecounty.com</a></p>
                     <hr />
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Apple+Hills+Farm+Market+%26+Gift+Shop/@42.2071812,-75.9514931,17z/data=!4m6!1m3!3m2!1s0x89daf11fb735e851:0x9bfb79a116390f6c!2sApple+Dumpling+Cafe!3m1!1s0x0000000000000000:0xe7cf172f4637027f"><span class="mapTitleStarter">Apple Hills</span></span></a></h4>
-                    <p class="typ-body">At Apple Hills you can pick your own fresh fruit from the orchards and enjoy the farm market and cafe. Just a 10-minute drive from the airport.<br><br><a target="_blank" href="http://applehills.com">applehills.com</a></p>
+                    <p class="typ-body">At Apple Hills you can pick your own fresh fruit from the orchards and enjoy the farm market and cafe. Just a 10-minute drive from the airport.</p><p class="typ-body"><a target="_blank" href="http://applehills.com">applehills.com</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/The+Discovery+Center+of+the+Southern+Tier/@42.0737874,-75.9059245,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef5188ab5705:0xc8b8bf7a1de8c1f6"><span class="mapTitleStarter">Discovery Center</span></a></h4>
-                    <p class="typ-body">A childhood favorite of Vidya’s, this center engages the mind and senses through participatory exhibits for children. Just down the road is the <a target="_blank" href="http://www.rossparkzoo.com/">Ross Park Zoo</a>, the nation’s fifth oldest zoo.<br><br><a target="_blank" href="http://www.thediscoverycenter.org">thediscoverycenter.org</a></p>
+                    <p class="typ-body">A childhood favorite of Vidya’s, this center engages the mind and senses through participatory exhibits for children. Just down the road is the <a target="_blank" href="http://www.rossparkzoo.com/">Ross Park Zoo</a>, the nation’s fifth oldest zoo.</p><p class="typ-body"><a target="_blank" href="http://www.thediscoverycenter.org">thediscoverycenter.org</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
