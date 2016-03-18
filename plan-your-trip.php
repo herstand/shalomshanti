@@ -32,16 +32,16 @@
         <section class="list">
             <nav class="secondary">
                 <ul><?php
-                    ?><li><a class="typ-body" href="#gettinghere">Getting Here</a></li><?php
-                    ?><li><a class="typ-body" href="#wheretostay">Where to Stay</a></li><?php
-                    ?><li><a class="typ-body" href="#wheretoeat">Where to Eat</a></li><?php
+                    ?><li><a class="typ-body" href="#gettinghere-anchor">Getting Here</a></li><?php
+                    ?><li><a class="typ-body" href="#wheretostay-anchor">Where to Stay</a></li><?php
+                    ?><li><a class="typ-body" href="#wheretoeat-anchor">Where to Eat</a></li><?php
                     ?><li><ul><?php
-                    ?><li><a class="typ-body" href="#thingstodo">Things to Do</a></li><?php
-                    ?><li><a class="typ-body" href="#explore">Explore Upstate NY</a></li><?php
+                    ?><li><a class="typ-body" href="#thingstodo-anchor">Things to Do</a></li><?php
+                    ?><li><a class="typ-body" href="#explore-anchor">Explore Upstate NY</a></li><?php
                     ?></ul></li><?php
                 ?></ul><?php
             ?></nav>
-            <section id="gettinghere" class=""><?php
+            <section id="gettinghere"><hr class="jumpToPoint" id="gettinghere-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_transport.svg" ?/><?php
                 ?><h2 class="typ-title">Getting Here</h2><?php
@@ -75,7 +75,7 @@
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
-            <section id="wheretostay" class=""><?php
+            <section id="wheretostay"><hr class="jumpToPoint" id="wheretostay-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_lodging.svg" ?/><?php
                 ?><h2 class="typ-title">Where to Stay</h2><?php
@@ -112,7 +112,7 @@
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
-            <section id="wheretoeat" class=""><?php
+            <section id="wheretoeat"><hr class="jumpToPoint" id="wheretoeat-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_food.svg" ?/><?php
                 ?><h2 class="typ-title">Where to Eat</h2><?php
@@ -156,7 +156,7 @@
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
-            <section id="thingstodo" class=""><?php
+            <section id="thingstodo"><hr class="jumpToPoint" id="thingstodo-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_activities.svg" ?/><?php
                 ?><h2 class="typ-title">Things to do</h2><?php
@@ -200,7 +200,7 @@
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
-            <section id="explore" class=""><?php
+            <section id="explore"><hr class="jumpToPoint" id="explore-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_new-york.svg" ?/><?php
                 ?><h2 class="typ-title">Explore <span class="nobreak">Upstate NY</span></h2><?php
