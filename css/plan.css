@@ -69,10 +69,11 @@ section { text-align:center; }
 section article { display:inline-block; text-align:left; vertical-align:top; }
 section article header { text-align:center; }
 section article header img { vertical-align:top; }
-section article h4 { text-indent:25px; text-align:left; position:relative; }
+section article h4 { text-indent:35px; text-align:left; position:relative; }
+.hotel:not(.venue) h4, #thingstodo h4, #explore h4, #wheretoeat h4 { text-indent:30px;  }
 section article h4 span { position:relative; }
-.mapTitleStarter:before { display:inline-block; position:absolute; left:-55px; top:-2px; }
-.hotel:not(.venue) .mapTitleStarter:before, #thingstodo .mapTitleStarter:before, #explore .mapTitleStarter:before, #wheretoeat .mapTitleStarter:before { left:-50px; }
+.mapTitleStarter:before { display:inline-block; position:absolute; left:-70px; top:-2px; }
+.hotel:not(.venue) .mapTitleStarter:before, #thingstodo .mapTitleStarter:before, #explore .mapTitleStarter:before, #wheretoeat .mapTitleStarter:before { left:-60px; }
 
 footer { position:fixed; left:0; bottom:-190px; text-align:center; z-index:10; }
 footer.showExtendedFooter { position:relative; left:0; bottom:0; }
@@ -116,6 +117,7 @@ section > article p:last-of-type { margin:0; }
 section > article p.contact { margin-top:10px;  }
 section.list > section > hr.mobileOnly { margin:0 auto 40px auto; }
 footer { width:100%; height:220px; line-height:30px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
+footer .extendedFooter { margin-top:20px; }
 footer .content span:not(:last-of-type) { vertical-align:middle; margin-right:10px; }
 
 /* Content & Animation */
