@@ -8,8 +8,8 @@
 <link rel="mask-icon" href="icons/star.svg">
 <script src="js/utilities.js"></script>
 <script async src="https://use.typekit.net/abm3mqd.js"></script>
-<script type='text/javascript' src="js/plan.js"></script>
-<link rel="stylesheet" type="text/css" href="css/plan.css" />
+<script type='text/javascript' src="js/plan.js?cache=2"></script>
+<link rel="stylesheet" type="text/css" href="css/plan.css?cache=2" />
 <?php include_once("ga.php"); ?>
 </head>
 <body class="plan-your-trip">
