@@ -1,7 +1,6 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
-    var mapLoadedOnDesktop = window.innerWidth >= 800, 
-        isLargeView = false,
-        heightOfPageWithoutFooter = 0;
+document.addEventListener("DOMContentLoaded", function(event) {
+    var mapLoadedOnDesktop = window.innerWidth >= 800,
+        isLargeView = false;
     function loadMapIfNecessary() {
         if (!mapLoadedOnDesktop && window.innerWidth >= 800) {
             mapLoadedOnDesktop = true;
@@ -21,59 +20,73 @@ document.addEventListener("DOMContentLoaded", function(event) {
             document.querySelector("footer .location").innerHTML = document.querySelector("footer .location").dataset.short;
         }
     }
-    function resetHeightOfPage() {
-        if (heightOfPageWithoutFooter > 0) {
-            heightOfPageWithoutFooter = Math.max( 
-                    document.body.scrollHeight, 
-                    document.body.offsetHeight, 
-                    document.documentElement.clientHeight, 
-                    document.documentElement.scrollHeight, 
-                    document.documentElement.offsetHeight 
-                );
+    function getHeightOfPage() {
+        return Math.max(
+            document.body.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.clientHeight,
+            document.documentElement.scrollHeight,
+            document.documentElement.offsetHeight
+        );
+    }
+    function expandFooter(footerHeight, collapsedHeight, paddingMax, lineHeight) {
+        var topMove = footerHeight -
+                (
+                    getHeightOfPage() -
+                    ( window.pageYOffset + window.innerHeight )
+                ),
+            paddingTopWhenCollapsed = collapsedHeight/4 + 2,
+            paddingTop = (paddingTopWhenCollapsed + topMove/5);
+        if (paddingTop > paddingMax) {
+            document.querySelector("footer .content").style.paddingTop = paddingMax + "px";
+            document.querySelector("footer").style.boxShadow = "0px 0px 0px black";
+        } else {
+            document.querySelector("footer .content").style.paddingTop = paddingTop + "px";
+            document.querySelector("footer").style.boxShadow = "0px 4px "+(collapsedHeight - paddingTop)+"px black";
+        }
+        document.querySelector("footer").style.height = footerHeight + "px";
+        if (topMove >= footerHeight - collapsedHeight) {
+            document.querySelector("footer").style.bottom = "0px";
+        } else {
+            document.querySelector("footer").style.bottom = (topMove - footerHeight + collapsedHeight) + "px";
         }
 
+        document.querySelector("footer header").style.lineHeight = lineHeight + "px";
+        document.querySelector("body").style.paddingBottom = (footerHeight + 70) + "px";
+
+    }
+    function contractFooter(footerHeight, collapsedHeight) {
+        document.querySelector("footer .content").style.paddingTop = "0px";
+        document.querySelector("footer").style.bottom = "-" + (footerHeight - collapsedHeight) + "px";
+        document.querySelector("footer header").style.lineHeight = collapsedHeight + "px";
+        document.querySelector("footer").style.boxShadow = "0px 4px " + collapsedHeight + "px black";
+        document.querySelector("footer").style.height = footerHeight + "px";
+        document.querySelector("body").style.paddingBottom = (footerHeight + 70) + "px";
     }
     function loadExtendedFooter() {
-        var heightOfPageWithoutFooter_temp;
-        if (document.querySelector("#showMap") && document.querySelector("#showMap").checked) {
+        var footerHeight = 200, collapsedHeight, paddingMax;
+        if (window.innerWidth < 600) {
+            paddingMax = collapsedHeight = 30;
+            lineHeight = 13;
+        } else {
+            collapsedHeight = 50;
+            paddingMax = 40;
+            lineHeight = 15;
+        }
+        if (window.innerWidth > 610) {
+            footerHeight = 170;
+        } else if (window.innerWidth > 550) {
+            footerHeight = 180;
+        }
+
+        if (!mapLoadedOnDesktop && document.querySelector("#showMap") && document.querySelector("#showMap").checked) {
+            // No expanded footer in mobile map view
             return;
         }
-        if (heightOfPageWithoutFooter === 0) {
-            heightOfPageWithoutFooter_temp = Math.max( 
-                document.body.scrollHeight, 
-                document.body.offsetHeight, 
-                document.documentElement.clientHeight, 
-                document.documentElement.scrollHeight, 
-                document.documentElement.offsetHeight 
-            );
-        }
-        if (
-            (
-                heightOfPageWithoutFooter > 0 && 
-                (window.pageYOffset + window.innerHeight) >= heightOfPageWithoutFooter
-            ) ||
-            (window.pageYOffset + window.innerHeight) >= heightOfPageWithoutFooter_temp
-        ) {
-            if (heightOfPageWithoutFooter === 0) {
-                heightOfPageWithoutFooter = heightOfPageWithoutFooter_temp;
-            }
-            var topMove = (((window.pageYOffset + window.innerHeight) - heightOfPageWithoutFooter) / 4);
-            if (topMove > 30) {
-                topMove = 30;
-            }
-            document.querySelector("footer .content").style.top = topMove + "px";
-            document.querySelector("footer").classList.add("showExtendedFooter");
-            document.querySelector("main").classList.remove("stickyFooter");
-        } else if (
-            (
-                heightOfPageWithoutFooter > 0 && 
-                (window.pageYOffset + window.innerHeight) < heightOfPageWithoutFooter
-            ) ||
-            (window.pageYOffset + window.innerHeight) < heightOfPageWithoutFooter_temp
-        ) {
-            document.querySelector("footer .content").style.top = "0px";
-            document.querySelector("footer").classList.remove("showExtendedFooter");
-            document.querySelector("main").classList.add("stickyFooter");
+        if ((window.pageYOffset + window.innerHeight) >= getHeightOfPage() - footerHeight) {
+            expandFooter(footerHeight, collapsedHeight, paddingMax, lineHeight);
+        } else {
+            contractFooter(footerHeight, collapsedHeight);
         }
     }
 
@@ -89,14 +102,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
         window.addEventListener("resize", loadMapIfNecessary);
     }
     window.addEventListener("resize", loadProperFooter);
-    window.addEventListener("resize", resetHeightOfPage);
     window.addEventListener("scroll", loadExtendedFooter);
     if (document.querySelector("body.plan-your-trip")) {
         utilities.toArray(document.querySelectorAll(".mobile .view")).forEach(function(el) {
             el.addEventListener("change", function(e) {
                 utilities.toArray(document.querySelectorAll("main > section")).forEach(function(el) {
                     if (!el.classList.contains(e.target.dataset.display)) {
-                        el.classList.add("mobileHide");    
+                        el.classList.add("mobileHide");
                     } else {
                         el.classList.remove("mobileHide");
                     }
@@ -106,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 });
             });
         });
-        loadMapIfNecessary();   
+        loadMapIfNecessary();
     }
     loadProperFooter()
 });

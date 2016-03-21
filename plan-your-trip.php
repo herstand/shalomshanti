@@ -21,7 +21,7 @@
             </ul>
         </nav>
     </header>
-    <main class="stickyFooter">
+    <main>
         <nav class="mobile"><?php
             ?><input name="view" value="list" class="view" type='radio' data-display="list" id='showList' checked /><label class="typ-littleTitle" for='showList'>List</label><?php
             ?><input name="view" value="map" class="view" type='radio' data-display="map" id='showMap' /><label class="typ-littleTitle" for='showMap'>Map</label><?php
