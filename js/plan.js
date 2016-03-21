@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
 
         document.querySelector("footer header").style.lineHeight = lineHeight + "px";
-        document.querySelector("body").style.paddingBottom = (footerHeight + 70) + "px";
 
     }
     function contractFooter(footerHeight, collapsedHeight) {
@@ -61,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("footer header").style.lineHeight = collapsedHeight + "px";
         document.querySelector("footer").style.boxShadow = "0px 4px " + collapsedHeight + "px black";
         document.querySelector("footer").style.height = footerHeight + "px";
-        document.querySelector("body").style.paddingBottom = (footerHeight + 70) + "px";
     }
     function loadExtendedFooter() {
         var footerHeight = 200, collapsedHeight, paddingMax;

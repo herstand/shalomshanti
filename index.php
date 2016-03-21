@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/plan.css" />
 <?php include_once("ga.php"); ?>
 <style type='text/css'>
+    body { padding-bottom:230px; }
     main {
         width:100%;
         height:calc(100vh - 30px - 94px);
@@ -36,12 +37,15 @@
         top:75%;
         z-index:2;
         margin:0 auto;
+        padding-left:6.67vw;
+        padding-right:6.67vw;
     }
     @media (min-width:0px){
         main h1.typ-title { font-size:40px; line-height:50px; }
     }
     @media (min-width:600px){
-        main h1.typ-title { font-size:50px; line-height:60px; }
+        main h1.typ-title { font-size:50px; line-height:60px; padding-left:40px; padding-right:40px; }
+        main { height:calc(100vh - 50px - 94px); }
     }
     @media (min-width:900px){
         main h1.typ-title { font-size:60px; line-height:70px; }
@@ -57,7 +61,7 @@
             </ul>
         </nav>
     </header>
-    <main class="stickyFooter">
+    <main>
         <div class="darkener"></div>
         <h1 class="typ-title">WE'RE GETTING MARRIED!</h1>
     </main>
