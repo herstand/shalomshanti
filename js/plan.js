@@ -35,20 +35,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     getHeightOfPage() -
                     ( window.pageYOffset + window.innerHeight )
                 ),
-            paddingTopWhenCollapsed = collapsedHeight/4 + 2,
-            paddingTop = (paddingTopWhenCollapsed + topMove/5);
-        if (paddingTop > paddingMax) {
-            document.querySelector("footer .content").style.paddingTop = paddingMax + "px";
-            document.querySelector("footer").style.boxShadow = "0px 0px 0px black";
-        } else {
-            document.querySelector("footer .content").style.paddingTop = paddingTop + "px";
-            document.querySelector("footer").style.boxShadow = "0px 4px "+(collapsedHeight - paddingTop)+"px black";
-        }
+            paddingTop = Math.floor(topMove/5) + Math.floor(lineHeight/3.0),
+            topMovePercentFromBottom = 1 - ((topMove - collapsedHeight)/(footerHeight - collapsedHeight));
+        document.querySelector("footer .content").style.paddingTop = paddingTop + "px";
+        document.querySelector("footer").style.boxShadow =
+            "0px " + //offset-x
+            "4px " + //offset-y
+            Math.max(0, collapsedHeight * topMovePercentFromBottom) + "px " + //spread
+            "black";
         document.querySelector("footer").style.height = footerHeight + "px";
-        if (topMove >= footerHeight - collapsedHeight) {
+        if (topMove >= footerHeight) {
             document.querySelector("footer").style.bottom = "0px";
         } else {
-            document.querySelector("footer").style.bottom = (topMove - footerHeight + collapsedHeight) + "px";
+            document.querySelector("footer").style.bottom = "-" + (footerHeight - topMove) + "px";
         }
 
         document.querySelector("footer header").style.lineHeight = lineHeight + "px";
@@ -61,19 +60,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("footer").style.boxShadow = "0px 4px " + collapsedHeight + "px black";
         document.querySelector("footer").style.height = footerHeight + "px";
     }
-    function loadExtendedFooter() {
+    function loadExtendedFooter() {collapsedHeight
         var footerHeight = 200, collapsedHeight, paddingMax;
         if (window.innerWidth < 600) {
-            paddingMax = collapsedHeight = 30;
+            paddingMax =
+                collapsedHeight = 30;
             lineHeight = 13;
         } else {
             collapsedHeight = 50;
             paddingMax = 40;
             lineHeight = 15;
         }
-        if (window.innerWidth > 610) {
+        if (window.innerWidth > 610) { // 2 lines of footer copy
             footerHeight = 170;
-        } else if (window.innerWidth > 550) {
+        } else if (window.innerWidth > 550) { // 3 lines of footer copy
             footerHeight = 180;
         }
 
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             // No expanded footer in mobile map view
             return;
         }
-        if ((window.pageYOffset + window.innerHeight) >= getHeightOfPage() - footerHeight) {
+        if ((window.pageYOffset + window.innerHeight) >= getHeightOfPage() - footerHeight + collapsedHeight) {
             expandFooter(footerHeight, collapsedHeight, paddingMax, lineHeight);
         } else {
             contractFooter(footerHeight, collapsedHeight);

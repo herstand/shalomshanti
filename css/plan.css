@@ -85,7 +85,7 @@ footer .content { position:relative; left:0px; }
 footer .content span:not(:last-of-type):after { position:relative; left:5px; top:0; }
 
 /* Size */
-body { padding-bottom:270px; }
+body { padding-bottom:240px; }
 h2 { margin-bottom:20px; }
 hr { width:170px; }
 body > header { padding-top:20px; padding-bottom:20px; }

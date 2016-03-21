@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/plan.css" />
 <?php include_once("ga.php"); ?>
 <style type='text/css'>
-    body { padding-bottom:230px; }
+    body { padding-bottom:200px; }
     main {
         width:100%;
         height:calc(100vh - 30px - 94px);
@@ -46,6 +46,12 @@
     @media (min-width:600px){
         main h1.typ-title { font-size:50px; line-height:60px; padding-left:40px; padding-right:40px; }
         main { height:calc(100vh - 50px - 94px); }
+    }
+    @media (min-width:550px) {
+        body { padding-bottom:180px; }
+    }
+    @media (min-width:610px) {
+        body { padding-bottom:170px; }
     }
     @media (min-width:900px){
         main h1.typ-title { font-size:60px; line-height:70px; }
