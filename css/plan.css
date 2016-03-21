@@ -57,7 +57,7 @@ section.list > hr, section.list > section hr.mobileOnly { background-color:#CBCB
 
 /* Position */
 header nav.primary ul li { vertical-align:middle; }
-header nav.primary ul li.plan { position:absolute; right:40px; top:36px; }
+header nav.primary ul li.plan { position:absolute; right:6.67vw; top:36px; }
 header nav.primary ul li.plan a { padding-bottom:8px; }
 
 nav.mobile { margin:0 auto; }
@@ -164,6 +164,7 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     /* Size */
     body > header, main > section:not(.map) { margin-left:40px; margin-right:40px; }
     body > footer { padding-left:40px; padding-right:40px;  }
+    header nav.primary ul li.plan { right:40px; }
     h2 { margin-bottom:30px;  }
     section > header img.titleImage { width:170px; }
     section > header img.titleImage { margin-bottom:30px; }
