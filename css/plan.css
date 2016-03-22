@@ -170,6 +170,7 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     body > footer { padding-left:40px; padding-right:40px;  }
     header nav.primary ul li.plan { right:40px; }
     header nav.primary ul li.plan a { padding-bottom:8px; }
+    body > header nav.primary ul li img { height:70px; }
     h2 { margin-bottom:30px;  }
     section > header img.titleImage { width:170px; margin-bottom:30px; }
     section > article header img { display:inline-block; margin-bottom:30px; width:296px; }
