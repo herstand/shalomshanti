@@ -76,6 +76,7 @@ section article header { text-align:center; }
 section article header img { vertical-align:top; }
 section article h4 { text-indent:35px; text-align:left; position:relative; }
 .hotel:not(.venue) h4, #thingstodo h4, #explore h4, #wheretoeat h4 { text-indent:30px;  }
+.hotel h4, .hotel p { text-align:center; }
 section article h4 span { position:relative; }
 .mapTitleStarter:before { display:inline-block; position:absolute; left:-70px; top:-2px; }
 .hotel:not(.venue) .mapTitleStarter:before, #thingstodo .mapTitleStarter:before, #explore .mapTitleStarter:before, #wheretoeat .mapTitleStarter:before { left:-60px; }

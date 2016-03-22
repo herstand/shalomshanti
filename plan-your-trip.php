@@ -80,17 +80,16 @@
                 ?><img class="titleImage" src="images/title_lodging.svg" ?/><?php
                 ?><h2 class="typ-title">Where to Stay</h2><?php
                 ?><hr /><?php
-                ?><p class="typ-subsection-header">We’ve reserved room blocks for our guests at the following hotels from July 9–10. Block rates expire in early June. There are also many other nearby hotels.</p><?php
+                ?><p class="typ-subsection-header">We’ve reserved room blocks for our guests at the following hotels from July 9–10. Ask for the Santosh-Herstand wedding rate, which is available until early June.</p><?php
                 ?></header><?php
                 ?><article class="venue hotel">
                     <header>
                         <img src="images/img_hotel_holiday.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Holiday+Inn+Binghamton/@42.0970519,-75.9173509,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6e4e78b8ab:0x7775d5f3b0bf4bee"><span class="mapTitleStarter">Holiday Inn Downtown Binghamton</span></a></h4><?php
-                    ?><p class="typ-body">This is the wedding venue!<br /><?php
-                    ?><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br /><?php
-                    ?><em>Availability:</em>&nbsp;&nbsp;Double Queen<br /><?php
-                    ?><em>Price:</em>&nbsp;&nbsp;July 9–$139, July 10–$115</p><?php
+                    ?><p class="typ-body">This is the wedding venue!</p><?php
+                    ?><p class="typ-body">Double Queen<br /><?php
+                    ?>July 9–$139, July 10–$115</p><?php
                     ?><p class='contact typ-body'><a target="_blank" href="http://holidayinnbinghamton.com">holidayinnbinghamton.com</a><br /><?php
                     ?><a target="_blank" href="tel:16077221212">607-722-1212</a></p>
                 </article><?php
@@ -100,7 +99,8 @@
                         <img src="images/img_hotel_comfort.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Comfort+Suites/@42.097033,-75.9945977,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeea081bee36f:0x35743b1bb475c9da"><span class="mapTitleStarter">Comfort Suites, Vestal</span></a></h4>
-                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;King or Double Queen<br><em>Price:</em>&nbsp;&nbsp;King–$110, Double–$120<br><em>Provided:</em>&nbsp;&nbsp;Breakfast</p><p class="typ-body"><a target="_blank" href="https://www.choicehotels.com/new-york/vestal/comfort-suites-hotels/ny384?source=gglocaljn">choicehotels.com</a><br><a target="_blank" href="tel:16077660600">607-766-0600</a></p>
+                    <p class="typ-body">5-10 minute drive to venue<br>Breakfast provided</p><?php
+                    ?><p class="typ-body">King—$110<br>Double Queen—$120</p><p class="typ-body"><a target="_blank" href="https://www.choicehotels.com/new-york/vestal/comfort-suites-hotels/ny384?source=gglocaljn">choicehotels.com</a><br><a target="_blank" href="tel:16077660600">607-766-0600</a></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article class="hotel">
@@ -108,7 +108,8 @@
                         <img src="images/img_hotel_hampton.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Hampton+Inn+%26+Suites+Binghamton%2FVestal/@42.0943721,-75.9846275,17z/data=!4m6!1m3!3m2!1s0x0:0xc6e61c38f412b3a6!2sHampton+Inn+%26+Suites+Binghamton%2FVestal!3m1!1s0x0:0xc6e61c38f412b3a6"><span class="mapTitleStarter">Hampton Inn, Vestal</span></a></h4>
-                    <p class="typ-body"><em>Distance to venue:</em>&nbsp;&nbsp;5 miles<br><em>Reserved under:</em>&nbsp;&nbsp;Santosh-Herstand<br><em>Availability:</em>&nbsp;&nbsp;Double Standard, King Standard or King Study<br><em>Price:</em>&nbsp;&nbsp;$125<br><em>Provided:</em>&nbsp;&nbsp;Breakfast, airport shuttle service</p><p class="typ-body"><a target="_blank" href="http://hamptoninn3.hilton.com/en/hotels/new-york/hampton-inn-and-suites-binghamton-vestal-BGMHSHX/index.html">hamptoninn3.com</a><br><a target="_blank" href="tel:16077975000">607-797-5000</a></p>
+                    <p class="typ-body">5-10 minute drive to venue<br>Breakfast provided<br>Airport shuttle service available</p><?php
+                    ?><p class="typ-body">Double Standard—$125<br>King Standard—$125<br>King Study—$125</p><p class="typ-body"><a target="_blank" href="http://hamptoninn3.hilton.com/en/hotels/new-york/hampton-inn-and-suites-binghamton-vestal-BGMHSHX/index.html">hamptoninn3.com</a><br><a target="_blank" href="tel:16077975000">607-797-5000</a></p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
