@@ -125,7 +125,6 @@
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Lost+Dog+Cafe/@42.0992896,-75.9232469,16z/data=!4m5!1m2!2m1!1sThe+Lost+Dog+Cafe!3m1!1s0x89daef7048b8fc37:0x178a7cdbcb429c7d"><span class="mapTitleStarter">The Lost Dog Cafe</span></a></h4>
                     <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting <span class="nobreak">cocktail menu.</span></p><p class="typ-body"><a target="_blank" href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
-                    <hr />
                 </article><?php
                 ?><article>
                     <header>
@@ -133,7 +132,6 @@
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Remlik's/@42.1033678,-75.9112847,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a2feeda85:0x2718374b7e93730e"><span class="mapTitleStarter">Remlik’s Grille &amp; <span class="nobreak">Oyster Bar</span></span></a></h4>
                     <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, <span class="nobreak">and salads.</span></p><p class="typ-body"><a target="_blank" href="http://remliks.com">remliks.com</a></p>
-                    <hr />
                 </article><?php
                 ?><article>
                     <header>
@@ -141,8 +139,8 @@
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Water+Street+Brewing+Co./@42.0993967,-75.9164326,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6fd38ab363:0x16156ea205dabe7"><span class="mapTitleStarter">Water Street Brewing Co.</span></a></h4>
                     <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. <span class="nobreak">Vegetarian/vegan-friendly.</span></p><p class="typ-body"><a target="_blank" href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
-                    <hr />
                 </article><?php
+                ?><hr class="subsection-divider" /><hr class="subsection-divider" /><hr class="subsection-divider" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Royal+Indian+Bar+and+Grill/@42.0946216,-75.9782756,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeebc3bd9c139:0xf42271997e9fc9fc"><span class="mapTitleStarter">Royal Indian Bar <span class="nobreak">and Grill</span></span></a></h4>
                     <p class="typ-body">Royal Indian is one of a number of Indian restaurants in the area, serving all the <span class="nobreak">Punjabi favorites.</span></p><p class="typ-body"><a target="_blank" href="http://royalindianbarandgrillvestal.com">royalindianbarandgrillvestal.com</a></p>
@@ -169,7 +167,6 @@
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Roberson+Museum+and+Science+Center/@42.094004,-75.9208437,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6b95e8b39b:0x153378bde204bc9d"><span class="mapTitleStarter">Roberson Museum &amp; Mansion</span></a></h4>
                     <p class="typ-body">A long-standing fixture of the city, this is a wonderful place for adults and children to engage with history and science in the mansion, museum, <span class="nobreak">and planetarium.</span></p><p class="typ-body"><a target="_blank" href="http://roberson.org">roberson.org</a></p>
-                    <hr />
                 </article><?php
                 ?><article>
                     <header>
@@ -177,7 +174,6 @@
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Kopernik+Observatory+%26+Science+Center/@42.001995,-76.0356557,17z/data=!3m1!4b1!4m2!3m1!1s0x89dac1d3e292570f:0xc82f6a634d345cc9"><span class="mapTitleStarter">Kopernik Observatory &amp; <span class="nobreak">Science Center</span></span></a></h4>
                     <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with <span class="nobreak">professional telescopes.</span></p><p class="typ-body"><a target="_blank" href="http://www.kopernik.org">kopernik.org</a></p>
-                    <hr />
                 </article><?php
                 ?><article>
                     <header>
@@ -185,8 +181,8 @@
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Cutler+Botanic+Garden/@42.1286195,-75.9080941,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeff4a0350e55:0x98169ce76a69b242"><span class="mapTitleStarter">Cutler Botanic Gardens</span></a></h4>
                     <p class="typ-body">Run by the Cornell University Cooperative Extension, this garden is an outdoor classroom for teaching horticulture <span class="nobreak">and environmentalism.</span></p><p class="typ-body"><a target="_blank" href="http://ccebroomecounty.com/gardening/cutler-botanic-gardens">ccebroomecounty.com</a></p>
-                    <hr />
                 </article><?php
+                ?><hr class="subsection-divider" /><hr class="subsection-divider" /><hr class="subsection-divider" /><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Apple+Hills+Farm+Market+%26+Gift+Shop/@42.2071812,-75.9514931,17z/data=!4m6!1m3!3m2!1s0x89daf11fb735e851:0x9bfb79a116390f6c!2sApple+Dumpling+Cafe!3m1!1s0x0000000000000000:0xe7cf172f4637027f"><span class="mapTitleStarter">Apple Hills</span></span></a></h4>
                     <p class="typ-body">At Apple Hills you can pick your own fresh fruit from the orchards and enjoy the farm market and cafe. Just a 10-minute drive from <span class="nobreak">the airport.</span></p><p class="typ-body"><a target="_blank" href="http://applehills.com">applehills.com</a></p>
