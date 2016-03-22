@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     getHeightOfPage() -
                     ( window.pageYOffset + window.innerHeight )
                 ),
-            paddingTop = Math.floor(topMove/5) + Math.floor(lineHeight/3.0),
+            paddingTop = Math.min(paddingMax, Math.floor(topMove/5) + Math.floor(lineHeight/3.0)),
             topMovePercentFromBottom = 1 - ((topMove - collapsedHeight)/(footerHeight - collapsedHeight));
         document.querySelector("footer .content").style.paddingTop = paddingTop + "px";
         document.querySelector("footer").style.boxShadow =

@@ -124,7 +124,7 @@ section > article p:last-of-type { margin:0; }
 section > article p.contact { margin-top:10px;  }
 section.list > section > hr.mobileOnly { margin:0 auto 40px auto; }
 footer { width:100%; line-height:30px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
-footer header { margin-bottom:25px; /* text below has 5px of extra line-height, so ends up being 30px */ }
+footer header { margin-bottom:15px; /* text below has 5px of extra line-height, so ends up being 20px */ }
 footer .content span:not(:last-of-type) { vertical-align:middle; margin-right:10px; }
 
 /* Content & Animation */
@@ -172,7 +172,7 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     section > header img.titleImage { margin-bottom:30px; }
     section > article header img { display:inline-block; width:296px; height:296px; margin-bottom:30px; }
     footer { bottom:-150px; }
-    footer header { line-height:50px; }
+    footer header { line-height:50px; margin-bottom:25px; }
     /* Animation */
 }
 @media (min-width:610px) {
