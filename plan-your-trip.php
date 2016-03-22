@@ -151,7 +151,7 @@
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Number+5+Restaurant/@42.0902162,-75.9157402,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef67a98a3801:0xdb31386822cbb6dd"><span class="mapTitleStarter">Number 5 Restaurant</span></a></h4>
-                    <p class="typ-body">Number 5 RestaurantFrom firehouse to steakhouse, this building has been serving Greater Binghamton for nearly 120 years. <span class="nobreak">South Side.</span></p><p class="typ-body"><a target="_blank" href="http://number5restaurant.com">number5restaurant.com</a></p>
+                    <p class="typ-body">From firehouse to steakhouse, this building has been serving Greater Binghamton for nearly 120 years. <span class="nobreak">South Side.</span></p><p class="typ-body"><a target="_blank" href="http://number5restaurant.com">number5restaurant.com</a></p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
