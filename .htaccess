@@ -9,7 +9,7 @@ RewriteEngine On
 
 # Force HTTPS on server
 RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} !=localhost:9090
+RewriteCond %{HTTP_HOST} !=localhost:8888
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Force www
@@ -24,3 +24,8 @@ RewriteRule ^(.+)$ $1.php [L,QSA]
 
 # Find php files
 RewriteRule ^saveTheDateEmailImage.png$ /shalomshanti/loadEmailImage.php [L,QSA]
+
+# Cache images
+<FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif)$">
+Header set Cache-Control "max-age=31536050"
+</FilesMatch>
