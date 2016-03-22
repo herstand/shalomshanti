@@ -54,7 +54,7 @@
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Greater+Binghamton+Airport/@42.2080651,-75.984457,17z/data=!3m1!4b1!4m2!3m1!1s0x89daf165b92a0803:0xc987da113f75e51a"><span class="mapTitleStarter">Greater Binghamton</span> <span class="nobreak">Regional Airport</span></a></h4>
                     <p class="typ-body">Binghamton’s airport is connected to Detroit (<a target="_blank" href="http://www.delta.com/">Delta</a>), Philadelphia (<a target="_blank" href="https://www.aa.com/homePage.do">American Airlines</a>), and Newark (<a target="_blank" href="https://www.united.com/ual/en/us/">United</a>) airports.</p>
-                    <p class="typ-body">Within a one-hour drive are Corning, Syracuse, Elmira, and Ithaca airports. Within a three-hour drive are Rochester, Albany, Philadelphia, and Newark airports.</p>
+                    <p class="typ-body">Within a one-hour drive are Corning, Syracuse, Elmira, and Ithaca airports. Within a three-hour drive are Rochester, Albany, Philadelphia, and <span class="nobreak">Newark airports.</span></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article class="buses">
@@ -63,7 +63,7 @@
                         <img src="images/img_transport_bus.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Greyhound/@42.1013026,-75.9122746,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a60290fad:0x880836a775e0e7e4"><span class="mapTitleStarter">Greyhound Bus Terminal</span></a></h4>
-                    <p class="typ-body">Located in downtown within walking distance of the wedding venue, this terminal receives Greyound, CoachUSA, Megabus, and Adirondack Trailways buses coming from many cities including New York City (~3.5 hours), Buffalo (~5 hours), and Albany (~3.5 hours).</p>
+                    <p class="typ-body">Located in downtown within walking distance of the wedding venue, this terminal receives Greyound, CoachUSA, Megabus, and Adirondack Trailways buses coming from many cities including New York City (~3.5 hours), Buffalo (~5 hours), and Albany <span class="nobreak">(~3.5 hours).</span></p>
                 </article><?php
                 ?><hr class="mobileOnly" /><?php
                 ?><article>
@@ -71,7 +71,7 @@
                         <h3 class="typ-categoryTitle">Cars &amp; Cabs</h3>
                         <img src="images/img_transport_cabs.png" />
                     </header>
-                    <p class="typ-body">At the Binghamton airport, you can <a target="_blank" href="http://binghamtonairport.com/travel/rental-cars">arrange for a car</a> through Avis, Budget, and Hertz. If you’re looking to take a taxi, these are the <a target="_blank" href="http://www.visitbinghamton.org/taxis/">licensed companies</a> in the area. Anytime Taxi has great <a target="_blank" href="http://www.yelp.com/biz/anytime-taxi-binghamton">Yelp reviews</a>, though we’ve never tried them. Cabs are also regularly parked outside the bus terminal, waiting for passengers.</p>
+                    <p class="typ-body">At the Binghamton airport, you can <a target="_blank" href="http://binghamtonairport.com/travel/rental-cars">arrange for a car</a> through Avis, Budget, and Hertz. If you’re looking to take a taxi, these are the <a target="_blank" href="http://www.visitbinghamton.org/taxis/">licensed companies</a> in the area. Anytime Taxi has great <a target="_blank" href="http://www.yelp.com/biz/anytime-taxi-binghamton">Yelp reviews</a>, though we’ve never tried them. Cabs are also regularly parked outside the bus terminal, waiting <span class="nobreak">for passengers.</span></p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
@@ -80,7 +80,7 @@
                 ?><img class="titleImage" src="images/title_lodging.svg" ?/><?php
                 ?><h2 class="typ-title">Where to Stay</h2><?php
                 ?><hr /><?php
-                ?><p class="typ-subsection-header">We’ve reserved room blocks for our guests at the following hotels from July 9–10. Ask for the Santosh-Herstand wedding rate, which is available until early June.</p><?php
+                ?><p class="typ-subsection-header">We’ve reserved room blocks for our guests at the following hotels from July 9–10. Ask for the Santosh-Herstand wedding rate, which is available until <span class="nobreak">early June.</span></p><?php
                 ?></header><?php
                 ?><article class="venue hotel">
                     <header>
@@ -124,7 +124,7 @@
                         <img src="images/img_food_lost-dog.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Lost+Dog+Cafe/@42.0992896,-75.9232469,16z/data=!4m5!1m2!2m1!1sThe+Lost+Dog+Cafe!3m1!1s0x89daef7048b8fc37:0x178a7cdbcb429c7d"><span class="mapTitleStarter">The Lost Dog Cafe</span></a></h4>
-                    <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting cocktail menu.</p><p class="typ-body"><a target="_blank" href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
+                    <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting <span class="nobreak">cocktail menu.</span></p><p class="typ-body"><a target="_blank" href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
                     <hr />
                 </article><?php
                 ?><article>
@@ -132,7 +132,7 @@
                         <img src="images/img_food_remliks.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Remlik's/@42.1033678,-75.9112847,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a2feeda85:0x2718374b7e93730e"><span class="mapTitleStarter">Remlik’s Grille &amp; <span class="nobreak">Oyster Bar</span></span></a></h4>
-                    <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, and salads.</p><p class="typ-body"><a target="_blank" href="http://remliks.com">remliks.com</a></p>
+                    <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, <span class="nobreak">and salads.</span></p><p class="typ-body"><a target="_blank" href="http://remliks.com">remliks.com</a></p>
                     <hr />
                 </article><?php
                 ?><article>
@@ -140,20 +140,20 @@
                         <img src="images/img_food_water-street.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Water+Street+Brewing+Co./@42.0993967,-75.9164326,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6fd38ab363:0x16156ea205dabe7"><span class="mapTitleStarter">Water Street Brewing Co.</span></a></h4>
-                    <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. Vegetarian/vegan-friendly.</p><p class="typ-body"><a target="_blank" href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
+                    <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. <span class="nobreak">Vegetarian/vegan-friendly.</span></p><p class="typ-body"><a target="_blank" href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
                     <hr />
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Royal+Indian+Bar+and+Grill/@42.0946216,-75.9782756,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeebc3bd9c139:0xf42271997e9fc9fc"><span class="mapTitleStarter">Royal Indian Bar <span class="nobreak">and Grill</span></span></a></h4>
-                    <p class="typ-body">Royal Indian is one of a number of Indian restaurants in the area, serving all the Punjabi favorites.</p><p class="typ-body"><a target="_blank" href="http://royalindianbarandgrillvestal.com">royalindianbarandgrillvestal.com</a></p>
+                    <p class="typ-body">Royal Indian is one of a number of Indian restaurants in the area, serving all the <span class="nobreak">Punjabi favorites.</span></p><p class="typ-body"><a target="_blank" href="http://royalindianbarandgrillvestal.com">royalindianbarandgrillvestal.com</a></p>
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/P+S+Restaurant/@42.0935619,-76.0064702,17z/data=!3m1!4b1!4m2!3m1!1s0x89daec107df6f5ef:0x7367dfdcdfb92604"><span class="mapTitleStarter">P.S. Restaurant</span></a></h4>
-                    <p class="typ-body">An old family favorite, P S is a fine dining restaurant with  an eclectic assortment of French, Thai, and continental cuisine.</p><p class="typ-body"><a target="_blank" href="http://psrestaurant.com">psrestaurant.com</a></p>
+                    <p class="typ-body">An old family favorite, P S is a fine dining restaurant with  an eclectic assortment of French, Thai, and <span class="nobreak">continental cuisine.</span></p><p class="typ-body"><a target="_blank" href="http://psrestaurant.com">psrestaurant.com</a></p>
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Number+5+Restaurant/@42.0902162,-75.9157402,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef67a98a3801:0xdb31386822cbb6dd"><span class="mapTitleStarter">Number 5 Restaurant</span></a></h4>
-                    <p class="typ-body">Number 5 RestaurantFrom firehouse to steakhouse, this building has been serving Greater Binghamton for nearly 120 years. South Side.</p><p class="typ-body"><a target="_blank" href="http://number5restaurant.com">number5restaurant.com</a></p>
+                    <p class="typ-body">Number 5 RestaurantFrom firehouse to steakhouse, this building has been serving Greater Binghamton for nearly 120 years. <span class="nobreak">South Side.</span></p><p class="typ-body"><a target="_blank" href="http://number5restaurant.com">number5restaurant.com</a></p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
@@ -168,7 +168,7 @@
                         <img src="images/img_activities_roberson.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Roberson+Museum+and+Science+Center/@42.094004,-75.9208437,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6b95e8b39b:0x153378bde204bc9d"><span class="mapTitleStarter">Roberson Museum &amp; Mansion</span></a></h4>
-                    <p class="typ-body">A long-standing fixture of the city, this is a wonderful place for adults and children to engage with history and science in the mansion, museum, and planetarium.</p><p class="typ-body"><a target="_blank" href="http://roberson.org">roberson.org</a></p>
+                    <p class="typ-body">A long-standing fixture of the city, this is a wonderful place for adults and children to engage with history and science in the mansion, museum, <span class="nobreak">and planetarium.</span></p><p class="typ-body"><a target="_blank" href="http://roberson.org">roberson.org</a></p>
                     <hr />
                 </article><?php
                 ?><article>
@@ -176,7 +176,7 @@
                         <img src="images/img_activities_kopernik.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Kopernik+Observatory+%26+Science+Center/@42.001995,-76.0356557,17z/data=!3m1!4b1!4m2!3m1!1s0x89dac1d3e292570f:0xc82f6a634d345cc9"><span class="mapTitleStarter">Kopernik Observatory &amp; <span class="nobreak">Science Center</span></span></a></h4>
-                    <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with professional telescopes.</p><p class="typ-body"><a target="_blank" href="http://www.kopernik.org">kopernik.org</a></p>
+                    <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with <span class="nobreak">professional telescopes.</span></p><p class="typ-body"><a target="_blank" href="http://www.kopernik.org">kopernik.org</a></p>
                     <hr />
                 </article><?php
                 ?><article>
@@ -184,20 +184,20 @@
                         <img src="images/img_activities_cutler.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Cutler+Botanic+Garden/@42.1286195,-75.9080941,17z/data=!3m1!4b1!4m2!3m1!1s0x89daeff4a0350e55:0x98169ce76a69b242"><span class="mapTitleStarter">Cutler Botanic Gardens</span></a></h4>
-                    <p class="typ-body">Run by the Cornell University Cooperative Extension, this garden is an outdoor classroom for teaching horticulture and environmentalism.</p><p class="typ-body"><a target="_blank" href="http://ccebroomecounty.com/gardening/cutler-botanic-gardens">ccebroomecounty.com</a></p>
+                    <p class="typ-body">Run by the Cornell University Cooperative Extension, this garden is an outdoor classroom for teaching horticulture <span class="nobreak">and environmentalism.</span></p><p class="typ-body"><a target="_blank" href="http://ccebroomecounty.com/gardening/cutler-botanic-gardens">ccebroomecounty.com</a></p>
                     <hr />
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Apple+Hills+Farm+Market+%26+Gift+Shop/@42.2071812,-75.9514931,17z/data=!4m6!1m3!3m2!1s0x89daf11fb735e851:0x9bfb79a116390f6c!2sApple+Dumpling+Cafe!3m1!1s0x0000000000000000:0xe7cf172f4637027f"><span class="mapTitleStarter">Apple Hills</span></span></a></h4>
-                    <p class="typ-body">At Apple Hills you can pick your own fresh fruit from the orchards and enjoy the farm market and cafe. Just a 10-minute drive from the airport.</p><p class="typ-body"><a target="_blank" href="http://applehills.com">applehills.com</a></p>
+                    <p class="typ-body">At Apple Hills you can pick your own fresh fruit from the orchards and enjoy the farm market and cafe. Just a 10-minute drive from <span class="nobreak">the airport.</span></p><p class="typ-body"><a target="_blank" href="http://applehills.com">applehills.com</a></p>
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/The+Discovery+Center+of+the+Southern+Tier/@42.0737874,-75.9059245,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef5188ab5705:0xc8b8bf7a1de8c1f6"><span class="mapTitleStarter">Discovery Center</span></a></h4>
-                    <p class="typ-body">A childhood favorite of Vidya’s, this center engages the mind and senses through participatory exhibits for children. Just down the road is the <a target="_blank" href="http://www.rossparkzoo.com/">Ross Park Zoo</a>, the nation’s fifth oldest zoo.</p><p class="typ-body"><a target="_blank" href="http://www.thediscoverycenter.org">thediscoverycenter.org</a></p>
+                    <p class="typ-body">A childhood favorite of Vidya’s, this center engages the mind and senses through participatory exhibits for children. Just down the road is the <a target="_blank" href="http://www.rossparkzoo.com/">Ross Park Zoo</a>, the nation’s fifth <span class="nobreak">oldest zoo.</span></p><p class="typ-body"><a target="_blank" href="http://www.thediscoverycenter.org">thediscoverycenter.org</a></p>
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Recreation+Park/@42.0989995,-75.951495,14z/data=!4m5!1m2!2m1!1sRecreation+Park+binghamton!3m1!1s0x89daef10f51b0027:0x278ad1fe1ff276d9"><span class="mapTitleStarter">Recreation Park</span></a></h4>
-                    <p class="typ-body">Rec Park is home to one of Binghamton’s six beautiful, functioning <a target="_blank" href="http://www.visitbinghamton.org/things-to-do/carousels/">antique carousels</a>. (We’re the Carousel Capital of the World!) Also has tennis courts and a swimming pool.</p>
+                    <p class="typ-body">Rec Park is home to one of Binghamton’s six beautiful, functioning <a target="_blank" href="http://www.visitbinghamton.org/things-to-do/carousels/">antique carousels</a>. (We’re the Carousel Capital of the World!) Also has tennis courts and a <span class="nobreak">swimming pool.</span></p>
                 </article><?php
             ?></section>
             <hr class="mobileOnly" />
@@ -206,7 +206,7 @@
                 ?><img class="titleImage" src="images/title_new-york.svg" ?/><?php
                 ?><h2 class="typ-title">Explore <span class="nobreak">Upstate NY</span></h2><?php
                 ?><hr /><?php
-                ?><p class="typ-subsection-header">We know Binghamton is a long way to travel for some of you. Consider making the most of your trip by exploring more of what upstate New York has to offer!</p><?php
+                ?><p class="typ-subsection-header">We know Binghamton is a long way to travel for some of you. Consider making the most of your trip by exploring more of what upstate New York has <span class="nobreak">to offer!</span></p><?php
                 ?></header><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/The+Corning+Museum+of+Glass/@42.1498045,-77.0563846,17z/data=!3m1!4b1!4m2!3m1!1s0x89d0484af286aa35:0x86187db0a73cfd52"><span class="mapTitleStarter">Corning Museum of Glass</span></a></h4>
