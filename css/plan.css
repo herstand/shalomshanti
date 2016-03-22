@@ -109,7 +109,7 @@ section.list > section { margin-bottom:40px; margin: 0 auto; }
 section.list > hr.mobileOnly { margin-bottom:70px; }
 section > header hr { margin-bottom:50px; }
 section > header img.titleImage { width:100px; margin-bottom:15px; }
-section > header p { margin:0 auto; padding-bottom:40px; }
+section > header > p { margin:0 auto; padding-bottom:40px; }
 
 section > article { width:100%; margin-bottom:60px; }
 section#explore > article { margin-bottom:0px; }
@@ -149,7 +149,7 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     nav.secondary li { display:inline-block; }
     /* Size */
     main > section:not(.map), body > footer .content { margin-left:auto; margin-right:auto; }
-    article, section.list > section p { max-width:400px; }
+    article, section > header > p { max-width:400px; }
     article { margin-left:36px; margin-right:36px;  }
     #explore article { max-width:380px; margin-left:50px; margin-right:50px; }
     footer span:not(:last-of-type) { margin-right:20px; }
@@ -186,6 +186,7 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     /* Typography */
     /* Position */
     /* Size */
+    section > header > p { max-width:620px; }
     ul { display:inline-block; }
     /* Animation */
 }
@@ -202,7 +203,7 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     section > article, section#explore article { margin-left:0px; margin-right:0px; }
     section > article:not(:nth-of-type(3n)) { margin-right:30px; }
     section#explore article h4 { text-align:left; }
-    section.list > section p { max-width:620px; }
+    section > header > p { max-width:620px; }
     section > hr.subsection-divider { display:inline-block; margin:40px calc(16.67% - 90px); }
     section > article header img { width:100%; max-width:342px; }
     section.map > iframe { width:100%; height:50vh; }
