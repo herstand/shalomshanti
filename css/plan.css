@@ -129,7 +129,7 @@ footer header { margin-bottom:15px; /* text below has 5px of extra line-height, 
 footer .content span:not(:last-of-type) { vertical-align:middle; margin-right:10px; }
 
 /* Content & Animation */
-a:hover { border-bottom:1px solid #F26342; }
+a:hover, a:hover span { color:#c94628; /*border-bottom:1px solid #F26342;*/ }
 nav a:hover { border-bottom:1px solid #1B468D; }
 li.homepage a:hover { border-bottom:0; }
 nav.mobile label:hover { cursor:pointer; }
@@ -169,10 +169,10 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     body > header, main > section:not(.map) { width:calc(100% - 80px); margin-left:40px; margin-right:40px; }
     body > footer { padding-left:40px; padding-right:40px;  }
     header nav.primary ul li.plan { right:40px; }
-    header nav.primary ul li.plan a { padding-bottom:8px; }
     body > header nav.primary ul li img { height:70px; }
     h2 { margin-bottom:30px;  }
     section > header img.titleImage { width:170px; margin-bottom:30px; }
+    section > article h3 { margin-bottom:40px; }
     section > article header img { display:inline-block; margin-bottom:30px; width:296px; }
     footer { bottom:-150px; }
     footer header { line-height:50px; margin-bottom:25px; }
