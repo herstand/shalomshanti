@@ -56,7 +56,7 @@
                     <p class="typ-body">Binghamton’s airport is connected to Detroit (<a target="_blank" href="http://www.delta.com/">Delta</a>), Philadelphia (<a target="_blank" href="https://www.aa.com/homePage.do">American Airlines</a>), and Newark (<a target="_blank" href="https://www.united.com/ual/en/us/">United</a>) airports.</p>
                     <p class="typ-body">Within a one-hour drive are Corning, Syracuse, Elmira, and Ithaca airports. Within a three-hour drive are Rochester, Albany, Philadelphia, and <span class="nobreak">Newark airports.</span></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
+                ?><hr class="mobileOnly imageOnly" /><?php
                 ?><article class="buses">
                     <header>
                         <h3 class="typ-categoryTitle">Buses</h3>
@@ -65,7 +65,7 @@
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Greyhound/@42.1013026,-75.9122746,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a60290fad:0x880836a775e0e7e4"><span class="mapTitleStarter">Greyhound Bus Terminal</span></a></h4>
                     <p class="typ-body">Located in downtown within walking distance of the wedding venue, this terminal receives Greyound, CoachUSA, Megabus, and Adirondack Trailways buses coming from many cities including New York City (~3.5 hours), Buffalo (~5 hours), and Albany <span class="nobreak">(~3.5 hours).</span></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
+                ?><hr class="mobileOnly imageOnly" /><?php
                 ?><article>
                     <header>
                         <h3 class="typ-categoryTitle">Cars &amp; Cabs</h3>
@@ -93,7 +93,7 @@
                     ?><p class='contact typ-body'><a target="_blank" href="http://holidayinnbinghamton.com">holidayinnbinghamton.com</a><br /><?php
                     ?><a target="_blank" href="tel:16077221212">607-722-1212</a></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
+                ?><hr class="mobileOnly imageOnly" /><?php
                 ?><article class="hotel">
                     <header>
                         <img src="images/img_hotel_comfort.png" />
@@ -102,7 +102,7 @@
                     <p class="typ-body">5-10 minute drive to venue<br>Breakfast provided</p><?php
                     ?><p class="typ-body">King—$110<br>Double Queen—$120</p><p class="typ-body"><a target="_blank" href="https://www.choicehotels.com/new-york/vestal/comfort-suites-hotels/ny384?source=gglocaljn">choicehotels.com</a><br><a target="_blank" href="tel:16077660600">607-766-0600</a></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
+                ?><hr class="mobileOnly imageOnly" /><?php
                 ?><article class="hotel">
                     <header>
                         <img src="images/img_hotel_hampton.png" />
@@ -126,7 +126,7 @@
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Lost+Dog+Cafe/@42.0992896,-75.9232469,16z/data=!4m5!1m2!2m1!1sThe+Lost+Dog+Cafe!3m1!1s0x89daef7048b8fc37:0x178a7cdbcb429c7d"><span class="mapTitleStarter">The Lost Dog Cafe</span></a></h4>
                     <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting <span class="nobreak">cocktail menu.</span></p><p class="typ-body"><a target="_blank" href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
+                ?><hr class="mobileOnly imageOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_food_remliks.png" />
@@ -134,7 +134,7 @@
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Remlik's/@42.1033678,-75.9112847,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a2feeda85:0x2718374b7e93730e"><span class="mapTitleStarter">Remlik’s Grille &amp; <span class="nobreak">Oyster Bar</span></span></a></h4>
                     <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, <span class="nobreak">and salads.</span></p><p class="typ-body"><a target="_blank" href="http://remliks.com">remliks.com</a></p>
                 </article><?php
-                ?><hr class="mobileOnly" /><?php
+                ?><hr class="mobileOnly imageOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_food_water-street.png" />
@@ -170,6 +170,7 @@
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Roberson+Museum+and+Science+Center/@42.094004,-75.9208437,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6b95e8b39b:0x153378bde204bc9d"><span class="mapTitleStarter">Roberson Museum &amp; Mansion</span></a></h4>
                     <p class="typ-body">A long-standing fixture of the city, this is a wonderful place for adults and children to engage with history and science in the mansion, museum, <span class="nobreak">and planetarium.</span></p><p class="typ-body"><a target="_blank" href="http://roberson.org">roberson.org</a></p>
                 </article><?php
+                ?><hr class="mobileOnly imageOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_activities_kopernik.png" />
@@ -177,6 +178,7 @@
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Kopernik+Observatory+%26+Science+Center/@42.001995,-76.0356557,17z/data=!3m1!4b1!4m2!3m1!1s0x89dac1d3e292570f:0xc82f6a634d345cc9"><span class="mapTitleStarter">Kopernik Observatory &amp; <span class="nobreak">Science Center</span></span></a></h4>
                     <p class="typ-body">Kopernik is a well-equipped public observatory with a mission to offer hands-on education. Open every Friday night for public observing events with <span class="nobreak">professional telescopes.</span></p><p class="typ-body"><a target="_blank" href="http://www.kopernik.org">kopernik.org</a></p>
                 </article><?php
+                ?><hr class="mobileOnly imageOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_activities_cutler.png" />
