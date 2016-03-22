@@ -126,6 +126,7 @@
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Lost+Dog+Cafe/@42.0992896,-75.9232469,16z/data=!4m5!1m2!2m1!1sThe+Lost+Dog+Cafe!3m1!1s0x89daef7048b8fc37:0x178a7cdbcb429c7d"><span class="mapTitleStarter">The Lost Dog Cafe</span></a></h4>
                     <p class="typ-body">With an international menu that includes plenty of creative meat and vegeterian options, the Lost Dog has something for everyone. You might even partake of the extensive bar with an exciting <span class="nobreak">cocktail menu.</span></p><p class="typ-body"><a target="_blank" href="http://www.lostdogcafe.net/index.php/menu">lostdogcafe.net</a></p>
                 </article><?php
+                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_food_remliks.png" />
@@ -133,12 +134,13 @@
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Remlik's/@42.1033678,-75.9112847,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef7a2feeda85:0x2718374b7e93730e"><span class="mapTitleStarter">Remlik’s Grille &amp; <span class="nobreak">Oyster Bar</span></span></a></h4>
                     <p class="typ-body">A newer downtown spot that has become popular, Remlik’s is a  restaurant and bar focused more on seafood and meats. They also have pasta, sandwiches, <span class="nobreak">and salads.</span></p><p class="typ-body"><a target="_blank" href="http://remliks.com">remliks.com</a></p>
                 </article><?php
+                ?><hr class="mobileOnly" /><?php
                 ?><article>
                     <header>
                         <img src="images/img_food_water-street.png" />
                     </header>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Water+Street+Brewing+Co./@42.0993967,-75.9164326,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6fd38ab363:0x16156ea205dabe7"><span class="mapTitleStarter">Water Street Brewing Co.</span></a></h4>
-                    <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers of varying styles at a time from their tank-to-tap system that the owner built himself. <span class="nobreak">Vegetarian/vegan-friendly.</span></p><p class="typ-body"><a target="_blank" href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
+                    <p class="typ-body">Water Street is Binghamton’s first and only microbrewery. They serve up six beers at a time from their tank-to-tap system that the owner built himself. <span class="nobreak">Vegetarian/vegan-friendly.</span></p><p class="typ-body"><a target="_blank" href="https://www.waterstreetbrewingco.com/index.html">waterstreetbrewingco.com</a></p>
                 </article><?php
                 ?><hr class="subsection-divider" /><hr class="subsection-divider" /><hr class="subsection-divider" /><?php
                 ?><article>
@@ -147,7 +149,7 @@
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/P+S+Restaurant/@42.0935619,-76.0064702,17z/data=!3m1!4b1!4m2!3m1!1s0x89daec107df6f5ef:0x7367dfdcdfb92604"><span class="mapTitleStarter">P.S. Restaurant</span></a></h4>
-                    <p class="typ-body">An old family favorite, P S is a fine dining restaurant with  an eclectic assortment of French, Thai, and <span class="nobreak">continental cuisine.</span></p><p class="typ-body"><a target="_blank" href="http://psrestaurant.com">psrestaurant.com</a></p>
+                    <p class="typ-body">An old family favorite, P.S. is a fine dining restaurant with  an eclectic assortment of French, Thai, and <span class="nobreak">continental cuisine.</span></p><p class="typ-body"><a target="_blank" href="http://psrestaurant.com">psrestaurant.com</a></p>
                 </article><?php
                 ?><article>
                     <h4 class="typ-subsection-header"><a target="_blank" href="https://www.google.com/maps/place/Number+5+Restaurant/@42.0902162,-75.9157402,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef67a98a3801:0xdb31386822cbb6dd"><span class="mapTitleStarter">Number 5 Restaurant</span></a></h4>
