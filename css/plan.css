@@ -202,7 +202,7 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     section#explore article h4 { text-align:left; }
     section.list > section p { max-width:620px; }
     section > article hr { display:block; }
-    section > article header img { height:22.8vw; width:22.8vw; max-width:342px; }
+    section > article header img { width:100%; max-width:342px; }
     section.map > iframe { width:100%; height:50vh; }
     section.map { margin-bottom:30px; }
     /* Animation */

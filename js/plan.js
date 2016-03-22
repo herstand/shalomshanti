@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     ( window.pageYOffset + window.innerHeight )
                 ),
             paddingTop = Math.min(paddingMax, Math.floor(topMove/5) + Math.floor(lineHeight/3.0)),
-            topMovePercentFromBottom = 1 - ((topMove - collapsedHeight)/(footerHeight - collapsedHeight));
+            topMovePercentFromBottom = .8 * (1 - ((topMove - collapsedHeight)/(footerHeight - collapsedHeight)));
         document.querySelector("footer .content").style.paddingTop = paddingTop + "px";
         document.querySelector("footer").style.boxShadow =
             "0px " + //offset-x
-            "4px " + //offset-y
-            Math.max(0, collapsedHeight * topMovePercentFromBottom) + "px " + //spread
-            "black";
+            "2px " + //offset-y
+            Math.max(0, (collapsedHeight * .6) * topMovePercentFromBottom) + "px " + //spread
+            "rgba(0,0,0,.5)";
         document.querySelector("footer").style.height = footerHeight + "px";
         if (topMove >= footerHeight) {
             document.querySelector("footer").style.bottom = "0px";
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("footer .content").style.paddingTop = "0px";
         document.querySelector("footer").style.bottom = "-" + (footerHeight - collapsedHeight) + "px";
         document.querySelector("footer header").style.lineHeight = collapsedHeight + "px";
-        document.querySelector("footer").style.boxShadow = "0px 4px " + collapsedHeight + "px black";
+        document.querySelector("footer").style.boxShadow = "0px 2px " + (collapsedHeight * .6) + "px rgba(0,0,0,.5)";
         document.querySelector("footer").style.height = footerHeight + "px";
     }
     function loadExtendedFooter() {collapsedHeight
