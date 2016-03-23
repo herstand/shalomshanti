@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("footer").style.height = footerHeight + "px";
     }
     function loadExtendedFooter() {
-        var footerHeight = 200, collapsedHeight, paddingMax;
+        var footerHeight = 182, collapsedHeight, paddingMax;
         if (window.innerWidth < 600) {
             paddingMax =
                 collapsedHeight = 30;
@@ -72,9 +72,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             lineHeight = 15;
         }
         if (window.innerWidth > 610) { // 2 lines of footer copy
-            footerHeight = 170;
+            footerHeight = 160;
+        } else if (window.innerWidth > 600) {
+            footerHeight = 190;
         } else if (window.innerWidth > 550) { // 3 lines of footer copy
-            footerHeight = 180;
+            footerHeight = 170;
         }
 
         if ((window.pageYOffset + window.innerHeight) >= getHeightOfPage() - footerHeight + collapsedHeight) {
