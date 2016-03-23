@@ -87,6 +87,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
             contractFooter(footerHeight, collapsedHeight);
         }
     }
+    function enableMap() {
+        document.querySelector("iframe#map").classList.remove("disabled");
+    }
+    function disableMap() {
+        document.querySelector("iframe#map").classList.add("disabled");
+    }
 
     (function loadFonts() {
         try {
@@ -101,6 +107,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     window.addEventListener("resize", loadProperFooter);
     window.addEventListener("scroll", loadExtendedFooter);
+
+    document.querySelector(".map").addEventListener("click", enableMap);
+    document.querySelector(".map").addEventListener("mouseleave", disableMap);
+
     if (document.querySelector("body.plan-your-trip")) {
         utilities.toArray(document.querySelectorAll(".mobile .view")).forEach(function(el) {
             el.addEventListener("change", function(e) {

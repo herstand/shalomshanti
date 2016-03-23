@@ -32,6 +32,7 @@ hr { border:none; height:1px; margin:0 auto; padding:0; }
 .nobreak { white-space:nowrap; }
 footer p { margin:0; padding:0; }
 .jumpToPoint { visibility:hidden; position:absolute; top:-25px; left:0px; }
+.disabled { pointer-events:none; }
 
 
 /* Typography */
