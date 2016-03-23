@@ -101,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (document.querySelector("body.plan-your-trip")) {
         window.addEventListener("resize", loadMapIfNecessary);
         document.querySelector(".map").addEventListener("click", enableMap);
-        document.querySelector(".map").addEventListener("mouseleave", disableMap);
     }
     window.addEventListener("resize", loadProperFooter);
     window.addEventListener("scroll", loadExtendedFooter);
