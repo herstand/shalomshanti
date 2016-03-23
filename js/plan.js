@@ -149,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })();
 
     window.addEventListener("resize", loadProperFooterContent);
+    window.addEventListener("resize", loadExtendedFooter);
     window.addEventListener("scroll", loadExtendedFooter);
     loadProperFooterContent();
 

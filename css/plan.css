@@ -168,7 +168,6 @@ section.map:after { transition: height 1s ease, z-index 5s ease; content:""; opa
     nav > ul li:first-child { margin-left:0px; }
     nav > ul li:last-child { margin-right:0px; }
     /* Size */
-    main > section:not(.map), body > footer .content, nav.secondary.fixed { padding-left:0px; padding-right:0px; margin-left:auto; margin-right:auto; }
     article, section > header > p { max-width:400px; }
     article { margin-left:auto; margin-right:auto;  }
     #explore article { padding-left:30px; }
