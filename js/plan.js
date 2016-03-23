@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             mapLoadedOnDesktop = false;
         }
     }
-    function loadProperFooter() {
+    function loadProperFooterContent() {
         if (!isLargeView && window.innerWidth >= 490) {
             isLargeView = true;
             document.querySelector("footer .date").innerHTML = document.querySelector("footer .date").dataset.long;
@@ -141,16 +141,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     })();
 
+    window.addEventListener("resize", loadProperFooterContent);
+    window.addEventListener("scroll", loadExtendedFooter);
+    loadProperFooterContent();
+
     if (document.querySelector("body.plan-your-trip")) {
         window.addEventListener("resize", loadMapIfNecessary);
         document.querySelector(".map").addEventListener("click", enableMap);
         window.addEventListener("scroll", positionSecondaryNav);
         document.querySelector("nav.secondary").addEventListener("click", displaySecondaryFixedNav);
-    }
-    window.addEventListener("resize", loadProperFooter);
-    window.addEventListener("scroll", loadExtendedFooter);
 
-    if (document.querySelector("body.plan-your-trip")) {
+        utilities.toArray(document.querySelectorAll("nav.secondary a")).forEach(function(el) {
+            el.addEventListener("click", function(e) {
+                window.setTimeout(displayClosedSecondaryFixedNav, 50);
+            });
+        });
         utilities.toArray(document.querySelectorAll(".mobile .view")).forEach(function(el) {
             el.addEventListener("change", function(e) {
                 utilities.toArray(document.querySelectorAll("main > section")).forEach(function(el) {
@@ -167,5 +172,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
         loadMapIfNecessary();
     }
-    loadProperFooter()
 });
