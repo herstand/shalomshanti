@@ -16,13 +16,15 @@
     main {
         width:100%;
         height:calc(100vh - 30px - 94px);
-        background-image:url(images/vidya-micah_home.jpg);
-        background-size:calc(1.67 * (100vh - 30px - 94px)) calc(100vh - 30px - 94px);
-        background-repeat:no-repeat;
-        background-position:50% 60%;
+        background: url(images/vidya-micah_home.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
         overflow:hidden;
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
     }
-    main { background-size:cover; }
     .darkener {
         width:100%;
         height:100%;
@@ -47,8 +49,7 @@
     }
     @media (min-width:600px){
         main h1.typ-title { font-size:50px; line-height:60px; padding-left:40px; padding-right:40px; }
-        main { height:calc(100vh - 50px - 94px); background-size:calc(1.67 * (100vh - 50px - 94px)) calc(100vh - 50px - 94px); }
-        main { background-size:cover; }
+        main { height:calc(100vh - 50px - 94px); }
     }
     @media (min-width:550px) {
         body { padding-bottom:180px; }
