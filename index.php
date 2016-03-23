@@ -19,10 +19,10 @@
         background-image:url(images/vidya-micah_home.jpg);
         background-size:calc(1.67 * (100vh - 30px - 94px)) calc(100vh - 30px - 94px);
         background-repeat:no-repeat;
-        background-size:cover;
         background-position:50% 60%;
         overflow:hidden;
     }
+    main { background-size:cover; }
     .darkener {
         width:100%;
         height:100%;
@@ -47,7 +47,8 @@
     }
     @media (min-width:600px){
         main h1.typ-title { font-size:50px; line-height:60px; padding-left:40px; padding-right:40px; }
-        main { height:calc(100vh - 50px - 94px); background-size:calc(1.67 * (100vh - 50px - 94px)) calc(100vh - 50px - 94px); background-size:cover; }
+        main { height:calc(100vh - 50px - 94px); background-size:calc(1.67 * (100vh - 50px - 94px)) calc(100vh - 50px - 94px); }
+        main { background-size:cover; }
     }
     @media (min-width:550px) {
         body { padding-bottom:180px; }
