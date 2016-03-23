@@ -114,7 +114,7 @@ nav.secondary li ul li:last-child { margin-right:0px; }
 
 section.list > section { margin:0 auto; }
 section.list > section:not(:last-of-type) { margin-bottom:50px; }
-section.list > hr { margin-bottom:50px; height:50px; background-size:100% 100%; background-position:center center; }
+section.list > hr { margin-bottom:50px; height:30px; background-size:100% 100%; background-position:center center; }
 section > header hr { margin-bottom:50px; }
 section > header img.titleImage { width:100px; margin-bottom:15px; }
 section > header > p { margin:0 auto; padding-bottom:40px; }
