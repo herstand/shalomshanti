@@ -114,7 +114,7 @@ nav.secondary li ul li:last-child { margin-right:0px; }
 
 section.list > section { margin:0 auto; }
 section.list > section:not(:last-of-type) { margin-bottom:40px; }
-section.list > hr { margin-bottom:70px; background:url("/icons/end-section.svg"); }
+section.list > hr { margin-bottom:70px; height:50px; background-size:100% 100%; background-position:center center; }
 section > header hr { margin-bottom:50px; }
 section > header img.titleImage { width:100px; margin-bottom:15px; }
 section > header > p { margin:0 auto; padding-bottom:40px; }
@@ -143,6 +143,7 @@ li.homepage a:hover { border-bottom:0; }
 nav.mobile label:hover { cursor:pointer; }
 footer .content span:not(:last-of-type):after { content:"·"; }
 
+section.list > hr { background-color:transparent; background-image:url("/icons/end-section.svg"); background-repeat:no-repeat; }
 section.map:after { transition: height 1s ease, z-index 5s ease; content:""; opacity:.1; height:0px; }
 
 .airports .mapTitleStarter:before { content:url("/pins/airport.svg"); }
