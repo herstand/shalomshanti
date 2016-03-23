@@ -201,8 +201,10 @@ footer .content span:not(:last-of-type):after { content:"·"; }
     nav.mobile { display:none; }
     /* Size */
     body > header, main > section:not(.map) { width:92%; margin-left:4vw; margin-right:4vw; }
-    section > article { display:inline-block; width:calc(33.33% - 20px); margin-bottom:40px; margin-left:0px; margin-right:0px; }
-    #explore article { padding-left:0px; }
+    section { margin-bottom:70px; }
+    section > article { display:inline-block; width:calc(33.33% - 20px); margin-bottom:0px; margin-left:0px; margin-right:0px; }
+    section.list > section { margin-bottom:70px; }
+    section#explore article { padding-left:0px; }
     section > article:not(:nth-of-type(3n)) { margin-right:30px; }
     section#explore article h4 { text-align:left; }
     section > header > p { max-width:620px; }
