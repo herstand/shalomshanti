@@ -20,7 +20,7 @@
 /* Reset */
 * { box-sizing:border-box; }
 html, body, header, main, section, article, footer { margin:0; padding:0; width:100%; }
-body { z-index:1; position:relative; -webkit-transform: translate3d(0,0,0); }
+header, main, nav { z-index:1; position:relative; -webkit-transform: translate3d(0,0,0); }
 h1, h2, h3, h4, h5, h6 { margin-top:0px; margin-bottom:0px; }
 a { text-decoration:none; }
 nav ul { list-style-type:none; margin:0; padding:0; }
