@@ -20,7 +20,7 @@
 /* Reset */
 * { box-sizing:border-box; }
 html, body, header, main, section, article, footer { margin:0; padding:0; width:100%; }
-header, main { z-index:1; position:relative; -webkit-transform: translate3d(0,0,0); }
+header, main { z-index:1; position:relative; }
 h1, h2, h3, h4, h5, h6 { margin-top:0px; margin-bottom:0px; }
 a { text-decoration:none; }
 nav ul { list-style-type:none; margin:0; padding:0; }
@@ -60,7 +60,7 @@ section.map:after { background:black; }
 footer { background:#F1F1F1; -webkit-box-shadow: 0px 2px 30px rgba(0,0,0,.5); -moz-box-shadow: 0px 2px 30px rgba(0,0,0,.5); box-shadow: 0px 2px 30px rgba(0,0,0,.5); }
 hr { background-color:#1B468D; }
 hr.subsection-divider, section.list > hr, section.list > section hr.mobileOnly { background-color:#CBCBCB; }
-nav.secondary.fixed { -webkit-transform: translate3d(0,0,0); background:white; -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,.5); -moz-box-shadow: 0px 2px 15px rgba(0,0,0,.5); box-shadow: 0px 2px 15px rgba(0,0,0,.5); }
+nav.secondary.fixed { background:white; -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,.5); -moz-box-shadow: 0px 2px 15px rgba(0,0,0,.5); box-shadow: 0px 2px 15px rgba(0,0,0,.5); }
 
 /* Position */
 header nav.primary ul li { vertical-align:middle; }
