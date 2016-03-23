@@ -25,11 +25,11 @@
         <nav class="mobile"><?php
             ?><input name="view" value="list" class="view" type='radio' data-display="list" id='showList' checked /><label class="typ-littleTitle" for='showList'>List</label><?php
             ?><input name="view" value="map" class="view" type='radio' data-display="map" id='showMap' /><label class="typ-littleTitle" for='showMap'>Map</label><?php
-        ?></nav>
-        <section class="map mobileHide">
-            <iframe class="disabled" id="map" src="https://www.google.com/maps/d/embed?mid=zdT3jrYh5dp8.kUSv7mo1SndM&z=14&amp;ll=42.0970519,-75.9151622" width="100%" height="400px"></iframe>
-        </section>
-        <section class="list">
+        ?></nav><?php
+        ?><section class="map mobileHide disabled"><?php
+            ?><iframe id="map" src="https://www.google.com/maps/d/embed?mid=zdT3jrYh5dp8.kUSv7mo1SndM&z=14&amp;ll=42.0970519,-75.9151622" width="100%" height="400px"></iframe><?php
+        ?></section><?php
+        ?><section class="list">
             <nav class="secondary">
                 <ul><?php
                     ?><li><a class="typ-body" href="#gettinghere-anchor">Getting Here</a></li><?php

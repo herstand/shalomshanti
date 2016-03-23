@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("footer").style.boxShadow = "0px 2px " + (collapsedHeight * .6) + "px rgba(0,0,0,.5)";
         document.querySelector("footer").style.height = footerHeight + "px";
     }
-    function loadExtendedFooter() {collapsedHeight
+    function loadExtendedFooter() {
         var footerHeight = 200, collapsedHeight, paddingMax;
         if (window.innerWidth < 600) {
             paddingMax =
@@ -77,10 +77,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             footerHeight = 180;
         }
 
-        if (!mapLoadedOnDesktop && document.querySelector("#showMap") && document.querySelector("#showMap").checked) {
-            // No expanded footer in mobile map view
-            return;
-        }
         if ((window.pageYOffset + window.innerHeight) >= getHeightOfPage() - footerHeight + collapsedHeight) {
             expandFooter(footerHeight, collapsedHeight, paddingMax, lineHeight);
         } else {
@@ -88,10 +84,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
     function enableMap() {
-        document.querySelector("iframe#map").classList.remove("disabled");
+        document.querySelector(".map").classList.remove("disabled");
     }
     function disableMap() {
-        document.querySelector("iframe#map").classList.add("disabled");
+        document.querySelector(".map").classList.add("disabled");
     }
 
     (function loadFonts() {
@@ -104,12 +100,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     if (document.querySelector("body.plan-your-trip")) {
         window.addEventListener("resize", loadMapIfNecessary);
+        document.querySelector(".map").addEventListener("click", enableMap);
+        document.querySelector(".map").addEventListener("mouseleave", disableMap);
     }
     window.addEventListener("resize", loadProperFooter);
     window.addEventListener("scroll", loadExtendedFooter);
-
-    document.querySelector(".map").addEventListener("click", enableMap);
-    document.querySelector(".map").addEventListener("mouseleave", disableMap);
 
     if (document.querySelector("body.plan-your-trip")) {
         utilities.toArray(document.querySelectorAll(".mobile .view")).forEach(function(el) {
