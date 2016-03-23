@@ -19,13 +19,13 @@ RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
 
 # Find php files
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !\.(png|css|svg|woff|ttf|otf)$
+RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|css|svg|woff|ttf|otf)$
 RewriteRule ^(.+)$ $1.php [L,QSA]
 
 # Find php files
 RewriteRule ^saveTheDateEmailImage.png$ /shalomshanti/loadEmailImage.php [L,QSA]
 
 # Cache images
-<FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif)$">
+<FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif|svg)$">
 Header set Cache-Control "max-age=31536050"
 </FilesMatch>

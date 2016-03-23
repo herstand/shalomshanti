@@ -74,7 +74,7 @@
                     <p class="typ-body">At the Binghamton airport, you can <a target="_blank" href="http://binghamtonairport.com/travel/rental-cars">arrange for a car</a> through Avis, Budget, and Hertz. If you’re looking to take a taxi, these are the <a target="_blank" href="http://www.visitbinghamton.org/taxis/">licensed companies</a> in the area. Anytime Taxi has great <a target="_blank" href="http://www.yelp.com/biz/anytime-taxi-binghamton">Yelp reviews</a>, though we’ve never tried them. Cabs are also regularly parked outside the bus terminal, waiting <span class="nobreak">for passengers.</span></p>
                 </article><?php
             ?></section>
-            <hr class="mobileOnly" />
+            <hr />
             <section id="wheretostay"><hr class="jumpToPoint" id="wheretostay-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_lodging.svg" ?/><?php
@@ -112,7 +112,7 @@
                     ?><p class="typ-body">Double Standard—$125<br>King Standard—$125<br>King Study—$125</p><p class="typ-body"><a target="_blank" href="http://hamptoninn3.hilton.com/en/hotels/new-york/hampton-inn-and-suites-binghamton-vestal-BGMHSHX/index.html">hamptoninn3.com</a><br><a target="_blank" href="tel:16077975000">607-797-5000</a></p>
                 </article><?php
             ?></section>
-            <hr class="mobileOnly" />
+            <hr />
             <section id="wheretoeat"><hr class="jumpToPoint" id="wheretoeat-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_food.svg" ?/><?php
@@ -156,7 +156,7 @@
                     <p class="typ-body">From firehouse to steakhouse, this building has been serving Greater Binghamton for nearly 120 years. <span class="nobreak">South Side.</span></p><p class="typ-body"><a target="_blank" href="http://number5restaurant.com">number5restaurant.com</a></p>
                 </article><?php
             ?></section>
-            <hr class="mobileOnly" />
+            <hr />
             <section id="thingstodo"><hr class="jumpToPoint" id="thingstodo-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_activities.svg" ?/><?php
@@ -200,7 +200,7 @@
                     <p class="typ-body">Rec Park is home to one of Binghamton’s six beautiful, functioning <a target="_blank" href="http://www.visitbinghamton.org/things-to-do/carousels/">antique carousels</a>. (We’re the Carousel Capital of the World!) Also has tennis courts and a <span class="nobreak">swimming pool.</span></p>
                 </article><?php
             ?></section>
-            <hr class="mobileOnly" />
+            <hr />
             <section id="explore"><hr class="jumpToPoint" id="explore-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_new-york.svg" ?/><?php

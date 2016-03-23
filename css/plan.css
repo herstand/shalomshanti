@@ -114,7 +114,7 @@ nav.secondary li ul li:last-child { margin-right:0px; }
 
 section.list > section { margin:0 auto; }
 section.list > section:not(:last-of-type) { margin-bottom:40px; }
-section.list > hr.mobileOnly { margin-bottom:70px; }
+section.list > hr { margin-bottom:70px; background:url("/icons/end-section.svg"); }
 section > header hr { margin-bottom:50px; }
 section > header img.titleImage { width:100px; margin-bottom:15px; }
 section > header > p { margin:0 auto; padding-bottom:40px; }
@@ -145,12 +145,12 @@ footer .content span:not(:last-of-type):after { content:"·"; }
 
 section.map:after { transition: height 1s ease, z-index 5s ease; content:""; opacity:.1; height:0px; }
 
-.airports .mapTitleStarter:before { content:url("../pins/airport.svg"); }
-.buses .mapTitleStarter:before { content:url("../pins/bus.svg"); }
-.hotel .mapTitleStarter:before { content:url("../pins/hotel.svg"); }
-.hotel.venue .mapTitleStarter:before { content:url("../pins/venue.svg"); }
-#wheretoeat .mapTitleStarter:before { content:url("../pins/food.svg"); }
-#thingstodo .mapTitleStarter:before, #explore .mapTitleStarter:before { content:url("../pins/activity.svg"); }
+.airports .mapTitleStarter:before { content:url("/pins/airport.svg"); }
+.buses .mapTitleStarter:before { content:url("/pins/bus.svg"); }
+.hotel .mapTitleStarter:before { content:url("/pins/hotel.svg"); }
+.hotel.venue .mapTitleStarter:before { content:url("/pins/venue.svg"); }
+#wheretoeat .mapTitleStarter:before { content:url("/pins/food.svg"); }
+#thingstodo .mapTitleStarter:before, #explore .mapTitleStarter:before { content:url("/pins/activity.svg"); }
 
 @media (min-width:490px) {
     /* Reset */
