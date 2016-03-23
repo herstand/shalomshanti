@@ -117,16 +117,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("nav.secondary.fixed").style.top = "0px";
         document.querySelector("nav.secondary.fixed").classList.remove("invisible");
     }
-    function positionSecondaryNav(e) {
-        var pageIsScrolledAboveSecondaryNav = window.pageYOffset <
+    function pageIsScrolledAboveSecondaryNav() {
+        return window.pageYOffset <
             (
                 getElementTop(document.querySelector("nav.secondary:not(.fixed)")) +
                 document.querySelector("nav.secondary:not(.fixed)").getBoundingClientRect().height
             );
-        if (pageIsScrolledAboveSecondaryNav) {
+    }
+    function positionSecondaryNav(e) {
+        if (pageIsScrolledAboveSecondaryNav()) {
             hideSecondaryFixedNav();
         } else if (window.pageYOffset < scrollPosition) {
             displaySecondaryFixedNav();
+            window.setTimeout(function(e) {
+                if (pageIsScrolledAboveSecondaryNav()) {
+                    hideSecondaryFixedNav();
+                }
+            }, 801);
         } else {
             displayClosedSecondaryFixedNav();
         }
@@ -149,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         window.addEventListener("resize", loadMapIfNecessary);
         document.querySelector(".map").addEventListener("click", enableMap);
         window.addEventListener("scroll", positionSecondaryNav);
-        document.querySelector("nav.secondary").addEventListener("click", displaySecondaryFixedNav);
+        document.querySelector("nav.secondary.fixed").addEventListener("click", displayClosedSecondaryFixedNav);
 
         utilities.toArray(document.querySelectorAll("nav.secondary a")).forEach(function(el) {
             el.addEventListener("click", function(e) {
