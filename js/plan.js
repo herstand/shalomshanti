@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     var mapLoadedOnDesktop = window.innerWidth >= 800,
-        isLargeView = false;
+        isLargeView = false,
+        scrollPosition = 0;
     function loadMapIfNecessary() {
         if (!mapLoadedOnDesktop && window.innerWidth >= 800) {
             mapLoadedOnDesktop = true;
@@ -91,6 +92,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function disableMap() {
         document.querySelector(".map").classList.add("disabled");
     }
+    function getElementTop(elem) {
+        return elem.getBoundingClientRect().top +
+            (
+                window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+            ) -
+            (
+                document.documentElement.clientTop || document.body.clientTop || 0
+            );
+    }
+    function hideSecondaryFixedNav() {
+        document.querySelector("nav.secondary.fixed").classList.add("invisible");
+    }
+    function displayClosedSecondaryFixedNav() {
+        document.querySelector("nav.secondary.fixed").style.top =
+            "-" +
+            document.querySelector("nav.secondary.fixed").getBoundingClientRect().height +
+            "px";
+        window.setTimeout(function(e){
+            document.querySelector("nav.secondary.fixed").classList.remove("invisible");
+        }, 801);
+    }
+    function displaySecondaryFixedNav() {
+        document.querySelector("nav.secondary.fixed").style.top = "0px";
+        document.querySelector("nav.secondary.fixed").classList.remove("invisible");
+    }
+    function positionSecondaryNav(e) {
+        var pageIsScrolledAboveSecondaryNav = window.pageYOffset <
+            (
+                getElementTop(document.querySelector("nav.secondary:not(.fixed)")) +
+                document.querySelector("nav.secondary:not(.fixed)").getBoundingClientRect().height
+            );
+        if (pageIsScrolledAboveSecondaryNav) {
+            hideSecondaryFixedNav();
+        } else if (window.pageYOffset < scrollPosition) {
+            displaySecondaryFixedNav();
+        } else {
+            displayClosedSecondaryFixedNav();
+        }
+        scrollPosition = window.pageYOffset;
+    }
 
     (function loadFonts() {
         try {
@@ -103,6 +144,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (document.querySelector("body.plan-your-trip")) {
         window.addEventListener("resize", loadMapIfNecessary);
         document.querySelector(".map").addEventListener("click", enableMap);
+        window.addEventListener("scroll", positionSecondaryNav);
+        document.querySelector("nav.secondary").addEventListener("click", displaySecondaryFixedNav);
     }
     window.addEventListener("resize", loadProperFooter);
     window.addEventListener("scroll", loadExtendedFooter);

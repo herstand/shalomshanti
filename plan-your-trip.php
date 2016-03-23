@@ -41,6 +41,17 @@
                     ?></ul></li><?php
                 ?></ul><?php
             ?></nav>
+            <nav class="secondary fixed">
+                <ul><?php
+                    ?><li><a class="typ-body" href="#gettinghere-anchor">Getting Here</a></li><?php
+                    ?><li><a class="typ-body" href="#wheretostay-anchor">Where to Stay</a></li><?php
+                    ?><li><a class="typ-body" href="#wheretoeat-anchor">Where to Eat</a></li><?php
+                    ?><li><ul><?php
+                    ?><li><a class="typ-body" href="#thingstodo-anchor">Things to Do</a></li><?php
+                    ?><li><a class="typ-body" href="#explore-anchor">Explore Upstate NY</a></li><?php
+                    ?></ul></li><?php
+                ?></ul><?php
+            ?></nav>
             <section id="gettinghere"><hr class="jumpToPoint" id="gettinghere-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="images/title_transport.svg" ?/><?php
