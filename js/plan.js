@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 document.querySelector("nav.secondary:not(.fixed)").getBoundingClientRect().height
             );
     }
-    function positionSecondaryNav(e) {
+    function positionSecondaryFixedNav(e) {
         if (pageIsScrolledAboveSecondaryNav()) {
             hideSecondaryFixedNav();
         } else if (window.pageYOffset < scrollPosition) {
@@ -156,7 +156,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (document.querySelector("body.plan-your-trip")) {
         window.addEventListener("resize", loadMapIfNecessary);
         document.querySelector(".map").addEventListener("click", enableMap);
-        window.addEventListener("scroll", positionSecondaryNav);
+        window.addEventListener("scroll", function(e) {
+            if (document.querySelector("#showList").checked) {
+                positionSecondaryFixedNav();
+            }
+        });
         document.querySelector("nav.secondary.fixed").addEventListener("click", displayClosedSecondaryFixedNav);
 
         utilities.toArray(document.querySelectorAll("nav.secondary a")).forEach(function(el) {
