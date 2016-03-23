@@ -35,7 +35,7 @@ footer p { margin:0; padding:0; }
 .jumpToPoint { visibility:hidden; position:absolute; top:-25px; left:0px; }
 .disabled iframe { pointer-events:none; }
 .hidden { display:none !important; }
-.invisible { opacity:0; z-index:-2; }
+.invisible { opacity:0 !important; z-index:-2 !important; }
 
 
 /* Typography */
