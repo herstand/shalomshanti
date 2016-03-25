@@ -28,7 +28,7 @@ if (isset($_GET['id']) &&
     $guestType = "";
 }
 if ($isGuest) {
-    $query = "SELECT `id`, `Save the date response`, `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country`, `Priority`, `Reception adult number` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
+    $query = "SELECT `id`, `Save the date response`, `Household name`, `Email addresses`, `Address line 1`, `Address line 2`, `City`, `State`, `Zip`, `Country`, `Priority`, `Reception adults invited` FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE `hashedId` = '{$safeLookupId}'";
     $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
     $row = $result->fetch_array(MYSQLI_ASSOC);
     if ($row == null) {
@@ -44,7 +44,7 @@ if ($isGuest) {
     $state = $row['State'];
     $zip = $row['Zip'];
     $country = $row['Country'];
-    $guestType = (isset($row['Reception adult number']) && intval($row['Reception adult number']) > 0)
+    $guestType = (isset($row['Reception adults invited']) && intval($row['Reception adults invited']) > 0)
         ? "cr" : "c";
 
     $ipAddress = isset($_SERVER['REMOTE_ADDR']) ? mysqli_real_escape_string($mysqli, $_SERVER['REMOTE_ADDR']) : "Unknown";
@@ -155,7 +155,7 @@ $content = array(
                                 }
                                 echo "</p>";
                             }
-                        ?>                        
+                        ?>
                         <p id="addEmail"><a href="#addEmail"><?php echo $content['addEmailPrompt']; ?></a></p>
                     </div>
                 </section>
