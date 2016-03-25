@@ -16,14 +16,15 @@
     main {
         width:100%;
         height:calc(100vh - 30px - 94px);
-        background: url(images/vidya-micah_home.jpg) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        overflow:hidden;
-        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
-        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+    }
+    100vh - 30px - 94px * (4032/2413)
+    main img {
+        display: block;
+        position: absolute;
+        left: -100%;
+        top: 0;
+        min-width: 100%;
+        height: 100%;
     }
     .darkener {
         width:100%;
@@ -63,23 +64,12 @@
 </style>
 </head>
 <body class="homepage">
-    <header>
-        <nav class="primary">
-            <ul>
-                <li class="homepage"><a rel="homepage" href="/"><img class="logo" src="icons/star.svg" /></a></li>
-                <li class="plan"><a class="typ-littleTitle" href="plan-your-trip">Plan Your Trip</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include "header.php"; ?>
     <main>
+        <img src="images/vidya-micah_home.jpg" />
         <div class="darkener"></div>
         <h1 class="typ-title">WE'RE GETTING MARRIED!</h1>
     </main>
-    <footer>
-        <div class='content'>
-            <header class="typ-littleTitle"><span class="names">Vidya &amp; Micah</span><span data-short="7·10·16" data-long="July 10, 2016" class="date">7·10·16</span><span data-short="Binghamton" data-long="Binghamton, NY" class="location">Binghamton</span></header>
-            <p class="typ-body extendedFooter">This website was designed and built by <span class="nobreak">the bride and groom.</span><br />Questions? Comments? Email us at <a href="mailto:wedding@shalomshanti.com">wedding@shalomshanti.com</a>.</p>
-        </div>
-    </footer>
+    <?php include "footer.php"; ?>
 </body>
 </html>

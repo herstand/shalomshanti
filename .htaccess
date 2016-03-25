@@ -22,6 +22,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|css|svg|woff|ttf|otf)$
 RewriteRule ^(.+)$ $1.php [L,QSA]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+).css$ $1.css.php [L,QSA]
+
 # Find php files
 RewriteRule ^saveTheDateEmailImage.png$ /shalomshanti/loadEmailImage.php [L,QSA]
 

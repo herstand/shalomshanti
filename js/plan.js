@@ -103,12 +103,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     function hideSecondaryFixedNav() {
         document.querySelector("nav.secondary.fixed").classList.add("invisible");
+        document.querySelector("nav.secondary.fixed").classList.add("hidden");
+        document.querySelector("nav.secondary.fixed").style.transition = "";
     }
     function displayClosedSecondaryFixedNav() {
-        document.querySelector("nav.secondary.fixed").style.top =
-            "-" +
-            document.querySelector("nav.secondary.fixed").getBoundingClientRect().height +
-            "px";
+        document.querySelector("nav.secondary.fixed").classList.remove("hidden");
+        if (document.querySelector("nav.secondary.fixed").getBoundingClientRect().height == 0) {
+            document.querySelector("nav.secondary.fixed").style.top = "-" +
+                document.querySelector("nav.secondary").getBoundingClientRect().height + 20
+                "px";
+        } else {
+            document.querySelector("nav.secondary.fixed").style.top = "-" +
+                document.querySelector("nav.secondary.fixed").getBoundingClientRect().height + "px";
+        }
         window.setTimeout(function(e){
             document.querySelector("nav.secondary.fixed").classList.remove("invisible");
         }, 801);
@@ -118,11 +125,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("nav.secondary.fixed").classList.remove("invisible");
     }
     function pageIsScrolledAboveSecondaryNav() {
-        return window.pageYOffset <
-            (
-                getElementTop(document.querySelector("nav.secondary:not(.fixed)")) +
-                document.querySelector("nav.secondary:not(.fixed)").getBoundingClientRect().height
-            );
+        var paddingTopOnFixedNav = 10;
+        return window.pageYOffset < (
+            getElementTop(document.querySelector("nav.secondary:not(.fixed)")) - paddingTopOnFixedNav
+        );
     }
     function positionSecondaryFixedNav(e) {
         if (pageIsScrolledAboveSecondaryNav()) {
