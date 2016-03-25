@@ -17,6 +17,7 @@
         width:100%;
         height:calc(100vh - 30px - 94px);
         overflow:hidden;
+        position:relative;
     }
     /* Not using background-image with size:cover because of mobile safari :( */
     main img {
@@ -52,13 +53,14 @@
     main h1.typ-title {
         color:white;
         text-align:center;
-        position:relative;
+        position:absolute;
         left:0;
-        top:75%;
+        bottom:10%;
         z-index:2;
         margin:0 auto;
         padding-left:6.67vw;
         padding-right:6.67vw;
+        width:100%;
     }
     @media (min-width:0px){
         main h1.typ-title { font-size:40px; line-height:50px; }
