@@ -16,15 +16,30 @@
     main {
         width:100%;
         height:calc(100vh - 30px - 94px);
+        overflow:hidden;
     }
-    100vh - 30px - 94px * (4032/2413)
+    /* Not using background-image with size:cover because of mobile safari :( */
     main img {
         display: block;
         position: absolute;
-        left: -100%;
         top: 0;
+        max-width: calc(1.67 * (100vh - 30px - 94px));
+        min-height: calc(100vh - 30px - 94px);
         min-width: 100%;
-        height: 100%;
+        left: 50%;
+        margin-left: calc(0px - 1.67 * (100vh - 30px - 94px)/2);
+    }
+    @media (min-width: 1090px) {
+        main img {
+            top:0;
+            left:0;
+            margin-left:0px;
+        }
+    }
+    @media (min-width: 1190px) {
+        main img {
+            top:-10%;
+        }
     }
     .darkener {
         width:100%;
