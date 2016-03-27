@@ -1,3 +1,4 @@
+<?php set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/"); ?>
 <!DOCTYPE html>
 <html lang="us-en">
 <head>
@@ -10,7 +11,7 @@
 <script async src="https://use.typekit.net/abm3mqd.js"></script>
 <script type='text/javascript' src="js/homepage.js?cache=2"></script>
 <link rel="stylesheet" type="text/css" href="css/plan.css?cache=2" />
-<?php include_once("ga.php"); ?>
+<?php include_once("templates/ga.php"); ?>
 <style type='text/css'>
     body { padding-bottom:200px; }
     main {
@@ -81,12 +82,12 @@
 </style>
 </head>
 <body class="homepage">
-    <?php include "header.php"; ?>
+    <?php include "templates/header.php"; ?>
     <main>
         <img src="images/vidya-micah_home.jpg" />
         <div class="darkener"></div>
         <h1 class="typ-title">WE'RE GETTING MARRIED!</h1>
     </main>
-    <?php include "footer.php"; ?>
+    <?php include "templates/footer.php"; ?>
 </body>
 </html>

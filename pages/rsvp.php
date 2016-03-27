@@ -1,3 +1,4 @@
+<?php set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/"); ?>
 <!DOCTYPE html>
 <html lang="us-en">
 <head>
@@ -13,8 +14,8 @@
 <?php include_once("ga.php"); ?>
 </head>
 <body class="rsvp">
-  <?php include "header.php"; ?>
+  <?php include "templates/header.php"; ?>
   Coming April 1, 2016...
-  <?php include "footer.php"; ?>
+  <?php include "templates/footer.php"; ?>
 </body>
 </html>
