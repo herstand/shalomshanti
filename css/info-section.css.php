@@ -38,7 +38,7 @@ body > main > section > hr { background-color:transparent; background-image:url(
   body > main > section > section > hr.subsection-divider { display:inline-block; margin:40px calc(16.67% - 90px); }
 }
 
-@media (min-width:<?php echo $desktop2; ?>) {
+@media (min-width:<?php echo $desktop2; ?>px) {
   /* Size */
   body > main > section > hr { height:40px; margin-bottom:60px; }
   body > main > section > section:not(:last-of-type) { margin-bottom:60px; }
