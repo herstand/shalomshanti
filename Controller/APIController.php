@@ -15,13 +15,13 @@ class APIController {
       } else {
         $data = call_user_func(array(get_called_class(), $func));
       }
-      echo json_encode(
+      return json_encode(
         array(
           "success" => true,
           "data" => $data
       );
     } catch (Exception $e) {
-      echo self::getError($e->getMessage());
+      return self::getError($e->getMessage());
     }
   }
 
@@ -36,16 +36,26 @@ class APIController {
 
   // Action
   private static function getUser() {
-    echo json_encode(Session::getSession()->user);
+    if (isset(Session::getSession()->user)) {
+      return json_encode(Session::getSession()->user);
+    } else {
+      header('HTTP/1.1 401 Unauthorized');
+      throw new Exception("Not logged in.");
+    }
   }
 
   // Action
   private static function login($password) {
     $session = Session::getSession();
 
-    $session->setUser(
-      GuestService::getInstance()->getUserData($password)
-    );
+    try {
+      $session->setUser(
+        GuestService::getInstance()->getUserData($password)
+      );
+    } catch (Exception $e) {
+      header('HTTP/1.1 401 Unauthorized');
+      throw new Exception("Unknown password.");
+    }
 
     return array(
       "user" => $session->user
