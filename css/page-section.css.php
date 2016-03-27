@@ -18,3 +18,7 @@ body > main > section > hr { background-color:transparent; background-image:url(
   /* Size */
   body > main > section { padding-left:4vw; padding-right:4vw; }
 }
+
+@media (min-width:<?php echo $desktop2; ?>px) {
+  body > main > section > hr { height:40px; }
+}

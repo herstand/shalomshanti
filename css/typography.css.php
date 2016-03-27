@@ -11,7 +11,7 @@
     .typ-littleTitle { font-size:15px; }
 }
 
-@media (min-width:<?php echo $desktop2; ?>) {
+@media (min-width:<?php echo $desktop2; ?>px) {
   /* Size */
   .typ-title { font-size:36px; line-height:50px; letter-spacing:2px; }
 }
