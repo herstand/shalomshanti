@@ -11,5 +11,5 @@ body > header nav.primary ul li a img { height:50px; }
 @media (min-width:<?php echo $mobile3; ?>px) {
   body > header nav.primary ul li { padding-top:43px; }
   body > header nav.primary ul li.homepage { left:40px; }
-  body > header nav.primary ul li img { height:70px; }
+  body > header nav.primary ul li a img { height:70px; }
 }
