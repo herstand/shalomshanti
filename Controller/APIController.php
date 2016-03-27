@@ -4,11 +4,11 @@ require_once $_SERVER['DOCUMENT_ROOT']."/Service/GuestService.php";
 
 class APIController {
 
-  public static function getUser() {
-    echo json_encode($_SESSION['user_session']->user);
+  public static function decodePOSTedJSON() {
+    return json_decode(file_get_contents('php://input'), true);
   }
 
-  private static function runAction($func, $data) {
+  public static function runAction($func, $data) {
     try {
       if (isset($data)) {
         $data = call_user_func(array(get_called_class(), $func), $data);
@@ -21,17 +21,26 @@ class APIController {
           "data" => $data
       );
     } catch (Exception $e) {
-      echo json_encode(
-        array(
-          "success" => false,
-          "message" => $e->getMessage()
-        )
-      );
+      echo self::getError($e->getMessage());
     }
   }
 
+  public static function getError($msg) {
+    return json_encode(
+      array(
+        "success" => false,
+        "message" => $msg
+      )
+    );
+  }
+
   // Action
-  public static function login($password) {
+  private static function getUser() {
+    echo json_encode(Session::getSession()->user);
+  }
+
+  // Action
+  private static function login($password) {
     $session = Session::getSession();
 
     $session->setUser(
@@ -44,28 +53,29 @@ class APIController {
   }
 
   // Action
-  public static function isLoggedIn() {
+  private static function isLoggedIn() {
     return array(
       "isLoggedIn" => isset(Session::getSession()->user)
     );
   }
 
   // Action
-  public static function getEvents() {
+  private static function getEvents() {
     return array(
       "events" => Session::getSession()->user->events
     );
   }
 
   // Action
-  public static function getRSVP() {
+  private static function getRSVP() {
     return array(
       "rsvp" => Session::getSession()->user->rsvp
     );
   }
 
-  public static function saveRSVPForUser($rsvp_array) {
-    $rsvp_array = json_decode($rsvp_array);
+  // Action
+  private static function saveRSVPForUser($rsvp_array) {
+    $rsvp_array = json_decode($rsvp_array, true);
     $rsvpEvents = array();
     foreach ($rsvp_array["rsvpEvents"] as $rsvpEvent_array) {
       $rsvpEvents[] = RSVPEvent::createRSVPEvent($rsvpEvent_array);
@@ -76,7 +86,7 @@ class APIController {
         new RSVP($rsvpEvents)
       )
     );
-    return self::runAction("getRSVP");
+    return getRSVP();
   }
 
 }

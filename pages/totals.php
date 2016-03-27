@@ -1,8 +1,4 @@
-<?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
+<?php set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,13 +92,12 @@ error_reporting(E_ALL);
 <h1>Wedding Guests</h1>
 <input id='invited' name='nametype' type='radio' /><label for="invited">Invited</label><input id='expected' name='nametype' type='radio' checked /><label for="expected">Expected</label><br />
 <?php
-
-require_once $_SERVER['DOCUMENT_ROOT']."/shalomshanti/db_access.php";
+require_once "db_access.php";
 echo "<div id='invitedguests'>";
-include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/invited.php";
+include "templates/invited.php";
 echo "</div>";
 echo "<div id='expectedguests'>";
-include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/expected.php";
+include "templates/expected.php";
 echo "</div>";
 ?>
 </main>
