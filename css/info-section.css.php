@@ -1,8 +1,10 @@
 /* Colors */
 body > main > section > section > header > hr { background-color:<?php echo $blue; ?>; }
 body > main > section > section > hr.mobileOnly { background-color:<?php echo $grey; ?>; }
+body > main > section > section > hr.subsection-divider { background-color:<?php echo $grey; ?>; }
 
 /* Size */
+body > main > section > hr { margin-bottom:50px; height:30px; background-size:100% 100%; background-position:center center; }
 body > main > section > section { margin:0 auto; }
 body > main > section > section:not(:last-of-type) { margin-bottom:50px; }
 body > main > section > section > header p { max-width:400px; }
@@ -12,6 +14,9 @@ body > main > section > section > header img.titleImage { width:100px; margin-bo
 body > main > section > section > header > p { margin:0 auto; padding-bottom:40px; }
 body > main > section > section > hr.subsection-divider { display:none; }
 body > main > section > section > hr.mobileOnly { margin:0 auto 40px auto; }
+
+/* Content & Animation */
+body > main > section > hr { background-color:transparent; background-image:url("/icons/end-section.svg"); background-repeat:no-repeat; }
 
 @media (min-width:<?php echo $mobile3; ?>px) {
     /* Size */
@@ -35,6 +40,7 @@ body > main > section > section > hr.mobileOnly { margin:0 auto 40px auto; }
 
 @media (min-width:<?php echo $desktop2; ?>) {
   /* Size */
+  body > main > section > hr { height:40px; margin-bottom:60px; }
   body > main > section > section:not(:last-of-type) { margin-bottom:60px; }
   body > main > section > section > header img.titleImage { margin-bottom:40px; }
 }
