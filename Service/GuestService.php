@@ -1,15 +1,18 @@
 <?php
+set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 
-require_once $_SERVER['DOCUMENT_ROOT']."/db_access.php";
-require_once $_SERVER['DOCUMENT_ROOT']."/Service/PasswordHash.php";
+require_once "db_access.php";
+require_once "Service/DBService.php";
+require_once "Service/PasswordHash.php";
 
-require_once $_SERVER['DOCUMENT_ROOT']."/Model/Attendant.php";
-require_once $_SERVER['DOCUMENT_ROOT']."/Model/User.php";
-require_once $_SERVER['DOCUMENT_ROOT']."/Model/RSVPEvent.php";
+require_once "Model/Attendant.php";
+require_once "Model/User.php";
+require_once "Model/RSVPEvent.php";
+
 
 class GuestService extends DBService {
-  public $singleton;
-  private $mysqli;
+  public static $singleton;
+  protected $mysqli;
 
   public function __construct() {
     global $mysqli;
@@ -17,18 +20,26 @@ class GuestService extends DBService {
   }
 
   public static function getInstance() {
-    if (!isset($this->singleton)) {
-      $this->singleton = new GuestService();
+    if (!isset(self::$singleton)) {
+      self::$singleton = new GuestService();
     }
-    return $this->singleton;
+    return self::$singleton;
   }
 
   // Call with GuestService::getInstance()->getUserData($password)
   public function getUserData($password) {
+    $password = PasswordHash::hashPassword(
+      $this->validateInput(
+        "guests",
+        $password,
+        "password"
+      )
+    );
+
     return $this->loadUser(
       $this->query(
         DBService::SELECT,
-        "guest",
+        "guests",
         array(
           "COLUMNS" => array(
             "`Household name`",
@@ -39,15 +50,9 @@ class GuestService extends DBService {
             "`Reception attendants`",
             "`Havdalah attendants`"
           ),
-          "WHERE" => "`password` = ".PasswordHash::hashPassword(
-            $this->validateInput(
-              "guest"
-              $password,
-              "password"
-            )
-          )
+          "WHERE" => "`password` = '".$password."'"
         )
-      );
+      )
     );
   }
 
@@ -149,7 +154,15 @@ class GuestService extends DBService {
   private function loadAttendants($attendant_ids) {
     $attendants = array();
     $attendants[0] = array();
-    foreach ($attendant_ids as $id) {
+    foreach (
+      array_map(
+        'intval',
+        explode(
+          ",",
+          $attendant_ids
+        )
+      ) as $id
+    ) {
       $attendant = $this->query(
         DBService::SELECT,
         "attendants",

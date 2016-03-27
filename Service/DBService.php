@@ -1,22 +1,18 @@
 <?php
 
 abstract class DBService {
-  public static const SELECT = 1;
-  public static const INSERT = 2;
-  public static const UPDATE = 3;
-  abstract public static function getInstance();
+  const SELECT = 1;
+  const INSERT = 2;
+  const UPDATE = 3;
 
   protected function query($queryType, $table, $data) {
     switch ($queryType) {
       case self::SELECT:
-        $this->runSelect($table, $data);
-        break;
+        return $this->runSelect($table, $data);
       case self::INSERT:
-        $this->runInsert($table, $data);
-        break;
+        return $this->runInsert($table, $data);
       case self::UPDATE:
-        $this->runUpdate($table, $data);
-        break;
+        return $this->runUpdate($table, $data);
     }
   }
 
@@ -24,12 +20,11 @@ abstract class DBService {
     Run select query, expecting single row response
   */
   private function runSelect($table, $data) {
-    $query = "SELECT ".implode(", ", $data['COLUMNS'])." FROM {$table}";
+    $query = "SELECT ".implode(", ", $data['COLUMNS'])." FROM {$table} ";
 
     if (isset($data['WHERE'])) {
      $query .=  "WHERE {$data['WHERE']}";
     }
-
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
 
     return $result->fetch_array(MYSQLI_ASSOC);
@@ -56,18 +51,19 @@ abstract class DBService {
   }
 
   protected function validateInput($table, $input, $column) {
-    $query = "SELECT type, len
+    $query = "SELECT `DATA_TYPE`, `CHARACTER_MAXIMUM_LENGTH`
       FROM INFORMATION_SCHEMA.COLUMNS
       WHERE table_name = '{$table}' AND
       COLUMN_NAME = '{$column}'";
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
     $row = $result->fetch_array(MYSQLI_ASSOC);
-
-    if (inputIsValid($input, $row->type, $row->len)) {
-      $cleaner = "clean_{$row->type}";
+    if ($this->inputIsValid($input, $row['DATA_TYPE'], $row['CHARACTER_MAXIMUM_LENGTH'])) {
+      $cleaner = "clean_{$row['DATA_TYPE']}";
       return $this->$cleaner($input);
     } else {
-      throw new Exception("Input \"{$input}\" is not valid for column `{$column}`.");
+      throw new Exception(
+        "Input [{$input}] is not valid for column `{$column}` of type {$row['DATA_TYPE']}."
+      );
     }
   }
 
@@ -95,13 +91,13 @@ abstract class DBService {
     return (bool)$input;
   }
   protected function clean_string($input) {
-    return $this->mysqli::real_escape_string($input);
+    return $this->mysqli->real_escape_string($input);
   }
   protected function clean_varchar($input) {
-    return clean_string($input);
+    return $this->clean_string($input);
   }
   protected function clean_text($input) {
-    return clean_string($input);
+    return $this->clean_string($input);
   }
 
 }

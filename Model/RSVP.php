@@ -1,6 +1,7 @@
 <?php
+set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 
-require_once $_SERVER['DOCUMENT_ROOT']."/Model/RSVPEvent.php";
+require_once "Model/RSVPEvent.php";
 
 class RSVP {
   public $rsvpEvents;
