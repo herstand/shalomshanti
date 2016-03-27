@@ -1,5 +1,5 @@
 <?php
-  class Session {
+  class SessionController {
     public static $singleton;
     public $user,
       $session_start,
@@ -15,9 +15,9 @@
 
     public static function getSession() {
       if (!isset($_SESSION['user_session'])) {
-        $this->singleton = new Session();
+        self::$singleton = new SessionController();
       }
-      return $this->singleton;
+      return self::$singleton;
     }
 
     public function setUser($user) {

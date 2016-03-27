@@ -1,8 +1,8 @@
 <?php
+set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 
-require_once $_SERVER['DOCUMENT_ROOT']."/Model/GuestService.php";
-require_once $_SERVER['DOCUMENT_ROOT']."/Model/RSVP.php";
-require_once $_SERVER['DOCUMENT_ROOT']."/Model/Events.php";
+require_once "Service/GuestService.php";
+require_once "Model/RSVP.php";
 
 class User {
   public $id,
