@@ -23,7 +23,7 @@ hr { border:none; height:1px; width:170px; margin:0 auto; padding:0; }
 footer p { margin:0; padding:0; }
 .jumpToPoint { visibility:hidden; position:absolute; top:-25px; left:0px; }
 .disabled iframe { pointer-events:none; }
-.hidden { display:none !important; }
+.templates, .hidden { display:none !important; }
 .invisible { opacity:0 !important; }
 
 @media (min-width:<?php echo $mobile3; ?>px) {

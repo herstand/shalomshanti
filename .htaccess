@@ -17,6 +17,14 @@ RewriteEngine on
 RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
 RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
 
+# Find apis
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^API/(.+)$ /shalomshanti/API/$1.php [L,QSA]
+
+# Find templates
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^templates/(.+)$ /shalomshanti/templates/$1.php [L,QSA]
+
 # Find pages
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|jpeg|png|svg|woff|ttf|otf)$

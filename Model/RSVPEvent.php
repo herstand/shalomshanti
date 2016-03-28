@@ -9,6 +9,7 @@ class RSVPEvent {
     $attendants;
 
   public function __construct($event_name, $num_invited, $attendants) {
+    $this->event_name = $event_name;
     $this->num_invited = $num_invited;
     $this->attendants = $attendants;
   }

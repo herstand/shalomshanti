@@ -26,7 +26,9 @@ abstract class DBService {
      $query .=  "WHERE {$data['WHERE']}";
     }
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
-
+    if ($result->num_rows === 0) {
+      throw new Exception();
+    }
     return $result->fetch_array(MYSQLI_ASSOC);
   }
 

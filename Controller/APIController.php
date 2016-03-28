@@ -57,7 +57,7 @@ class APIController {
       );
     } catch (Exception $e) {
       header('HTTP/1.1 401 Unauthorized');
-      throw new Exception($e->getMessage());
+      throw new Exception("Unknown password.");
     }
 
     return array(

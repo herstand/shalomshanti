@@ -9,7 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
   echo APIController::runAction(
     "login",
     base64_decode(
-      $_POST["cGFzc3dvcmQ="] // cGFzc3dvcmQ= is "password" in base64-encoding
+      // cGFzc3dvcmQ= is "password" in base64-encoding
+      APIController::decodePOSTedJSON()["cGFzc3dvcmQ="]
     )
   );
 } else {

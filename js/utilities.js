@@ -2,6 +2,21 @@ var utilities = {
     toArray : function(nodeList) {
           return Array.prototype.slice.call(nodeList);
     },
+    ajaxJson : function(url, callback, method, data) {
+      var request = new XMLHttpRequest();
+      request.onload = function(){
+        if (request.status === 200) {
+          callback(request.responseText);
+        }
+      };
+      request.open(method, url, true);
+      if (data) {
+        request.setRequestHeader("Content-type", "application/json");
+        request.send(data);
+      } else {
+        request.send();
+      }
+    },
     ajax : function(url, callback, method, data) {
       var request = new XMLHttpRequest();
       request.onload = function(){
@@ -12,10 +27,10 @@ var utilities = {
       request.open(method, url, true);
       request.setRequestHeader("SS_EDIT_TIMESTAMP", Date.now());
       if (data) {
-            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            request.send(data);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send(data);
       } else {
-          request.send();
+        request.send();
       }
     },
     getText : function(el) {
@@ -52,12 +67,12 @@ var utilities = {
     },
     isAlphaNumeric : function (e) {
         return (
-                e.which > 47 && 
+                e.which > 47 &&
                 e.which < 58
             )
             ||
             (
-                e.which > 64 && 
+                e.which > 64 &&
                 e.which < 91 &&
                 !e.metaKey &&
                 !e.ctrlKey
@@ -65,7 +80,7 @@ var utilities = {
             )
             ||
             (
-                e.which > 95 && 
+                e.which > 95 &&
                 e.which < 106
             );
     }

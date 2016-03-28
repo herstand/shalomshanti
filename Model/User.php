@@ -10,7 +10,8 @@ class User {
     $rsvp,
     $events;
 
-  public function __construct($household_name, $rsvp, $events) {
+  public function __construct($id, $household_name, $rsvp, $events) {
+    $this->id = $id;
     $this->household_name = $household_name;
     $this->rsvp = $rsvp;
     $this->events = $events;
