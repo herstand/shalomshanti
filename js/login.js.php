@@ -25,8 +25,11 @@
 
   function deselectLoginForm(e) {
     if (
-      e.relatedTarget !== document.querySelector("form.login .login input") &&
-      e.relatedTarget !== document.querySelector(".login button")
+      e.relatedTarget == null ||
+      (
+        e.relatedTarget !== document.querySelector("form.login .login input") &&
+        e.relatedTarget !== document.querySelector(".login button")
+      )
     ) {
       document.querySelector("form.login input").classList.remove("selected");
     }

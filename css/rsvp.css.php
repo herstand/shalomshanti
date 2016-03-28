@@ -23,4 +23,8 @@ include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/footer.css.php";
 
 .intro .daysRemaining { margin-bottom:20px; }
 .intro .householdName { margin-bottom:20px; }
-.intro { margin-bottom:50px; }
+.intro { margin:0 auto 50px auto; max-width:400px; }
+
+@media (min-width:<?php echo $ipadPortrait; ?>px) {
+  .intro { max-width:620px; }
+}

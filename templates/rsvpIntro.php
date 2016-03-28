@@ -16,7 +16,7 @@ $daysRemaining = (
   0 :
   ceil((mktime(0, 0, 0, 5, 5, 2016) - time())/86400);
 ?>
-<h1 class="typ-page-title">RSVP</h1>
+<h1 class="typ-pageTitle">RSVP</h1>
 <p class="daysRemaining typ-caption"><?php echo $daysRemaining; ?> Days Remaining</p>
 <p class="householdName typ-body"><em><?php echo $session->user->household_name; ?></em></p>
 <p class="typ-body"><?php echo $message; ?></p>
