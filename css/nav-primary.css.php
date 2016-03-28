@@ -4,7 +4,7 @@
     require_once "Controller/SessionController.php";
     $session = SessionController::getSession();
   }
-  if ($session->user->rsvp->hasRSVPed) {
+  if (isset($session->user) && $session->user->rsvp->hasRSVPed) {
     $rsvpColor = $green;
   } else {
     $rsvpColor = $orange;

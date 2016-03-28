@@ -11,6 +11,8 @@ form.login input.selected + button svg .fill { fill:<?php echo $orange; ?>; }
 @media (min-width:<?php echo $mobile3; ?>px) {
   /* Size */
   body > header { height:110px; width:100%; padding-left:40px; padding-right:40px; }
+  form.login input { height:40px; width:300px; }
+  form.login button svg { height:40px; width:40px; }
 }
 @media (min-width:<?php echo $ipadLandscape; ?>px) {
   /* Size */

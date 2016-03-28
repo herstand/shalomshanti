@@ -158,9 +158,9 @@ class GuestService extends DBService {
 
   private function loadRSVP($guest) {
     $rsvpEvents = array();
-    createRSVPEvent($rsvpEvents, $guest, "Ceremony");
-    createRSVPEvent($rsvpEvents, $guest, "Reception");
-    createRSVPEvent($rsvpEvents, $guest, "Havdalah");
+    $this->createRSVPEvent($rsvpEvents, $guest, "Ceremony");
+    $this->createRSVPEvent($rsvpEvents, $guest, "Reception");
+    $this->createRSVPEvent($rsvpEvents, $guest, "Havdalah");
     return new RSVP($guest['Has RSVPed'], $rsvpEvents);
   }
 

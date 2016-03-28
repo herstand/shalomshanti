@@ -3,7 +3,7 @@
   <button class="close">x</button>
   <h4 class="typ-littleTitle">Welcome!</h4>
   <p class="typ-body">Welcome to the guests-only area of our website! You’re logged in as:</p>
-  <p class="typ-subsection-header"><em class="household_name"></em></p>
+  <p class="householdName typ-subsection-header"><em class="household_name"></em></p>
   <p class="typ-body">We’ve put together lots of information for you to browse. Please be sure to RSVP by May 5.</p>
   <a href="/rsvp" class="typ-littleTitle rsvp">RSVP Now</a>
   </div>

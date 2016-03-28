@@ -39,7 +39,12 @@ RewriteRule ^(.+).js$ $1.js.php [L,QSA]
 # Find php files
 RewriteRule ^saveTheDateEmailImage.png$ /shalomshanti/loadEmailImage.php [L,QSA]
 
-# Cache images
+# Cache images for a year
 <FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif|svg)$">
 Header set Cache-Control "max-age=31536050"
+</FilesMatch>
+
+# Cache css & js for a day
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "max-age=86400"
 </FilesMatch>
