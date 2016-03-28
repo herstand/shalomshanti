@@ -40,7 +40,7 @@ class APIController {
   // Action
   private static function getUser() {
     if (isset(SessionController::getSession()->user)) {
-      return json_encode(SessionController::getSession()->user);
+      return SessionController::getSession()->user;
     } else {
       header('HTTP/1.1 401 Unauthorized');
       throw new Exception("Not logged in.");
@@ -96,7 +96,7 @@ class APIController {
     SessionController::getSession()->saveRSVP(
       GuestService::getInstance()->saveRSVP(
         self::getUser()->id,
-        new RSVP($rsvpEvents)
+        new RSVP($rsvp_array["Has RSVPed"], $rsvpEvents)
       )
     );
     return getRSVP();

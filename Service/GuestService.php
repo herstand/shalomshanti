@@ -44,6 +44,7 @@ class GuestService extends DBService {
           "COLUMNS" => array(
             "`hashedId` as `id`",
             "`Household name`",
+            "`Has RSVPed`",
             "(`Ceremony adults invited` + `Ceremony children invited`) as `Ceremony invited`",
             "(`Reception adults invited` + `Reception children invited`) as `Reception invited`",
             "(`Havdalah adults invited` + `Havdalah children invited`) as `Havdalah invited`",
@@ -143,34 +144,30 @@ class GuestService extends DBService {
     );
   }
 
+  private function createRSVPEvent(&$rsvpEvents, $guest, $eventName) {
+    if (isset($guest["{$eventName} invited"]) && $guest["{$eventName} invited"] > 0) {
+      return new RSVPEvent(
+        $eventName,
+        $guest[$eventName.' invited'],
+        ($guest['Has RSVPed'] ?
+          $this->loadAttendants($guest[$eventName.' attendants']) :
+          array())
+      );
+    }
+  }
+
   private function loadRSVP($guest) {
     $rsvpEvents = array();
-    if (isset($guest['Ceremony invited']) && $guest['Ceremony invited'] > 0) {
-      $rsvpEvents[] = array("Ceremony" => new RSVPEvent(
-        "Ceremony",
-        $guest['Ceremony invited'],
-        $this->loadAttendants($guest['Ceremony attendants'])
-      ));
-    }
-    if (isset($guest['Reception invited']) && $guest['Reception invited'] > 0) {
-      $rsvpEvents[] = array("Reception" => new RSVPEvent(
-        "Reception",
-        $guest['Reception invited'],
-        $this->loadAttendants($guest['Reception attendants'])
-      ));
-    }
-    if (isset($guest['Havdalah invited']) && $guest['Havdalah invited'] > 0) {
-      $rsvpEvents[] = array("Havdalah" => new RSVPEvent(
-        "Havdalah",
-        $guest['Havdalah invited'],
-        $this->loadAttendants($guest['Havdalah attendants'])
-      ));
-    }
-
-    return new RSVP($rsvpEvents);
+    createRSVPEvent($rsvpEvents, $guest, "Ceremony");
+    createRSVPEvent($rsvpEvents, $guest, "Reception");
+    createRSVPEvent($rsvpEvents, $guest, "Havdalah");
+    return new RSVP($guest['Has RSVPed'], $rsvpEvents);
   }
 
   private function loadAttendants($attendant_ids) {
+    if ($attendant_ids === null) {
+      return array();
+    }
     $attendants = array();
     foreach (
       array_map(

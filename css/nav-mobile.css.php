@@ -10,7 +10,7 @@ nav.mobile { margin:0 auto; }
 nav.mobile label { display:inline-block; text-align:center; line-height:30px; }
 
 /* Size */
-nav.mobile { width:150px; height:30px; margin:20px auto 30px auto; }
+nav.mobile { width:150px; height:30px; margin:0px auto 30px auto; }
 nav.mobile label { border:none; height:100%; width:50%; }
 
 /* Content & Animation */
