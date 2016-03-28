@@ -1,4 +1,9 @@
 <?php
+set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
+if (!isset($session)) {
+  require_once "Controller/SessionController.php";
+  $session = SessionController::getSession();
+}
 header("Content-type: text/css; charset: UTF-8");
 
 include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/variables.php";
@@ -11,7 +16,11 @@ include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/header.css.php";
 include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/modal.css.php";
 include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/nav-mobile.css.php";
 include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/page-section.css.php";
-include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/info-section.css.php";
 include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/article.css.php";
 include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/footer.css.php";
+
 ?>
+
+.intro .daysRemaining { margin-bottom:20px; }
+.intro .householdName { margin-bottom:20px; }
+.intro { margin-bottom:50px; }

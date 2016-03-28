@@ -1,7 +1,12 @@
 <?php
 set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
-require_once "Controller/SessionController.php";
-$session = SessionController::getSession();
+if (!isset($session)) {
+  require_once "Controller/SessionController.php";
+  $session = SessionController::getSession();
+}
+if (!isset($session->user)) {
+  header("Location: /");
+}
 ?>
 <!DOCTYPE html>
 <html lang="us-en">
@@ -20,7 +25,9 @@ $session = SessionController::getSession();
 </head>
 <body class="rsvp">
   <header><?php include "templates/header.php"; ?></header>
-  Welcome <em><?php echo $session->user->household_name; ?></em>!
+  <main>
+    <section class="intro"><?php include "templates/rsvpIntro.php"; ?></section>
+  </main>
   <?php include "templates/footer.php"; ?>
   <div class="templates"><?php include "templates/loginModal.php"; ?></div>
 </body>

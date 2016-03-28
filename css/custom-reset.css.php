@@ -13,8 +13,11 @@ nav > ul li:last-child { margin-right:0px; }
 nav a:hover { border-bottom:1px solid <?php echo $blue; ?>; }
 nav a.image:hover { border-bottom:0; }
 main { position:relative; }
+button { background:none; border:none; padding:0; }
+button:hover { cursor:pointer; }
 section { position:relative; text-align:center; }
 iframe { border:none; }
+p { margin:0; }
 hr { border:none; height:1px; width:170px; margin:0 auto; padding:0; }
 .mobileHide { display:none; }
 .mobileOnly { display:block; }

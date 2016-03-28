@@ -20,4 +20,5 @@ $yellow = "#FFDB00";
 
 /* Tertiary colors */
 $lightgrey = "#F1F1F1";
+$green = "#8AC43F"
 ?>

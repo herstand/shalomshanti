@@ -1,7 +1,9 @@
 <?php
 set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
-require_once "Controller/SessionController.php";
-$session = SessionController::getSession();
+if (!isset($session)) {
+  require_once "Controller/SessionController.php";
+  $session = SessionController::getSession();
+}
 ?>
 (function header() {
   <?php
