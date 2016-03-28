@@ -1,4 +1,8 @@
-<?php set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/"); ?>
+<?php
+set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
+require_once "Controller/SessionController.php";
+$session = SessionController::getSession();
+?>
 <!DOCTYPE html>
 <html lang="us-en">
 <head>
@@ -7,7 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="icons/favicon.png">
 <link rel="mask-icon" href="icons/star.svg">
-<script src="js/utilities.js"></script>
+<script type='text/javascript' src="js/utilities.js"></script>
+<script type='text/javascript' src="View/ViewUtilities.js"></script>
 <script async src="https://use.typekit.net/abm3mqd.js"></script>
 <script type='text/javascript' src="js/homepage.js?cache=2"></script>
 <link rel="stylesheet" type="text/css" href="css/plan.css?cache=2" />
@@ -82,12 +87,13 @@
 </style>
 </head>
 <body class="homepage">
-    <?php include "templates/header.php"; ?>
+    <header><?php include "templates/header.php"; ?></header>
     <main>
         <img src="images/vidya-micah_home.jpg" />
         <div class="darkener"></div>
         <h1 class="typ-title">WE'RE GETTING MARRIED!</h1>
     </main>
     <?php include "templates/footer.php"; ?>
+    <div class="templates"><?php include "templates/loginModal.php"; ?></div>
 </body>
 </html>

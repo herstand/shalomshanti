@@ -42,6 +42,7 @@ class GuestService extends DBService {
         "guests",
         array(
           "COLUMNS" => array(
+            "`hashedId` as `id`",
             "`Household name`",
             "(`Ceremony adults invited` + `Ceremony children invited`) as `Ceremony invited`",
             "(`Reception adults invited` + `Reception children invited`) as `Reception invited`",
@@ -95,14 +96,14 @@ class GuestService extends DBService {
   }
 
   private function updateAttendantsFor($rsvpEvent) {
-    foreach ($rsvpEvent->attendants as $id => $new_attendant) {
-      if ($id === 0) continue;
-      $this->updateAttendant($id, $new_attendant);
+    foreach ($rsvpEvent->attendants as $attendant) {
+      if ($attendant->id === 0) continue;
+      $this->updateAttendant($attendant->id, $attendant->name);
     }
   }
 
-  private function updateAttendant($id, $new_attendant) {
-    $new_attendant_name = $this->validateInput("attendants", $new_attendant->name, "name");
+  private function updateAttendant($attendant_id, $new_attendant_name) {
+    $new_attendant_name = $this->validateInput("attendants", $new_attendant_name, "name");
     $this->query(
       DBService::UPDATE,
       "attendants",
@@ -110,7 +111,7 @@ class GuestService extends DBService {
         "SET" => array(
           "name" => $new_attendant_name
         ),
-        "WHERE" => "`id` = {$id}"
+        "WHERE" => "`id` = {$attendant_id}"
       )
     );
   }
@@ -135,6 +136,7 @@ class GuestService extends DBService {
 
   private function loadUser($guest) {
     return new User(
+      $guest['id'],
       $guest['Household name'],
       $this->loadRSVP($guest),
       $this->loadEvents($guest)
@@ -142,18 +144,34 @@ class GuestService extends DBService {
   }
 
   private function loadRSVP($guest) {
-    return new RSVP(
-      array(
-        "Ceremony" => new RSVPEvent("Ceremony", $guest['Ceremony invited'], $this->loadAttendants($guest['Ceremony attendants'])),
-        "Reception" => new RSVPEvent("Reception", $guest['Reception invited'], $this->loadAttendants($guest['Reception attendants'])),
-        "Havdalah" => new RSVPEvent("Havdalah", $guest['Havdalah invited'], $this->loadAttendants($guest['Havdalah attendants']))
-      )
-    );
+    $rsvpEvents = array();
+    if (isset($guest['Ceremony invited']) && $guest['Ceremony invited'] > 0) {
+      $rsvpEvents[] = array("Ceremony" => new RSVPEvent(
+        "Ceremony",
+        $guest['Ceremony invited'],
+        $this->loadAttendants($guest['Ceremony attendants'])
+      ));
+    }
+    if (isset($guest['Reception invited']) && $guest['Reception invited'] > 0) {
+      $rsvpEvents[] = array("Reception" => new RSVPEvent(
+        "Reception",
+        $guest['Reception invited'],
+        $this->loadAttendants($guest['Reception attendants'])
+      ));
+    }
+    if (isset($guest['Havdalah invited']) && $guest['Havdalah invited'] > 0) {
+      $rsvpEvents[] = array("Havdalah" => new RSVPEvent(
+        "Havdalah",
+        $guest['Havdalah invited'],
+        $this->loadAttendants($guest['Havdalah attendants'])
+      ));
+    }
+
+    return new RSVP($rsvpEvents);
   }
 
   private function loadAttendants($attendant_ids) {
     $attendants = array();
-    $attendants[0] = array();
     foreach (
       array_map(
         'intval',
@@ -178,7 +196,7 @@ class GuestService extends DBService {
           )
         )
       );
-      $attendants[$attendant['id']] = new Attendant(
+      $attendants[] = new Attendant(
         $attendant['id'],
         $attendant['name']
       );
