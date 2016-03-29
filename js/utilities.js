@@ -7,6 +7,8 @@ var utilities = {
       request.onload = function(){
         if (request.status === 200) {
           callback(request.responseText);
+        } else if (request.status === 401) {
+          alert("Sorry, that code does not correspond with a guest for our wedding. Please email wedding@shalomshanti.com if you are having trouble logging in.");
         }
       };
       request.open(method, url, true);

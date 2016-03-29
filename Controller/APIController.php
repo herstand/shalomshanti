@@ -24,6 +24,7 @@ class APIController {
         )
       );
     } catch (Exception $e) {
+
       return self::getError($e->getMessage());
     }
   }

@@ -1,5 +1,7 @@
 <?php
 set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
+require_once "templates/rsvpArticle.php";
+
 if (!isset($session)) {
   require_once "Controller/SessionController.php";
   $session = SessionController::getSession();
@@ -26,7 +28,16 @@ if (!isset($session->user)) {
 <body class="rsvp">
   <header><?php include "templates/header.php"; ?></header>
   <main>
-    <section class="intro"><?php include "templates/rsvpIntro.php"; ?></section>
+    <article class="intro"><?php include "templates/rsvpIntro.php"; ?></article>
+    <?php if (in_array("Ceremony", $session->user->events)) { ?>
+    <article class="ceremony"><?php echo createRSVPArticle("Ceremony"); ?></article>
+    <?php } ?>
+    <?php if (in_array("Reception", $session->user->events)) { ?>
+    <article class="reception"><?php echo createRSVPArticle("Reception"); ?></article>
+    <?php } ?>
+    <?php if (in_array("Havdalah", $session->user->events)) { ?>
+    <article class="havdalah"><?php echo createRSVPArticle("Havdalah"); ?></article>
+    <?php } ?>
   </main>
   <?php include "templates/footer.php"; ?>
   <div class="templates"><?php include "templates/loginModal.php"; ?></div>
