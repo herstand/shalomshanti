@@ -1,6 +1,11 @@
 <?php
 set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 require_once "Controller/APIController.php";
+require_once "Controller/SessionController.php";
+
+if (isset(SessionController::getSession()->user)) {
+  SessionController::resetSession();
+}
 header("Content-type: text/json");
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {

@@ -27,6 +27,15 @@
       return self::$singleton;
     }
 
+    public static function resetSession() {
+      if (session_status() === PHP_SESSION_NONE) {
+        date_default_timezone_set("America/New_York");
+        session_start();
+      }
+      self::$singleton = new SessionController();
+      return self::$singleton;
+    }
+
     public function setUser($user) {
       $this->user = $user;
     }
