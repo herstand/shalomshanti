@@ -11,6 +11,7 @@ if (!isset($session->user)) {
 <!DOCTYPE html>
 <html lang="us-en">
 <head>
+<title>Shalom Shanti: Vidya &amp; Micah's Wedding</title>
 <meta charset="utf-8">
 <meta title="Author" content="Vidya Santosh and Micah Herstand">
 <meta name="viewport" content="width=device-width, initial-scale=1">

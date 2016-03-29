@@ -2,6 +2,7 @@
 set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 
 require_once "Service/GuestService.php";
+require_once "Service/LoginAttemptService.php";
 require_once "Controller/SessionController.php";
 
 class APIController {
@@ -50,6 +51,10 @@ class APIController {
 
   // Action
   private static function login($password) {
+    if (LoginAttemptService::atLoginLimit($_SERVER['REMOTE_ADDR'])) {
+      header('HTTP/1.1 401 Unauthorized');
+      throw new Exception("Too many login attempts.");
+    }
     $session = SessionController::getSession();
 
     try {
@@ -57,9 +62,12 @@ class APIController {
         GuestService::getInstance()->getUserData($password)
       );
     } catch (Exception $e) {
+      LoginAttemptService::addLoginAttempt($_SERVER['REMOTE_ADDR']);
       header('HTTP/1.1 401 Unauthorized');
       throw new Exception("Unknown password.");
     }
+
+    LoginAttemptService::markLoginSuccessful($_SERVER['REMOTE_ADDR']);
 
     return array(
       "user" => $session->user

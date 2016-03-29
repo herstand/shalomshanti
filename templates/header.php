@@ -4,13 +4,16 @@ if (!isset($session)) {
   require_once "Controller/SessionController.php";
   $session = SessionController::getSession();
 }
-if (isset($session->user) && $session->user->rsvp->hasRSVPed) {
-  $complete = " complete";
-} else {
-  $complete = "";
+$complete = "";
+$loggedIn = "";
+if (isset($session->user)) {
+  $loggedIn = " loggedIn";
+  if ($session->user->rsvp->hasRSVPed) {
+    $complete = " complete";
+  }
 }
 ?>
-<nav class="primary"><?php
+<nav class="primary<?php echo $loggedIn; ?>"><?php
     ?><ul><?php
         ?><li class="homepage logo"><a class="image" rel="homepage" href="/"><img class="logo" src="/images/star.svg" /></a></li><?php
         if (isset($session->user) && count($session->user->events) > 0) {
