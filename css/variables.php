@@ -7,6 +7,12 @@ $ipadLandscape = "1024";
 $desktop2 = "1180";
 $desktop3 = "1600";
 
+/* Page padding */
+
+$padding_mobile ="6.67vw";
+$padding_mobile3 = "40px";
+$padding_ipadLandscape = "4vw";
+
 /* Primary colors */
 $blue = "#1B468D";
 $orange = "#F26342";

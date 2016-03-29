@@ -8,14 +8,14 @@ RewriteEngine On
  </IfModule>
 
 # Force HTTPS on server
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} !=localhost:8888
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTPS} off
+#RewriteCond %{HTTP_HOST} !=localhost:8888
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Force www
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
-RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
+#RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
+#RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
 
 # Find apis
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -28,6 +28,7 @@ RewriteRule ^templates/(.+)$ /shalomshanti/templates/$1.php [L,QSA]
 # Find pages
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|jpeg|png|svg|woff|ttf|otf)$
+RewriteCond %{REQUEST_URI} ^!shalomshanti
 RewriteRule ^(.+)$ /shalomshanti/pages/$1.php [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -48,3 +49,5 @@ Header set Cache-Control "max-age=31536050"
 <FilesMatch "\.(css|js)$">
 Header set Cache-Control "max-age=86400"
 </FilesMatch>
+
+ErrorDocument 404 /shalomshanti/index.php

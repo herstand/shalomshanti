@@ -52,7 +52,7 @@ class GuestService extends DBService {
             "`Reception attendants`",
             "`Havdalah attendants`"
           ),
-          "WHERE" => "`password` = '".$password."'"
+          "WHERE" => "`password` = '".$password."' AND (`Ceremony adults invited` > 0 or `Ceremony children invited` or `Reception adults invited` > 0 OR `Reception children invited` > 0 or `Havdalah adults invited` > 0 or `Havdalah children invited` > 0)"
         )
       )
     );
