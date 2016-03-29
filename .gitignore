@@ -1,3 +1,10 @@
 .DS_Store
 secrets.php
 Service/PasswordHash.php
+backup/
+docs/
+logs/
+scripts/
+specs/
+tests/
+thirdparties/
