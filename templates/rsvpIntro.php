@@ -5,11 +5,11 @@ if (!isset($session)) {
   $session = SessionController::getSession();
 }
 if ($session->user->rsvp->hasRSVPed && $session->user->rsvp->isComing()) {
-  $message = "Thanks for responding!<br />We can’t wait to see you at our wedding. You can edit your response until May 5.";
+  $message = "Thanks for responding! <span class='nobreak'>We can’t</span> wait to see you at our wedding. You can edit your response until <span class='nobreak'>May 5.</span>";
 } else if ($session->user->rsvp->hasRSVPed) {
-  $message = "Thanks for responding!<br />We’ll miss having you at our wedding. You can edit your response until May 5.";
+  $message = "Thanks for responding! We’ll miss having you at our wedding. You can edit your response until <span class='nobreak'>May 5.</span>";
 } else {
-  $message = "Please respond below by May 5 with the name of each guest who will be attending. Hope to see you there!";
+  $message = "Please respond below by May 5 with the name of each guest who will be attending. Hope to see <span class='nobreak'>you there!</span>";
 }
 $daysRemaining = (
   (mktime(0, 0, 0, 5, 5, 2016) - time()) < 0) ?
@@ -18,5 +18,5 @@ $daysRemaining = (
 ?>
 <h1 class="typ-pageTitle">RSVP</h1>
 <p class="daysRemaining typ-caption"><?php echo $daysRemaining; ?> Days Remaining</p>
-<p class="householdName typ-body"><em><?php echo $session->user->household_name; ?></em></p>
-<p class="typ-body"><?php echo $message; ?></p>
+<p class="householdName typ-subsection-header"><em><?php echo $session->user->household_name; ?></em></p>
+<p class="typ-subsection-header"><?php echo $message; ?></p>

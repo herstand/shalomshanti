@@ -15,6 +15,8 @@ $padding_ipadLandscape = "4vw";
 
 /* Primary colors */
 $blue = "#1B468D";
+$blue_tint = "#486BA4";
+$blue_shade = "#163b79";
 $orange = "#F26342";
 $yellow = "#FFCA6C";
 $lightblue = "#8BD7F8";

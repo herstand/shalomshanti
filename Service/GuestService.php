@@ -58,6 +58,30 @@ class GuestService extends DBService {
     );
   }
 
+   // Call with GuestService::getInstance()->getUser($id)
+  public function getTrustedUser($hashedId) {
+    return $this->loadUser(
+      $this->query(
+        DBService::SELECT,
+        "guests",
+        array(
+          "COLUMNS" => array(
+            "`hashedId` as `id`",
+            "`Household name`",
+            "`Has RSVPed`",
+            "(`Ceremony adults invited` + `Ceremony children invited`) as `Ceremony invited`",
+            "(`Reception adults invited` + `Reception children invited`) as `Reception invited`",
+            "(`Havdalah adults invited` + `Havdalah children invited`) as `Havdalah invited`",
+            "`Ceremony attendants`",
+            "`Reception attendants`",
+            "`Havdalah attendants`"
+          ),
+          "WHERE" => "`hashedId` = '".$hashedId."' AND (`Ceremony adults invited` > 0 or `Ceremony children invited` or `Reception adults invited` > 0 OR `Reception children invited` > 0 or `Havdalah adults invited` > 0 or `Havdalah children invited` > 0)"
+        )
+      )
+    );
+  }
+
   // Call with GuestService::getInstance()->saveRSVP($guestId, $rsvp)
   public function saveRSVP($guestId, $rsvp) {
     return $this->saveAttendants($guestId, $rsvp);
@@ -145,12 +169,12 @@ class GuestService extends DBService {
   }
 
   private function createRSVPEvent(&$rsvpEvents, $guest, $eventName) {
-    if (isset($guest["{$eventName} invited"]) && $guest["{$eventName} invited"] > 0) {
-      return new RSVPEvent(
+    if (isset($guest[ucfirst($eventName)." invited"]) && $guest[ucfirst($eventName)." invited"] > 0) {
+      $rsvpEvents[] = new RSVPEvent(
         $eventName,
-        $guest[$eventName.' invited'],
+        $guest[ucfirst($eventName)." invited"],
         ($guest['Has RSVPed'] ?
-          $this->loadAttendants($guest[$eventName.' attendants']) :
+          $this->loadAttendants($guest[ucfirst($eventName)." attendants"]) :
           array())
       );
     }
@@ -158,9 +182,9 @@ class GuestService extends DBService {
 
   private function loadRSVP($guest) {
     $rsvpEvents = array();
-    $this->createRSVPEvent($rsvpEvents, $guest, "Ceremony");
-    $this->createRSVPEvent($rsvpEvents, $guest, "Reception");
-    $this->createRSVPEvent($rsvpEvents, $guest, "Havdalah");
+    $this->createRSVPEvent($rsvpEvents, $guest, "ceremony");
+    $this->createRSVPEvent($rsvpEvents, $guest, "reception");
+    $this->createRSVPEvent($rsvpEvents, $guest, "havdalah");
     return new RSVP($guest['Has RSVPed'], $rsvpEvents);
   }
 
@@ -204,13 +228,13 @@ class GuestService extends DBService {
   private function loadEvents($guest) {
     $events = array();
     if ($guest['Ceremony invited'] > 0) {
-      $events[] = "Ceremony";
+      $events[] = "ceremony";
     }
     if ($guest['Reception invited'] > 0) {
-      $events[] = "Reception";
+      $events[] = "reception";
     }
     if ($guest['Havdalah invited'] > 0) {
-      $events[] = "Havdalah";
+      $events[] = "havdalah";
     }
     return $events;
   }

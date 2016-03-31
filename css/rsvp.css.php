@@ -31,13 +31,13 @@ include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/footer.css.php";
   margin-bottom:20px;
 }
 
-body > main > article {
+body > main > article, body > main > form > article{
   padding-left:<?php echo $padding_mobile; ?>;
   padding-right:<?php echo $padding_mobile; ?>;
 }
 
 @media (min-width:<?php echo $mobile3; ?>px) {
-  body > main > article {
+  body > main > article, body > main > form > article {
     padding-left:<?php echo $padding_mobile3; ?>;
     padding-right:<?php echo $padding_mobile3; ?>;
   }
@@ -50,7 +50,7 @@ body > main > article {
 }
 
 @media (min-width:<?php echo $ipadLandscape; ?>px) {
-  body > main > article {
+  body > main > article, body > main > form > article {
     padding-left:<?php echo $padding_ipadLandscape; ?>;
     padding-right:<?php echo $padding_ipadLandscape; ?>;
   }
