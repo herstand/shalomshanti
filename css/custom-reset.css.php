@@ -13,6 +13,10 @@ nav > ul li:last-child { margin-right:0px; }
 nav a:hover { border-bottom:1px solid <?php echo $blue; ?>; }
 nav a.image:hover { border-bottom:0; }
 main { position:relative; text-align:center; }
+figure { margin:0; padding:0; }
+fieldset { border:0px; margin:0; padding:0; }
+input { border:0px; }
+input:focus, button:focus, label:focus { outline:none; }
 button { background:none; border:none; padding:0; }
 button:hover { cursor:pointer; }
 section { position:relative; text-align:center; }

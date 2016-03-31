@@ -19,6 +19,44 @@ class RSVP {
     $this->rsvpEvents[$event]->attendants[0][] = $name;
   }
 
+  public function getAttendantsFor($event_name) {
+    foreach ($this->rsvpEvents as $rsvpEvent) {
+      if ($rsvpEvent->event_name === $event_name) {
+        return $rsvpEvent->attendants;
+      }
+    }
+    return array();
+  }
+
+  public function getNthAttendantFor($n, $event_name) {
+    $attendants = $this->getAttendantsFor($event_name);
+    if (count($attendants) > 0) {
+      return $this->getAttendantsFor($event_name)[$n]->name;
+    } else {
+      return "";
+    }
+  }
+
+  public function numberOfAttendantsAt($event_name) {
+    if ($this->hasRSVPed) {
+      foreach ($this->rsvpEvents as $rsvpEvent) {
+        if ($rsvpEvent->event_name === $event_name) {
+          return count($rsvpEvent->attendants);
+        }
+      }
+    }
+    return 0;
+  }
+
+  public function numberInvitedTo($event_name) {
+    foreach ($this->rsvpEvents as $rsvpEvent) {
+        if ($rsvpEvent->event_name === $event_name) {
+          return $rsvpEvent->num_invited;
+        }
+    }
+    return 0;
+  }
+
   public function isComing() {
     if ($this->hasRSVPed) {
       foreach ($this->rsvpEvents as $rsvpEvent) {

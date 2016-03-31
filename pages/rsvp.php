@@ -1,6 +1,6 @@
 <?php
 set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
-require_once "templates/rsvpArticle.php";
+require_once "templates/RSVPArticle.php";
 
 if (!isset($session)) {
   require_once "Controller/SessionController.php";
@@ -30,17 +30,36 @@ if (!isset($session->user)) {
   <header><?php include "templates/header.php"; ?></header>
   <main>
     <article class="intro"><?php include "templates/rsvpIntro.php"; ?></article>
-    <?php if (in_array("Ceremony", $session->user->events)) { ?>
-    <article class="ceremony"><?php echo createRSVPArticle("Ceremony"); ?></article>
+    <form action="/API/RSVP" method="POST" novalidate>
+    <?php if (in_array("ceremony", $session->user->events)) { ?>
+    <article id="ceremony" class="ceremony"><?php echo RSVPArticle::createRSVPArticle("ceremony"); ?></article>
     <?php } ?>
-    <?php if (in_array("Reception", $session->user->events)) { ?>
-    <article class="reception"><?php echo createRSVPArticle("Reception"); ?></article>
+    <?php if (in_array("reception", $session->user->events)) { ?>
+    <article id="reception" class="reception"><?php echo RSVPArticle::createRSVPArticle("reception"); ?></article>
     <?php } ?>
-    <?php if (in_array("Havdalah", $session->user->events)) { ?>
-    <article class="havdalah"><?php echo createRSVPArticle("Havdalah"); ?></article>
+    <?php if (in_array("havdalah", $session->user->events)) { ?>
+    <article id="havdalah" class="havdalah"><?php echo RSVPArticle::createRSVPArticle("havdalah"); ?></article>
     <?php } ?>
+    </form>
   </main>
   <?php include "templates/footer.php"; ?>
-  <div class="templates"><?php include "templates/loginModal.php"; ?></div>
+  <div class="templates"><?php
+    include "templates/loginModal.php";
+    $dom = new DOMDocument('1.0', 'utf-8');
+    foreach ($session->user->events as $eventName) {
+      $dom->appendChild(
+        RSVPArticle::createAttendantFieldset(
+          $dom,
+          $eventName,
+          0
+        )
+      );
+      $addButton = RSVPArticle::createAddButton($dom, $eventName);
+      $addButton->setAttribute("data-destination-parent", "article#{$eventName}");
+      $addButton->setAttribute("data-destination-pend", "append");
+      $dom->appendChild($addButton);
+    }
+    echo $dom->saveHTML();
+  ?></div>
 </body>
 </html>
