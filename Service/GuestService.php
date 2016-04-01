@@ -84,7 +84,21 @@ class GuestService extends DBService {
 
   // Call with GuestService::getInstance()->saveRSVP($guestId, $rsvp)
   public function saveRSVP($guestId, $rsvp) {
+    $this->rsvpUser($guestId);
     return $this->saveAttendants($guestId, $rsvp);
+  }
+
+  private function rsvpUser($guestId) {
+    $this->query(
+      DBService::UPDATE,
+      "guests",
+      array(
+        "SET" => array(
+          "Has RSVPed" => true
+        ),
+        "WHERE" => "`hashedId` = '{$guestId}'"
+      )
+    );
   }
 
   private function saveAttendants($guestId, $rsvp) {

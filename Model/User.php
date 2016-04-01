@@ -5,7 +5,7 @@ require_once "Service/GuestService.php";
 require_once "Model/RSVP.php";
 
 class User {
-  public $id,
+  public $id, // TODO: This is their hashed password now. It should be a session variable. #security
     $household_name,
     $rsvp,
     $events;
