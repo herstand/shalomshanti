@@ -24,9 +24,31 @@ $grey = "#CBCBCB";
 
 /* Secondary colors */
 $pink = "#DC519D";
-$yellow = "#FFDB00";
+$bright_yellow = "#FFDB00";
 
 /* Tertiary colors */
 $lightgrey = "#F1F1F1";
-$green = "#8AC43F"
+$green = "#8AC43F";
+
+/* Themes */
+$themes = array(
+  "ceremony" => array(
+    "highlight" => "#1b468d",
+    "contrast" => "#ffffff",
+    "tint" => "#486ba4",
+    "shade" => "#163b79"
+  ),
+  "reception" => array(
+    "highlight" => "#F16342",
+    "contrast" => "#ffffff",
+    "tint" => "#f6927b",
+    "shade" => "#c94628"
+  ),
+  "havdalah" => array(
+    "highlight" => "#FFC96C",
+    "contrast" => "#1B468D",
+    "tint" => "#FFDA98",
+    "shade" => "#F1B34F"
+  )
+);
 ?>

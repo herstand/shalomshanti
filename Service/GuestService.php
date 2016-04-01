@@ -99,8 +99,8 @@ class GuestService extends DBService {
 
   private function insertNewAttendantsFor($rsvpEvent) {
     foreach ($rsvpEvent->attendants[0] as $new_attendant) {
-      $rsvpEvent->attendants[$new_id] =
-        $this->insertNewAttendant($new_attendant);
+      $attendant = $this->insertNewAttendant($new_attendant);
+      $rsvpEvent->attendants[$attendant->id] = $attendant;
     }
   }
 
@@ -111,7 +111,7 @@ class GuestService extends DBService {
       "attendants",
       array(
         "COLUMNS" => array("`name`"),
-        "VALUES" => array("\"{new_attendant_name}\"")
+        "VALUES" => array("\"{$new_attendant_name}\"")
       )
     );
     return new Attendant(
@@ -122,7 +122,7 @@ class GuestService extends DBService {
 
   private function updateAttendantsFor($rsvpEvent) {
     foreach ($rsvpEvent->attendants as $attendant) {
-      if ($attendant->id === 0) continue;
+      if (!isset($attendant->id)) continue;
       $this->updateAttendant($attendant->id, $attendant->name);
     }
   }
@@ -142,9 +142,9 @@ class GuestService extends DBService {
   }
 
   private function updateGuestAttendants($guestId, $rsvp) {
-    $ceremony_attendants = $rsvp->getCeremonyAttendantIds();
-    $reception_attendants = $rsvp->getReceptionAttendantIds();
-    $havdalah_attendants = $rsvp->getHavdalahAttendantIds();
+    $ceremony_attendants = $rsvp->getAttendantIds("ceremony");
+    $reception_attendants = $rsvp->getAttendantIds("reception");
+    $havdalah_attendants = $rsvp->getAttendantIds("havdalah");
     $this->query(
       DBService::UPDATE,
       "guests",
@@ -154,7 +154,7 @@ class GuestService extends DBService {
           "Reception attendants" => $reception_attendants,
           "Havdalah attendants" => $havdalah_attendants
         ),
-        "WHERE" => "`id` = {$guestId}"
+        "WHERE" => "`hashedId` = '{$guestId}'"
       )
     );
   }
@@ -189,7 +189,7 @@ class GuestService extends DBService {
   }
 
   private function loadAttendants($attendant_ids) {
-    if ($attendant_ids === null) {
+    if ($attendant_ids === null || $attendant_ids === "") {
       return array();
     }
     $attendants = array();

@@ -1,3 +1,9 @@
+<?php
+if (!isset($session)) {
+  require_once "Controller/SessionController.php";
+  $session = SessionController::getSession();
+}
+?>
 body.rsvp > main > form > article:not(.intro) { width:100%; min-height:100px; padding-top:60px; padding-bottom:60px; }
 body.rsvp > main > form > article.ceremony *,
 body.rsvp > main > form > article.reception * { color:white; }
@@ -30,44 +36,62 @@ body.rsvp > main > form > article figure { width:74px; margin-bottom:40px; }
 body.rsvp > main > form > article .of { width:41px; height:80px; }
 
 body.rsvp > main > form > article section fieldset { text-align:left; margin-bottom:10px; position:relative; }
-body.rsvp > main > form > article input { background-color:transparent; padding-left:10px; line-height:40px; width:calc(100% - 40px); height:40px; border:2px solid <?php echo $blue_tint; ?>; }
+body.rsvp > main > form > article input { background-color:transparent; padding-left:10px; line-height:40px; width:calc(100% - 40px); height:40px; }
 body.rsvp > main > form > article input:invalid,
 body.rsvp > main > form > article input:invalid + label {
   background-color:transparent;
 }
-body.rsvp > main > form > article input:valid,
-body.rsvp > main > form > article input:valid + label {
-  background-color:<?php echo $blue_tint; ?>;
+<?php
+  function createThemeStyles() {
+    global $session, $themes;
+    foreach ($session->user->events as $event) {
+      $highlight = $themes[$event]['highlight'];
+      $contrast = $themes[$event]['contrast'];
+      $tint = $themes[$event]['tint'];
+      $shade = $themes[$event]['shade'];
+      makeEventStyles($event, $highlight, $contrast, $tint, $shade);
+    }
+  }
+  function makeEventStyles($eventName, $highlight, $contrast, $tint, $shade) {
+    echo <<<CSS
+body.rsvp > main > form > article.{$eventName} input { border:2px solid $tint; }
+body.rsvp > main > form > article.{$eventName} input:valid,
+body.rsvp > main > form > article.{$eventName} input:valid + label {
+  background-color:{$tint};
 }
-
-body.rsvp > main > form > article input:invalid:focus,
-body.rsvp > main > form > article input:valid:focus,
-body.rsvp > main > form > article input:invalid:focus + label,
-body.rsvp > main > form > article input:valid:focus + label {
+body.rsvp > main > form > article.{$eventName} input:invalid:hover,
+body.rsvp > main > form > article.{$eventName} input:valid:hover,
+body.rsvp > main > form > article.{$eventName} input:valid + label:hover,
+body.rsvp > main > form > article.{$eventName} input:invalid + label:hover {
+  border:2px solid {$shade}; background-color:{$shade}; cursor:pointer;
+}
+body.rsvp > main > form > article.{$eventName} input:invalid:focus:hover,
+body.rsvp > main > form > article.{$eventName} input:valid:focus:hover {
+  border:2px solid {$tint}; background-color:{$highlight}; cursor:pointer;
+}
+body.rsvp > main > form > article.{$eventName} input:invalid:focus + label:hover,
+body.rsvp > main > form > article.{$eventName} input:valid:focus + label:hover {
+  border:2px solid {$tint}; background-color:{$shade}; cursor:pointer;
+}
+body.rsvp > main > form > article.{$eventName} label { border:2px solid {$tint}; }
+body.rsvp > main > form > article.{$eventName} input:invalid:focus,
+body.rsvp > main > form > article.{$eventName} input:valid:focus,
+body.rsvp > main > form > article.{$eventName} input:invalid:focus + label,
+body.rsvp > main > form > article.{$eventName} input:valid:focus + label {
   background-color:transparent;
 }
-body.rsvp > main > form > article input:invalid:hover,
-body.rsvp > main > form > article input:valid:hover,
-body.rsvp > main > form > article input:valid + label:hover,
-body.rsvp > main > form > article input:invalid + label:hover {
-  border:2px solid <?php echo $blue_shade; ?>; background-color:<?php echo $blue_shade; ?>; cursor:pointer;
-}
-body.rsvp > main > form > article input:invalid:focus:hover,
-body.rsvp > main > form > article input:valid:focus:hover {
-  border:2px solid <?php echo $blue_tint; ?>; background-color:<?php echo $blue; ?>; cursor:pointer;
-}
-body.rsvp > main > form > article input:invalid:focus + label:hover,
-body.rsvp > main > form > article input:valid:focus + label:hover {
-  border:2px solid <?php echo $blue_tint; ?>; background-color:<?php echo $blue_shade; ?>; cursor:pointer;
-}
+body.rsvp > main > form > article.{$eventName} ::-webkit-input-placeholder { opacity:.5; color: {$contrast}; font-style:italic; }
+body.rsvp > main > form > article.{$eventName} ::-moz-placeholder { opacity:.5; color:{$contrast}; font-style:italic; }
+body.rsvp > main > form > article.{$eventName} :-ms-input-placeholder { opacity:.5; color:{$contrast}; font-style:italic; }
+body.rsvp > main > form > article.{$eventName} :-moz-placeholder { opacity:.5; color:{$contrast}; font-style:italic; }
+CSS;
+  }
+  createThemeStyles();
+?>
+
 body.rsvp > main > form > article input:active { cursor:text; }
 
-::-webkit-input-placeholder { opacity:.5; color: white; font-style:italic; }
-::-moz-placeholder { opacity:.5; color:white; font-style:italic; }
-:-ms-input-placeholder { opacity:.5; color:white; font-style:italic; }
-:-moz-placeholder { opacity:.5; color:white; font-style:italic; }
-
-body.rsvp > main > form > article label { text-align:center; border:2px solid <?php echo $blue_tint; ?>; position:absolute; right:2px; top:0px; height:40px; line-height:40px; width:40px; display:inline-block; }
+body.rsvp > main > form > article label { text-align:center; position:absolute; right:2px; top:0px; height:40px; line-height:40px; width:40px; display:inline-block; }
 body.rsvp > main > form > article label:hover { cursor:pointer; }
 body.rsvp > main > form > article button { height:40px; width:100%; display:block; }
 body.rsvp > main > form > article button.disabled { pointer-events:none; color:rgba(20,70,135,.5); }

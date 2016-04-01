@@ -5,7 +5,7 @@ class LoginAttemptService {
   public static $loginAttemptsFolderLocation;
 
   public static function init() {
-     self::$loginAttemptsFolderLocation = $_SERVER['DOCUMENT_ROOT']."/shalomshanti/loginAttempts";
+     self::$loginAttemptsFolderLocation = $_SERVER['DOCUMENT_ROOT']."/shalomshanti/loginAttempts/";
   }
 
   public static function atLoginLimit($ip) {

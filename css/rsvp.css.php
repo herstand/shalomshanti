@@ -31,9 +31,36 @@ include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/footer.css.php";
   margin-bottom:20px;
 }
 
-body > main > article, body > main > form > article{
+body.rsvp { padding-bottom:182px; }
+
+
+body > main > article,
+body > main > form > article {
   padding-left:<?php echo $padding_mobile; ?>;
   padding-right:<?php echo $padding_mobile; ?>;
+}
+
+h2 span.ampersand {
+  display:block;
+  margin:0px;
+  line-height:30px;
+  font-size:20px;
+}
+
+body.rsvp form button[type='submit'] {
+  display:block;
+  margin:40px auto;
+  border:2px solid <?php echo $blue; ?>;
+  background-color:white;
+  color:<?php echo $blue; ?>;
+  height:40px;
+  width:170px;
+  line-height:40px;
+}
+body.rsvp form button[type='submit']:hover {
+  border:2px solid <?php echo $blue; ?>;
+  background-color:<?php echo $blue; ?>;
+  color:white;
 }
 
 @media (min-width:<?php echo $mobile3; ?>px) {

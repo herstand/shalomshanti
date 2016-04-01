@@ -26,14 +26,32 @@ class RSVPArticle {
     ) {
       $dom->appendChild(self::createAddButton($dom));
     }
-
     return $dom->saveHTML();
   }
 
   private static function createTitle($dom, $event_name) {
     $title = $dom->createElement('h2');
     $title->setAttribute('class', 'typ-title');
-    $title->appendChild($dom->createTextNode($event_name));
+    // TODO: Automate this
+    if ($event_name === "havdalah") {
+      $mehendi = $dom->createElement("span");
+      $mehendi->appendChild($dom->createTextNode("Mehendi"));
+
+      $ampersand = $dom->createElement("span");
+      $ampersand->appendChild($dom->createTextNode("&"));
+      $ampersand->setAttribute("class", "ampersand");
+
+      $havdalah = $dom->createElement("span");
+      $havdalah->appendChild($dom->createTextNode("Havdalah"));
+
+      $title->appendChild($mehendi);
+      $title->appendChild($ampersand);
+      $title->appendChild($havdalah);
+
+    } else {
+      $title->appendChild($dom->createTextNode($event_name));
+    }
+
 
     return $title;
   }
@@ -77,8 +95,8 @@ class RSVPArticle {
         $num
       )
     );
+    $number->setAttribute("class", "typ-number");
     $figure->appendChild($number);
-    $figure->setAttribute("class", "typ-number");
 
     $caption = $dom->createElement('figcaption');
     $caption->appendChild($dom->createTextNode($caption_label));
@@ -136,11 +154,12 @@ class RSVPArticle {
   }
 
   public static function createAddButton($dom, $class = "") {
-      $button = $dom->createElement("button");
-      $button->appendChild($dom->createTextNode("+ Add an attendee"));
-      $button->setAttribute("class", "typ-littleTitle add {$class}");
-      return $button;
-    }
+    $button = $dom->createElement("button");
+    $button->appendChild($dom->createTextNode("+ Add an attendee"));
+    $button->setAttribute("class", "typ-littleTitle add {$class}");
+    $button->setAttribute("type", "button");
+    return $button;
+  }
 
 }
 
