@@ -117,6 +117,51 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     }
 
+    function getNewAttendantsFor(eventName) {
+      var attendants = [];
+      utilities.toArray(document.querySelectorAll("article#" + eventName + " fieldset")).forEach(function(fieldset) {
+        if (fieldset.dataset.attendantIndex === "0") {
+          attendants.push({
+            "id" : 0,
+            "name" : fieldset.querySelector("input").value
+          });
+        }
+      });
+      return attendants;
+    }
+
+    function appendUpdatedAttendantsTo(rsvpEvent) {
+      utilities.toArray(document.querySelectorAll(
+        "article#" + rsvpEvent.event_name + " fieldset")
+      ).forEach(function(fieldset) {
+        if (fieldset.dataset.attendantIndex !== "0") {
+          rsvpEvent.attendants.push({
+            "id" : fieldset.dataset.attendantIndex,
+            "name" : fieldset.querySelector("input").value
+          });
+        }
+      });
+    }
+
+    function jsonifyForm() {
+      var formData =
+        {
+          "Has RSVPed" : true,
+          "rsvpEvents" : [
+          ]
+        };
+      utilities.toArray(document.querySelectorAll("form > article")).forEach(function(el) {
+        var rsvpEvent = {
+          "event_name" : el.id,
+          "attendants" : [
+            getNewAttendantsFor(el.id)
+          ]
+        };
+        appendUpdatedAttendantsTo(rsvpEvent);
+        formData['rsvpEvents'].push(rsvpEvent);
+      });
+      return JSON.stringify(formData);
+    }
     document.querySelector("main > form").addEventListener("submit", function (e) {
       e.preventDefault();
       document.querySelector("main > form button[type='submit']").innerText = "Saving…";
@@ -124,7 +169,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
         e.target.action,
         respondToFormSubmit,
         e.target.method,
-        JSON.stringify({
+        jsonifyForm()
+      );
+      return false;
+    });
+    document.querySelector("main > form button[type='submit']").addEventListener("click", function (e) {
+      utilities.toArray(document.querySelectorAll("input:invalid")).forEach(function (el) {
+        el.parentNode.remove();
+      });
+    });
+
+    utilities.toArray(document.querySelectorAll("label.removeFieldset")).forEach(function(el) {
+      el.addEventListener("click", clickInputRemover);
+    });
+
+    utilities.toArray(document.querySelectorAll("main > form > article input")).forEach(function(el) {
+      el.addEventListener("keyup", ableButton);
+      el.addEventListener("keydown", preventDefault);
+    });
+
+    utilities.toArray(document.querySelectorAll("main > form > article button.add")).forEach(function(el) {
+      el.addEventListener("click", addFieldset)
+    });
+
+});
+
+/*
+
+JSON.stringify({
           "Has RSVPed" : true,
           "rsvpEvents" : [
             {
@@ -168,26 +240,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
           ]
         })
-      );
-      return false;
-    });
-    document.querySelector("main > form button[type='submit']").addEventListener("click", function (e) {
-      utilities.toArray(document.querySelectorAll("input:invalid")).forEach(function (el) {
-        el.remove();
-      });
-    });
 
-    utilities.toArray(document.querySelectorAll("label.removeFieldset")).forEach(function(el) {
-      el.addEventListener("click", clickInputRemover);
-    });
-
-    utilities.toArray(document.querySelectorAll("main > form > article input")).forEach(function(el) {
-      el.addEventListener("keyup", ableButton);
-      el.addEventListener("keydown", preventDefault);
-    });
-
-    utilities.toArray(document.querySelectorAll("main > form > article button.add")).forEach(function(el) {
-      el.addEventListener("click", addFieldset)
-    });
-
-});
+        */

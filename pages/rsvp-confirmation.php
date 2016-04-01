@@ -9,6 +9,9 @@ if (!isset($session)) {
 if (!isset($session->user)) {
   header("Location: /");
 }
+if (!$session->user->rsvp->hasRSVPed) {
+  header("Location: /rsvp");
+}
 ?>
 <!DOCTYPE html>
 <html lang="us-en">
@@ -22,15 +25,21 @@ if (!isset($session->user)) {
 <script async src="https://use.typekit.net/abm3mqd.js"></script>
 <script type='text/javascript' src="js/utilities.js"></script>
 <script type='text/javascript' src="View/ViewUtilities.js"></script>
-<script type='text/javascript' src="js/rsvp.js?cache=4"></script>
-<link rel="stylesheet" type="text/css" href="css/rsvp.css?cache=4" />
+<script type='text/javascript' src="js/rsvp-confirmation.js?cache=4"></script>
+<link rel="stylesheet" type="text/css" href="css/rsvp-confirmation.css?cache=4" />
 <?php include_once("templates/ga.php"); ?>
 </head>
-<body class="rsvp">
+<body class="rsvpConfirmation">
   <header><?php include "templates/header.php"; ?></header>
   <main>
-    <article class="intro"><?php include "templates/rsvpIntro.php"; ?></article>
-
+    <img class="success" src="/icons/check.svg" alt="Form submit successful icon" />
+    <hr />
+    <section class="attendants">
+    <?php include "templates/attendantSummary.php"; ?>
+    </section>
+    <hr />
+    <?php include "templates/confirmationMessage.php"; ?>
   </main>
+  <?php include "templates/footer.php"; ?>
 </body>
 </html>
