@@ -30,7 +30,7 @@ if (!isset($session->user)) {
   <header><?php include "templates/header.php"; ?></header>
   <main>
     <article class="intro"><?php include "templates/rsvpIntro.php"; ?></article>
-    <form action="/API/RSVP" method="POST" novalidate>
+    <form action="/API/RSVP" method="POST">
     <?php if (in_array("ceremony", $session->user->events)) { ?>
     <article id="ceremony" class="ceremony"><?php echo RSVPArticle::createRSVPArticle("ceremony"); ?></article>
     <?php } ?>
@@ -40,6 +40,7 @@ if (!isset($session->user)) {
     <?php if (in_array("havdalah", $session->user->events)) { ?>
     <article id="havdalah" class="havdalah"><?php echo RSVPArticle::createRSVPArticle("havdalah"); ?></article>
     <?php } ?>
+    <button type='submit' class="typ-littleTitle">Save Response</button>
     </form>
   </main>
   <?php include "templates/footer.php"; ?>

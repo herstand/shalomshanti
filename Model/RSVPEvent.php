@@ -16,11 +16,19 @@ class RSVPEvent {
 
   public static function createRSVPEvent($rsvpEvent_array) {
     $attendants = array();
+    $attendants[0] = array();
     foreach ($rsvpEvent_array["attendants"] as $attendant) {
-      $attendants[] = new Attendant(0, $attendant["name"]);
+      if (isset($attendant["id"])) {
+        $attendants[] = new Attendant($attendant["id"], $attendant["name"]);
+      } else {
+        foreach ($attendant as $a) {
+          $attendants[0][] = new Attendant(0, $a["name"]);
+        }
+      }
     }
     return new RSVPEvent(
       $rsvpEvent_array["event_name"],
+      // TODO: Don't let people send a diff num_invited from client and up their guest count
       $rsvpEvent_array["num_invited"],
       $attendants
     );

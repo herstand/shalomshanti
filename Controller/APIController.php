@@ -11,8 +11,11 @@ class APIController {
     return json_decode(file_get_contents('php://input'), true);
   }
 
-  public static function runAction($func, $data) {
+  public static function runAction($func, $data, $secureRequest = false) {
     try {
+      if ($secureRequest && !isset(SessionController::getSession()->user)) {
+        throw new Exception("Must be logged in to make that request.");
+      }
       if (isset($data)) {
         $data = call_user_func(array(get_called_class(), $func), $data);
       } else {
@@ -97,7 +100,6 @@ class APIController {
 
   // Action
   private static function saveRSVPForUser($rsvp_array) {
-    $rsvp_array = json_decode($rsvp_array, true);
     $rsvpEvents = array();
     foreach ($rsvp_array["rsvpEvents"] as $rsvpEvent_array) {
       $rsvpEvents[] = RSVPEvent::createRSVPEvent($rsvpEvent_array);
@@ -108,7 +110,7 @@ class APIController {
         new RSVP($rsvp_array["Has RSVPed"], $rsvpEvents)
       )
     );
-    return getRSVP();
+    return self::getRSVP();
   }
 
 }

@@ -11,6 +11,20 @@ class RSVP {
     $this->rsvpEvents = $rsvpEvents;
   }
 
+  public function getAttendantIds($event_name) {
+    $attendantIds = "";
+    foreach ($this->rsvpEvents as $rsvpEvent) {
+      if ($rsvpEvent->event_name === $event_name) {
+        foreach ($rsvpEvent->attendants as $attendant) {
+          if (isset($attendant->id)) { //attendants[0] is an array of attendants without ids yet
+            $attendantIds .= $attendant->id.",";
+          }
+        }
+      }
+    }
+    return substr($attendantIds, 0, strlen($attendantIds) - 1);
+  }
+
   public function updateAttendant($event, $id, $name) {
     $this->rsvpEvents[$event]->attendants[$id] = $name;
   }

@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
 
       newFieldset.querySelector("input").setAttribute("id", eventName + "_" + newFieldset.dataset.attendantIndex);
+      newFieldset.querySelector("input").addEventListener("keyup", ableButton);
+      newFieldset.querySelector("input").addEventListener("keydown", preventDefault);
 
       newFieldset.querySelector("label").setAttribute("for", newFieldset.querySelector("input").getAttribute("id"));
       newFieldset.querySelector("label").addEventListener("click", clickInputRemover);
@@ -39,12 +41,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function addFieldset(e) {
         var newFieldset = addAttendeeFieldset(e.target.parentNode.id);
-        newFieldset.addEventListener("keyup", ableButton);
-        if (parseInt(getNumberInvitedTo(e.target.parentNode.id)) === (parseInt(newFieldset.dataset.attendantIndex) + 1)) {
-          ViewUtilities.hide(document.querySelector("article." + e.target.parentNode.id + " button"));
-        } else {
+        if (moreAreInvited(getEventName(newFieldset.querySelector("input")))) {
           document.querySelector("article." + e.target.parentNode.id + " button").classList.add("disabled");
+        } else {
+          ViewUtilities.hide(document.querySelector("article." + e.target.parentNode.id + " button"));
         }
+        newFieldset.querySelector("input").focus();
     }
 
     function addAddButton(eventName) {
@@ -86,16 +88,102 @@ document.addEventListener("DOMContentLoaded", function(event) {
       );
     }
 
+    function getEventName(input) {
+      return input.parentNode.parentNode.parentNode.id;
+    }
+    function moreAreInvited(eventName) {
+      return parseInt(getNumberInvitedTo(eventName)) >
+        document.querySelectorAll("article#" + eventName + " input").length;
+    }
+    function noInputsAreEmpty(input) {
+      return document.querySelector("article#" + getEventName(input)).querySelector("input:invalid") === null;
+    }
+    function preventDefault(e) {
+      if (e.which === 13) {
+        e.preventDefault();
+        if (moreAreInvited(getEventName(e.target)) && noInputsAreEmpty(e.target)) {
+          addFieldset({"target" : e.target.parentNode.parentNode.parentNode.querySelector("button")});
+        }
+      }
+      return false;
+    }
+
+    function respondToFormSubmit(data) {
+      data = JSON.parse(data);
+      if (!data.success) {
+        alert("We are so sorry! Your RSVP didn't go through. Please email wedding@shalomshanti.com with your information.");
+      } else {
+        window.location = "/rsvp-confirmation";
+      }
+    }
+
     document.querySelector("main > form").addEventListener("submit", function (e) {
       e.preventDefault();
+      document.querySelector("main > form button[type='submit']").innerText = "Saving…";
+      utilities.ajaxJson(
+        e.target.action,
+        respondToFormSubmit,
+        e.target.method,
+        JSON.stringify({
+          "Has RSVPed" : true,
+          "rsvpEvents" : [
+            {
+              "event_name" : "ceremony",
+              "attendants" : [
+                [],
+                {
+                  "id" : 2,
+                  "name" : "Vidya Cowsik Santosh"
+                }
+              ],
+              "num_invited" : 2
+            },
+            {
+              "event_name" : "reception",
+              "attendants" : [
+                [{
+                  "id" : 0,
+                  "name" : "Gunda Santosh Herstand"
+                }],
+                {
+                  "id" : 1,
+                  "name" : "Micah Herstand"
+                }
+              ],
+              "num_invited" : 2
+            },
+            {
+              "event_name" : "havdalah",
+              "attendants" : [
+                [{
+                  "id" : 0,
+                  "name" : "Saraswati Santosh Herstand"
+                }],
+                {
+                  "id" : 1,
+                  "name" : "Micah Herstand"
+                }
+              ],
+              "num_invited" : 2
+            }
+          ]
+        })
+      );
       return false;
     });
+    document.querySelector("main > form button[type='submit']").addEventListener("click", function (e) {
+      utilities.toArray(document.querySelectorAll("input:invalid")).forEach(function (el) {
+        el.remove();
+      });
+    });
+
     utilities.toArray(document.querySelectorAll("label.removeFieldset")).forEach(function(el) {
       el.addEventListener("click", clickInputRemover);
     });
 
     utilities.toArray(document.querySelectorAll("main > form > article input")).forEach(function(el) {
       el.addEventListener("keyup", ableButton);
+      el.addEventListener("keydown", preventDefault);
     });
 
     utilities.toArray(document.querySelectorAll("main > form > article button.add")).forEach(function(el) {

@@ -26,9 +26,7 @@ abstract class DBService {
      $query .=  "WHERE {$data['WHERE']}";
     }
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
-    if ($result->num_rows === 0) {
-      throw new Exception();
-    }
+
     return $result->fetch_array(MYSQLI_ASSOC);
   }
 
@@ -37,14 +35,15 @@ abstract class DBService {
       VALUES (".implode(", ",$data['VALUES']).")";
 
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
-    return $mysqli->insert_id;
+    return $this->mysqli->insert_id;
   }
 
   private function runUpdate($table, $data) {
     $setContent = "";
     foreach ($data["SET"] as $key => $value) {
-      $setContent .= "`{$key}` = \"{$value}\" ";
+      $setContent .= "`{$key}` = \"{$value}\", ";
     }
+    $setContent = substr($setContent, 0, strlen($setContent) - 2);
     $query = "UPDATE {$table}
       SET {$setContent}
       WHERE {$data["WHERE"]}
