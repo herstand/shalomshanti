@@ -11,6 +11,6 @@ if ($session->user->rsvp->isComing()) {
   $message = "Thanks for responding! We’ll miss having you at our wedding. You can edit your response until <span class='nobreak'>May 5.</span>";
   $image = "faces-frowning.svg";
 }
-echo "<span class='typ-subsection-header'>$message</span>";
+echo "<span class='thanksMessage typ-subsection-header'>$message</span>";
 echo "<img src='/icons/${image}' alt='Bride and groom faces' />";
 ?>

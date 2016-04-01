@@ -5,6 +5,10 @@ if (!isset($session)) {
 }
 ?>
 body.rsvp > main > form > article:not(.intro) { width:100%; min-height:100px; padding-top:60px; padding-bottom:60px; }
+body.rsvp > main > form > article { position:relative; }
+body.rsvp > main > form > article.ceremony { z-index:12; }
+body.rsvp > main > form > article.reception { z-index:11; }
+body.rsvp > main > form > article.havdalah { z-index:10; }
 body.rsvp > main > form > article.ceremony *,
 body.rsvp > main > form > article.reception * { color:white; }
 body.rsvp > main > form > article.ceremony button,
@@ -55,38 +59,38 @@ body.rsvp > main > form > article input:invalid + label {
   }
   function makeEventStyles($eventName, $highlight, $contrast, $tint, $shade, $highlight_rgb) {
     echo <<<CSS
-body.rsvp > main > form > article.{$eventName} input { border:2px solid $tint; }
-body.rsvp > main > form > article.{$eventName} input:valid,
-body.rsvp > main > form > article.{$eventName} input:valid + label {
-  background-color:{$tint};
-}
-body.rsvp > main > form > article.{$eventName} input:invalid:hover,
-body.rsvp > main > form > article.{$eventName} input:valid:hover,
-body.rsvp > main > form > article.{$eventName} input:valid + label:hover,
-body.rsvp > main > form > article.{$eventName} input:invalid + label:hover {
-  border:2px solid {$shade}; background-color:{$shade}; cursor:pointer;
-}
-body.rsvp > main > form > article.{$eventName} input:invalid:focus:hover,
-body.rsvp > main > form > article.{$eventName} input:valid:focus:hover {
-  border:2px solid {$tint}; background-color:{$highlight}; cursor:pointer;
-}
-body.rsvp > main > form > article.{$eventName} input:invalid:focus + label:hover,
-body.rsvp > main > form > article.{$eventName} input:valid:focus + label:hover {
-  border:2px solid {$tint}; background-color:{$shade}; cursor:pointer;
-}
-body.rsvp > main > form > article.{$eventName} label { border:2px solid {$tint}; }
-body.rsvp > main > form > article.{$eventName} input:invalid:focus,
-body.rsvp > main > form > article.{$eventName} input:valid:focus,
-body.rsvp > main > form > article.{$eventName} input:invalid:focus + label,
-body.rsvp > main > form > article.{$eventName} input:valid:focus + label {
-  background-color:transparent;
-}
-body.rsvp > main > form > article.{$eventName} ::-webkit-input-placeholder { opacity:.7; color: {$contrast}; font-style:italic; }
-body.rsvp > main > form > article.{$eventName} ::-moz-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
-body.rsvp > main > form > article.{$eventName} :-ms-input-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
-body.rsvp > main > form > article.{$eventName} :-moz-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
+      body.rsvp > main > form > article.{$eventName} input { border:2px solid $tint; }
+      body.rsvp > main > form > article.{$eventName} input:valid,
+      body.rsvp > main > form > article.{$eventName} input:valid + label {
+        background-color:{$tint};
+      }
+      body.rsvp > main > form > article.{$eventName} input:invalid:hover,
+      body.rsvp > main > form > article.{$eventName} input:valid:hover,
+      body.rsvp > main > form > article.{$eventName} input:valid + label:hover,
+      body.rsvp > main > form > article.{$eventName} input:invalid + label:hover {
+        border:2px solid {$shade}; background-color:{$shade}; cursor:pointer;
+      }
+      body.rsvp > main > form > article.{$eventName} input:invalid:focus:hover,
+      body.rsvp > main > form > article.{$eventName} input:valid:focus:hover {
+        border:2px solid {$tint}; background-color:{$highlight}; cursor:pointer;
+      }
+      body.rsvp > main > form > article.{$eventName} input:invalid:focus + label:hover,
+      body.rsvp > main > form > article.{$eventName} input:valid:focus + label:hover {
+        border:2px solid {$tint}; background-color:{$shade}; cursor:pointer;
+      }
+      body.rsvp > main > form > article.{$eventName} label { border:2px solid {$tint}; }
+      body.rsvp > main > form > article.{$eventName} input:invalid:focus,
+      body.rsvp > main > form > article.{$eventName} input:valid:focus,
+      body.rsvp > main > form > article.{$eventName} input:invalid:focus + label,
+      body.rsvp > main > form > article.{$eventName} input:valid:focus + label {
+        background-color:transparent;
+      }
+      body.rsvp > main > form > article.{$eventName} ::-webkit-input-placeholder { opacity:.7; color: {$contrast}; font-style:italic; }
+      body.rsvp > main > form > article.{$eventName} ::-moz-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
+      body.rsvp > main > form > article.{$eventName} :-ms-input-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
+      body.rsvp > main > form > article.{$eventName} :-moz-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
 
-body.rsvp > main > form > article.{$eventName} button.disabled { pointer-events:none; color:rgba({$highlight_rgb},.5); }
+      body.rsvp > main > form > article.{$eventName} button.disabled { pointer-events:none; color:rgba({$highlight_rgb},.5); }
 CSS;
   }
   createThemeStyles();
