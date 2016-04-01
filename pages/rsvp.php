@@ -9,6 +9,15 @@ if (!isset($session)) {
 if (!isset($session->user)) {
   header("Location: /");
 }
+if (
+  $session->user->rsvp->hasRSVPed &&
+  (
+    !isset($_SERVER['HTTP_REFERER']) ||
+    strpos($_SERVER['HTTP_REFERER'], "rsvp-confirmation") === false
+  )
+) {
+ header("Location: /rsvp-confirmation");
+}
 ?>
 <!DOCTYPE html>
 <html lang="us-en">

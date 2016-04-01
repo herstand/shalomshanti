@@ -1,5 +1,5 @@
 * { box-sizing:border-box; }
-html, body, header, main, section, article, footer { margin:0; padding:0; width:100%; }
+html, body, header, main, section, article, footer { margin:0 auto; padding:0; width:100%; }
 header, main { z-index:1; position:relative; }
 h1, h2, h3, h4, h5, h6 { margin-top:0px; margin-bottom:0px; }
 a { text-decoration:none; }
