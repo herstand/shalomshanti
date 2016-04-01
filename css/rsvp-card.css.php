@@ -49,10 +49,11 @@ body.rsvp > main > form > article input:invalid + label {
       $contrast = $themes[$event]['contrast'];
       $tint = $themes[$event]['tint'];
       $shade = $themes[$event]['shade'];
-      makeEventStyles($event, $highlight, $contrast, $tint, $shade);
+      $highlight_rgb = $themes[$event]['highlight_rgb'];
+      makeEventStyles($event, $highlight, $contrast, $tint, $shade, $highlight_rgb);
     }
   }
-  function makeEventStyles($eventName, $highlight, $contrast, $tint, $shade) {
+  function makeEventStyles($eventName, $highlight, $contrast, $tint, $shade, $highlight_rgb) {
     echo <<<CSS
 body.rsvp > main > form > article.{$eventName} input { border:2px solid $tint; }
 body.rsvp > main > form > article.{$eventName} input:valid,
@@ -80,10 +81,12 @@ body.rsvp > main > form > article.{$eventName} input:invalid:focus + label,
 body.rsvp > main > form > article.{$eventName} input:valid:focus + label {
   background-color:transparent;
 }
-body.rsvp > main > form > article.{$eventName} ::-webkit-input-placeholder { opacity:.5; color: {$contrast}; font-style:italic; }
-body.rsvp > main > form > article.{$eventName} ::-moz-placeholder { opacity:.5; color:{$contrast}; font-style:italic; }
-body.rsvp > main > form > article.{$eventName} :-ms-input-placeholder { opacity:.5; color:{$contrast}; font-style:italic; }
-body.rsvp > main > form > article.{$eventName} :-moz-placeholder { opacity:.5; color:{$contrast}; font-style:italic; }
+body.rsvp > main > form > article.{$eventName} ::-webkit-input-placeholder { opacity:.7; color: {$contrast}; font-style:italic; }
+body.rsvp > main > form > article.{$eventName} ::-moz-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
+body.rsvp > main > form > article.{$eventName} :-ms-input-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
+body.rsvp > main > form > article.{$eventName} :-moz-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
+
+body.rsvp > main > form > article.{$eventName} button.disabled { pointer-events:none; color:rgba({$highlight_rgb},.5); }
 CSS;
   }
   createThemeStyles();
@@ -94,4 +97,21 @@ body.rsvp > main > form > article input:active { cursor:text; }
 body.rsvp > main > form > article label { text-align:center; position:absolute; right:2px; top:0px; height:40px; line-height:40px; width:40px; display:inline-block; }
 body.rsvp > main > form > article label:hover { cursor:pointer; }
 body.rsvp > main > form > article button { height:40px; width:100%; display:block; }
-body.rsvp > main > form > article button.disabled { pointer-events:none; color:rgba(20,70,135,.5); }
+
+
+@media (min-width:<?php echo $ipadLandscape; ?>px) {
+  body.rsvp > main > form > article:not(.intro) {
+    width:calc(100% / <?php echo count($session->user->events); ?>);
+    padding-left:25px;
+    padding-right:25px;
+    display:inline-block;
+    vertical-align:top;
+  }
+}
+
+@media (min-width:<?php echo $desktop2; ?>px) {
+  body.rsvp > main > form > article:not(.intro) {
+    padding-top:70px;
+    padding-bottom:70px;
+  }
+}

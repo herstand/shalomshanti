@@ -30,18 +30,24 @@ if (!isset($session->user)) {
   <header><?php include "templates/header.php"; ?></header>
   <main>
     <article class="intro"><?php include "templates/rsvpIntro.php"; ?></article>
-    <form action="/API/RSVP" method="POST">
-    <?php if (in_array("ceremony", $session->user->events)) { ?>
-    <article id="ceremony" class="ceremony"><?php echo RSVPArticle::createRSVPArticle("ceremony"); ?></article>
-    <?php } ?>
-    <?php if (in_array("reception", $session->user->events)) { ?>
-    <article id="reception" class="reception"><?php echo RSVPArticle::createRSVPArticle("reception"); ?></article>
-    <?php } ?>
-    <?php if (in_array("havdalah", $session->user->events)) { ?>
-    <article id="havdalah" class="havdalah"><?php echo RSVPArticle::createRSVPArticle("havdalah"); ?></article>
-    <?php } ?>
-    <button type='submit' class="typ-littleTitle">Save Response</button>
-    </form>
+    <form action="/API/RSVP" method="POST"><?php
+    if (in_array("ceremony", $session->user->events)) {
+
+      ?><article id="ceremony" class="ceremony"><?php echo RSVPArticle::createRSVPArticle("ceremony"); ?></article><?php
+
+    }
+    if (in_array("reception", $session->user->events)) {
+
+      ?><article id="reception" class="reception"><?php echo RSVPArticle::createRSVPArticle("reception"); ?></article><?php
+
+    }
+    if (in_array("havdalah", $session->user->events)) {
+
+      ?><article id="havdalah" class="havdalah"><?php echo RSVPArticle::createRSVPArticle("havdalah"); ?></article><?php
+
+    }
+    ?><button type='submit' class="typ-littleTitle">Save Response</button><?php
+    ?></form>
   </main>
   <?php include "templates/footer.php"; ?>
   <div class="templates"><?php

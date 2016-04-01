@@ -34,18 +34,21 @@ $green = "#8AC43F";
 $themes = array(
   "ceremony" => array(
     "highlight" => "#1b468d",
+    "highlight_rgb" => "20,70,135",
     "contrast" => "#ffffff",
     "tint" => "#486ba4",
     "shade" => "#163b79"
   ),
   "reception" => array(
     "highlight" => "#F16342",
+    "highlight_rgb" => "241,99,66",
     "contrast" => "#ffffff",
     "tint" => "#f6927b",
     "shade" => "#c94628"
   ),
   "havdalah" => array(
     "highlight" => "#FFC96C",
+    "highlight_rgb" => "255,201,108",
     "contrast" => "#1B468D",
     "tint" => "#FFDA98",
     "shade" => "#F1B34F"

@@ -32,7 +32,11 @@ include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/footer.css.php";
 
 body.rsvp { padding-bottom:182px; }
 
-body.rsvp article > * { max-width:400px; margin-left:auto; margin-right:auto; }
+body.rsvp article.intro > *, body.rsvp form > article > * {
+  max-width:400px;
+  margin-left:auto;
+  margin-right:auto;
+}
 body > main > article,
 body > main > form > article {
   padding-left:<?php echo $padding_mobile; ?>;
@@ -73,14 +77,18 @@ body.rsvp form button[type='submit']:hover {
 }
 
 @media (min-width:<?php echo $ipadPortrait; ?>px) {
-  body.rsvp article > * {
+  body.rsvp article.intro > *, body.rsvp form > article > * {
     max-width:620px;
   }
 }
 
 @media (min-width:<?php echo $ipadLandscape; ?>px) {
-  body > main > article, body > main > form > article {
+  body.rsvp article.intro > *, body.rsvp form {
     padding-left:<?php echo $padding_ipadLandscape; ?>;
     padding-right:<?php echo $padding_ipadLandscape; ?>;
   }
+  body.rsvp form > article > * {
+    max-width:100%;
+  }
 }
+
