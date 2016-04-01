@@ -24,6 +24,7 @@ body.rsvpConfirmation img.success {
   width:60px;
   height:60px;
 }
+
 body.rsvpConfirmation main > hr {
   margin-bottom:40px;
 }
@@ -54,8 +55,14 @@ body.rsvpConfirmation main > section.attendants > article {
 body.rsvpConfirmation main > section.attendants > article:last-of-type {
   margin-bottom:40px;
 }
+body.rsvpConfirmation > main > .thanksMessage {
+  max-width:620px;
+  display:block;
+  margin:0 auto;
+}
 body.rsvpConfirmation > main > img {
   margin-bottom:40px;
+  max-width:470px;
 }
 body.rsvpConfirmation > main > a {
   height:40px;
