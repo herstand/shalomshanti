@@ -1,6 +1,7 @@
 <?php
 set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 require_once "Controller/SessionController.php";
+require_once "css/variables.php";
 $session = SessionController::getSession();
 header("Content-type: text/javascript; charset: UTF-8");
 ?>
@@ -8,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     <?php include "fonts.js.php"; ?>
     <?php include "header.js.php"; ?>
     <?php include "footer.js.php"; ?>
-    var user = <?php echo json_encode($session->user); ?>;
+    var user = <?php echo json_encode($session->user); ?>,
+      cards = utilities.toArray(document.querySelectorAll("form > article"));
 
     function getNumberInvitedTo(eventName) {
       for (var rsvpEvent in user.rsvp.rsvpEvents) {
@@ -46,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         } else {
           ViewUtilities.hide(document.querySelector("article." + e.target.parentNode.id + " button"));
         }
+        updateCardHeights();
         newFieldset.querySelector("input").focus();
     }
 
@@ -68,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("article#" + eventName + " button").classList.remove("disabled");
       }
       updateNumber(eventName);
+      updateCardHeights();
     }
 
     function ableButton(e) {
@@ -163,6 +167,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       });
       return JSON.stringify(formData);
     }
+
+    function updateCardHeights() {
+      if (window.innerWidth >= <?php echo $ipadLandscape; ?> ) {
+        ViewUtilities.setHeights(cards, ViewUtilities.getTallestEl(cards) + "px");
+      } else {
+        ViewUtilities.setHeights(
+          utilities.toArray(document.querySelectorAll("form > article")),
+          "auto"
+        );
+      }
+    }
+
     document.querySelector("main > form").addEventListener("submit", function (e) {
       e.preventDefault();
       document.querySelector("main > form button[type='submit']").innerText = "Saving…";
@@ -193,53 +209,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       el.addEventListener("click", addFieldset)
     });
 
+    window.addEventListener("resize", updateCardHeights);
+    updateCardHeights();
+
+
 });
-
-/*
-
-JSON.stringify({
-          "Has RSVPed" : true,
-          "rsvpEvents" : [
-            {
-              "event_name" : "ceremony",
-              "attendants" : [
-                [],
-                {
-                  "id" : 2,
-                  "name" : "Vidya Cowsik Santosh"
-                }
-              ],
-              "num_invited" : 2
-            },
-            {
-              "event_name" : "reception",
-              "attendants" : [
-                [{
-                  "id" : 0,
-                  "name" : "Gunda Santosh Herstand"
-                }],
-                {
-                  "id" : 1,
-                  "name" : "Micah Herstand"
-                }
-              ],
-              "num_invited" : 2
-            },
-            {
-              "event_name" : "havdalah",
-              "attendants" : [
-                [{
-                  "id" : 0,
-                  "name" : "Saraswati Santosh Herstand"
-                }],
-                {
-                  "id" : 1,
-                  "name" : "Micah Herstand"
-                }
-              ],
-              "num_invited" : 2
-            }
-          ]
-        })
-
-        */

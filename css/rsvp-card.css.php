@@ -106,6 +106,7 @@ body.rsvp > main > form > article button { height:40px; width:100%; display:bloc
     padding-right:25px;
     display:inline-block;
     vertical-align:top;
+    -webkit-box-shadow: 0px 2px 30px rgba(0,0,0,.5); -moz-box-shadow: 0px 2px 30px rgba(0,0,0,.5); box-shadow: 0px 2px 30px rgba(0,0,0,.5);
   }
 }
 
