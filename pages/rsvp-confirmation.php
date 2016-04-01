@@ -39,6 +39,10 @@ if (!$session->user->rsvp->hasRSVPed) {
     </section>
     <hr />
     <?php include "templates/confirmationMessage.php"; ?>
+    <?php if ($session->user->rsvp->isComing()) {
+      ?><a class="typ-categoryTitle" href="/plan-your-trip">Plan your trip</a><?php
+    } ?>
+    <a class="typ-categoryTitle" href="/rsvp">Edit response</a>
   </main>
   <?php include "templates/footer.php"; ?>
 </body>

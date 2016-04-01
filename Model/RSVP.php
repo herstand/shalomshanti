@@ -74,7 +74,7 @@ class RSVP {
   public function isComing() {
     if ($this->hasRSVPed) {
       foreach ($this->rsvpEvents as $rsvpEvent) {
-        if (isset($rsvpEvent->attendants) && $rsvpEvent->attendants > 0) {
+        if (isset($rsvpEvent->attendants) && count($rsvpEvent->attendants) > 0) {
           return true;
         }
       }

@@ -21,8 +21,22 @@ include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/footer.css.php";
 body.rsvpConfirmation img.success {
   display:block;
   margin:40px auto;
+  width:60px;
+  height:60px;
 }
 body.rsvpConfirmation main > hr {
+  margin-bottom:40px;
+}
+body.rsvpConfirmation main > a {
+  display:block;
+  width:170px;
+  margin-left:auto;
+  margin-right:auto;
+}
+body.rsvpConfirmation main > a:first-of-type {
+  margin-bottom:20px;
+}
+body.rsvpConfirmation main > a:last-of-type {
   margin-bottom:40px;
 }
 body.rsvpConfirmation main > section.attendants > article > h3 {
@@ -39,6 +53,23 @@ body.rsvpConfirmation main > section.attendants > article {
 }
 body.rsvpConfirmation main > section.attendants > article:last-of-type {
   margin-bottom:40px;
+}
+body.rsvpConfirmation > main > img {
+  margin-bottom:40px;
+}
+body.rsvpConfirmation > main > a {
+  height:40px;
+  line-height:40px;
+  width:170px;
+  display:block;
+  border:2px solid <?php echo $blue; ?>;
+  background:white;
+  color:<?php echo $blue; ?>;
+}
+body.rsvpConfirmation > main > a:hover {
+  border:2px solid <?php echo $blue; ?>;
+  background:<?php echo $blue; ?>;
+  color:white;
 }
 
 body > main {
