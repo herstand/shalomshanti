@@ -36,7 +36,7 @@ body.rsvp > main > form > article figure { width:74px; margin-bottom:40px; }
 body.rsvp > main > form > article .of { width:41px; height:80px; }
 
 body.rsvp > main > form > article section fieldset { text-align:left; margin-bottom:10px; position:relative; }
-body.rsvp > main > form > article input { background-color:transparent; padding-left:10px; line-height:40px; width:calc(100% - 40px); height:40px; }
+body.rsvp > main > form > article input { margin-bottom:0px; background-color:transparent; padding-left:10px; line-height:40px; width:calc(100% - 40px); height:40px; }
 body.rsvp > main > form > article input:invalid,
 body.rsvp > main > form > article input:invalid + label {
   background-color:transparent;

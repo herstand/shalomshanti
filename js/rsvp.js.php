@@ -155,7 +155,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
           "event_name" : el.id,
           "attendants" : [
             getNewAttendantsFor(el.id)
-          ]
+          ],
+          "num_invited" : parseInt(getNumberInvitedTo(el.id))
         };
         appendUpdatedAttendantsTo(rsvpEvent);
         formData['rsvpEvents'].push(rsvpEvent);

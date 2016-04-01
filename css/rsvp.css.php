@@ -21,7 +21,7 @@ include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/footer.css.php";
 
 .intro {
   margin:0 auto 50px auto;
-  max-width:400px;
+  width:100%;
 }
 .intro .daysRemaining {
   margin-bottom:20px;
@@ -32,7 +32,7 @@ include $_SERVER['DOCUMENT_ROOT']."/shalomshanti/css/footer.css.php";
 
 body.rsvp { padding-bottom:182px; }
 
-
+body.rsvp article > * { max-width:400px; margin-left:auto; margin-right:auto; }
 body > main > article,
 body > main > form > article {
   padding-left:<?php echo $padding_mobile; ?>;
@@ -67,10 +67,13 @@ body.rsvp form button[type='submit']:hover {
     padding-left:<?php echo $padding_mobile3; ?>;
     padding-right:<?php echo $padding_mobile3; ?>;
   }
+  body > main > article.intro h1 {
+    margin-top:40px;
+  }
 }
 
 @media (min-width:<?php echo $ipadPortrait; ?>px) {
-  .intro {
+  body.rsvp article > * {
     max-width:620px;
   }
 }
