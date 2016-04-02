@@ -9,6 +9,9 @@ if (!isset($session)) {
 if (!isset($session->user)) {
   header("Location: /");
 }
+if (!isset($session->user->rsvp) || !isset($session->user->rsvp->hasRSVPed)) {
+  error_log(json_encode($session->user));
+}
 if (
   $session->user->rsvp->hasRSVPed &&
   (

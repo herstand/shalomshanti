@@ -9,6 +9,8 @@ if (!isset($session)) {
   <?php
   if (!isset($session->user)) {
     include "js/login.js.php";
+  } else {
+    include "js/nav-primary.js.php";
   }
   ?>
 })();
