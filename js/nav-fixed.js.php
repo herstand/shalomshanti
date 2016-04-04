@@ -57,7 +57,7 @@ function positionSecondaryFixedNav(e) {
 }
 
 window.addEventListener("scroll", function(e) {
-    if (document.querySelector("#showList").checked) {
+    if (document.querySelector("#showMap") === null || !document.querySelector("#showMap").checked) {
         positionSecondaryFixedNav();
     }
 });

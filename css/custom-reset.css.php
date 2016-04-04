@@ -1,4 +1,4 @@
-* { box-sizing:border-box; }
+* { box-sizing:border-box; margin-left:auto; margin-right:auto; }
 html, body, header, main, section, article, footer { margin:0 auto; padding:0; width:100%; }
 header, main { z-index:1; position:relative; }
 h1, h2, h3, h4, h5, h6 { margin-top:0px; margin-bottom:0px; }
@@ -12,6 +12,7 @@ nav > ul li:first-child { margin-left:0px; }
 nav > ul li:last-child { margin-right:0px; }
 nav a:hover { border-bottom:1px solid <?php echo $blue; ?>; }
 nav a.image:hover { border-bottom:0; }
+img { max-width:100%; }
 main { position:relative; text-align:center; }
 figure { margin:0; padding:0; }
 fieldset { border:0px; margin:0; padding:0; }
@@ -21,7 +22,7 @@ button { background:none; border:none; padding:0; }
 button:hover { cursor:pointer; }
 section { position:relative; text-align:center; }
 iframe { border:none; }
-p { margin:0; }
+p { margin:0 auto; }
 hr { border:none; height:1px; width:170px; margin:0 auto; padding:0; background-color:<?php echo $blue; ?>;}
 .mobileHide { display:none; }
 .mobileOnly { display:block; }

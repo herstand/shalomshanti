@@ -54,6 +54,10 @@ class APIController {
 
   // Action
   private static function login($password) {
+    if (!isset($password) || $password == "") {
+      header('HTTP/1.1 401 Unauthorized');
+      throw new Exception("Password required.");
+    }
     if (LoginAttemptService::atLoginLimit($_SERVER['REMOTE_ADDR'])) {
       header('HTTP/1.1 401 Unauthorized');
       throw new Exception("Too many login attempts.");

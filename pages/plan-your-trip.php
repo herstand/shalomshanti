@@ -27,14 +27,14 @@ if (!isset($session->user)) {
 <body class="plan-your-trip">
     <header><?php include "templates/header.php"; ?></header>
     <main>
-        <nav class="mobile"><?php
+        <nav class="mobile fullWidth"><?php
             ?><input name="view" value="list" class="view" type='radio' data-display="list" id='showList' checked /><label class="typ-littleTitle" for='showList'>List</label><?php
             ?><input name="view" value="map" class="view" type='radio' data-display="map" id='showMap' /><label class="typ-littleTitle" for='showMap'>Map</label><?php
         ?></nav><?php
-        ?><section class="map mobileHide disabled"><?php
+        ?><section class="map mobileHide disabled pageSection fullWidth"><?php
             ?><iframe id="map" src="https://www.google.com/maps/d/embed?mid=zdT3jrYh5dp8.kUSv7mo1SndM&z=14&amp;ll=42.0970519,-75.9151622" width="100%" height="400px"></iframe><?php
         ?></section><?php
-        ?><section class="list">
+        ?><section class="list pageSection">
             <nav class="secondary">
                 <ul><?php
                     ?><li><a class="typ-body" href="#gettinghere-anchor">Getting Here</a></li><?php
@@ -57,7 +57,7 @@ if (!isset($session->user)) {
                     ?></ul></li><?php
                 ?></ul><?php
             ?></nav>
-            <section id="gettinghere"><hr class="jumpToPoint" id="gettinghere-anchor" /><?php
+            <section class="infoSection" id="gettinghere"><hr class="jumpToPoint" id="gettinghere-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="/images/title_transport.svg" ?/><?php
                 ?><h2 class="typ-title">Getting Here</h2><?php
@@ -91,7 +91,7 @@ if (!isset($session->user)) {
                 </article><?php
             ?></section>
             <hr />
-            <section id="wheretostay"><hr class="jumpToPoint" id="wheretostay-anchor" /><?php
+            <section class="infoSection" id="wheretostay"><hr class="jumpToPoint" id="wheretostay-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="/images/title_lodging.svg" ?/><?php
                 ?><h2 class="typ-title">Where to Stay</h2><?php
@@ -129,7 +129,7 @@ if (!isset($session->user)) {
                 </article><?php
             ?></section>
             <hr />
-            <section id="wheretoeat"><hr class="jumpToPoint" id="wheretoeat-anchor" /><?php
+            <section class="infoSection" id="wheretoeat"><hr class="jumpToPoint" id="wheretoeat-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="/images/title_food.svg" ?/><?php
                 ?><h2 class="typ-title">Where to Eat</h2><?php
@@ -173,7 +173,7 @@ if (!isset($session->user)) {
                 </article><?php
             ?></section>
             <hr />
-            <section id="thingstodo"><hr class="jumpToPoint" id="thingstodo-anchor" /><?php
+            <section class="infoSection" id="thingstodo"><hr class="jumpToPoint" id="thingstodo-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="/images/title_activities.svg" ?/><?php
                 ?><h2 class="typ-title">Things to do</h2><?php
@@ -217,7 +217,7 @@ if (!isset($session->user)) {
                 </article><?php
             ?></section>
             <hr />
-            <section id="explore"><hr class="jumpToPoint" id="explore-anchor" /><?php
+            <section class="infoSection" id="explore"><hr class="jumpToPoint" id="explore-anchor" /><?php
                 ?><header><?php
                 ?><img class="titleImage" src="/images/title_new-york.svg" ?/><?php
                 ?><h2 class="typ-title">Explore <span class="nobreak">Upstate NY</span></h2><?php
