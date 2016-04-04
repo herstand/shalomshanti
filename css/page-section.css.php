@@ -7,3 +7,4 @@ section.pageSection:not(.fullWidth), .paddedSection { padding-left:<?php echo $p
 @media (min-width:<?php echo $ipadLandscape; ?>px) {
   section.pageSection:not(.fullWidth), .paddedSection { padding-left:<?php echo $padding_ipadLandscape; ?>; padding-right:<?php echo $padding_ipadLandscape; ?>; }
 }
+
