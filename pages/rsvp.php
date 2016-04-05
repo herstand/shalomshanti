@@ -6,12 +6,13 @@ if (!isset($session)) {
   require_once "Controller/SessionController.php";
   $session = SessionController::getSession();
 }
-if (!isset($session->user)) {
+if (!isset($session->user) || $session->user->id === null) {
   header("Location: /");
 }
 if (!isset($session->user->rsvp) || !isset($session->user->rsvp->hasRSVPed)) {
   error_log(json_encode($session->user));
 }
+
 if (
   $session->user->rsvp->hasRSVPed &&
   (

@@ -1,5 +1,6 @@
 .typ-title, .typ-pageTitle { font-weight:normal; font-family:"hera-bold"; letter-spacing:1px; text-transform:uppercase; -webkit-text-stroke-width:1px; text-stroke-width:1px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
 .typ-title { font-size:30px; line-height:40px; }
+.typ-title .ampersand { line-height:30px; font-size:20px; }
 .typ-pageTitle { font-size:60px; line-height:70px; margin-top:30px; margin-bottom:0px; }
 .typ-littleTitle { font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; font-size:13px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
 .typ-littleTitle { letter-spacing:1.3px; }
@@ -16,7 +17,11 @@
     .typ-pageTitle { margin-top:40px; }
 }
 
+@media (min-width:<?php echo $ipadLandscape; ?>px) {
+  .typ-title .ampersand { line-height:30px; font-size:30px; }
+}
 @media (min-width:<?php echo $desktop2; ?>px) {
   /* Size */
   .typ-title { font-size:36px; line-height:50px; letter-spacing:2px; }
+  .typ-title .ampersand { line-height:50px; font-size:36px; }
 }

@@ -1,6 +1,7 @@
 <?php
   set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
   require_once "Model/User.php";
+  require_once "Controller/APIController.php";
 
   class SessionController {
     public static $singleton;
@@ -25,17 +26,21 @@
 
     public static function getSession() {
       self::startSessionIfNecessary();
-      if (!isset($_SESSION['user_session'])) {
-        self::$singleton = new SessionController();
-      } else {
-        self::$singleton = $_SESSION['user_session'];
-        if (isset(self::$singleton->user)) {
-          self::$singleton->setUser(
-            GuestService::getInstance()->getTrustedUser(
-              self::$singleton->user->id
-            )
-          );
+      try {
+        if (!isset($_SESSION['user_session'])) {
+          self::$singleton = new SessionController();
+        } else {
+          self::$singleton = $_SESSION['user_session'];
+          if (isset(self::$singleton->user)) {
+            self::$singleton->setUser(
+              GuestService::getInstance()->getTrustedUser(
+                self::$singleton->user->id
+              )
+            );
+          }
         }
+      } catch (Exception $e) {
+        APIController::getError($e->getMessage());
       }
       return self::$singleton;
     }

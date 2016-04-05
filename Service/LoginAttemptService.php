@@ -10,7 +10,7 @@ class LoginAttemptService {
 
   public static function atLoginLimit($ip) {
     if (file_exists(self::$loginAttemptsFolderLocation.base64_encode($ip))) {
-      if (file_get_contents(self::$loginAttemptsFolderLocation.base64_encode($ip)) > 1) {
+      if (file_get_contents(self::$loginAttemptsFolderLocation.base64_encode($ip)) > 10) {
         return true;
       } else {
         return false;

@@ -43,7 +43,7 @@ body > main > form > article {
   padding-right:<?php echo $padding_mobile; ?>;
 }
 
-h2 span.ampersand {
+body.rsvp h2 span.ampersand {
   display:block;
   margin:0px;
   line-height:30px;

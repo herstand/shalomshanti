@@ -9,7 +9,7 @@ var utilities = {
           callback(request.responseText);
         } else if (request.status === 401) {
           if (JSON.parse(request.responseText).message == "Too many login attempts.") {
-            alert("Too many login attempts. Please contact wedding@shalomshanti.com to unlock your IP address. Or wait a minute.");
+            alert("Too many login attempts. Please contact wedding@shalomshanti.com to unlock your IP address. Or wait 5 minutes.");
           } else {
             alert("Sorry, that code does not correspond with a guest for our wedding. Please email wedding@shalomshanti.com if you are having trouble logging in.");
           }

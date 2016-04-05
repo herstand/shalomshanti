@@ -6,8 +6,6 @@ if (!isset($session)) {
 }
 if (!isset($session->user)) {
   header("Location: /");
-} else {
-    error_log("Loading events for: ".json_encode($session->user));
 }
 ?>
 <!DOCTYPE html>
@@ -141,7 +139,7 @@ if (!isset($session->user)) {
     <?php if (in_array("havdalah", $session->user->events)) { ?>
         <section class="infoSection" id="havdalah"><hr class="jumpToPoint" id="havdalah-anchor" /><?php
             ?><header class="paddedSection"><?php
-                ?><h2 class="typ-title">Havdalah</h2><?php
+                ?><h2 class="typ-title">Mehendi<span class="ampersand">&amp;</span>Havdalah</h2><?php
                 ?><hr /><?php
             ?></header><?php
             ?><article class="datetime shortText paddedSection">
@@ -166,7 +164,6 @@ if (!isset($session->user)) {
                 <p class="typ-body">This is not a formal event. Dressy casual attire is welcome.</p>
             </article>
         </section>
-        <hr />
     <?php } ?>
     </main>
     <?php include "templates/footer.php"; ?>

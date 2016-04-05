@@ -174,6 +174,9 @@ class GuestService extends DBService {
   }
 
   private function loadUser($guest) {
+    if ($guest['id'] === null) {
+      throw new Exception("Unknown user.");
+    }
     return new User(
       $guest['id'],
       $guest['Household name'],

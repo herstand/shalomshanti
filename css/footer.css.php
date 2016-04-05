@@ -32,6 +32,6 @@ body > footer .content span:not(:last-of-type):after { content:"·"; }
 }
 @media (min-width:<?php echo $mobile3; ?>px) {
   /* Size */
-  body > footer { padding-left:40px; padding-right:40px; bottom:-150px; }
+  body > footer { padding-left:40px; padding-right:40px; bottom:-135px; }
   body > footer header { line-height:50px; margin-bottom:25px; }
 }
