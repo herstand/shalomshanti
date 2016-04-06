@@ -23,11 +23,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function addAttendeeFieldset(eventName) {
       var newFieldset = document.querySelector(".templates fieldset[data-event-name='" + eventName + "']").cloneNode(true);
-      if (document.querySelector("article." + eventName + " input")) {
-        newFieldset.dataset.attendantIndex = parseInt(document.querySelector("article." + eventName + " fieldset:last-of-type").dataset.attendantIndex) + 1;
-      } else {
-        newFieldset.dataset.attendantIndex = 0;
-      }
+      newFieldset.dataset.attendantIndex = 0;
 
       newFieldset.querySelector("input").setAttribute("id", eventName + "_" + newFieldset.dataset.attendantIndex);
       newFieldset.querySelector("input").addEventListener("keyup", ableButton);
