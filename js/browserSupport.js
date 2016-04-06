@@ -1,3 +1,3 @@
-if (typeof document.createElement("div").classList !== "object") {
+if (typeof document.createElement("div").classList === "undefined") {
   window.location = "/unsupportedBrowser.php";
 }
