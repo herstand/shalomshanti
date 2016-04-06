@@ -10,7 +10,11 @@ header("Content-type: text/javascript; charset: UTF-8");
     var smallIsSet = false,
       largeIsSet = false;
     <?php include "fonts.js.php"; ?>
-    window.addEventListener("resize", properImage);
+    if (window.addEventListener) {
+        window.addEventListener("resize", properImage, false);
+    } else {
+        window.attachEvent("onresize", properImage);
+    }
     function properImage() {
       if (window.innerWidth >= 600 && largeIsSet == false) {
         smallIsSet = false;
