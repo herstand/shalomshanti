@@ -9,11 +9,11 @@
     include "css/variables.php";
 
     include "css/fonts.css.php";
-    include "css/custom-reset.css.php";
     include "css/typography.css.php";
 ?>
-main {
+body {
     padding:0 20px;
+    text-align:center;
 }
 img {
     margin:50px auto;

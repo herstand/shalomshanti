@@ -14,10 +14,8 @@
 <?php include_once("templates/ga.php"); ?>
 </head>
 <body class="unsupportedBrowser">
-    <main>
-      <img src="/images/unsupportedBrowser-small.png" />
-      <p class="typ-body">Feel free to email us at <a href="mailto:wedding@shalomshanti.com">wedding@shalomshanti.com</a> for wedding-related information.</p>
-    </main>
+    <img src="/images/unsupportedBrowser-small.png" />
+    <p class="typ-body">Feel free to email us at <a href="mailto:wedding@shalomshanti.com">wedding@shalomshanti.com</a> for wedding-related information.</p>
     <script type='text/javascript' src="/js/unsupportedBrowser.js?cache=4"></script>
 </body>
 </html>
