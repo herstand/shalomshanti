@@ -13,11 +13,11 @@ $session = SessionController::getSession();
 <link rel="icon" href="icons/favicon.png">
 <link rel="mask-icon" href="icons/star.svg">
 <script type="text/javascript" src="/js/browserSupport.js"></script>
-<script type='text/javascript' src="js/utilities.js"></script>
-<script type='text/javascript' src="View/ViewUtilities.js"></script>
+<script type='text/javascript' src="/js/utilities.js"></script>
+<script type='text/javascript' src="/View/ViewUtilities.js"></script>
 <script async src="https://use.typekit.net/abm3mqd.js"></script>
-<script type='text/javascript' src="js/homepage.js?cache=2"></script>
-<link rel="stylesheet" type="text/css" href="css/plan.css?cache=2" />
+<script type='text/javascript' src="/js/homepage.js?cache=2"></script>
+<link rel="stylesheet" type="text/css" href="/css/plan.css?cache=2" />
 <?php include_once("templates/ga.php"); ?>
 <style type='text/css'>
     body { padding-bottom:200px; }
