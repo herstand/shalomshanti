@@ -16,11 +16,15 @@ header("Content-type: text/javascript; charset: UTF-8");
         window.attachEvent("onresize", properImage);
     }
     function properImage() {
-      if (window.innerWidth >= 600 && largeIsSet == false) {
+      var browserWidth = window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+
+      if (browserWidth >= 600 && largeIsSet == false) {
         smallIsSet = false;
         largeIsSet = true;
         document.querySelector("img").src = "/images/unsupportedBrowser.png";
-      } else if (window.innerWidth < 600 && smallIsSet == false) {
+      } else if (browserWidth < 600 && smallIsSet == false) {
         smallIsSet = true;
         largeIsSet = false;
         document.querySelector("img").src = "/images/unsupportedBrowser-small.png";
