@@ -28,7 +28,7 @@ RewriteRule ^templates/(.+)$ /shalomshanti/templates/$1.php [L,QSA]
 # Find pages
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|jpeg|png|svg|woff|ttf|otf)$
-#RewriteCond %{REQUEST_URI} ^!shalomshanti
+RewriteCond %{REQUEST_URI} (rsvp-confirmation|rsvp|events|plan-your-trip)$
 RewriteRule ^(.+)$ /shalomshanti/pages/$1.php [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -50,4 +50,4 @@ Header set Cache-Control "max-age=31536050"
 Header set Cache-Control "max-age=86400"
 </FilesMatch>
 
-ErrorDocument 404 /shalomshanti/index.php
+ErrorDocument 404 /shalomshanti/404.php
