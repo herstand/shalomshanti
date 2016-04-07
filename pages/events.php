@@ -29,7 +29,7 @@ if (!isset($session->user)) {
     <main>
         <section class='intro paddedSection'>
             <h1 class="typ-pageTitle">Event Info</h1>
-            <p class="pageSummary typ-subsection-header">Here’s some information about timing, venue, and what to expect at our wedding.</p>
+            <p class="pageSummary typ-subsection-header">Here’s some information about timing, venue, and what to expect at <span class='nobreak'>our wedding.</span></p>
         </section>
         <nav class="secondary">
             <ul><?php
@@ -57,7 +57,7 @@ if (!isset($session->user)) {
         ?></nav>
         <article class="note paddedSection fullWidth">
             <h4 class="typ-littleTitle">A note about gifts</h4>
-            <p class="typ-body">We are very fortunate to have all that we need to make a home and a life together in our small New York City apartment. The greatest gift you could give us is that of your love and support. We encourage you to check out <a href="http://www.givedirectly.org">GiveDirectly</a>, one of our favorite charities, which allows you to give cash directly to the people who need it most. We’d be honored if you made a donation on our behalf, so we can start off our marriage in the spirit of giving.</p>
+            <p class="typ-body">We are very fortunate to have all that we need to make a home and a life together in our small New York City apartment. The greatest gift you could give us is that of your love and support. We encourage you to check out <a href="http://www.givedirectly.org">GiveDirectly</a>, one of our favorite charities, which allows you to give cash directly to the people who need it most. We’d be honored if you made a donation on our behalf, so we can start off our marriage in the spirit <span class='nobreak'>of giving.</span></p>
             <a target="_blank" href="http://www.givedirectly.org"><img src="images/givedirectlylogo.png" /></a>
         </article>
     <?php if (in_array("ceremony", $session->user->events)) { ?>
@@ -70,7 +70,7 @@ if (!isset($session->user)) {
                 <header>
                     <img class="important" src="/icons/time_ceremony.svg" />
                 </header>
-                <p class="typ-body">The ceremony will take place on Sunday, July 10 at 10:00 am. Lunch will be served at 12:45 pm.</p>
+                <p class="typ-body">The ceremony will take place on Sunday, July 10 at 10:00 am. Lunch will be served at <span class='nobreak'>12:45 pm.</span></p>
             </article><?php
             ?><hr class="mobileOnly" /><?php
             ?><article class="location shortText hotel venue paddedSection">
@@ -85,14 +85,14 @@ if (!isset($session->user)) {
                 <header>
                     <img class="important" src="/icons/dress_ceremony.svg" />
                 </header>
-                <p class="typ-body">Formal attire from any culture is welcome at the ceremony!</p>
+                <p class="typ-body">Formal attire from any culture is welcome at <span class='nobreak'>the ceremony!</span></p>
             </article>
             <article class="note shortText paddedSection fullWidth">
                 <header>
                     <h4 class="typ-littleTitle">Unplugged</h4>
                     <img src="/icons/unplugged.svg" />
                 </header>
-                <p class="typ-body">We ask that you switch off your devices to be present with us during the ceremony. We promise to take a selfie with you afterward!</p>
+                <p class="typ-body">We ask that you switch off your devices to be present with us during the ceremony. We promise to take a selfie with <span class='nobreak'>you afterward!</span></p>
             </article>
             <article class="note paddedSection">
                 <header>
@@ -101,7 +101,7 @@ if (!isset($session->user)) {
                 <p class="typ-body">We will have both a Hindu and a Jewish ceremony. We have found, and hope you also find, that between the two religions there is only one truth. We aim for our wedding as well as our marriage to and embody our values for spirituality, tradition, and social progress.</p>
                 <p class="typ-body">The Hindu ceremony will begin on the patio with fun betrothal rituals like <a href=''><em>maalai maatral</em></a> (garland exchange), followed by a procession into the hall to ascend the <a href=''><em>mandapam</em></a> (wedding canopy) where we will perform a series of offerings in Sanskrit language and take the vows of the <a href=''><em>saptapadi</em></a> (seven steps).</p>
                 <p class="typ-body">The Jewish ceremony will take place under the <a href=''><em>chuppah</em></a> (wedding canopy) following traditions of Reform Judaism. After signing the <a href=''><em>ketubah</em></a> (marriage contract), lorem ipsum dolor sit amet seven circles.</p>
-                <p class="typ-body">Finally, we will exchange vows in our own words, and ask for your support in helping us to keep them.</p>
+                <p class="typ-body">Finally, we will exchange vows in our own words, and ask for your support in helping us to <span class='nobreak'>keep them.</span></p>
             </article>
         </section>
         <hr />
@@ -116,7 +116,7 @@ if (!isset($session->user)) {
                 <header>
                     <img class="important" src="/icons/time_reception.svg" />
                 </header>
-                <p class="typ-body">The reception begins at 6:00 pm with tea and cocktails on Sunday, July 10. Dinner will be served at 8:00 pm.</p>
+                <p class="typ-body">The reception begins at 6:00 pm with tea and cocktails on Sunday, July 10. Dinner will be served at <span class='nobreak'>8:00 pm.</span></p>
             </article><?php
             ?><hr class="mobileOnly" /><?php
             ?><article class="location shortText hotel venue paddedSection">
@@ -131,7 +131,7 @@ if (!isset($session->user)) {
                 <header>
                     <img class="important" src="/icons/dress_reception.svg" />
                 </header>
-                <p class="typ-body">We encourage you to get festive with your formal attire at the reception—and bring your dancing shoes!</p>
+                <p class="typ-body">We encourage you to get festive with your formal attire at the reception—and bring your <span class='nobreak'>dancing shoes!</span></p>
             </article>
         </section>
         <hr />
@@ -146,7 +146,7 @@ if (!isset($session->user)) {
                 <header>
                     <img class="important" src="/icons/time_havdalah.svg" />
                 </header>
-                <p class="typ-body">We’ll start the evening at 6:00 pm on Saturday, July 9 with <a href=''><em>mehendi</em></a> and music. Dinner will be served at 7:00 followed by the <a href=''><em>Havdalah</em></a>    service <span class='nobreak'>at sundown.</span></p>
+                <p class="typ-body">We’ll start the evening at 6:00 pm on Saturday, July 9 with <a href=''><em>mehendi</em></a> and music. Dinner will be served at 7:00 followed by the <a href=''><em>Havdalah</em></a> service <span class='nobreak'>at sundown.</span></p>
             </article><?php
             ?><hr class="mobileOnly" /><?php
             ?><article class="location shortText hotel venue paddedSection">
@@ -161,7 +161,7 @@ if (!isset($session->user)) {
                 <header>
                     <img class="important" src="/icons/dress_havdalah.svg" />
                 </header>
-                <p class="typ-body">This is not a formal event. Dressy casual attire is welcome.</p>
+                <p class="typ-body">This is not a formal event. Dressy casual attire <span class='nobreak'>is welcome.</span></p>
             </article>
         </section>
     <?php } ?>

@@ -20,7 +20,9 @@
     include "css/map-link.css.php";
     include "css/footer.css.php";
 ?>
-
+section > article h4 {
+    margin-bottom:0px;
+}
 nav.secondary a {
     text-transform:capitalize;
 }
@@ -65,6 +67,9 @@ section > article.shortText {
 .note p {
     margin-top:0px;
     margin-bottom:30px;
+}
+.infoSection > .note p {
+    margin-bottom:10px;
 }
 .note h4 + img {
     margin-bottom:40px;
