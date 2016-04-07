@@ -9,7 +9,7 @@ $session = SessionController::getSession();
 <title>Shalom Shanti: Vidya &amp; Micah's Wedding</title>
 <meta charset="utf-8">
 <meta title="Author" content="Vidya Santosh and Micah Herstand">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 <link rel="icon" href="icons/favicon.png">
 <link rel="mask-icon" href="icons/star.svg">
 <script type="text/javascript" src="/js/browserSupport.js"></script>
