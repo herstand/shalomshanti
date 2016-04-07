@@ -1,6 +1,6 @@
 <div data-destination-parent="body" data-destination-pend="prepend" class="login modalWrapper">
   <div class="modal">
-  <button class="close">x</button>
+  <button class="close">×</button>
   <h4 class="typ-littleTitle">Welcome!</h4>
   <p class="typ-body">Welcome to the guests-only area of our website! You’re logged in as:</p>
   <p class="householdName typ-subsection-header"><em class="household_name"></em></p>
