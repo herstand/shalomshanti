@@ -11,9 +11,11 @@ header("Content-type: text/json");
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
   echo APIController::runAction(
     "login",
-    base64_decode(
-      // cGFzc3dvcmQ= is "password" in base64-encoding
-      APIController::decodePOSTedJSON()["cGFzc3dvcmQ="]
+    strtoupper(
+      base64_decode(
+        // cGFzc3dvcmQ= is "password" in base64-encoding
+        APIController::decodePOSTedJSON()["cGFzc3dvcmQ="]
+      )
     )
   );
 } else {
