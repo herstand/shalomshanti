@@ -27,8 +27,11 @@ abstract class DBService {
     }
 
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
-
-    return $result->fetch_array(MYSQLI_ASSOC);
+    if ($result->num_rows <= 1) {
+      return $result->fetch_array(MYSQLI_ASSOC);
+    } else {
+      return $result;
+    }
   }
 
   private function runInsert($table, $data) {

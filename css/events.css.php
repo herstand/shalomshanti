@@ -18,6 +18,7 @@
     include "css/info-section.css.php";
     include "css/article.css.php";
     include "css/map-link.css.php";
+    include "css/ampersand.css.php";
     include "css/footer.css.php";
 ?>
 section > article h4 {
@@ -90,11 +91,6 @@ article.attire header img.important {
 
 section.infoSection > hr.subsection-divider { background-color:<?php echo $grey; ?>; }
 
-body.events h2 span.ampersand {
-  display:block;
-  margin:0px;
-}
-
 @media (min-width:<?php echo $mobile2; ?>px) {
     .note img { height: auto; width:360px; }
     article.datetime header img.important {
@@ -120,10 +116,4 @@ body.events h2 span.ampersand {
         max-width:620px;
     }
     .note img { width:400px; }
-    body.events h2 span.ampersand {
-        display:inline-block;
-        margin-left:10px;
-        margin-right:10px;
-    }
 }
-

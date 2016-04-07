@@ -12,17 +12,17 @@ class RSVP {
   }
 
   public function getAttendantIds($event_name) {
-    $attendantIds = "";
+    $attendantIds = array();
     foreach ($this->rsvpEvents as $rsvpEvent) {
       if ($rsvpEvent->event_name === $event_name) {
         foreach ($rsvpEvent->attendants as $attendant) {
           if (isset($attendant->id)) { //attendants[0] is an array of attendants without ids yet
-            $attendantIds .= $attendant->id.",";
+            $attendantIds[] = $attendant->id;
           }
         }
       }
     }
-    return substr($attendantIds, 0, strlen($attendantIds) - 1);
+    return $attendantIds;
   }
 
   public function updateAttendant($event, $id, $name) {

@@ -1,4 +1,5 @@
 * { box-sizing:border-box; margin-left:auto; margin-right:auto; }
+body { overflow-x:hidden; }
 html, body, header, main, section, article, footer { margin:0 auto; padding:0; width:100%; }
 header, main { z-index:1; position:relative; }
 h1, h2, h3, h4, h5, h6 { margin-top:0px; margin-bottom:0px; }

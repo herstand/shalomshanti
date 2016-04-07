@@ -1,6 +1,8 @@
 <?php
 set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once "db_access.php";
 require_once "Service/DBService.php";
 require_once "Service/PasswordHash.php";
@@ -8,7 +10,6 @@ require_once "Service/PasswordHash.php";
 require_once "Model/Attendant.php";
 require_once "Model/User.php";
 require_once "Model/RSVPEvent.php";
-
 
 class GuestService extends DBService {
   public static $singleton;
@@ -42,15 +43,12 @@ class GuestService extends DBService {
         "guests",
         array(
           "COLUMNS" => array(
-            "`hashedId` as `id`",
+            "`id`",
             "`Household name`",
             "`Has RSVPed`",
-            "(`Ceremony adults invited` + `Ceremony children invited`) as `Ceremony invited`",
-            "(`Reception adults invited` + `Reception children invited`) as `Reception invited`",
-            "(`Havdalah adults invited` + `Havdalah children invited`) as `Havdalah invited`",
-            "`Ceremony attendants`",
-            "`Reception attendants`",
-            "`Havdalah attendants`"
+            "(`Ceremony adults invited` + `Ceremony children invited`) as `ceremony invited`",
+            "(`Reception adults invited` + `Reception children invited`) as `reception invited`",
+            "(`Havdalah adults invited` + `Havdalah children invited`) as `havdalah invited`"
           ),
           "WHERE" => "`password` = '".$password."' AND (`Ceremony adults invited` > 0 or `Ceremony children invited` or `Reception adults invited` > 0 OR `Reception children invited` > 0 or `Havdalah adults invited` > 0 or `Havdalah children invited` > 0)"
         )
@@ -59,24 +57,24 @@ class GuestService extends DBService {
   }
 
    // Call with GuestService::getInstance()->getUser($id)
-  public function getTrustedUser($hashedId) {
+  public function getTrustedUser($id) {
     return $this->loadUser(
       $this->query(
         DBService::SELECT,
         "guests",
         array(
           "COLUMNS" => array(
-            "`hashedId` as `id`",
+            "`id`",
             "`Household name`",
             "`Has RSVPed`",
-            "(`Ceremony adults invited` + `Ceremony children invited`) as `Ceremony invited`",
-            "(`Reception adults invited` + `Reception children invited`) as `Reception invited`",
-            "(`Havdalah adults invited` + `Havdalah children invited`) as `Havdalah invited`",
+            "(`Ceremony adults invited` + `Ceremony children invited`) as `ceremony invited`",
+            "(`Reception adults invited` + `Reception children invited`) as `reception invited`",
+            "(`Havdalah adults invited` + `Havdalah children invited`) as `havdalah invited`",
             "`Ceremony attendants`",
             "`Reception attendants`",
             "`Havdalah attendants`"
           ),
-          "WHERE" => "`hashedId` = '".$hashedId."' AND (`Ceremony adults invited` > 0 or `Ceremony children invited` or `Reception adults invited` > 0 OR `Reception children invited` > 0 or `Havdalah adults invited` > 0 or `Havdalah children invited` > 0)"
+          "WHERE" => "`id` = {$id} AND (`Ceremony adults invited` > 0 or `Ceremony children invited` or `Reception adults invited` > 0 OR `Reception children invited` > 0 or `Havdalah adults invited` > 0 or `Havdalah children invited` > 0)"
         )
       )
     );
@@ -96,7 +94,7 @@ class GuestService extends DBService {
         "SET" => array(
           "Has RSVPed" => true
         ),
-        "WHERE" => "`hashedId` = '{$guestId}'"
+        "WHERE" => "`id` = {$guestId}"
       )
     );
   }
@@ -155,22 +153,48 @@ class GuestService extends DBService {
     );
   }
 
-  private function updateGuestAttendants($guestId, $rsvp) {
-    $ceremony_attendants = $rsvp->getAttendantIds("ceremony");
-    $reception_attendants = $rsvp->getAttendantIds("reception");
-    $havdalah_attendants = $rsvp->getAttendantIds("havdalah");
-    $this->query(
-      DBService::UPDATE,
-      "guests",
+  private function attendantHasBeenMatchedWithGuest($event, $attendantId) {
+    $matcher = $this->query(
+      DBService::SELECT,
+      $event."_guest_attendants",
       array(
-        "SET" => array(
-          "Ceremony attendants" => $ceremony_attendants,
-          "Reception attendants" => $reception_attendants,
-          "Havdalah attendants" => $havdalah_attendants
+        "COLUMNS" => array(
+          "attendant_id"
         ),
-        "WHERE" => "`hashedId` = '{$guestId}'"
+        "WHERE" => "`attendant_id` = {$attendantId}"
       )
     );
+    return $matcher != null && count($matcher) > 0;
+  }
+
+  private function updateAttendantMatcher($event, $guestId, $attendantIds) {
+    foreach ($attendantIds as $attendantId) {
+      if (!$this->attendantHasBeenMatchedWithGuest($event, $attendantId)) {
+        $this->query(
+          DBService::INSERT,
+          $event."_guest_attendants",
+          array(
+            "COLUMNS" => array(
+              "attendant_id",
+              "guest_id"
+            ),
+            "VALUES" => array(
+              $attendantId,
+              $guestId
+            )
+          )
+        );
+      }
+    }
+  }
+  private function updateGuestAttendants($guestId, $rsvp) {
+    foreach ($this->getTrustedUser($guestId)->events as $event) {
+      $this->updateAttendantMatcher(
+        $event,
+        $guestId,
+        $rsvp->getAttendantIds($event)
+      );
+    }
   }
 
   private function loadUser($guest) {
@@ -186,22 +210,50 @@ class GuestService extends DBService {
   }
 
   private function createRSVPEvent(&$rsvpEvents, $guest, $eventName) {
-    if (isset($guest[ucfirst($eventName)." invited"]) && $guest[ucfirst($eventName)." invited"] > 0) {
+    if (isset($guest[$eventName." invited"]) && $guest[$eventName." invited"] > 0) {
       $rsvpEvents[] = new RSVPEvent(
         $eventName,
-        $guest[ucfirst($eventName)." invited"],
+        $guest[$eventName." invited"],
         ($guest['Has RSVPed'] ?
-          $this->loadAttendants($guest[ucfirst($eventName)." attendants"]) :
+          $this->loadAttendants($this->getAttendantIds($eventName, $guest["id"])) :
           array())
       );
     }
   }
 
+  private function getAttendantIds($eventName, $guestId) {
+    $attendantIds = array();
+    $attendantId_rows = $this->query(
+      DBService::SELECT,
+      "{$eventName}_guest_attendants",
+      array(
+        "COLUMNS" => array(
+          "`attendant_id`"
+        ),
+        "WHERE" => "`guest_id` = {$guestId}"
+      )
+    );
+    if ($attendantId_rows === null || count($attendantId_rows) === 0) {
+      return $attendantIds;
+    } else if (!isset($attendantId_rows->num_rows) && count($attendantId_rows) === 1) {
+        $attendantIds[] = $attendantId_rows['attendant_id'];
+    } else {
+      while ($row = $attendantId_rows->fetch_assoc()) {
+        $attendantIds[] = $row['attendant_id'];
+      }
+    }
+    return $attendantIds;
+  }
+
   private function loadRSVP($guest) {
     $rsvpEvents = array();
-    $this->createRSVPEvent($rsvpEvents, $guest, "ceremony");
-    $this->createRSVPEvent($rsvpEvents, $guest, "reception");
-    $this->createRSVPEvent($rsvpEvents, $guest, "havdalah");
+
+    foreach (array("ceremony", "reception", "havdalah") as $event) {
+      if (intval($guest[$event.' invited']) > 0) {
+        $this->createRSVPEvent($rsvpEvents, $guest, $event);
+      }
+    }
+
     return new RSVP($guest['Has RSVPed'], $rsvpEvents);
   }
 
@@ -210,15 +262,7 @@ class GuestService extends DBService {
       return array();
     }
     $attendants = array();
-    foreach (
-      array_map(
-        'intval',
-        explode(
-          ",",
-          $attendant_ids
-        )
-      ) as $id
-    ) {
+    foreach(array_map('intval', $attendant_ids) as $id) {
       $attendant = $this->query(
         DBService::SELECT,
         "attendants",
@@ -244,14 +288,10 @@ class GuestService extends DBService {
 
   private function loadEvents($guest) {
     $events = array();
-    if ($guest['Ceremony invited'] > 0) {
-      $events[] = "ceremony";
-    }
-    if ($guest['Reception invited'] > 0) {
-      $events[] = "reception";
-    }
-    if ($guest['Havdalah invited'] > 0) {
-      $events[] = "havdalah";
+    foreach (array("ceremony", "reception", "havdalah") as $event) {
+      if ($guest[$event.' invited'] > 0) {
+        $events[] = $event;
+      }
     }
     return $events;
   }
