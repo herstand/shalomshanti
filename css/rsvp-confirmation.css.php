@@ -58,7 +58,30 @@ body.rsvpConfirmation main > section.attendants > article:last-of-type {
 body.rsvpConfirmation > main > .thanksMessage {
   max-width:620px;
   display:block;
-  margin:0 auto;
+  margin:0 auto 45px auto;
+  background:#E4E4E4;
+  border-radius:20px;
+  padding:20px;
+  position:relative;
+}
+.thanksMessage:before {
+    content: url("/icons/left-speech-bubble.svg");
+    width: 30px;
+    height: 30px;
+    display: block;
+    left: 0px;
+    bottom: 0px;
+    position: absolute;
+}
+.thanksMessage:after {
+    content: url("/icons/left-speech-bubble.svg");
+    width: 30px;
+    height: 30px;
+    display: block;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+    transform: scaleX(-1);
 }
 body.rsvpConfirmation > main > img {
   margin-bottom:40px;
