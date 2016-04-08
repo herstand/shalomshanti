@@ -38,7 +38,7 @@
 }
 .details img {
     height:162px;
-    margin-bottom:5px;
+    margin-bottom:25px;
 }
 .details .date {
     margin-bottom:5px;
