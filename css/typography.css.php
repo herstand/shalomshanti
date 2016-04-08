@@ -2,7 +2,8 @@
 .typ-title { font-size:30px; line-height:40px; }
 .typ-title .ampersand { line-height:30px; font-size:20px; }
 .typ-pageTitle { font-size:60px; line-height:70px; margin-top:30px; margin-bottom:0px; }
-.typ-littleTitle { font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; font-size:13px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
+.typ-littleTitle { font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; font-size:15px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
+nav .typ-littleTitle { font-size:13px; }
 .typ-littleTitle { letter-spacing:1.3px; }
 .typ-categoryTitle { font-size:15px; font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
 .typ-categoryTitle { letter-spacing:1.3px; }
@@ -13,7 +14,7 @@
 .typ-number { font-family:"neutra-bold"; line-height:60px; font-size:60px; letter-spacing:1px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
 
 @media (min-width:<?php echo $mobile3; ?>px) {
-    .typ-littleTitle { font-size:15px; }
+    nav .typ-littleTitle { font-size:15px; }
     .typ-pageTitle { margin-top:40px; }
 }
 
