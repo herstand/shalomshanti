@@ -28,6 +28,9 @@ body.rsvpConfirmation img.success {
 body.rsvpConfirmation main > hr {
   margin-bottom:40px;
 }
+body.rsvpConfirmation main > hr:last-of-type {
+  margin-bottom:60px;
+}
 body.rsvpConfirmation main > a {
   display:block;
   width:170px;
@@ -58,7 +61,7 @@ body.rsvpConfirmation main > section.attendants > article:last-of-type {
 body.rsvpConfirmation > main > .thanksMessage {
   max-width:620px;
   display:block;
-  margin:0 auto 45px auto;
+  margin:0 auto 35px auto;
   background:#E4E4E4;
   border-radius:30px;
   padding:20px;
@@ -84,7 +87,7 @@ body.rsvpConfirmation > main > .thanksMessage {
     transform: scaleX(-1);
 }
 body.rsvpConfirmation > main > img {
-  margin-bottom:40px;
+  margin-bottom:60px;
   max-width:470px;
 }
 body.rsvpConfirmation > main > a {
