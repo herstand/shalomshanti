@@ -72,7 +72,7 @@
         letter-spacing:3px;
     }
     .details img {
-        margin-bottom:30px;
+        margin-bottom:50px;
     }
     .details .date {
         margin-bottom:20px;
@@ -109,7 +109,7 @@
         letter-spacing:3px;
     }
     .details img {
-        margin-bottom:30px;
+        margin-bottom:50px;
     }
     .details .date {
         margin-bottom:20px;
