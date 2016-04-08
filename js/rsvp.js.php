@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function respondToFormSubmit(data) {
       data = JSON.parse(data);
       if (!data.success) {
-        alert("We are so sorry! Your RSVP didn't go through. Please email wedding@shalomshanti.com with your information.");
+        alert("We are so sorry! Your RSVP didn't go through. Please email wedding@shalomshanti.com with your information and please less us know that you got the error: \"" + data.message + "\"");
       } else {
         window.location = "/rsvp-confirmation";
       }

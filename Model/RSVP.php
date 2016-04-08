@@ -45,7 +45,7 @@ class RSVP {
   public function getNthAttendantFor($n, $event_name) {
     $attendants = $this->getAttendantsFor($event_name);
     if (count($attendants) > 0) {
-      return $this->getAttendantsFor($event_name)[$n]->name;
+      return $this->getAttendantsFor($event_name)[$n];
     } else {
       return "";
     }

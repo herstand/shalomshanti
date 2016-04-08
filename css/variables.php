@@ -1,5 +1,7 @@
 <?php
 /* Breakpoints */
+$iphone5 = "320";
+$iphone6 = "375";
 $mobile2 = "490";
 $mobile3 = "600";
 $ipadPortrait = "726";

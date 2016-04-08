@@ -107,27 +107,30 @@ class RSVPArticle {
     return $figure;
   }
 
-  public static function createAttendantFieldset($dom, $event_name, $i, $value = "") {
-      $fieldset = $dom->createElement("fieldset");
-      $fieldset->setAttribute("data-event-name", $event_name);
-      $fieldset->setAttribute("data-attendant-index", $i);
+  public static function createAttendantFieldset($dom, $event_name, $i, $attendant = null) {
+    if ($attendant === null) {
+      $attendant = new Attendant(0, "");
+    }
+    $fieldset = $dom->createElement("fieldset");
+    $fieldset->setAttribute("data-event-name", $event_name);
+    $fieldset->setAttribute("data-attendant-index", $i);
 
-      $input = $dom->createElement("input");
-      $input->setAttribute("id", "{$event_name}_{$i}");
-      $input->setAttribute("class", "typ-body");
-      $input->setAttribute("required", "true");
-      $input->setAttribute("placeholder", "Enter guest's first and last name");
-      $input->setAttribute("value", $value);
+    $input = $dom->createElement("input");
+    $input->setAttribute("id", "{$event_name}_{$i}");
+    $input->setAttribute("class", "typ-body");
+    $input->setAttribute("required", "true");
+    $input->setAttribute("placeholder", "Enter guest's first and last name");
+    $input->setAttribute("value", $attendant->name);
 
-      $removeFieldset = $dom->createElement("label");
-      $removeFieldset->appendChild($dom->createTextNode("✕"));
-      $removeFieldset->setAttribute("class", "removeFieldset");
-      $removeFieldset->setAttribute("for", "{$event_name}_{$i}");
+    $removeFieldset = $dom->createElement("label");
+    $removeFieldset->appendChild($dom->createTextNode("✕"));
+    $removeFieldset->setAttribute("class", "removeFieldset");
+    $removeFieldset->setAttribute("for", "{$event_name}_{$i}");
 
-      $fieldset->appendChild($input);
-      $fieldset->appendChild($removeFieldset);
+    $fieldset->appendChild($input);
+    $fieldset->appendChild($removeFieldset);
 
-      return $fieldset;
+    return $fieldset;
   }
 
   private static function createAttendantInputs($dom, $event_name) {
@@ -140,11 +143,12 @@ class RSVPArticle {
 
     $attendant_inputs = array();
     for ($i = 0; $i < $session->user->rsvp->numberOfAttendantsAt($event_name); $i++) {
+      $attendant = $session->user->rsvp->getNthAttendantFor($i, $event_name);
       $fieldset = self::createAttendantFieldset(
         $dom,
         $event_name,
-        $i,
-        $session->user->rsvp->getNthAttendantFor($i, $event_name)
+        isset($attendant->id) ? $attendant->id : 0,
+        $attendant
       );
 
       $section->appendChild($fieldset);

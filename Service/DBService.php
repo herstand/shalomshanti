@@ -4,6 +4,7 @@ abstract class DBService {
   const SELECT = 1;
   const INSERT = 2;
   const UPDATE = 3;
+  const DELETE = 4;
 
   protected function query($queryType, $table, $data) {
     switch ($queryType) {
@@ -13,6 +14,8 @@ abstract class DBService {
         return $this->runInsert($table, $data);
       case self::UPDATE:
         return $this->runUpdate($table, $data);
+      case self::DELETE:
+        return $this->runDelete($table, $data);
     }
   }
 
@@ -25,7 +28,6 @@ abstract class DBService {
     if (isset($data['WHERE'])) {
      $query .=  "WHERE {$data['WHERE']}";
     }
-
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
     if ($result->num_rows <= 1) {
       return $result->fetch_array(MYSQLI_ASSOC);
@@ -52,6 +54,12 @@ abstract class DBService {
       SET {$setContent}
       WHERE {$data["WHERE"]}
     ";
+    $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
+  }
+
+  private function runDelete($table, $data) {
+    $query = "DELETE FROM {$table}
+      WHERE {$data["WHERE"]}";
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
   }
 

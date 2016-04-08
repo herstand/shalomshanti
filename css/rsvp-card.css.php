@@ -11,6 +11,12 @@ body.rsvp > main > form > article.reception { z-index:11; }
 body.rsvp > main > form > article.havdalah { z-index:10; }
 body.rsvp > main > form > article.ceremony *,
 body.rsvp > main > form > article.reception * { color:white; }
+body.rsvp > main > form > article button {
+      -webkit-box-shadow: 0px 2px 30px rgba(0,0,0,.5); -moz-box-shadow: 0px 2px 30px rgba(0,0,0,.5); box-shadow: 5px 5px 30px rgba(0,0,0,.5);
+}
+body.rsvp > main > form > article button:hover {
+  -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;
+}
 body.rsvp > main > form > article.ceremony button,
 body.rsvp > main > form > article.reception button { background-color:white; border:2px solid white; }
 body.rsvp > main > form > article:not(.intro) h2 { margin-bottom:40px; }

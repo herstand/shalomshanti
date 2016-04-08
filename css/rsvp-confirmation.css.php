@@ -60,7 +60,7 @@ body.rsvpConfirmation > main > .thanksMessage {
   display:block;
   margin:0 auto 45px auto;
   background:#E4E4E4;
-  border-radius:20px;
+  border-radius:30px;
   padding:20px;
   position:relative;
 }
@@ -69,7 +69,7 @@ body.rsvpConfirmation > main > .thanksMessage {
     width: 30px;
     height: 30px;
     display: block;
-    left: 0px;
+    left: 10px;
     bottom: 0px;
     position: absolute;
 }
@@ -78,7 +78,7 @@ body.rsvpConfirmation > main > .thanksMessage {
     width: 30px;
     height: 30px;
     display: block;
-    right: 0px;
+    right: 10px;
     bottom: 0px;
     position: absolute;
     transform: scaleX(-1);

@@ -69,10 +69,7 @@ class GuestService extends DBService {
             "`Has RSVPed`",
             "(`Ceremony adults invited` + `Ceremony children invited`) as `ceremony invited`",
             "(`Reception adults invited` + `Reception children invited`) as `reception invited`",
-            "(`Havdalah adults invited` + `Havdalah children invited`) as `havdalah invited`",
-            "`Ceremony attendants`",
-            "`Reception attendants`",
-            "`Havdalah attendants`"
+            "(`Havdalah adults invited` + `Havdalah children invited`) as `havdalah invited`"
           ),
           "WHERE" => "`id` = {$id} AND (`Ceremony adults invited` > 0 or `Ceremony children invited` or `Reception adults invited` > 0 OR `Reception children invited` > 0 or `Havdalah adults invited` > 0 or `Havdalah children invited` > 0)"
         )
@@ -99,9 +96,38 @@ class GuestService extends DBService {
     );
   }
 
+  private function idInAttendantsOf($attendant_id, $rsvpEvent) {
+    foreach ($rsvpEvent->attendants as $attendant) {
+      if (!isset($attendant->id)) continue;
+      if ($attendant->id === $attendant_id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private function removeAttendantFrom($attendantId, $guestId, $event) {
+    $this->query(
+      DBService::DELETE,
+      $event."_guest_attendants",
+      array(
+        "WHERE" => "`attendant_id` = {$attendantId} and `guest_id` = {$guestId}"
+      )
+    );
+  }
+
+  private function removeDeletedAttendants($guestId, $rsvpEvent) {
+    foreach ($this->getAttendantIds($rsvpEvent->event_name, $guestId) as $attendant_id) {
+      if (!$this->idInAttendantsOf($attendant_id, $rsvpEvent)) {
+        $this->removeAttendantFrom($attendant_id, $guestId, $rsvpEvent->event_name);
+      }
+    }
+  }
+
   private function saveAttendants($guestId, $rsvp) {
     foreach ($rsvp->rsvpEvents as $rsvpEvent) {
-      $this->insertNewAttendantsFor($rsvpEvent);
+      $this->removeDeletedAttendants($guestId, $rsvpEvent);
+      $this->insertNewAttendantsFor($guestId, $rsvpEvent);
       $this->updateAttendantsFor($rsvpEvent);
       $rsvpEvent->attendants[0] = array();
     }
@@ -109,27 +135,46 @@ class GuestService extends DBService {
     return $rsvp;
   }
 
-  private function insertNewAttendantsFor($rsvpEvent) {
+  private function insertNewAttendantsFor($guestId, $rsvpEvent) {
     foreach ($rsvpEvent->attendants[0] as $new_attendant) {
-      $attendant = $this->insertNewAttendant($new_attendant);
+      $attendant = $this->insertNewAttendant($guestId, $rsvpEvent->event_name, $new_attendant);
       $rsvpEvent->attendants[$attendant->id] = $attendant;
     }
   }
 
-  private function insertNewAttendant($new_attendant) {
+  private function canAcceptMoreAttendantsTo($guestId, $event_name) {
+    $numberOf = $this->query(
+        DBService::SELECT,
+        "{$event_name}_guest_attendants, guests",
+        array(
+          "COLUMNS" => array(
+            "COUNT(distinct `{$event_name}_guest_attendants`.`id`) as `attendants`",
+            "(`".ucfirst($event_name)." adults invited` + `".ucfirst($event_name)." children invited`) as invited"
+          ),
+          "WHERE" => "`{$event_name}_guest_attendants`.`guest_id` = {$guestId} and `guests`.`id` = {$guestId}"
+        )
+      );
+    return $numberOf['invited'] > $numberOf['attendants'];
+  }
+
+  private function insertNewAttendant($guestId, $event_name, $new_attendant) {
     $new_attendant_name = $this->validateInput("attendants", $new_attendant->name, "name");
-    $new_id = $this->query(
-      DBService::INSERT,
-      "attendants",
-      array(
-        "COLUMNS" => array("`name`"),
-        "VALUES" => array("\"{$new_attendant_name}\"")
-      )
-    );
-    return new Attendant(
-      $new_id,
-      $new_attendant_name
-    );
+    if ($this->canAcceptMoreAttendantsTo($guestId, $event_name)) {
+      $new_id = $this->query(
+        DBService::INSERT,
+        "attendants",
+        array(
+          "COLUMNS" => array("`name`"),
+          "VALUES" => array("\"{$new_attendant_name}\"")
+        )
+      );
+      return new Attendant(
+        $new_id,
+        $new_attendant_name
+      );
+    } else {
+      throw new Exception("Too many attendants.");
+    }
   }
 
   private function updateAttendantsFor($rsvpEvent) {
