@@ -17,11 +17,6 @@
     include "css/ampersand.css.php";
 ?>
 
-body.homepage h1.typ-pageTitle {
-    font-size:40px;
-    line-height:50px;
-    margin:0px;
-}
 .details {
     height:200px;
     text-align:center;
@@ -29,90 +24,107 @@ body.homepage h1.typ-pageTitle {
     top:50%;
     width:100%;
 }
-.details, .vidya, .micah {
+.details {
+    position:relative;
+}
+.vidya, .micah {
     position:fixed;
 }
 .details {
-    top:20%;
+    top:0px;
 }
+.details .typ-littleTitle {
+    letter-spacing:2px;
+}
+.details img {
+    height:162px;
+    margin-bottom:5px;
+}
+.details .date {
+    margin-bottom:5px;
+}
+
 .vidya, .micah {
-    top:50%;
-    height:250px;
+    top:310px;
+    height:80vw;
 }
 .vidya {
-    left:-92px;
+    left:-40vw;
 }
 .micah {
-    right:-92px;
+    right:-40vw;
 }
-@media (min-width:600px) and (min-height:600px) {
-    body.homepage h1.typ-pageTitle {
-        font-size:60px;
-        line-height:80px;
-    }
-    h2.typ-littleTitle {
-        font-size:30px;
+
+@media  (max-aspect-ratio: 1/1) and (min-width:<?php echo $iphone6;?>px) {
+    .details {
+        top:10px;
     }
     .vidya, .micah {
-        height:300px;
+        top:320px;
+    }
+}
+@media  (max-aspect-ratio: 1/1) and (min-width:<?php echo $mobile3;?>px) {
+    .details {
+        top:30px;
+    }
+    .details .typ-littleTitle {
+        font-size:30px;
+        letter-spacing:3px;
+    }
+    .details img {
+        margin-bottom:30px;
+    }
+    .details .date {
+        margin-bottom:20px;
+    }
+    .details .place {
+        font-size:24px;
+    }
+    .vidya, .micah {
+        top:380px;
+    }
+}
+@media (min-aspect-ratio: 1/1) and (max-height:500px) {
+    .details {
+        top:-20px;
+    }
+    .vidya, .micah {
+        top:30%;
+        height:66.67vh;
     }
     .vidya {
-        left:-111px;
+        left:-33.33vh;
     }
     .micah {
-        right:-111px;
+        right:-33.33vh;
     }
 }
 @media (min-aspect-ratio: 1/1) {
-    .details, .vidya, .micah {
-        position:absolute;
-        top:50%;
-    }
-    .vidya, .micah {
-        height:150px;
-    }
-    .vidya {
-        left:-55px;
-    }
-    .micah {
-        right:-55px;
-    }
-}
-
-/* Square and landscape */
-@media (min-aspect-ratio: 1/1) and (min-height:400px) {
-    .details, .vidya, .micah {
+    .details {
+        top:35%;
         position:fixed;
     }
-    .details {
-        margin-top:-80px;
+    .details .typ-littleTitle {
+        font-size:30px;
+        letter-spacing:3px;
+    }
+    .details img {
+        margin-bottom:30px;
+    }
+    .details .date {
+        margin-bottom:20px;
+    }
+    .details .place {
+        font-size:24px;
     }
     .vidya, .micah {
-        top:50%;
-        margin-top:-75px;
-        height:200px;
+        top:20%;
+        height:66.67vh;
     }
     .vidya {
-        left:-75px;
+        left:-33.33vh;
     }
     .micah {
-        right:-75px;
-    }
-}
-
-
-@media screen and (min-aspect-ratio: 1/1) and (min-height:450px) and (min-width:768px) {
-    body.homepage h1.typ-pageTitle {
-     margin-bottom:20px;
-    }
-    .vidya, .micah {
-        margin-top:-150px;
-        height:300px;
-    }
-    .vidya {
-        left:-111px;
-    }
-    .micah {
-        right:-111px;
+        right:-33.33vh;
     }
 }

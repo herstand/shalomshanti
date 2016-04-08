@@ -24,11 +24,12 @@ $session = SessionController::getSession();
     <header><?php include "templates/header.php"; ?></header>
     <main>
         <article class="details">
-            <h1 class="typ-pageTitle">Vidya<span class="ampersand">&</span>Micah</h1>
-            <h2 class="typ-littleTitle">July 10th, 2016<br />Binghamton, NY</h2>
+            <h1><img alt="Vidya and Micah" src="/icons/names.svg" /></h1>
+            <h2 class="date typ-littleTitle">July 10, 2016</h2>
+            <h2 class="place typ-body"><em>Binghamton, NY</em></h2>
         </article>
-        <img class="vidya" src="/icons/vidya-smile.svg" />
-        <img class="micah" src="/icons/micah-smile.svg" />
+        <img class="vidya" src="/icons/vidya_home.svg" />
+        <img class="micah" src="/icons/micah_home.svg" />
     </main>
     <div class="templates"><?php include "templates/loginModal.php"; ?></div>
 </body>
