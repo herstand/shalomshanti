@@ -66,6 +66,12 @@ body.rsvp form button[type='submit']:hover {
   color:white;
 }
 
+@media (min-width:550px) {
+  body.rsvp form button[type='submit'] {
+    margin-top:50px;
+  }
+}
+
 @media (min-width:<?php echo $mobile3; ?>px) {
   body > main > article, body > main > form > article {
     padding-left:<?php echo $padding_mobile3; ?>;
@@ -73,6 +79,15 @@ body.rsvp form button[type='submit']:hover {
   }
   body > main > article.intro h1 {
     margin-top:40px;
+  }
+  body.rsvp form button[type='submit'] {
+    margin-top:30px;
+  }
+}
+
+@media (min-width:610px) {
+  body.rsvp form button[type='submit'] {
+    margin-top:60px;
   }
 }
 
