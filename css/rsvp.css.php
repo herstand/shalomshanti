@@ -77,7 +77,7 @@ body.rsvp form button[type='submit']:hover {
 }
 
 @media (min-width:<?php echo $ipadPortrait; ?>px) {
-  body.rsvp article.intro > *, body.rsvp form > article > * {
+  body.rsvp article.intro > * {
     max-width:620px;
   }
 }
@@ -88,7 +88,7 @@ body.rsvp form button[type='submit']:hover {
     padding-right:<?php echo $padding_ipadLandscape; ?>;
   }
   body.rsvp form > article > * {
-    max-width:100%;
+    width:100%;
   }
 }
 
