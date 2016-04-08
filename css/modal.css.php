@@ -10,7 +10,7 @@ require_once "css/variables.php";
 .modalWrapper .modal .householdName { margin-bottom:20px; }
 .modalWrapper .modal .rsvp { display:inline-block; line-height:40px; width:170px; height:40px; border:2px solid <?php echo $orange; ?>; }
 
-.modalWrapper .modal .rsvp:hover { color:white; border: 2px solid white; background-color:<?php echo $orange; ?>; }
+.modalWrapper .modal .rsvp:hover { color:white; border: 2px solid <?php echo $orange; ?>; background-color:<?php echo $orange; ?>; }
 
 @media (min-width:<?php echo $iphone6; ?>px) {
   .modalWrapper .modal { top:50%; margin-top:-200px; }
