@@ -2,7 +2,7 @@
 body > header { height:90px; width:100%; padding-left:6.67%; padding-right:6.67%; margin-bottom:20px; }
 
 form.login * { vertical-align:top; }
-form.login input { outline:none; height:30px; border:2px solid <?php echo $grey; ?>; width:215px; padding-left:5px; }
+form.login input { outline:none; height:30px; border:2px solid <?php echo $grey; ?>; width:180px; padding-left:5px; }
 form.login button { outline:none; margin:0px; }
 form.login button svg { width:30px; height:30px; }
 form.login button svg .fill { fill:<?php echo $grey; ?>; }

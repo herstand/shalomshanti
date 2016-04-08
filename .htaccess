@@ -27,7 +27,7 @@ RewriteRule ^templates/(.+)$ /shalomshanti/templates/$1.php [L,QSA]
 # Find pages
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|jpeg|png|svg|woff|ttf|otf)$
-RewriteCond %{REQUEST_URI} (rsvp-confirmation|rsvp|events|plan-your-trip)$
+RewriteCond %{REQUEST_URI} (totals|rsvp-confirmation|rsvp|events|plan-your-trip)$
 RewriteRule ^(.+)$ /shalomshanti/pages/$1.php [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
