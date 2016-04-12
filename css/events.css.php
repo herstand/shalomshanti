@@ -40,7 +40,7 @@ section > article.shortText {
     max-width:620px;
 }
 .note {
-    background-color:<?php echo $grey; ?>;
+    background-color:<?php echo $mediumgrey; ?>;
     padding-top:40px;
     padding-bottom:40px;
     margin-bottom:70px;
