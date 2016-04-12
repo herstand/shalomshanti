@@ -3,7 +3,7 @@
 .typ-title .ampersand { line-height:30px; font-size:20px; }
 .typ-pageTitle { font-size:60px; line-height:70px; margin-top:30px; margin-bottom:0px; }
 .typ-littleTitle { font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; font-size:15px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
-nav .typ-littleTitle { font-size:13px; }
+nav .typ-littleTitle, footer .typ-littleTitle { font-size:13px; }
 .typ-littleTitle { letter-spacing:1.3px; }
 .typ-categoryTitle { font-size:15px; font-weight:normal; text-transform:uppercase; font-family:"neutra-bold"; letter-spacing:1px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
 .typ-categoryTitle { letter-spacing:1.3px; }
