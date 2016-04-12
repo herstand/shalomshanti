@@ -29,7 +29,7 @@ $pink = "#DC519D";
 $bright_yellow = "#FFDB00";
 
 /* Tertiary colors */
-$mediumgrey = "#E3E3E3"
+$mediumgrey = "#E3E3E3";
 $lightgrey = "#F1F1F1";
 $green = "#8AC43F";
 
