@@ -150,7 +150,7 @@ if (!isset($session->user)) {
             ?><hr class="mobileOnly" /><?php
             ?><article class="location shortText hotel venue paddedSection">
                 <header>
-                    <img class="important" src="/icons/venue_holiday-inn.svg" />
+                    <img class="important" src="/icons/venue_ICC.svg" />
                 </header>
                 <h4 class="typ-subsection-header mapTitle special"><a target="_blank" href="https://www.google.com/maps/place/Holiday+Inn+Binghamton/@42.0970519,-75.9173509,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6e4e78b8ab:0x7775d5f3b0bf4bee"><span class="mapTitleStarter">India Cultural Centre</span></a></h4>
                 <p class="typ-body">1595 Route 26<br />Vestal, NY 13850</p>
