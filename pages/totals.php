@@ -61,12 +61,17 @@
             border-bottom-left-radius:5px;
             border:1px solid black;
         }
-        label:nth-of-type(2) {
+        label:not(:first-of-type):not(:last-of-type) {
+            border-top:1px solid black;
+            border-bottom:1px solid black;
+        }
+        label:last-of-type {
             border-top-right-radius:5px;
             border-bottom-right-radius:5px;
             border-top:1px solid black;
             border-right:1px solid black;
             border-bottom:1px solid black;
+            border-left:1px solid black;
         }
         input:checked + label {
             background:#CCCCCC;
@@ -90,7 +95,7 @@
 </head>
 <body><main>
 <h1>Wedding Guests</h1>
-<input id='invited' name='nametype' type='radio' /><label for="invited">Invited</label><input id='expected' name='nametype' type='radio' checked /><label for="expected">Expected</label><br />
+<input id='invited' name='nametype' type='radio' /><label for="invited">Invited</label><input id='expected' name='nametype' type='radio' checked /><label for="expected">Expected</label><input id='attending' name='nametype' type='radio' /><label for="attending">Attending</label><br />
 <?php
 require_once "db_access.php";
 echo "<div id='invitedguests'>";
@@ -98,6 +103,9 @@ include "templates/invited.php";
 echo "</div>";
 echo "<div id='expectedguests'>";
 include "templates/expected.php";
+echo "</div>";
+echo "<div id='attendingguests'>";
+include "templates/attending.php";
 echo "</div>";
 ?>
 </main>
