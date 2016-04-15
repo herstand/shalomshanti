@@ -25,8 +25,8 @@ if (!$session->user->rsvp->hasRSVPed) {
 <script async src="https://use.typekit.net/abm3mqd.js"></script>
 <script type='text/javascript' src="js/utilities.js"></script>
 <script type='text/javascript' src="View/ViewUtilities.js"></script>
-<script type='text/javascript' src="js/rsvp-confirmation.js?cache=4"></script>
-<link rel="stylesheet" type="text/css" href="css/rsvp-confirmation.css?cache=4" />
+<script type='text/javascript' src="js/rsvp-confirmation.js?cache=5"></script>
+<link rel="stylesheet" type="text/css" href="css/rsvp-confirmation.css?cache=5" />
 <?php include_once("templates/ga.php"); ?>
 </head>
 <body class="rsvpConfirmation">
