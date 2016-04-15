@@ -118,6 +118,7 @@ class RSVPArticle {
     $input = $dom->createElement("input");
     $input->setAttribute("id", "{$event_name}_{$i}");
     $input->setAttribute("class", "typ-body");
+    $input->setAttribute("type", "text");
     $input->setAttribute("required", "true");
     $input->setAttribute("placeholder", "Enter guest's first and last name");
     $input->setAttribute("value", $attendant->name);
