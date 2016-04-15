@@ -28,7 +28,7 @@
     position:relative;
 }
 .vidya, .micah {
-    position:fixed;
+    position:absolute;
 }
 .details {
     top:0px;
@@ -45,7 +45,7 @@
 }
 
 .vidya, .micah {
-    top:310px;
+    top:210px;
     height:80vw;
 }
 .vidya {
@@ -102,7 +102,7 @@
 @media (min-aspect-ratio: 1/1) {
     .details {
         top:35%;
-        position:fixed;
+        position:absolute;
     }
     .details .typ-littleTitle {
         font-size:30px;
