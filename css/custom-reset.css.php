@@ -18,6 +18,7 @@ main { position:relative; text-align:center; }
 figure { margin:0; padding:0; }
 fieldset { border:0px; margin:0; padding:0; }
 input { border:0px; border-radius:0px; box-shadow:none; }
+input[type="text"] { -webkit-appearance: none; }
 input:focus, button:focus, label:focus { outline:none; }
 button { background:none; border:none; padding:0; }
 button:hover { cursor:pointer; }
