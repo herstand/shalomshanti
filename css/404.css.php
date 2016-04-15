@@ -16,19 +16,18 @@
     include "css/footer.css.php";
 ?>
 body.is404 > main {
-    max-width:500px;
     height:400px;
     background-image:url("/icons/404.svg");
     background-repeat:no-repeat;
     background-position:center center;
-    background-size:300px;
+    background-size:400px;
 }
 
 @media (min-width:<?php echo $mobile3; ?>px) {
     body.is404 > main {
         max-width:1000px;
         height:570px;
-        background-size:400px;
+        background-size:570px;
         background-image:url("/icons/404-med.svg");
     }
 }
