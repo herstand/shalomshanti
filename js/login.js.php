@@ -1,6 +1,14 @@
 (function login() {
+  function loadPrimaryNavJS() {
+    var head = document.getElementsByTagName('head')[0],
+      script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "js/nav-primary.js";
+    head.appendChild(script);
+  }
   function replaceHeader(data) {
     document.querySelector("body > header").innerHTML = data;
+    loadPrimaryNavJS();
   }
   function onLogin(user) {
     utilities.setText(
