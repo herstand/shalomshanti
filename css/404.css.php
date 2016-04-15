@@ -17,8 +17,7 @@
 ?>
 body.is404 > main {
     max-width:500px;
-    width:300px;
-    height:500px;
+    height:400px;
     background-image:url("/icons/404.svg");
     background-repeat:no-repeat;
     background-position:center center;
@@ -28,7 +27,7 @@ body.is404 > main {
 @media (min-width:<?php echo $mobile3; ?>px) {
     body.is404 > main {
         max-width:1000px;
-        width:500px;
+        height:570px;
         background-size:400px;
         background-image:url("/icons/404-med.svg");
     }
