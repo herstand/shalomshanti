@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newFieldset.querySelector("label").addEventListener("click", clickInputRemover);
 
       document.querySelector("article." + eventName + " section.attendants").appendChild(newFieldset);
+      document.querySelector("article." + eventName + " section.attendants").classList.add("invalid");
 
       return newFieldset;
     }
@@ -71,11 +72,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     function ableButton(e) {
+      var article;
       if (document.querySelector("article#" + e.target.parentNode.dataset.eventName + " button") !== null) {
-        if (e.target.value !== "") {
-          document.querySelector("article#" + e.target.parentNode.dataset.eventName + " button").classList.remove("disabled");
+        article = document.querySelector("article#" + e.target.parentNode.dataset.eventName);
+        if (e.target.checkValidity()) {
+          article.querySelector("section.attendants").classList.remove("invalid");
+          article.querySelector("button").classList.remove("disabled");
         } else {
-          document.querySelector("article#" + e.target.parentNode.dataset.eventName + " button").classList.add("disabled");
+          article.querySelector("section.attendants").classList.add("invalid");
+          article.querySelector("button").classList.add("disabled");
         }
       }
       updateNumber(e.target.parentNode.dataset.eventName);

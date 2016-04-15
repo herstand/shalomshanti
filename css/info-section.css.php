@@ -42,7 +42,8 @@ section.pageSection > hr { background-color:transparent; background-image:url("/
 
 @media (min-width:<?php echo $desktop2; ?>px) {
   /* Size */
-  section.pageSection > hr { height:40px; margin-bottom:60px; }
-  section.infoSection:not(:last-of-type) { margin-bottom:60px; }
+  section.infoSection + hr,
+  section.pageSection > hr,
+  section.infoSection:not(:last-of-type) { margin-bottom:70px; }
   section.infoSection > header img.titleImage { margin-bottom:40px; }
 }

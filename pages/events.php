@@ -58,7 +58,7 @@ if (!isset($session->user)) {
         <article class="note paddedSection fullWidth">
             <h4 class="typ-littleTitle">A note about gifts</h4>
             <p class="typ-body">We are very fortunate to have all that we need to make a home and a life together in our small New York City apartment. The greatest gift you could give us is that of your love and support. We encourage you to check out <a target="_blank" href="http://www.givedirectly.org">GiveDirectly</a>, one of our favorite charities, which allows you to give cash directly to the people who need it most. We’d be honored if you made a donation on our behalf, so we can start off our marriage in the spirit <span class='nobreak'>of giving.</span></p>
-            <a target="_blank" href="http://www.givedirectly.org"><img src="images/givedirectlylogo.png" /></a>
+            <a target="_blank" href="http://www.givedirectly.org"><img class="logo" alt="Give Directly logo" src="images/givedirectlylogo.png" /></a>
         </article>
     <?php if (in_array("ceremony", $session->user->events)) { ?>
         <section class="infoSection" id="ceremony"><hr class="jumpToPoint" id="ceremony-anchor" /><?php
@@ -99,10 +99,15 @@ if (!isset($session->user)) {
                     <h4 class="typ-littleTitle">About the rituals</h4>
                 </header>
                 <p class="typ-body">We will have both a Hindu and a Jewish ceremony. While these ceremonies will be separate, the religions exist together in our home. We are daily inspired as we discover what each religion brings to the journey of life, and we aim for our wedding as well as our marriage to embody our values of spirituality, tradition, and <span class="nobreak">social progress.</span></p>
-                <p class="typ-body">The Hindu ceremony will begin on the patio with the fun betrothal rituals of <a target="_blank" href="https://en.wikipedia.org/wiki/Iyer_wedding#Oonjal"><em>oonjal</em></a> (swinging) and <a target="_blank" href="https://en.wikipedia.org/wiki/Iyer_wedding#Maalai_Maatral"><em>maalai maatral</em></a> (garland exchange), followed by a procession into the hall to ascend the <a target="_blank" href="https://en.wikipedia.org/wiki/Wedding_mandap"><em>mandapam</em></a> (wedding canopy). We will then perform a series of <a target="_blank" href="https://en.wikipedia.org/wiki/Puja_(Hinduism)"><em>pujas</em></a> (offerings) in <a target="_blank" href="https://en.wikipedia.org/wiki/Sanskrit"><em>Sanskrit</em></a> (ancient Indian language), invoking fire as our witness. After exchanging <a target="_blank" href="https://en.wikipedia.org/wiki/Mangala_sutra"><em>mangal sutra</em></a> (sacred threads), we will take the vows of the <a href="https://en.wikipedia.org/wiki/Saptapadi"><em>saptapadi</em></a> (seven steps), followed by the <a target="_blank" href="https://en.wikipedia.org/wiki/Vivaah#Hriday_sparsh_.28touching_the_heart.29"><em>hrdaya sparsha</em></a> (touching of hearts). Finally, we'll receive <a target="_blank" href="http://www.linandjirsa.com/ashirwad-indian-wedding-ceremony-2/"><em>ashirvadam</em></a> (blessings) of our elders as we do <a target="_blank" href="https://en.wikipedia.org/wiki/Namaste"><em>namaskaram</em></a> (bow) <span class="nobreak">before them.</span></p>
+                <p class="typ-body">The Hindu ceremony will begin on the patio with the fun betrothal rituals of <a target="_blank" href="https://en.wikipedia.org/wiki/Iyer_wedding#Oonjal"><em>oonjal</em></a> (swinging) and <a target="_blank" href="https://en.wikipedia.org/wiki/Iyer_wedding#Maalai_Maatral"><em>maalai maatral</em></a> (garland exchange), followed by a procession into the hall to ascend the <a target="_blank" href="https://en.wikipedia.org/wiki/Wedding_mandap"><em>mandapam</em></a> (wedding canopy). We will then perform a series of <a target="_blank" href="https://en.wikipedia.org/wiki/Puja_(Hinduism)"><em>pujas</em></a> (offerings) in <a target="_blank" href="https://en.wikipedia.org/wiki/Sanskrit"><em>Sanskrit</em></a> (ancient Indian language), invoking fire as our witness. After exchanging <a target="_blank" href="https://en.wikipedia.org/wiki/Mangala_sutra"><em>mangal sutra</em></a> (sacred threads), we will take the vows of the <a target="_blank" href="https://en.wikipedia.org/wiki/Saptapadi"><em>saptapadi</em></a> (seven steps), followed by the <a target="_blank" href="https://en.wikipedia.org/wiki/Vivaah#Hriday_sparsh_.28touching_the_heart.29"><em>hrdaya sparsha</em></a> (touching of hearts). Finally, we'll receive <a target="_blank" href="http://www.linandjirsa.com/ashirwad-indian-wedding-ceremony-2/"><em>ashirvadam</em></a> (blessings) of our elders as we do <a target="_blank" href="https://en.wikipedia.org/wiki/Namaste"><em>namaskaram</em></a> (bow) <span class="nobreak">before them.</span></p>
                 <p class="typ-body">The Jewish ceremony will take place under the <a target="_blank" href='https://en.wikipedia.org/wiki/Chuppah'><em>chuppah</em></a> (wedding canopy) following traditions of <a target="_blank" href="https://en.wikipedia.org/wiki/Reform_Judaism">Reform Judaism</a>. It begins with the <a target="_blank" href="https://en.wikipedia.org/wiki/Erusin"><em>Erusin</em></a> (betrothal ceremony) outside the hall, where we will each sign the <a target="_blank" href='https://en.wikipedia.org/wiki/Ketubah'><em>ketubah</em></a> (marriage contract). Upon entry into the space, we will take <a target="_blank" href="http://www.chabad.org/library/article_cdo/aid/586014/jewish/A-Mans-Deepest-Secret.htm">seven steps</a> around each other. This is followed by exchanging of rings and <a target="_blank" href="https://en.wikipedia.org/wiki/Sheva_Brachot"><em>sheva brachot</em></a> (seven blessings). We will then exchange vows in our own words, and ask for your support in helping us to keep them. Finally, we'll break glass to remember <a target="_blank" href="https://en.wikipedia.org/wiki/Tikkun_olam"><em>Tikkun Olam</em></a>, that the world forever <span class="nobreak">needs mending.</span></p>
             </article>
         </section>
+    <?php } ?>
+    <?php if (
+        in_array("ceremony", $session->user->events) &&
+        in_array("reception", $session->user->events)
+    ) { ?>
         <hr />
     <?php } ?>
     <?php if (in_array("reception", $session->user->events)) { ?>
@@ -133,6 +138,16 @@ if (!isset($session->user)) {
                 <p class="typ-body">We encourage you to get festive with your formal attire at the reception—and bring your <span class='nobreak'>dancing shoes!</span></p>
             </article>
         </section>
+    <?php } ?>
+    <?php if (
+        (   in_array("reception", $session->user->events) &&
+            in_array("havdalah", $session->user->events)
+        ) ||
+        (
+            in_array("ceremony", $session->user->events) &&
+            in_array("havdalah", $session->user->events)
+        )
+    ) { ?>
         <hr />
     <?php } ?>
     <?php if (in_array("havdalah", $session->user->events)) { ?>

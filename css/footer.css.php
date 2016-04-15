@@ -24,7 +24,6 @@ body > footer .content span:not(:last-of-type):after { content:"·"; }
     body { padding-bottom:240px; }
 }
 @media (min-width:<?php echo $iphone6; ?>px) {
-  body > footer .content .typ-littleTitle { font-size:15px; }
   body > footer .content span:not(:last-of-type) { margin-right:10px; }
   body > footer .content span:not(:last-of-type):after { left:5px; }
 }

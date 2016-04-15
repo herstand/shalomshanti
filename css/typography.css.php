@@ -14,7 +14,7 @@ nav .typ-littleTitle, footer .typ-littleTitle { font-size:13px; }
 .typ-number { font-family:"neutra-bold"; line-height:60px; font-size:60px; letter-spacing:1px; -moz-font-feature-settings:'lnum' 1; -ms-font-feature-settings:'lnum' 1; -o-font-feature-settings:'lnum' 1; -webkit-font-feature-settings:'lnum' 1; font-feature-settings:'lnum' 1; }
 
 @media (min-width:<?php echo $mobile3; ?>px) {
-    nav .typ-littleTitle { font-size:15px; }
+    nav .typ-littleTitle, footer .typ-littleTitle { font-size:15px; }
     .typ-pageTitle { margin-top:40px; }
 }
 

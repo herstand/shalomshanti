@@ -27,6 +27,9 @@ section > article h4 {
 nav.secondary a {
     text-transform:capitalize;
 }
+nav.secondary ul {
+    margin-bottom:20px;
+}
 body.events h1 {
     margin-bottom:40px;
 }
@@ -50,6 +53,9 @@ section > article.shortText {
     height:13vw;
     margin-left:auto;
     margin-right:auto;
+}
+.note img.logo {
+    max-width:250px;
 }
 .note + .note {
     background-color:white;
@@ -115,5 +121,4 @@ section.infoSection > hr.subsection-divider { background-color:<?php echo $grey;
     .note > * {
         max-width:620px;
     }
-    .note img { width:400px; }
 }

@@ -14,32 +14,9 @@ body.rsvp > main > form > article.reception * { color:white; }
 body.rsvp > main > form > article button {
       -webkit-box-shadow: 0px 2px 30px rgba(0,0,0,.5); -moz-box-shadow: 0px 2px 30px rgba(0,0,0,.5); box-shadow: 5px 5px 30px rgba(0,0,0,.5);
 }
-body.rsvp > main > form > article button:hover {
+body.rsvp > main > form > article .attendants:not(.invalid) + button:hover {
   -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;
 }
-body.rsvp > main > form > article.ceremony button,
-body.rsvp > main > form > article.reception button { background-color:white; border:2px solid white; }
-body.rsvp > main > form > article:not(.intro) h2 { margin-bottom:40px; }
-body.rsvp > main > form > article.ceremony,
-body.rsvp > main > form > article.ceremony button:hover,
-body.rsvp > main > form > article.ceremony button:not(.disabled):focus { background-color:<?php echo $blue; ?>; }
-body.rsvp > main > form > article.ceremony button { color:<?php echo $blue; ?>; }
-body.rsvp > main > form > article.ceremony button:not(.disabled):focus,
-body.rsvp > main > form > article.ceremony button:hover { color:white; }
-body.rsvp > main > form > article.reception,
-body.rsvp > main > form > article.reception button:not(.disabled):focus,
-body.rsvp > main > form > article.reception button:hover { background-color:<?php echo $orange; ?> }
-body.rsvp > main > form > article.reception button { color:<?php echo $orange; ?>; }
-body.rsvp > main > form > article.reception button:not(.disabled):focus,
-body.rsvp > main > form > article.reception button:hover { color:white; }
-body.rsvp > main > form > article.havdalah,
-body.rsvp > main > form > article.havdalah button:hover,
-body.rsvp > main > form > article.havdalah button:not(.disabled):focus { background-color:<?php echo $yellow; ?>; }
-body.rsvp > main > form > article.havdalah button { color:<?php echo $yellow; ?>; }
-body.rsvp > main > form > article.havdalah button:hover,
-body.rsvp > main > form > article.havdalah button:not(.disabled):focus { color:<?php echo $blue; ?>; }
-body.rsvp > main > form > article.havdalah * { color:<?php echo $blue; ?>; }
-body.rsvp > main > form > article.havdalah button { background-color:<?php echo $blue; ?>; border:2px solid <?php echo $blue; ?> }
 
 body.rsvp > main > form > article figure, body.rsvp > main > form > article > section > span { display:inline-block; vertical-align:middle; }
 body.rsvp > main > form > article figure { width:74px; margin-bottom:40px; }
@@ -96,6 +73,15 @@ body.rsvp > main > form > article input:invalid + label {
       body.rsvp > main > form > article.{$eventName} :-ms-input-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
       body.rsvp > main > form > article.{$eventName} :-moz-placeholder { opacity:.7; color:{$contrast}; font-style:italic; }
 
+      body.rsvp > main > form > article.{$eventName} button { background-color:{$contrast}; border:2px solid {$contrast}; }
+      body.rsvp > main > form > article.{$eventName} h2 { margin-bottom:40px; }
+      body.rsvp > main > form > article.{$eventName},
+      body.rsvp > main > form > article.{$eventName} .attendants:not(.invalid) + button:hover,
+      body.rsvp > main > form > article.{$eventName} button:not(.disabled):focus { background-color:{$highlight}; }
+      body.rsvp > main > form > article.{$eventName} button { color:{$highlight}; }
+      body.rsvp > main > form > article.{$eventName} button:not(.disabled):focus,
+      body.rsvp > main > form > article.{$eventName} .attendants:not(.invalid) + button:hover { color:{$contrast}; }
+
       body.rsvp > main > form > article.{$eventName} button.disabled { pointer-events:none; color:rgba({$highlight_rgb},.5); }
 CSS;
   }
@@ -126,3 +112,20 @@ body.rsvp > main > form > article button { height:40px; width:100%; display:bloc
     padding-bottom:70px;
   }
 }
+
+/**
+body.rsvp > main > form > article.reception,
+      body.rsvp > main > form > article.reception button:not(.disabled):focus,
+      body.rsvp > main > form > article.reception button:hover { background-color:<?php echo $orange; ?> }
+      body.rsvp > main > form > article.reception button { color:<?php echo $orange; ?>; }
+      body.rsvp > main > form > article.reception button:not(.disabled):focus,
+      body.rsvp > main > form > article.reception button:hover { color:white; }
+      body.rsvp > main > form > article.havdalah,
+      body.rsvp > main > form > article.havdalah button:hover,
+      body.rsvp > main > form > article.havdalah button:not(.disabled):focus { background-color:<?php echo $yellow; ?>; }
+      body.rsvp > main > form > article.havdalah button { color:<?php echo $yellow; ?>; }
+      body.rsvp > main > form > article.havdalah button:hover,
+      body.rsvp > main > form > article.havdalah button:not(.disabled):focus { color:<?php echo $blue; ?>; }
+      body.rsvp > main > form > article.havdalah * { color:<?php echo $blue; ?>; }
+      body.rsvp > main > form > article.havdalah button { background-color:<?php echo $blue; ?>; border:2px solid <?php echo $blue; ?> }
+**/
