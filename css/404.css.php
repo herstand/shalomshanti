@@ -13,6 +13,7 @@
     include "css/typography.css.php";
 
     include "css/header.css.php";
+    include "css/modal.css.php";
     include "css/footer.css.php";
 ?>
 body.is404 > main {

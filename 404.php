@@ -1,3 +1,8 @@
+<?php
+set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
+require_once "Controller/SessionController.php";
+$session = SessionController::getSession();
+?>
 <!DOCTYPE html>
 <html lang="us-en">
 <head>
@@ -19,6 +24,7 @@
     <main>
 
     </main>
+    <div class="templates"><?php include "templates/loginModal.php"; ?></div>
     <?php include "templates/footer.php"; ?>
 </body>
 </html>
