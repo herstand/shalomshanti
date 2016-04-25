@@ -50,12 +50,12 @@ section > article.shortText {
 }
 .note img {
     display:block;
-    height:13vw;
     margin-left:auto;
     margin-right:auto;
 }
 .note img.logo {
     max-width:250px;
+    max-height:13vw;
 }
 .note + .note {
     background-color:white;
@@ -98,7 +98,7 @@ article.attire header img.important {
 section.infoSection > hr.subsection-divider { background-color:<?php echo $grey; ?>; }
 
 @media (min-width:<?php echo $mobile2; ?>px) {
-    .note img { height: auto; width:360px; }
+    .note img:not(.logo) { height: auto; width:360px; }
     article.datetime header img.important {
         height:160px;
     }
