@@ -16,7 +16,12 @@
     include "css/modal.css.php";
     include "css/ampersand.css.php";
 ?>
-
+html, body, main {
+    height:100%;
+}
+main {
+    overflow-x:hidden;
+}
 .details {
     height:200px;
     text-align:center;

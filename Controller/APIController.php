@@ -111,7 +111,11 @@ class APIController {
     SessionController::getSession()->saveRSVP(
       GuestService::getInstance()->saveRSVP(
         self::getUser()->id,
-        new RSVP($rsvp_array["Has RSVPed"], $rsvpEvents)
+        new RSVP(
+          $rsvp_array["Has RSVPed"],
+          $rsvpEvents,
+          GuestService::getInstance()->getRSVPDueDate(self::getUser()->id)
+        )
       )
     );
     return self::getRSVP();

@@ -56,6 +56,19 @@ class GuestService extends DBService {
     );
   }
 
+  public function getRSVPDueDate($userId) {
+    $this->query(
+        DBService::SELECT,
+        "guests",
+        array(
+          "COLUMNS" => array(
+            "`RSVP due date`"
+          ),
+          "WHERE" => "`password` = '".$userId.""
+        )
+      )
+  }
+
    // Call with GuestService::getInstance()->getUser($id)
   public function getTrustedUser($id) {
     return $this->loadUser(

@@ -4,11 +4,12 @@ set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 require_once "Model/RSVPEvent.php";
 
 class RSVP {
-  public $hasRSVPed, $rsvpEvents;
+  public $hasRSVPed, $rsvpEvents, $dueDate;
 
-  public function __construct($hasRSVPed, $rsvpEvents) {
+  public function __construct($hasRSVPed, $rsvpEvents, $dueDate) {
     $this->hasRSVPed = !!$hasRSVPed;
     $this->rsvpEvents = $rsvpEvents;
+    $this->dueDate = $dueDate;
   }
 
   public function getAttendantIds($event_name) {
