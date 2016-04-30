@@ -9,7 +9,7 @@ if ($session->user->rsvp->hasRSVPed && $session->user->rsvp->isComing()) {
 } else if ($session->user->rsvp->hasRSVPed) {
   $message = "Thanks for responding! We’ll miss having you at our wedding. You can edit your response until <span class='nobreak'>May 5.</span>";
 } else {
-  $message = "Please respond below by May 5 with the name of each guest who will be attending. If you cannot attend, just hit \"Save Response\" below. Hope to see <span class='nobreak'>you there!</span>";
+  $message = "Please respond below by May 5 with the name of each guest who will be attending. If you cannot attend, just hit \"Save Response\" below without entering names first. Hope to see <span class='nobreak'>you there!</span>";
 }
 $daysRemaining = (
   (mktime(0, 0, 0, 5, 5, 2016) - time()) < 0) ?
