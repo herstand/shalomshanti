@@ -7,13 +7,13 @@
     public static $singleton;
     public $user,
       $session_start,
-      $session_name;
+      $session_id;
 
     public function __construct() {
       ini_set('session.cookie_lifetime', 1209600); //Two weeks
       ini_set('session.gc_maxlifetime', 1209600); //Two weeks
       $this->session_start = time();
-      $this->session_name = session_name();
+      $this->session_id = session_id();
       $_SESSION['user_session'] = $this;
     }
 
@@ -24,6 +24,14 @@
       }
     }
 
+    private static function updateUserData() {
+      self::$singleton->setUser(
+        GuestService::getInstance()->getTrustedUser(
+          self::$singleton->user->id
+        )
+      );
+    }
+
     public static function getSession() {
       self::startSessionIfNecessary();
       try {
@@ -32,11 +40,7 @@
         } else {
           self::$singleton = $_SESSION['user_session'];
           if (isset(self::$singleton->user)) {
-            self::$singleton->setUser(
-              GuestService::getInstance()->getTrustedUser(
-                self::$singleton->user->id
-              )
-            );
+            self::updateUserData();
           }
         }
       } catch (Exception $e) {

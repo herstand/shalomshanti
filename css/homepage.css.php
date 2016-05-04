@@ -16,7 +16,13 @@
     include "css/modal.css.php";
     include "css/ampersand.css.php";
 ?>
-
+html, body {
+    height:100%;
+}
+main {
+    overflow-x:hidden;
+    height:calc(100% - 90px - 20px);
+}
 .details {
     height:200px;
     text-align:center;
@@ -53,6 +59,12 @@
 }
 .micah {
     right:-40vw;
+}
+
+@media (min-width:<?php echo $mobile3;?>px) {
+    main {
+        height:calc(100% - 110px - 20px);
+    }
 }
 
 @media  (max-aspect-ratio: 1/1) and (min-width:<?php echo $iphone6;?>px) {
@@ -101,7 +113,7 @@
 }
 @media (min-aspect-ratio: 1/1) {
     .details {
-        top:35%;
+        top:15%;
         position:absolute;
     }
     .details .typ-littleTitle {
@@ -118,7 +130,7 @@
         font-size:24px;
     }
     .vidya, .micah {
-        top:20%;
+        top:5%;
         height:66.67vh;
     }
     .vidya {
