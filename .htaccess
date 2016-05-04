@@ -8,13 +8,13 @@ RewriteEngine On
  </IfModule>
 
 # Force HTTPS on server
-#RewriteCond %{HTTPS} off
-#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Force www
-#RewriteEngine on
-#RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
-#RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
+RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
 
 # Find apis
 RewriteCond %{REQUEST_FILENAME} !-f
