@@ -57,16 +57,16 @@ class GuestService extends DBService {
   }
 
   public function getRSVPDueDate($userId) {
-    $this->query(
-        DBService::SELECT,
-        "guests",
-        array(
-          "COLUMNS" => array(
-            "`RSVP due date`"
-          ),
-          "WHERE" => "`password` = '".$userId.""
-        )
+    return new DateTime($this->query(
+      DBService::SELECT,
+      "guests",
+      array(
+        "COLUMNS" => array(
+          "`RSVP due date`"
+        ),
+        "WHERE" => "`id` = {$userId}"
       )
+    )['RSVP due date']);
   }
 
    // Call with GuestService::getInstance()->getUser($id)
@@ -311,8 +311,11 @@ class GuestService extends DBService {
         $this->createRSVPEvent($rsvpEvents, $guest, $event);
       }
     }
-
-    return new RSVP($guest['Has RSVPed'], $rsvpEvents);
+    return new RSVP(
+      $guest['Has RSVPed'],
+      $rsvpEvents,
+      $this->getRSVPDueDate($guest['id'])
+    );
   }
 
   private function loadAttendants($attendant_ids) {

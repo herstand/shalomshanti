@@ -3,7 +3,10 @@ set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 
 require_once "Service/GuestService.php";
 require_once "Service/LoginAttemptService.php";
-require_once "Controller/SessionController.php";
+if (!isset($session)) {
+    require_once "Controller/SessionController.php";
+    $session = SessionController::getSession();
+}
 
 class APIController {
 
@@ -12,8 +15,9 @@ class APIController {
   }
 
   public static function runAction($func, $data, $secureRequest = false) {
+    global $session;
     try {
-      if ($secureRequest && !isset(SessionController::getSession()->user)) {
+      if ($secureRequest && !isset($session->user)) {
         throw new Exception("Must be logged in to make that request.");
       }
       if (isset($data)) {
@@ -44,8 +48,9 @@ class APIController {
 
   // Action
   private static function getUser() {
-    if (isset(SessionController::getSession()->user)) {
-      return SessionController::getSession()->user;
+    global $session;
+    if (isset($session->user)) {
+      return $session->user;
     } else {
       header('HTTP/1.1 401 Unauthorized');
       throw new Exception("Not logged in.");
@@ -54,6 +59,7 @@ class APIController {
 
   // Action
   private static function login($password) {
+    global $session;
     if (!isset($password) || $password == "") {
       header('HTTP/1.1 401 Unauthorized');
       throw new Exception("Password required.");
@@ -62,7 +68,6 @@ class APIController {
       header('HTTP/1.1 401 Unauthorized');
       throw new Exception("Too many login attempts.");
     }
-    $session = SessionController::getSession();
 
     try {
       $session->setUser(
@@ -76,39 +81,50 @@ class APIController {
 
     LoginAttemptService::markLoginSuccessful($_SERVER['REMOTE_ADDR']);
 
+    $clientShareableUser = clone $session->user;
+    $clientShareableUser->id = $session->session_id;
+    $clientShareableUser->rsvp->dueDate =
+      date(
+        "M jS",
+        $clientShareableUser->rsvp->dueDate->getTimestamp() - 1
+      );
     return array(
-      "user" => $session->user
+      "user" => $clientShareableUser
     );
   }
 
   // Action
   private static function isLoggedIn() {
+    global $session;
     return array(
-      "isLoggedIn" => isset(SessionController::getSession()->user)
+      "isLoggedIn" => isset($session->user)
     );
   }
 
   // Action
   private static function getEvents() {
+    global $session;
     return array(
-      "events" => SessionController::getSession()->user->events
+      "events" => $session->user->events
     );
   }
 
   // Action
   private static function getRSVP() {
+    global $session;
     return array(
-      "rsvp" => SessionController::getSession()->user->rsvp
+      "rsvp" => $session->user->rsvp
     );
   }
 
   // Action
   private static function saveRSVPForUser($rsvp_array) {
+    global $session;
     $rsvpEvents = array();
     foreach ($rsvp_array["rsvpEvents"] as $rsvpEvent_array) {
       $rsvpEvents[] = RSVPEvent::createRSVPEvent($rsvpEvent_array);
     }
-    SessionController::getSession()->saveRSVP(
+    $session->saveRSVP(
       GuestService::getInstance()->saveRSVP(
         self::getUser()->id,
         new RSVP(

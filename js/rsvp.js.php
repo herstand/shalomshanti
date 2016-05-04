@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     <?php include "fonts.js.php"; ?>
     <?php include "header.js.php"; ?>
     <?php include "footer.js.php"; ?>
-    var user = <?php echo json_encode($session->user); ?>,
+    var rsvp = <?php echo json_encode($session->user->rsvp); ?>,
       cards = utilities.toArray(document.querySelectorAll("form > article"));
 
     function getNumberInvitedTo(eventName) {
-      for (var rsvpEvent in user.rsvp.rsvpEvents) {
-        rsvpEvent = user.rsvp.rsvpEvents[rsvpEvent];
+      for (var rsvpEvent in rsvp.rsvpEvents) {
+        rsvpEvent = rsvp.rsvpEvents[rsvpEvent];
         if (rsvpEvent.event_name === eventName) {
           return rsvpEvent.num_invited;
         }

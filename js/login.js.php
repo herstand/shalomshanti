@@ -15,6 +15,11 @@
       document.querySelector(".templates .login.modalWrapper .household_name"),
       JSON.parse(user).data.user.household_name
     );
+    utilities.setText(
+      document.querySelector(".templates .login.modalWrapper .dueDate"),
+      JSON.parse(user).data.user.rsvp.dueDate
+    );
+
     ViewUtilities.view(document.querySelector(".templates .login.modalWrapper"));
 
     utilities.ajaxJson(
