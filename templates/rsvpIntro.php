@@ -21,6 +21,6 @@ $daysRemaining = (
   ceil(($session->user->rsvp->dueDate->getTimestamp() - 1 - time())/86400);
 ?>
 <h1 class="typ-pageTitle">RSVP</h1>
-<p class="daysRemaining typ-caption"><?php echo $daysRemaining; ?> Days Remaining</p>
+<p class="daysRemaining typ-caption"><?php echo $daysRemaining; ?> Day<?php echo $daysRemaining > 1 ? "s" : "";?> Remaining<?php if ($daysRemaining === 1.0) echo "!<br>(Let us know if you're having trouble finalizing plans.)"; ?></p>
 <p class="householdName typ-subsection-header"><em><?php echo $session->user->household_name; ?></em></p>
 <p class="typ-subsection-header"><?php echo $message; ?></p>
