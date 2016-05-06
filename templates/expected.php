@@ -39,12 +39,6 @@ $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 echo "Priority 0, 1, & 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
-$query = "SELECT ROUND(SUM(`Havdalah adults invited` * (`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority < 3) and List = 'Micah'";
-$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
-$row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0, 1, & 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
-
 echo "<h4>Children</h4>";
 $query = "SELECT ROUND(SUM(`Havdalah children invited` * (`Probability` / 100.00))) as receptionAdultExpected
 FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority < 3) and List = 'Micah'";
