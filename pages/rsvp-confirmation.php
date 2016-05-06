@@ -42,7 +42,11 @@ if (!$session->user->rsvp->hasRSVPed) {
     <?php if ($session->user->rsvp->isComing()) {
       ?><a class="typ-categoryTitle" href="/plan-your-trip">Plan your trip</a><?php
     } ?>
-    <a class="typ-categoryTitle" href="/rsvp">Edit response</a>
+    <?php
+    if ($session->user->rsvp->dueDate->getTimestamp() > time()) {
+    ?>
+      <a class="typ-categoryTitle" href="/rsvp">Edit response</a>
+    <?php } ?>
   </main>
   <?php include "templates/footer.php"; ?>
 </body>

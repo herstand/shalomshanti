@@ -83,11 +83,16 @@ class APIController {
 
     $clientShareableUser = clone $session->user;
     $clientShareableUser->id = $session->session_id;
-    $clientShareableUser->rsvp->dueDate =
-      date(
-        "M jS",
-        $clientShareableUser->rsvp->dueDate->getTimestamp() - 1
-      );
+    if ($session->user->rsvp->dueDate->getTimestamp() > time()) {
+      $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP by ".
+        date(
+          "M jS",
+          $clientShareableUser->rsvp->dueDate->getTimestamp() - 1
+        );
+    } else {
+      $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP as soon as possible";
+    }
+
     return array(
       "user" => $clientShareableUser
     );

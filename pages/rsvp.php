@@ -16,8 +16,11 @@ if (!isset($session->user->rsvp) || !isset($session->user->rsvp->hasRSVPed)) {
 if (
   $session->user->rsvp->hasRSVPed &&
   (
-    !isset($_SERVER['HTTP_REFERER']) ||
-    strpos($_SERVER['HTTP_REFERER'], "rsvp-confirmation") === false
+    (
+      !isset($_SERVER['HTTP_REFERER']) ||
+      strpos($_SERVER['HTTP_REFERER'], "rsvp-confirmation") === false
+    ) ||
+    $session->user->rsvp->dueDate->getTimestamp() < time()
   )
 ) {
  header("Location: /rsvp-confirmation");
