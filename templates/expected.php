@@ -155,59 +155,31 @@ echo "Priority 0, 1, and 2: <strong>{$row['receptionAdultExpected']}</strong><br
 echo "<h3>Micah</h3>";
 echo "<h4>Adults</h4>";
 $query = "SELECT ROUND(SUM(`Ceremony adults invited` * (`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0) and List = 'Micah'";
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority < 3) and List = 'Micah'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
-
-$query = "SELECT ROUND(SUM(`Ceremony adults invited` * (`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and List = 'Micah'";
-$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
-$row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0, 1: <strong>{$row['receptionAdultExpected']}</strong><br>";
+echo "Priority 0, 1, & 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 echo "<h4>Children</h4>";
 $query = "SELECT ROUND(SUM(`Ceremony children invited` * (`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0) and List = 'Micah'";
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority < 3) and List = 'Micah'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
-
-$query = "SELECT ROUND(SUM(`Ceremony children invited` * (`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and List = 'Micah'";
-$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
-$row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0, 1: <strong>{$row['receptionAdultExpected']}</strong><br>";
+echo "Priority 0, 1, & 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 echo "<h4>Adults and Children</h4>";
 $query = "SELECT ROUND(SUM(`Ceremony adults invited` * (`Probability` / 100.00) + `Ceremony children invited` * (`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0) and List = 'Micah'";
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority < 3) and List = 'Micah'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
-
-$query = "SELECT ROUND(SUM(`Ceremony adults invited` * (`Probability` / 100.00) + `Ceremony children invited` * (`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and List = 'Micah'";
-$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
-$row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0, 1: <strong>{$row['receptionAdultExpected']}</strong><br>";
+echo "Priority 0, 1, & 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 echo "<h4>Household</h4>";
 $query = "SELECT ROUND(SUM((`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0) and (`Ceremony adults invited` > 0 or `Ceremony children invited` > 0) and List = 'Micah'";
+FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority < 3) and (`Ceremony adults invited` > 0 or `Ceremony children invited` > 0) and List = 'Micah'";
 $result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
 $row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0: <strong>{$row['receptionAdultExpected']}</strong><br>";
-
-$query = "SELECT ROUND(SUM((`Probability` / 100.00))) as receptionAdultExpected
-FROM `".getenv('SS_DB_GUEST_TABLE')."` WHERE (Priority = 0 or Priority = 1) and (`Ceremony adults invited` > 0 or `Ceremony children invited` > 0) and List = 'Micah'";
-$result = $mysqli->query($query) or trigger_error($mysqli->error."[$query]");
-$row = $result->fetch_array(MYSQLI_ASSOC);
-echo "Priority 0, 1: <strong>{$row['receptionAdultExpected']}</strong><br>";
-
-
-
-
+echo "Priority 0, 1, & 2: <strong>{$row['receptionAdultExpected']}</strong><br>";
 
 echo "<hr>";
 echo "<h3>Total</h3>";
