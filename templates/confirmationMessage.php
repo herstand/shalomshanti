@@ -7,7 +7,7 @@ if (!isset($session)) {
 
 // Due date is set to midnight of next day; subtract 1 millisecond to get the due date
 if ($session->user->rsvp->dueDate->getTimestamp() < time()) {
-  $rsvpDate = "If you need to edit your response, please email us at <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a>";
+  $rsvpDate = "As the RSVP deadline has passed, if you need to edit your response, please email us at <a href='mailto:wedding@shalomshanti.com'>wedding@shalomshanti.com</a>";
 } else {
   $rsvpDate = "You can edit your response until ".date(
     "M jS",
