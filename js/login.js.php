@@ -11,7 +11,7 @@
     loadPrimaryNavJS();
   }
   function onLogin(user) {
-    if (!JSON.parse(user).data.user.isFriend) {
+    if (JSON.parse(user).data.user.isFriend === "0") {
       utilities.setText(
         document.querySelector(".templates .login.modalWrapper .household_name"),
         JSON.parse(user).data.user.household_name
