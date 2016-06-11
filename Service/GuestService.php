@@ -36,7 +36,6 @@ class GuestService extends DBService {
         "password"
       )
     );
-
     return $this->loadUser(
       $this->query(
         DBService::SELECT,
@@ -46,11 +45,12 @@ class GuestService extends DBService {
             "`id`",
             "`Household name`",
             "`Has RSVPed`",
+            "`Friend login` as `isFriend`",
             "(`Ceremony adults invited` + `Ceremony children invited`) as `ceremony invited`",
             "(`Reception adults invited` + `Reception children invited`) as `reception invited`",
             "(`Havdalah adults invited` + `Havdalah children invited`) as `havdalah invited`"
           ),
-          "WHERE" => "`password` = '".$password."' AND (`Ceremony adults invited` > 0 or `Ceremony children invited` or `Reception adults invited` > 0 OR `Reception children invited` > 0 or `Havdalah adults invited` > 0 or `Havdalah children invited` > 0)"
+          "WHERE" => "`password` = '".$password."'"
         )
       )
     );
@@ -80,6 +80,7 @@ class GuestService extends DBService {
             "`id`",
             "`Household name`",
             "`Has RSVPed`",
+            "`Friend login` as `isFriend`",
             "(`Ceremony adults invited` + `Ceremony children invited`) as `ceremony invited`",
             "(`Reception adults invited` + `Reception children invited`) as `reception invited`",
             "(`Havdalah adults invited` + `Havdalah children invited`) as `havdalah invited`"
@@ -261,6 +262,7 @@ class GuestService extends DBService {
     }
     return new User(
       $guest['id'],
+      $guest['isFriend'],
       $guest['Household name'],
       $this->loadRSVP($guest),
       $this->loadEvents($guest)

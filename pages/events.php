@@ -33,6 +33,9 @@ if (!isset($session->user)) {
         </section>
         <nav class="secondary">
             <ul><?php
+            if ($session->user->isFriend) {
+                $session->user->events = ["ceremony", "reception", "havdalah"];
+            }
             foreach ($session->user->events as $event_name) {
                 if ($event_name === "havdalah") {
                     $event_name_label = "havdalah & mehendi";
@@ -60,7 +63,7 @@ if (!isset($session->user)) {
             <p class="typ-body">We are very fortunate to have all that we need to make a home and a life together in our small New York City apartment. The greatest gift you could give us is that of your love and support. We encourage you to check out <a target="_blank" href="http://www.givedirectly.org">GiveDirectly</a>, one of our favorite charities, which allows you to give cash directly to the people who need it most. We’d be honored if you made a donation on our behalf, so we can start off our marriage in the spirit <span class='nobreak'>of giving.</span></p>
             <a target="_blank" href="http://www.givedirectly.org"><img class="logo" alt="Give Directly logo" src="images/givedirectlylogo.png" /></a>
         </article>
-    <?php if (in_array("ceremony", $session->user->events)) { ?>
+    <?php if ($session->user->isFriend || in_array("ceremony", $session->user->events)) { ?>
         <section class="infoSection" id="ceremony"><hr class="jumpToPoint" id="ceremony-anchor" /><?php
             ?><header class="paddedSection"><?php
                 ?><h2 class="typ-title">Ceremony</h2><?php
@@ -105,12 +108,18 @@ if (!isset($session->user)) {
         </section>
     <?php } ?>
     <?php if (
-        in_array("ceremony", $session->user->events) &&
-        in_array("reception", $session->user->events)
+        $session->user->isFriend ||
+        (
+            in_array("ceremony", $session->user->events) &&
+            in_array("reception", $session->user->events)
+        )
     ) { ?>
         <hr />
     <?php } ?>
-    <?php if (in_array("reception", $session->user->events)) { ?>
+    <?php if (
+        $session->user->isFriend ||
+        in_array("reception", $session->user->events)
+    ) { ?>
         <section class="infoSection" id="reception"><hr class="jumpToPoint" id="reception-anchor" /><?php
             ?><header class="paddedSection"><?php
                 ?><h2 class="typ-title">Reception</h2><?php
@@ -140,6 +149,7 @@ if (!isset($session->user)) {
         </section>
     <?php } ?>
     <?php if (
+        $session->user->isFriend ||
         (   in_array("reception", $session->user->events) &&
             in_array("havdalah", $session->user->events)
         ) ||
@@ -150,7 +160,10 @@ if (!isset($session->user)) {
     ) { ?>
         <hr />
     <?php } ?>
-    <?php if (in_array("havdalah", $session->user->events)) { ?>
+    <?php if (
+        $session->user->isFriend ||
+        in_array("havdalah", $session->user->events)
+    ) { ?>
         <section class="infoSection" id="havdalah"><hr class="jumpToPoint" id="havdalah-anchor" /><?php
             ?><header class="paddedSection"><?php
                 ?><h2 class="typ-title">Mehendi<span class="ampersand">&amp;</span>Havdalah</h2><?php

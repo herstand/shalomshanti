@@ -8,10 +8,12 @@ class User {
   public $id, // TODO: This is their db primary key id now. It should be a session variable.
     $household_name,
     $rsvp,
-    $events;
+    $events,
+    $isFriend; //A friend is someone who can't rsvp, but can see all events
 
-  public function __construct($id, $household_name, $rsvp, $events) {
+  public function __construct($id, $isFriend, $household_name, $rsvp = null, $events = null) {
     $this->id = $id;
+    $this->isFriend = $isFriend;
     $this->household_name = $household_name;
     $this->rsvp = $rsvp;
     $this->events = $events;
