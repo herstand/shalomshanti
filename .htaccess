@@ -34,6 +34,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+).css$ $1.css.php [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^program$ program.pdf [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+).js$ $1.js.php [L,QSA]
 
 # Find php files
