@@ -76,7 +76,7 @@ class APIController {
     } catch (Exception $e) {
       LoginAttemptService::addLoginAttempt($_SERVER['REMOTE_ADDR']);
       header('HTTP/1.1 401 Unauthorized');
-      throw new Exception("Unknown password.");
+      throw new Exception("Unknown password. [".$e->getMessage()."]");
     }
 
     LoginAttemptService::markLoginSuccessful($_SERVER['REMOTE_ADDR']);
@@ -91,6 +91,13 @@ class APIController {
         );
     } else {
       $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP as soon as possible";
+    }
+    if (
+      in_array("ceremony", $session->user->events) ||
+      in_array("reception", $session->user->events) ||
+      in_array("havdalah", $session->user->events)
+    ) {
+      $clientShareableUser->loginmodalinfotext = "We’ve put together lots of information for you to browse.";
     }
 
     return array(

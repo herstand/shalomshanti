@@ -36,8 +36,7 @@ class GuestService extends DBService {
         "password"
       )
     );
-    return $this->loadUser(
-      $this->query(
+    $guest = $this->query(
         DBService::SELECT,
         "guests",
         array(
@@ -45,15 +44,34 @@ class GuestService extends DBService {
             "`id`",
             "`Household name`",
             "`Has RSVPed`",
-            "`Friend login` as `isFriend`",
-            "(`Ceremony adults invited` + `Ceremony children invited`) as `ceremony invited`",
-            "(`Reception adults invited` + `Reception children invited`) as `reception invited`",
-            "(`Havdalah adults invited` + `Havdalah children invited`) as `havdalah invited`"
+            "`Friend login` as `isFriend`"
           ),
           "WHERE" => "`password` = '".$password."'"
         )
+      );
+    $guest['id'] = intval($guest['id']);
+    $guest['Has RSVPed'] = boolval($guest['Has RSVPed']);
+    $guest['isFriend'] = boolval($guest['isFriend']);
+    $invitations = $this->query(
+      DBService::SELECT,
+      "invitations, events, guests",
+      array(
+        "COLUMNS" => array(
+          "`events`.`Event handle`",
+          "`events`.`Event name`",
+          "`events`.`Event start time`",
+          "(`adults` + `children`) as `Number invited`"
+        ),
+        "WHERE" => "
+          `events`.id = `invitations`.`event_id` AND
+          `guests`.id = `invitations`.`guest_id` AND
+          `guests`.`password` = '".$password."'
+          ORDER BY `events`.`order` ASC
+        "
       )
     );
+    $user = $this->loadUser($guest, $invitations);
+    return $user;
   }
 
   public function getRSVPDueDate($userId) {
@@ -80,12 +98,27 @@ class GuestService extends DBService {
             "`id`",
             "`Household name`",
             "`Has RSVPed`",
-            "`Friend login` as `isFriend`",
-            "(`Ceremony adults invited` + `Ceremony children invited`) as `ceremony invited`",
-            "(`Reception adults invited` + `Reception children invited`) as `reception invited`",
-            "(`Havdalah adults invited` + `Havdalah children invited`) as `havdalah invited`"
+            "`Friend login` as `isFriend`"
           ),
-          "WHERE" => "`id` = {$id} AND (`Ceremony adults invited` > 0 or `Ceremony children invited` or `Reception adults invited` > 0 OR `Reception children invited` > 0 or `Havdalah adults invited` > 0 or `Havdalah children invited` > 0)"
+          "WHERE" => "`id` = {$id}"
+        )
+      ),
+      $this->query(
+        DBService::SELECT,
+        "invitations, events, guests",
+        array(
+          "COLUMNS" => array(
+            "`events`.`Event handle`",
+            "`events`.`Event name`",
+            "`events`.`Event start time`",
+            "(`adults` + `children`) as `Number invited`",
+          ),
+          "WHERE" => "
+            `events`.id = `invitations`.`event_id` AND
+            `guests`.id = `invitations`.`guest_id` AND
+            `guests`.`id` = {$id}
+            ORDER BY `events`.`order` ASC
+          "
         )
       )
     );
@@ -123,17 +156,27 @@ class GuestService extends DBService {
   private function removeAttendantFrom($attendantId, $guestId, $event) {
     $this->query(
       DBService::DELETE,
-      $event."_guest_attendants",
+      "guest_attendants",
       array(
         "WHERE" => "`attendant_id` = {$attendantId} and `guest_id` = {$guestId}"
+      )
+    );
+    $this->query(
+      DBService::DELETE,
+      "event_attendants",
+      array(
+        "WHERE" => "`attendant_id` = {$attendantId} and `event_id` = (SELECT `id` from `events` WHERE `Event handle` = \"{$event}\")"
       )
     );
   }
 
   private function removeDeletedAttendants($guestId, $rsvpEvent) {
-    foreach ($this->getAttendantIds($rsvpEvent->event_name, $guestId) as $attendant_id) {
+    foreach ($this->getAttendantIds($rsvpEvent->event_handle, $guestId) as $attendant_id_obj) {
+      $attendant_id = is_array($attendant_id_obj) ?
+        intval($attendant_id_obj['attendant_id']) :
+        intval($attendant_id_obj);
       if (!$this->idInAttendantsOf($attendant_id, $rsvpEvent)) {
-        $this->removeAttendantFrom($attendant_id, $guestId, $rsvpEvent->event_name);
+        $this->removeAttendantFrom($attendant_id, $guestId, $rsvpEvent->event_handle);
       }
     }
   }
@@ -151,29 +194,47 @@ class GuestService extends DBService {
 
   private function insertNewAttendantsFor($guestId, $rsvpEvent) {
     foreach ($rsvpEvent->attendants[0] as $new_attendant) {
-      $attendant = $this->insertNewAttendant($guestId, $rsvpEvent->event_name, $new_attendant);
+      $attendant = $this->insertNewAttendant($guestId, $rsvpEvent->event_handle, $new_attendant);
       $rsvpEvent->attendants[$attendant->id] = $attendant;
     }
   }
 
-  private function canAcceptMoreAttendantsTo($guestId, $event_name) {
-    $numberOf = $this->query(
+  private function canAcceptMoreAttendantsTo($guestId, $event_handle) {
+    $numberOfAttendants = $this->query(
         DBService::SELECT,
-        "{$event_name}_guest_attendants, guests",
+        "guest_attendants, event_attendants",
         array(
           "COLUMNS" => array(
-            "COUNT(distinct `{$event_name}_guest_attendants`.`id`) as `attendants`",
-            "(`".ucfirst($event_name)." adults invited` + `".ucfirst($event_name)." children invited`) as invited"
+            "COUNT(distinct `guest_attendants`.`id`) as \"attendants\"",
           ),
-          "WHERE" => "`{$event_name}_guest_attendants`.`guest_id` = {$guestId} and `guests`.`id` = {$guestId}"
+          "WHERE" => "
+          `guest_attendants`.`attendant_id` = `event_attendants`.`attendant_id` AND
+            `guest_attendants`.`guest_id` = {$guestId} AND
+            `event_attendants`.`event_id` =
+              (SELECT `id` FROM events WHERE `Event handle` = \"{$event_handle}\")
+          "
         )
       );
-    return $numberOf['invited'] > $numberOf['attendants'];
+    $numberInvited = $this->query(
+        DBService::SELECT,
+        "invitations",
+        array(
+          "COLUMNS" => array(
+            "(`invitations`.`adults` + `invitations`.`children`) as \"invited\""
+          ),
+          "WHERE" => "
+            `invitations`.`guest_id` = {$guestId} AND
+            `invitations`.`event_id` =
+              (SELECT `id` FROM events WHERE `Event handle` = \"{$event_handle}\")
+          "
+        )
+      );
+    return $numberInvited['invited'] > $numberOfAttendants['attendants'];
   }
 
-  private function insertNewAttendant($guestId, $event_name, $new_attendant) {
+  private function insertNewAttendant($guestId, $event_handle, $new_attendant) {
     $new_attendant_name = $this->validateInput("attendants", $new_attendant->name, "name");
-    if ($this->canAcceptMoreAttendantsTo($guestId, $event_name)) {
+    if ($this->canAcceptMoreAttendantsTo($guestId, $event_handle)) {
       $new_id = $this->query(
         DBService::INSERT,
         "attendants",
@@ -212,34 +273,61 @@ class GuestService extends DBService {
     );
   }
 
-  private function attendantHasBeenMatchedWithGuest($event, $attendantId) {
-    $matcher = $this->query(
+  private function attendantHasBeenMatchedWithGuestForThisEvent($eventHandle, $guestId, $attendantId) {
+    $guestMatcher = $this->query(
       DBService::SELECT,
-      $event."_guest_attendants",
+      "guest_attendants",
       array(
         "COLUMNS" => array(
           "attendant_id"
         ),
-        "WHERE" => "`attendant_id` = {$attendantId}"
+        "WHERE" => "`guest_id` = {$guestId} AND `attendant_id` = {$attendantId}"
       )
     );
-    return $matcher != null && count($matcher) > 0;
+    $eventMatcher = $this->query(
+      DBService::SELECT,
+      "event_attendants",
+      array(
+        "COLUMNS" => array(
+          "attendant_id"
+        ),
+        "WHERE" => "`event_id` = (SELECT `id` from events WHERE `Event handle` = \"$eventHandle\") AND `attendant_id` = {$attendantId}"
+      )
+    );
+    return $guestMatcher != null && count($guestMatcher) > 0;
   }
 
   private function updateAttendantMatcher($event, $guestId, $attendantIds) {
     foreach ($attendantIds as $attendantId) {
-      if (!$this->attendantHasBeenMatchedWithGuest($event, $attendantId)) {
+      if (is_array($attendantId)) {
+        $attendantId = intval($attendantId['attendant_id']);
+      }
+      if (!$this->attendantHasBeenMatchedWithGuestForThisEvent($event, $guestId, $attendantId)) {
         $this->query(
           DBService::INSERT,
-          $event."_guest_attendants",
+          "guest_attendants",
           array(
             "COLUMNS" => array(
-              "attendant_id",
-              "guest_id"
+              "guest_id",
+              "attendant_id"
             ),
             "VALUES" => array(
-              $attendantId,
-              $guestId
+              $guestId,
+              $attendantId
+            )
+          )
+        );
+        $this->query(
+          DBService::INSERT,
+          "event_attendants",
+          array(
+            "COLUMNS" => array(
+              "event_id",
+              "attendant_id"
+            ),
+            "VALUES" => array(
+              "(SELECT `id` from events WHERE `Event handle` = \"{$event}\")",
+              $attendantId
             )
           )
         );
@@ -256,61 +344,75 @@ class GuestService extends DBService {
     }
   }
 
-  private function loadUser($guest) {
+  private function loadUser($guest, $invitations) {
     if ($guest['id'] === null) {
       throw new Exception("Unknown user.");
     }
+    $rsvp = $this->loadRSVP($guest, $invitations);
+    $events = $this->loadEvents($invitations);
     return new User(
       $guest['id'],
       $guest['isFriend'],
       $guest['Household name'],
-      $this->loadRSVP($guest),
-      $this->loadEvents($guest)
+      $rsvp,
+      $events
     );
   }
 
-  private function createRSVPEvent(&$rsvpEvents, $guest, $eventName) {
-    if (isset($guest[$eventName." invited"]) && $guest[$eventName." invited"] > 0) {
+  private function createRSVPEvent(&$rsvpEvents, $guest, $invitation) {
+    if (isset($invitation["Number invited"]) && $invitation["Number invited"] > 0) {
       $rsvpEvents[] = new RSVPEvent(
-        $eventName,
-        $guest[$eventName." invited"],
-        ($guest['Has RSVPed'] ?
-          $this->loadAttendants($this->getAttendantIds($eventName, $guest["id"])) :
-          array())
+        $invitation["Event handle"],
+        $invitation["Event name"],
+        $invitation["Event start time"],
+        $invitation["Number invited"],
+        (
+          $guest['Has RSVPed'] ?
+            $this->loadAttendants(
+              $this->getAttendantIds(
+                $invitation["Event handle"],
+                $guest["id"]
+              )
+            ) :
+            array()
+        )
       );
     }
   }
 
-  private function getAttendantIds($eventName, $guestId) {
+  private function getAttendantIds($eventHandle, $guestId) {
     $attendantIds = array();
     $attendantId_rows = $this->query(
       DBService::SELECT,
-      "{$eventName}_guest_attendants",
+      "attendants, guest_attendants, event_attendants",
       array(
         "COLUMNS" => array(
-          "`attendant_id`"
+          "distinct(`guest_attendants`.`attendant_id`)"
         ),
-        "WHERE" => "`guest_id` = {$guestId}"
+        "WHERE" => "
+          `attendants`.`id` = `guest_attendants`.`attendant_id` AND
+          `attendants`.`id` = `event_attendants`.`attendant_id` AND
+          `guest_attendants`.`guest_id` = {$guestId} AND
+          `event_attendants`.`event_id` =
+            (SELECT id FROM events WHERE `Event handle` = \"{$eventHandle}\")
+        "
       )
     );
-    if ($attendantId_rows === null || count($attendantId_rows) === 0) {
-      return $attendantIds;
-    } else if (!isset($attendantId_rows->num_rows) && count($attendantId_rows) === 1) {
-        $attendantIds[] = $attendantId_rows['attendant_id'];
+    if (isset($attendantId_rows['attendant_id'])) {
+      $attendantIds[] = intval($attendantId_rows['attendant_id']);
     } else {
-      while ($row = $attendantId_rows->fetch_assoc()) {
-        $attendantIds[] = $row['attendant_id'];
+      for ($i = 0; $i < count($attendantId_rows); $i++) {
+        $attendantIds[] = intval($attendantId_rows[$i]['attendant_id']);
       }
     }
     return $attendantIds;
   }
 
-  private function loadRSVP($guest) {
+  private function loadRSVP($guest, $invitations) {
     $rsvpEvents = array();
-
-    foreach (array("ceremony", "reception", "havdalah") as $event) {
-      if (intval($guest[$event.' invited']) > 0) {
-        $this->createRSVPEvent($rsvpEvents, $guest, $event);
+    foreach ($invitations as $invitation) {
+      if (intval($invitation['Number invited']) > 0) {
+        $this->createRSVPEvent($rsvpEvents, $guest, $invitation);
       }
     }
     return new RSVP(
@@ -325,7 +427,7 @@ class GuestService extends DBService {
       return array();
     }
     $attendants = array();
-    foreach(array_map('intval', $attendant_ids) as $id) {
+    foreach($attendant_ids as $attendant_id) {
       $attendant = $this->query(
         DBService::SELECT,
         "attendants",
@@ -336,24 +438,24 @@ class GuestService extends DBService {
           ),
           "WHERE" => "`id` = ".$this->validateInput(
             "attendants",
-            $id,
+            $attendant_id,
             "id"
           )
         )
       );
       $attendants[] = new Attendant(
-        $attendant['id'],
+        intval($attendant['id']),
         $attendant['name']
       );
     }
     return $attendants;
   }
 
-  private function loadEvents($guest) {
+  private function loadEvents($invitations) {
     $events = array();
-    foreach (array("ceremony", "reception", "havdalah") as $event) {
-      if ($guest[$event.' invited'] > 0) {
-        $events[] = $event;
+    foreach ($invitations as $invitation) {
+      if ($invitation['Number invited'] > 0) {
+        $events[] = $invitation['Event handle'];
       }
     }
     return $events;

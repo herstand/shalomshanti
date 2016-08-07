@@ -19,20 +19,23 @@ abstract class DBService {
     }
   }
 
-  /*
-    Run select query, expecting single row response
-  */
   private function runSelect($table, $data) {
-    $query = "SELECT ".implode(", ", $data['COLUMNS'])." FROM {$table} ";
-
+    $query = "SELECT ".implode(", ", $data['COLUMNS'])." FROM ";
+    $query .= "{$table} ";
     if (isset($data['WHERE'])) {
      $query .=  "WHERE {$data['WHERE']}";
     }
     $result = $this->mysqli->query($query) or trigger_error($this->mysqli->error."[$query]");
-    if ($result->num_rows <= 1) {
+    if ($result->num_rows === null) {
+      return null;
+    } else if ($result->num_rows === 1) {
       return $result->fetch_array(MYSQLI_ASSOC);
     } else {
-      return $result;
+      $all_rows = array();
+      while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $all_rows[] = $row;
+      }
+      return $all_rows;
     }
   }
 
@@ -75,9 +78,10 @@ abstract class DBService {
       return $this->$cleaner($input);
     } else {
       throw new Exception(
-        "Input [{$input}] is not valid for column `{$column}` of type {$row['DATA_TYPE']}."
+        "Input ".json_encode($input)." is not valid for column [".json_encode($column)."] of type ".json_encode($row['DATA_TYPE'])."."
       );
     }
+
   }
 
   protected function inputIsValid($input, $type, $len) {

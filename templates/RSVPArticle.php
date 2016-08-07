@@ -48,6 +48,12 @@ class RSVPArticle {
       $title->appendChild($ampersand);
       $title->appendChild($havdalah);
 
+    } else if ($event_name === "nyc") {
+      $openhouse = $dom->createElement("span");
+      $openhouse->appendChild($dom->createTextNode("Open House Reception"));
+
+      $title->appendChild($openhouse);
+
     } else {
       $title->appendChild($dom->createTextNode($event_name));
     }

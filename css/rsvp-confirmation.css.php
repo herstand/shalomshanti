@@ -25,23 +25,22 @@ body.rsvpConfirmation img.success {
   height:60px;
 }
 
-body.rsvpConfirmation main > hr {
+body.rsvpConfirmation main > hr.opener,
+body.rsvpConfirmation main > hr.closer {
   margin-bottom:40px;
 }
-body.rsvpConfirmation main > hr:last-of-type {
-  margin-bottom:60px;
-}
-body.rsvpConfirmation main > a {
+body.rsvpConfirmation main .buttons a {
   display:block;
   width:170px;
   margin-left:auto;
   margin-right:auto;
 }
-body.rsvpConfirmation main > a:first-of-type {
-  margin-bottom:20px;
-}
-body.rsvpConfirmation main > a:last-of-type {
+body.rsvpConfirmation main .buttons {
   margin-bottom:40px;
+  display:block;
+}
+body.rsvpConfirmation main .buttons a:first-of-type {
+  margin-bottom:20px;
 }
 body.rsvpConfirmation main > section.attendants > article > h3 {
   margin-bottom:10px;
@@ -90,7 +89,7 @@ body.rsvpConfirmation > main > img {
   margin-bottom:60px;
   max-width:470px;
 }
-body.rsvpConfirmation > main > a {
+body.rsvpConfirmation > main .buttons a {
   height:40px;
   line-height:40px;
   width:170px;

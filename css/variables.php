@@ -35,6 +35,13 @@ $green = "#8AC43F";
 
 /* Themes */
 $themes = array(
+  "nyc" => array(
+    "highlight" => "#1b468d",
+    "highlight_rgb" => "20,70,135",
+    "contrast" => "#ffffff",
+    "tint" => "#486ba4",
+    "shade" => "#163b79"
+  ),
   "ceremony" => array(
     "highlight" => "#1b468d",
     "highlight_rgb" => "20,70,135",

@@ -17,9 +17,21 @@ if ($session->user->rsvp->dueDate->getTimestamp() < time()) {
 
 
 if ($session->user->rsvp->hasRSVPed && $session->user->rsvp->isComing()) {
-  $message = "Thanks for responding! We can’t wait to see you at our wedding. {$rsvpDate}.";
+  $message = "Thanks for responding! ";
+  if (!in_array("nyc", $session->user->events)) {
+    $message .= "<span class='nobreak'>We can’t</span> wait to see you at our wedding. ";
+  } else {
+    $message .= "We can't wait to have you over. ";
+  }
+  $message .= "{$rsvpDate}.";
 } else if ($session->user->rsvp->hasRSVPed) {
-  $message = "Thanks for responding! We’ll miss having you at our wedding. {$rsvpDate}.";
+  $message = "Thanks for responding! ";
+  if (!in_array("nyc", $session->user->events)) {
+    $message .= "We’ll miss having you at our wedding. ";
+  } else {
+    $message .= "We’ll miss having you at our party. ";
+  }
+  $message .= "{$rsvpDate}.";
 } else {
   $message = "Please respond below with the name of each guest who will be attending. If you cannot attend, just leave the form blank. Either way, don't forget to click \"Save Response\" when you are done. {$rsvpDate}.<br><br>Hope to see you&nbsp;there!";
 }

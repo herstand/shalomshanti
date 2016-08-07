@@ -5,10 +5,21 @@ if (!isset($session)) {
   $session = SessionController::getSession();
 }
 foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+  if (
+    date_create_from_format(
+      "Y-m-d H:i:s",
+      $rsvpEvent->start_datetime
+    )->getTimestamp()
+    <
+    time()
+  ) {
+    continue;
+  }
   $dom = new DOMDocument('1.0', 'utf-8');
   $eventAttendants = $dom->createElement("article");
-  $eventAttendants->setAttribute("data-event-name", $rsvpEvent->event_name);
-  $title_label = $rsvpEvent->event_name.": ".count($rsvpEvent->attendants)." attending";
+  $eventAttendants->setAttribute("data-event-name", $rsvpEvent->event_handle);
+  $title_label = $rsvpEvent->event_name;
+  $title_label .= ": ".count($rsvpEvent->attendants)." attending";
   $title = $dom->createElement('h3');
   $title->setAttribute("class", "typ-categoryTitle");
   $title->appendChild($dom->createTextNode($title_label));

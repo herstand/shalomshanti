@@ -3,12 +3,16 @@ if (!isset($session)) {
   require_once "Controller/SessionController.php";
   $session = SessionController::getSession();
 }
+// TODO: replace with Event and datetime
+$numberOfEvents = in_array("nyc", $session->user->events) ? 1 : count($session->user->events);
 ?>
 body.rsvp > main > form > article:not(.intro) { width:100%; min-height:100px; padding-top:60px; padding-bottom:60px; }
 body.rsvp > main > form > article { position:relative; }
-body.rsvp > main > form > article.ceremony { z-index:12; }
+body.rsvp > main > form > article.ceremony,
+body.rsvp > main > form > article.nyc { z-index:12; }
 body.rsvp > main > form > article.reception { z-index:11; }
 body.rsvp > main > form > article.havdalah { z-index:10; }
+body.rsvp > main > form > article.nyc *,
 body.rsvp > main > form > article.ceremony *,
 body.rsvp > main > form > article.reception * { color:white; }
 body.rsvp > main > form > article button {
@@ -97,7 +101,7 @@ body.rsvp > main > form > article button { height:40px; width:100%; display:bloc
 
 @media (min-width:<?php echo $ipadLandscape; ?>px) {
   body.rsvp > main > form > article:not(.intro) {
-    width:calc(100% / <?php echo count($session->user->events); ?>);
+    width:calc(100% / <?php echo $numberOfEvents; ?>);
     padding-left:25px;
     padding-right:25px;
     display:inline-block;
@@ -112,20 +116,3 @@ body.rsvp > main > form > article button { height:40px; width:100%; display:bloc
     padding-bottom:70px;
   }
 }
-
-/**
-body.rsvp > main > form > article.reception,
-      body.rsvp > main > form > article.reception button:not(.disabled):focus,
-      body.rsvp > main > form > article.reception button:hover { background-color:<?php echo $orange; ?> }
-      body.rsvp > main > form > article.reception button { color:<?php echo $orange; ?>; }
-      body.rsvp > main > form > article.reception button:not(.disabled):focus,
-      body.rsvp > main > form > article.reception button:hover { color:white; }
-      body.rsvp > main > form > article.havdalah,
-      body.rsvp > main > form > article.havdalah button:hover,
-      body.rsvp > main > form > article.havdalah button:not(.disabled):focus { background-color:<?php echo $yellow; ?>; }
-      body.rsvp > main > form > article.havdalah button { color:<?php echo $yellow; ?>; }
-      body.rsvp > main > form > article.havdalah button:hover,
-      body.rsvp > main > form > article.havdalah button:not(.disabled):focus { color:<?php echo $blue; ?>; }
-      body.rsvp > main > form > article.havdalah * { color:<?php echo $blue; ?>; }
-      body.rsvp > main > form > article.havdalah button { background-color:<?php echo $blue; ?>; border:2px solid <?php echo $blue; ?> }
-**/

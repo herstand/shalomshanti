@@ -33,20 +33,29 @@ if (!$session->user->rsvp->hasRSVPed) {
   <header><?php include "templates/header.php"; ?></header>
   <main>
     <img class="success" src="/icons/check.svg" alt="Form submit successful icon" />
-    <hr />
+    <hr class="opener" />
     <section class="attendants">
     <?php include "templates/attendantSummary.php"; ?>
     </section>
-    <hr />
-    <?php include "templates/confirmationMessage.php"; ?>
-    <?php if ($session->user->rsvp->isComing()) {
-      ?><a class="typ-categoryTitle" href="/plan-your-trip">Plan your trip</a><?php
-    } ?>
+    <hr class="closer" />
+    <span class="buttons">
     <?php
     if ($session->user->rsvp->dueDate->getTimestamp() > time()) {
     ?>
       <a class="typ-categoryTitle" href="/rsvp">Edit response</a>
     <?php } ?>
+    <?php if (
+            (
+              in_array("ceremony", $session->user->events) ||
+              in_array("reception", $session->user->events) ||
+              in_array("havdalah", $session->user->events)
+            ) &&
+            $session->user->rsvp->isComing()
+          ) {
+      ?><a class="typ-categoryTitle" href="/plan-your-trip">Plan your trip</a><?php
+    } ?>
+    </span>
+    <?php include "templates/confirmationMessage.php"; ?>
   </main>
   <?php include "templates/footer.php"; ?>
 </body>

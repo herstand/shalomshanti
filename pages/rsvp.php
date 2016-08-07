@@ -47,20 +47,18 @@ if (
   <main>
     <article class="intro"><?php include "templates/rsvpIntro.php"; ?></article>
     <form action="/API/RSVP" method="POST"><?php
-    if (in_array("ceremony", $session->user->events)) {
-
-      ?><article id="ceremony" class="ceremony"><?php echo RSVPArticle::createRSVPArticle("ceremony"); ?></article><?php
-
-    }
-    if (in_array("reception", $session->user->events)) {
-
-      ?><article id="reception" class="reception"><?php echo RSVPArticle::createRSVPArticle("reception"); ?></article><?php
-
-    }
-    if (in_array("havdalah", $session->user->events)) {
-
-      ?><article id="havdalah" class="havdalah"><?php echo RSVPArticle::createRSVPArticle("havdalah"); ?></article><?php
-
+    foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+      if (
+        date_create_from_format(
+          "Y-m-d H:i:s",
+          $rsvpEvent->start_datetime
+        )->getTimestamp()
+        <
+        time()
+      ) {
+        continue;
+      }
+      ?><article id="<?php echo $rsvpEvent->event_handle; ?>" class="<?php echo $rsvpEvent->event_handle; ?>" data-starttime="<?php echo $rsvpEvent->start_datetime; ?>"><?php echo RSVPArticle::createRSVPArticle($rsvpEvent->event_handle); ?></article><?php
     }
     ?><button type='submit' class="typ-littleTitle">Save Response</button><?php
     ?></form>

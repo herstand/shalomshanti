@@ -12,10 +12,10 @@ class RSVP {
     $this->dueDate = $dueDate;
   }
 
-  public function getAttendantIds($event_name) {
+  public function getAttendantIds($event_handle) {
     $attendantIds = array();
     foreach ($this->rsvpEvents as $rsvpEvent) {
-      if ($rsvpEvent->event_name === $event_name) {
+      if ($rsvpEvent->event_handle === $event_handle) {
         foreach ($rsvpEvent->attendants as $attendant) {
           if (isset($attendant->id)) { //attendants[0] is an array of attendants without ids yet
             $attendantIds[] = $attendant->id;
@@ -34,28 +34,28 @@ class RSVP {
     $this->rsvpEvents[$event]->attendants[0][] = $name;
   }
 
-  public function getAttendantsFor($event_name) {
+  public function getAttendantsFor($event_handle) {
     foreach ($this->rsvpEvents as $rsvpEvent) {
-      if ($rsvpEvent->event_name === $event_name) {
+      if ($rsvpEvent->event_handle === $event_handle) {
         return $rsvpEvent->attendants;
       }
     }
     return array();
   }
 
-  public function getNthAttendantFor($n, $event_name) {
-    $attendants = $this->getAttendantsFor($event_name);
+  public function getNthAttendantFor($n, $event_handle) {
+    $attendants = $this->getAttendantsFor($event_handle);
     if (count($attendants) > 0) {
-      return $this->getAttendantsFor($event_name)[$n];
+      return $this->getAttendantsFor($event_handle)[$n];
     } else {
       return "";
     }
   }
 
-  public function numberOfAttendantsAt($event_name) {
+  public function numberOfAttendantsAt($event_handle) {
     if ($this->hasRSVPed) {
       foreach ($this->rsvpEvents as $rsvpEvent) {
-        if ($rsvpEvent->event_name === $event_name) {
+        if ($rsvpEvent->event_handle === $event_handle) {
           return count($rsvpEvent->attendants);
         }
       }
@@ -63,9 +63,9 @@ class RSVP {
     return 0;
   }
 
-  public function numberInvitedTo($event_name) {
+  public function numberInvitedTo($event_handle) {
     foreach ($this->rsvpEvents as $rsvpEvent) {
-        if ($rsvpEvent->event_name === $event_name) {
+        if ($rsvpEvent->event_handle === $event_handle) {
           return $rsvpEvent->num_invited;
         }
     }

@@ -19,8 +19,8 @@ class User {
     $this->events = $events;
   }
 
-  public function isInvitedTo($event_name) {
-    return in_array($event_name, $this->events);
+  public function isInvitedTo($event_handle) {
+    return in_array($event_handle, $this->events);
   }
 
 }

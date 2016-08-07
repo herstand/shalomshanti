@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function getNumberInvitedTo(eventName) {
       for (var rsvpEvent in rsvp.rsvpEvents) {
         rsvpEvent = rsvp.rsvpEvents[rsvpEvent];
-        if (rsvpEvent.event_name === eventName) {
+        if (rsvpEvent['Event handle'] === eventName) {
           return rsvpEvent.num_invited;
         }
       }
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function appendUpdatedAttendantsTo(rsvpEvent) {
       utilities.toArray(document.querySelectorAll(
-        "article#" + rsvpEvent.event_name + " fieldset")
+        "article#" + rsvpEvent['Event handle'] + " fieldset")
       ).forEach(function(fieldset) {
         if (fieldset.dataset.attendantIndex !== "0") {
           rsvpEvent.attendants.push({
@@ -157,7 +157,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         };
       utilities.toArray(document.querySelectorAll("form > article")).forEach(function(el) {
         var rsvpEvent = {
-          "event_name" : el.id,
+          "Event handle" : el.id,
+          "Event name" : (el.innerText ? el.querySelector("h2").innerText : el.querySelector("h2").textContent),
+          "Event start time" : el.dataset.starttime,
           "attendants" : [
             getNewAttendantsFor(el.id)
           ],

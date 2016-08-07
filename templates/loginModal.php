@@ -12,7 +12,7 @@
   <h4 class="typ-littleTitle">Welcome!</h4>
   <p class="typ-body">Welcome to the guests-only area of our website! You’re logged <span class="nobreak">in as:</span></p>
   <p class="householdName typ-subsection-header"><em class="household_name"></em></p>
-  <p class="typ-body">We’ve put together lots of information for you to browse. <span class="dueDate"></span>.</p>
+  <p class="typ-body"><span class="loginmodalinfotext"></span> <span class="dueDate"></span>.</p>
   <a href="/rsvp" class="typ-littleTitle rsvp">RSVP Now</a>
   <p class="typ-body">P.S. Did you recognize your password? It's a word from Indian or Jewish culture. A quick web search might reveal something you didn't <span class="nobreak">know before!</span></p>
   </div>

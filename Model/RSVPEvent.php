@@ -4,12 +4,16 @@ set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 require_once "Model/Attendant.php";
 
 class RSVPEvent {
-  public $event_name,
+  public $event_handle,
+    $event_name,
+    $start_datetime,
     $num_invited,
     $attendants;
 
-  public function __construct($event_name, $num_invited, $attendants) {
+  public function __construct($event_handle, $event_name, $start_datetime, $num_invited, $attendants) {
+    $this->event_handle = $event_handle;
     $this->event_name = $event_name;
+    $this->start_datetime = $start_datetime;
     $this->num_invited = $num_invited;
     $this->attendants = $attendants;
   }
@@ -27,7 +31,9 @@ class RSVPEvent {
       }
     }
     return new RSVPEvent(
-      $rsvpEvent_array["event_name"],
+      $rsvpEvent_array["Event handle"],
+      $rsvpEvent_array["Event name"],
+      $rsvpEvent_array["Event start time"],
       // TODO: Don't let people send a diff num_invited from client and up their guest count
       $rsvpEvent_array["num_invited"],
       $attendants

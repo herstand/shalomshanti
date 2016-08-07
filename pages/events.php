@@ -34,27 +34,29 @@ if (!isset($session->user)) {
         <nav class="secondary">
             <ul><?php
             if ($session->user->isFriend) {
-                $session->user->events = ["ceremony", "reception", "havdalah"];
+                $session->user->events = ["nyc", "ceremony", "reception", "havdalah"];
             }
-            foreach ($session->user->events as $event_name) {
-                if ($event_name === "havdalah") {
+            foreach ($session->user->events as $event_handle) {
+                if ($event_handle === "havdalah") {
                     $event_name_label = "havdalah & mehendi";
+                } else if ($event_handle === "nyc") {
+                    $event_name_label = "Open House Reception";
                 } else {
-                    $event_name_label = $event_name;
+                    $event_name_label = $event_handle;
                 }
-                echo "<li><a class='nav-mobile typ-body' href='#{$event_name}-anchor'>$event_name_label</a></li>";
+                echo "<li><a class='nav-mobile typ-body' href='#{$event_handle}-anchor'>$event_name_label</a></li>";
             }
             ?></ul><?php
         ?></nav>
         <nav class="secondary fixed hidden">
             <ul><?php
-                foreach ($session->user->events as $event_name) {
-                    if ($event_name === "havdalah") {
+                foreach ($session->user->events as $event_handle) {
+                    if ($event_handle === "havdalah") {
                         $event_name_label = "havdalah & mehendi";
                     } else {
-                        $event_name_label = $event_name;
+                        $event_name_label = $event_handle;
                     }
-                    echo "<li><a class='nav-mobile typ-body' href='#{$event_name}-anchor'>$event_name_label</a></li>";
+                    echo "<li><a class='nav-mobile typ-body' href='#{$event_handle}-anchor'>$event_name_label</a></li>";
                 }
             ?></ul><?php
         ?></nav>
@@ -63,6 +65,44 @@ if (!isset($session->user)) {
             <p class="typ-body">We are very fortunate to have all that we need to make a home and a life together in our small New York City apartment. The greatest gift you could give us is that of your love and support. We encourage you to check out <a target="_blank" href="http://www.givedirectly.org">GiveDirectly</a>, one of our favorite charities, which allows you to give cash directly to the people who need it most. We’d be honored if you made a donation on our behalf, so we can start off our marriage in the spirit <span class='nobreak'>of giving.</span></p>
             <a target="_blank" href="http://www.givedirectly.org"><img class="logo" alt="Give Directly logo" src="images/givedirectlylogo.png" /></a>
         </article>
+        <?php if ($session->user->isFriend || in_array("nyc", $session->user->events)) { ?>
+        <section class="infoSection" id="nyc"><hr class="jumpToPoint" id="nyc-anchor" /><?php
+            ?><header class="paddedSection"><?php
+                ?><h2 class="typ-title">Open House Reception</h2><?php
+                ?><hr /><?php
+            ?></header><?php
+            ?><article class="datetime shortText paddedSection">
+                <header>
+                    <img class="important" src="/icons/time_nyc.svg" />
+                </header>
+                <p class="typ-body">The open house will take place on Saturday, August 13th from 3pm-7pm. There will be food.</p>
+            </article><?php
+            ?><hr class="mobileOnly" /><?php
+            ?><article class="location shortText hotel venue paddedSection">
+                <header>
+                    <img class="important" src="/icons/venue_apartment.svg" />
+                </header>
+                <h4 class="typ-subsection-header mapTitle special"><a target="_blank" href="https://www.google.com/maps/place/55-05+Woodside+Ave,+Queens,+NY+11377/@40.746725,-73.9109407,17z/data=!3m1!4b1!4m5!3m4!1s0x89c25f1e59fa9381:0xae737daf9255335!8m2!3d40.746725!4d-73.908752"><span class="mapTitleStarter">Vidya &amp; Micah&rsquo;s Apartment</span></a></h4>
+                <p class="typ-body">55-05 Woodside Ave. #418<br />Woodside, NY 11377</p>
+            </article><?php
+            ?><hr class="mobileOnly" /><?php
+            ?><article class="attire shortText paddedSection">
+                <header>
+                    <img class="important" src="/icons/dress_nyc.svg" />
+                </header>
+                <p class="typ-body">Dress to impress!</span></p>
+            </article>
+        </section>
+    <?php } ?>
+    <?php if (
+        $session->user->isFriend ||
+        (
+            in_array("nyc", $session->user->events) &&
+            in_array("ceremony", $session->user->events)
+        )
+    ) { ?>
+        <hr />
+    <?php } ?>
     <?php if ($session->user->isFriend || in_array("ceremony", $session->user->events)) { ?>
         <section class="infoSection" id="ceremony"><hr class="jumpToPoint" id="ceremony-anchor" /><?php
             ?><header class="paddedSection"><?php
