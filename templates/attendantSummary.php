@@ -8,7 +8,7 @@ foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
   if (
     date_create_from_format(
       "Y-m-d H:i:s",
-      $rsvpEvent->start_datetime
+      $rsvpEvent->event->start_datetime
     )->getTimestamp()
     <
     time()
@@ -17,8 +17,8 @@ foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
   }
   $dom = new DOMDocument('1.0', 'utf-8');
   $eventAttendants = $dom->createElement("article");
-  $eventAttendants->setAttribute("data-event-name", $rsvpEvent->event_handle);
-  $title_label = $rsvpEvent->event_name;
+  $eventAttendants->setAttribute("data-event-name", $rsvpEvent->event->handle);
+  $title_label = $rsvpEvent->event->name;
   $title_label .= ": ".count($rsvpEvent->attendants)." attending";
   $title = $dom->createElement('h3');
   $title->setAttribute("class", "typ-categoryTitle");

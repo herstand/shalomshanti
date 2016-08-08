@@ -4,18 +4,42 @@ set_include_path($_SERVER["DOCUMENT_ROOT"]."/shalomshanti/");
 require_once "Model/RSVPEvent.php";
 
 class RSVP {
-  public $hasRSVPed, $rsvpEvents, $dueDate;
+  public $rsvpEvents;
 
-  public function __construct($hasRSVPed, $rsvpEvents, $dueDate) {
-    $this->hasRSVPed = !!$hasRSVPed;
+  public function __construct($rsvpEvents) {
     $this->rsvpEvents = $rsvpEvents;
-    $this->dueDate = $dueDate;
+  }
+
+  public function hasRSVPedForAllFutureEvents() {
+    foreach ($this->rsvpEvents as $rsvpEvent) {
+      if (
+        (new DateTime($rsvpEvent->event->start_datetime))->getTimestamp() > time() &&
+        !$rsvpEvent->hasRSVPed
+      ) {
+          return false;
+      }
+    }
+    return true;
+  }
+
+  public function getNextDueDate() {
+    $nextDueDate = INF;
+    foreach ($this->rsvpEvents as $rsvpEvent) {
+      $dueDate = (new DateTime($rsvpEvent->rsvp_due_date))->getTimestamp();
+      if ($dueDate > time() && $dueDate < $nextDueDate) {
+          $nextDueDate = $dueDate;
+      }
+    }
+    if ($nextDueDate === INF) {
+      throw new Exception ("RSVP due date not set for current user.");
+    }
+    return new DateTime("@".$nextDueDate);
   }
 
   public function getAttendantIds($event_handle) {
     $attendantIds = array();
     foreach ($this->rsvpEvents as $rsvpEvent) {
-      if ($rsvpEvent->event_handle === $event_handle) {
+      if ($rsvpEvent->event->handle === $event_handle) {
         foreach ($rsvpEvent->attendants as $attendant) {
           if (isset($attendant->id)) { //attendants[0] is an array of attendants without ids yet
             $attendantIds[] = $attendant->id;
@@ -36,7 +60,7 @@ class RSVP {
 
   public function getAttendantsFor($event_handle) {
     foreach ($this->rsvpEvents as $rsvpEvent) {
-      if ($rsvpEvent->event_handle === $event_handle) {
+      if ($rsvpEvent->event->handle === $event_handle) {
         return $rsvpEvent->attendants;
       }
     }
@@ -53,11 +77,9 @@ class RSVP {
   }
 
   public function numberOfAttendantsAt($event_handle) {
-    if ($this->hasRSVPed) {
-      foreach ($this->rsvpEvents as $rsvpEvent) {
-        if ($rsvpEvent->event_handle === $event_handle) {
-          return count($rsvpEvent->attendants);
-        }
+    foreach ($this->rsvpEvents as $rsvpEvent) {
+      if ($rsvpEvent->hasRSVPed && $rsvpEvent->event->handle === $event_handle) {
+        return count($rsvpEvent->attendants);
       }
     }
     return 0;
@@ -65,19 +87,17 @@ class RSVP {
 
   public function numberInvitedTo($event_handle) {
     foreach ($this->rsvpEvents as $rsvpEvent) {
-        if ($rsvpEvent->event_handle === $event_handle) {
-          return $rsvpEvent->num_invited;
-        }
+      if ($rsvpEvent->event->handle === $event_handle) {
+        return $rsvpEvent->num_invited;
+      }
     }
     return 0;
   }
 
   public function isComing() {
-    if ($this->hasRSVPed) {
-      foreach ($this->rsvpEvents as $rsvpEvent) {
-        if (isset($rsvpEvent->attendants) && count($rsvpEvent->attendants) > 0) {
-          return true;
-        }
+    foreach ($this->rsvpEvents as $rsvpEvent) {
+      if ($rsvpEvent->hasRSVPed && isset($rsvpEvent->attendants) && count($rsvpEvent->attendants) > 0) {
+        return true;
       }
     }
     return false;

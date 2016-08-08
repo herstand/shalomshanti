@@ -5,18 +5,13 @@ if (!isset($session)) {
   $session = SessionController::getSession();
 }
 
-// Due date is set to midnight of next day; subtract 1 millisecond to get the due date
-if ($session->user->rsvp->dueDate->getTimestamp() < time()) {
-  $rsvpDate = "Please respond at your earliest convenience";
-} else {
-  $rsvpDate = "You can edit your response until ".date(
-    "M\&\\n\b\s\p\;jS",
-    $session->user->rsvp->dueDate->getTimestamp() - 1
-  );
-}
+$rsvpDate = "You can edit your response until ".date(
+  "M\&\\n\b\s\p\;jS",
+  $session->user->rsvp->getNextDueDate()->getTimestamp() - 1
+);
 
 
-if ($session->user->rsvp->hasRSVPed && $session->user->rsvp->isComing()) {
+if ($session->user->rsvp->hasRSVPedForAllFutureEvents() && $session->user->rsvp->isComing()) {
   $message = "Thanks for responding! ";
   if (!in_array("nyc", $session->user->events)) {
     $message .= "<span class='nobreak'>We can’t</span> wait to see you at our wedding. ";
@@ -24,7 +19,7 @@ if ($session->user->rsvp->hasRSVPed && $session->user->rsvp->isComing()) {
     $message .= "We can't wait to have you over. ";
   }
   $message .= "{$rsvpDate}.";
-} else if ($session->user->rsvp->hasRSVPed) {
+} else if ($session->user->rsvp->hasRSVPedForAllFutureEvents()) {
   $message = "Thanks for responding! ";
   if (!in_array("nyc", $session->user->events)) {
     $message .= "We’ll miss having you at our wedding. ";
@@ -36,9 +31,9 @@ if ($session->user->rsvp->hasRSVPed && $session->user->rsvp->isComing()) {
   $message = "Please respond below with the name of each guest who will be attending. If you cannot attend, just leave the form blank. Either way, don't forget to click \"Save Response\" when you are done. {$rsvpDate}.<br><br>Hope to see you&nbsp;there!";
 }
 $daysRemaining = (
-  ($session->user->rsvp->dueDate->getTimestamp() - 1 - time()) < 0) ?
+  ($session->user->rsvp->getNextDueDate()->getTimestamp() - 1 - time()) < 0) ?
   0 :
-  ceil(($session->user->rsvp->dueDate->getTimestamp() - 1 - time())/86400);
+  ceil(($session->user->rsvp->getNextDueDate()->getTimestamp() - 1 - time())/86400);
 ?>
 <h1 class="typ-pageTitle">RSVP</h1>
 <p class="daysRemaining typ-caption"><?php echo $daysRemaining; ?> Day<?php echo $daysRemaining !== 1 ? "s" : "";?> Remaining<?php if ($daysRemaining === 1.0) echo "!<br>(Let us know if you're having trouble finalizing plans.)"; ?></p>

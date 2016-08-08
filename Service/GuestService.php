@@ -9,7 +9,9 @@ require_once "Service/PasswordHash.php";
 
 require_once "Model/Attendant.php";
 require_once "Model/User.php";
+require_once "Model/Event.php";
 require_once "Model/RSVPEvent.php";
+require_once "Model/Location.php";
 
 class GuestService extends DBService {
   public static $singleton;
@@ -43,14 +45,12 @@ class GuestService extends DBService {
           "COLUMNS" => array(
             "`id`",
             "`Household name`",
-            "`Has RSVPed`",
             "`Friend login` as `isFriend`"
           ),
           "WHERE" => "`password` = '".$password."'"
         )
       );
     $guest['id'] = intval($guest['id']);
-    $guest['Has RSVPed'] = boolval($guest['Has RSVPed']);
     $guest['isFriend'] = boolval($guest['isFriend']);
     $invitations = $this->query(
       DBService::SELECT,
@@ -58,9 +58,8 @@ class GuestService extends DBService {
       array(
         "COLUMNS" => array(
           "`events`.`Event handle`",
-          "`events`.`Event name`",
-          "`events`.`Event start time`",
-          "(`adults` + `children`) as `Number invited`"
+          "`invitations`.`RSVP due date`",
+          "(`adults` + `children`) as `Number invited`",
         ),
         "WHERE" => "
           `events`.id = `invitations`.`event_id` AND
@@ -74,17 +73,84 @@ class GuestService extends DBService {
     return $user;
   }
 
-  public function getRSVPDueDate($userId) {
-    return new DateTime($this->query(
-      DBService::SELECT,
-      "guests",
-      array(
-        "COLUMNS" => array(
-          "`RSVP due date`"
-        ),
-        "WHERE" => "`id` = {$userId}"
-      )
-    )['RSVP due date']);
+  public function getHasRSVPed($guest_id, $event_handle) {
+    return boolval(
+      $this->query(
+        DBService::SELECT,
+        "guest_event",
+        array(
+          "COLUMNS" => array(
+            "`guest_event`.`Has RSVPed`",
+          ),
+          "WHERE" => "
+            `guest_id` = {$guest_id} AND
+            `event_id` = (SELECT id from events WHERE `Event handle` = \"{$event_handle}\")
+          "
+        )
+      )['Has RSVPed']
+    );
+  }
+
+  public static function getEvent($event_handle) {
+    $event = GuestService::getInstance()->query(
+        DBService::SELECT,
+        "events",
+        array(
+          "COLUMNS" => array(
+            "`events`.`Event name`",
+            "`events`.`Event start time`",
+            "`events`.`Event end time`",
+            "`events`.`Time icon src`",
+            "`events`.`Dress icon src`"
+          ),
+          "WHERE" => "
+            `events`.`Event handle` = \"{$event_handle}\"
+          "
+        )
+      );
+    return new Event(
+      $event_handle,
+      $event['Event name'],
+      $event['Event start time'],
+      $event['Event end time'],
+      $event['Time icon src'],
+      $event['Dress icon src'],
+      GuestService::getLocationOfEvent($event_handle)
+    );
+  }
+  public static function getLocationOfEvent($event_handle) {
+    $location = GuestService::getInstance()->query(
+        DBService::SELECT,
+        "events, locations",
+        array(
+          "COLUMNS" => array(
+            "`locations`.`Name` as `Event location name`",
+            "`locations`.`Address line 1` as `Event address line 1`",
+            "`locations`.`Address line 2` as `Event address line 2`",
+            "`locations`.`City` as `Event City`",
+            "`locations`.`State` as `Event State`",
+            "`locations`.`Zip` as `Event Zip`",
+            "`locations`.`Country` as `Event Country`",
+            "`locations`.`Map link`",
+            "`locations`.`Icon link`",
+          ),
+          "WHERE" => "
+            `events`.`Event handle` = \"{$event_handle}\" AND
+            `events`.`location_id` = `locations`.id
+          "
+        )
+      );
+    return new Location(
+      $location['Event location name'],
+      $location['Event address line 1'],
+      $location['Event address line 2'],
+      $location['Event City'],
+      $location['Event State'],
+      $location['Event Zip'],
+      $location['Event Country'],
+      $location['Map link'],
+      $location['Icon link']
+    );
   }
 
    // Call with GuestService::getInstance()->getUser($id)
@@ -97,7 +163,6 @@ class GuestService extends DBService {
           "COLUMNS" => array(
             "`id`",
             "`Household name`",
-            "`Has RSVPed`",
             "`Friend login` as `isFriend`"
           ),
           "WHERE" => "`id` = {$id}"
@@ -109,8 +174,7 @@ class GuestService extends DBService {
         array(
           "COLUMNS" => array(
             "`events`.`Event handle`",
-            "`events`.`Event name`",
-            "`events`.`Event start time`",
+            "`invitations`.`RSVP due date`",
             "(`adults` + `children`) as `Number invited`",
           ),
           "WHERE" => "
@@ -126,21 +190,26 @@ class GuestService extends DBService {
 
   // Call with GuestService::getInstance()->saveRSVP($guestId, $rsvp)
   public function saveRSVP($guestId, $rsvp) {
-    $this->rsvpUser($guestId);
+    $this->rsvpUser($guestId, $rsvpEvents);
     return $this->saveAttendants($guestId, $rsvp);
   }
 
-  private function rsvpUser($guestId) {
-    $this->query(
-      DBService::UPDATE,
-      "guests",
-      array(
-        "SET" => array(
-          "Has RSVPed" => true
-        ),
-        "WHERE" => "`id` = {$guestId}"
-      )
-    );
+  private function rsvpUser($guestId, $rsvpEvents) {
+    foreach ($rsvpEvents as $rsvpEvent) {
+      $this->query(
+        DBService::UPDATE,
+        "guest_event",
+        array(
+          "SET" => array(
+            "Has RSVPed" => true
+          ),
+          "WHERE" => "
+            `guest_id` = {$guestId} AND
+            `event_id` = (SELECT id from events WHERE `Event handle` = \"{$rsvpEvent->event->handle}\")
+          "
+        )
+      );
+    }
   }
 
   private function idInAttendantsOf($attendant_id, $rsvpEvent) {
@@ -171,12 +240,12 @@ class GuestService extends DBService {
   }
 
   private function removeDeletedAttendants($guestId, $rsvpEvent) {
-    foreach ($this->getAttendantIds($rsvpEvent->event_handle, $guestId) as $attendant_id_obj) {
+    foreach ($this->getAttendantIds($rsvpEvent->event->handle, $guestId) as $attendant_id_obj) {
       $attendant_id = is_array($attendant_id_obj) ?
         intval($attendant_id_obj['attendant_id']) :
         intval($attendant_id_obj);
       if (!$this->idInAttendantsOf($attendant_id, $rsvpEvent)) {
-        $this->removeAttendantFrom($attendant_id, $guestId, $rsvpEvent->event_handle);
+        $this->removeAttendantFrom($attendant_id, $guestId, $rsvpEvent->event->handle);
       }
     }
   }
@@ -194,7 +263,7 @@ class GuestService extends DBService {
 
   private function insertNewAttendantsFor($guestId, $rsvpEvent) {
     foreach ($rsvpEvent->attendants[0] as $new_attendant) {
-      $attendant = $this->insertNewAttendant($guestId, $rsvpEvent->event_handle, $new_attendant);
+      $attendant = $this->insertNewAttendant($guestId, $rsvpEvent->event->handle, $new_attendant);
       $rsvpEvent->attendants[$attendant->id] = $attendant;
     }
   }
@@ -362,12 +431,12 @@ class GuestService extends DBService {
   private function createRSVPEvent(&$rsvpEvents, $guest, $invitation) {
     if (isset($invitation["Number invited"]) && $invitation["Number invited"] > 0) {
       $rsvpEvents[] = new RSVPEvent(
-        $invitation["Event handle"],
-        $invitation["Event name"],
-        $invitation["Event start time"],
+        GuestService::getEvent($invitation["Event handle"]),
+        $invitation['RSVP due date'],
+        $this->getHasRSVPed($guest['id'], $invitation['Event handle']),
         $invitation["Number invited"],
         (
-          $guest['Has RSVPed'] ?
+          $this->getHasRSVPed($guest["id"], $invitation["Event handle"]) ?
             $this->loadAttendants(
               $this->getAttendantIds(
                 $invitation["Event handle"],
@@ -410,15 +479,17 @@ class GuestService extends DBService {
 
   private function loadRSVP($guest, $invitations) {
     $rsvpEvents = array();
-    foreach ($invitations as $invitation) {
-      if (intval($invitation['Number invited']) > 0) {
-        $this->createRSVPEvent($rsvpEvents, $guest, $invitation);
+    if (isset($invitations[0])) {
+      foreach ($invitations as $invitation) {
+        if (intval($invitation['Number invited']) > 0) {
+          $this->createRSVPEvent($rsvpEvents, $guest, $invitation);
+        }
       }
+    } else if (intval($invitations['Number invited']) > 0) {
+      $this->createRSVPEvent($rsvpEvents, $guest, $invitations);
     }
     return new RSVP(
-      $guest['Has RSVPed'],
-      $rsvpEvents,
-      $this->getRSVPDueDate($guest['id'])
+      $rsvpEvents
     );
   }
 
@@ -453,9 +524,15 @@ class GuestService extends DBService {
 
   private function loadEvents($invitations) {
     $events = array();
-    foreach ($invitations as $invitation) {
-      if ($invitation['Number invited'] > 0) {
-        $events[] = $invitation['Event handle'];
+    if (isset($invitations[0])) {
+      foreach ($invitations as $invitation) {
+        if ($invitation['Number invited'] > 0) {
+          $events[] = $invitation['Event handle'];
+        }
+      }
+    } else {
+      if ($invitations['Number invited'] > 0) {
+          $events[] = $invitations['Event handle'];
       }
     }
     return $events;

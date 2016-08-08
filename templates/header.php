@@ -8,7 +8,7 @@ $complete = "";
 $loggedIn = "";
 if (isset($session->user)) {
   $loggedIn = " loggedIn";
-  if ($session->user->rsvp->hasRSVPed) {
+  if ($session->user->rsvp->hasRSVPedForAllFutureEvents()) {
     $complete = " complete";
   }
 }
@@ -18,8 +18,14 @@ if (isset($session->user)) {
         ?><li class="homepage logo"><a class="image" rel="homepage" href="/"><img class="logo" src="/images/star.svg" /></a></li><?php
         if (isset($session->user)) {
           ?><li class="events"><a class="typ-littleTitle" data-long-name="Event info" data-short-name="Event<?php if (count($session->user->events) > 1) echo "s"; ?>" href="events">Event<?php if (count($session->user->events) > 1) echo "s"; ?></a></li><?php
+          if (
+            $session->user->isInvitedTo("ceremony") ||
+            $session->user->isInvitedTo("reception") ||
+            $session->user->isInvitedTo("havdalah")
+          ) {
           ?><li class="plan"><a class="typ-littleTitle" data-long-name="Plan your trip" data-short-name="Planning" href="plan-your-trip">Planning</a></li><?php
-          if (!$session->user->isFriend) {
+          }
+          if (count($session->user->rsvp->rsvpEvents) > 0 && !$session->user->isFriend) {
             ?><li class="rsvp<?php echo $complete; ?>"><a class="typ-littleTitle" href="rsvp"><span>RSVP</span></a></li><?php
           }
         } else {

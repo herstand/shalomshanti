@@ -9,18 +9,18 @@ if (!isset($session)) {
 if (!isset($session->user) || $session->user->id === null) {
   header("Location: /");
 }
-if (!isset($session->user->rsvp) || !isset($session->user->rsvp->hasRSVPed)) {
+if (!isset($session->user->rsvp)) {
   error_log(json_encode($session->user));
 }
 
 if (
-  $session->user->rsvp->hasRSVPed &&
+  $session->user->rsvp->hasRSVPedForAllFutureEvents() &&
   (
     (
       !isset($_SERVER['HTTP_REFERER']) ||
       strpos($_SERVER['HTTP_REFERER'], "rsvp-confirmation") === false
     ) ||
-    $session->user->rsvp->dueDate->getTimestamp() < time()
+    $session->user->rsvp->getNextDueDate()->getTimestamp() < time()
   )
 ) {
  header("Location: /rsvp-confirmation");
@@ -51,14 +51,14 @@ if (
       if (
         date_create_from_format(
           "Y-m-d H:i:s",
-          $rsvpEvent->start_datetime
+          $rsvpEvent->event->start_datetime
         )->getTimestamp()
         <
         time()
       ) {
         continue;
       }
-      ?><article id="<?php echo $rsvpEvent->event_handle; ?>" class="<?php echo $rsvpEvent->event_handle; ?>" data-starttime="<?php echo $rsvpEvent->start_datetime; ?>"><?php echo RSVPArticle::createRSVPArticle($rsvpEvent->event_handle); ?></article><?php
+      ?><article id="<?php echo $rsvpEvent->event->handle; ?>" class="<?php echo $rsvpEvent->event->handle; ?>" data-starttime="<?php echo $rsvpEvent->event->start_datetime; ?>"><?php echo RSVPArticle::createRSVPArticle($rsvpEvent->event->handle); ?></article><?php
     }
     ?><button type='submit' class="typ-littleTitle">Save Response</button><?php
     ?></form>

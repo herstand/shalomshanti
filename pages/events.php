@@ -33,30 +33,15 @@ if (!isset($session->user)) {
         </section>
         <nav class="secondary">
             <ul><?php
-            if ($session->user->isFriend) {
-                $session->user->events = ["nyc", "ceremony", "reception", "havdalah"];
-            }
-            foreach ($session->user->events as $event_handle) {
-                if ($event_handle === "havdalah") {
-                    $event_name_label = "havdalah & mehendi";
-                } else if ($event_handle === "nyc") {
-                    $event_name_label = "Open House Reception";
-                } else {
-                    $event_name_label = $event_handle;
-                }
-                echo "<li><a class='nav-mobile typ-body' href='#{$event_handle}-anchor'>$event_name_label</a></li>";
+            foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+                echo "<li><a class='nav-mobile typ-body' href='#{$rsvpEvent->event->handle}-anchor'>{$rsvpEvent->event->name}</a></li>";
             }
             ?></ul><?php
         ?></nav>
         <nav class="secondary fixed hidden">
             <ul><?php
-                foreach ($session->user->events as $event_handle) {
-                    if ($event_handle === "havdalah") {
-                        $event_name_label = "havdalah & mehendi";
-                    } else {
-                        $event_name_label = $event_handle;
-                    }
-                    echo "<li><a class='nav-mobile typ-body' href='#{$event_handle}-anchor'>$event_name_label</a></li>";
+                foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+                    echo "<li><a class='nav-mobile typ-body' href='#{$rsvpEvent->event->handle}-anchor'>{$rsvpEvent->event->name}</a></li>";
                 }
             ?></ul><?php
         ?></nav>
@@ -65,60 +50,71 @@ if (!isset($session->user)) {
             <p class="typ-body">We are very fortunate to have all that we need to make a home and a life together in our small New York City apartment. The greatest gift you could give us is that of your love and support. We encourage you to check out <a target="_blank" href="http://www.givedirectly.org">GiveDirectly</a>, one of our favorite charities, which allows you to give cash directly to the people who need it most. We’d be honored if you made a donation on our behalf, so we can start off our marriage in the spirit <span class='nobreak'>of giving.</span></p>
             <a target="_blank" href="http://www.givedirectly.org"><img class="logo" alt="Give Directly logo" src="images/givedirectlylogo.png" /></a>
         </article>
-        <?php if ($session->user->isFriend || in_array("nyc", $session->user->events)) { ?>
-        <section class="infoSection" id="nyc"><hr class="jumpToPoint" id="nyc-anchor" /><?php
-            ?><header class="paddedSection"><?php
-                ?><h2 class="typ-title">Open House Reception</h2><?php
+        <?php if (in_array("nyc", $session->user->events)) {
+            foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+                if ($rsvpEvent->event->handle === "nyc") {
+                    $event = $rsvpEvent->event;
+                }
+            }
+            $start_datetime = new DateTime($event->start_datetime);
+            $end_datetime = new DateTime($event->end_datetime);
+        ?>
+        <section class="infoSection" id="<?php echo $event->handle; ?>"><hr class="jumpToPoint" id="<?php echo $event->handle; ?>-anchor" />
+            <header class="paddedSection"><?php
+                ?><h2 class="typ-title"><?php echo $event->name; ?></h2><?php
                 ?><hr /><?php
             ?></header><?php
             ?><article class="datetime shortText paddedSection">
                 <header>
-                    <img class="important" src="/icons/time_nyc.svg" />
+                    <img class="important" src="<?php echo $event->time_icon_src; ?>" />
                 </header>
-                <p class="typ-body">The open house will take place on Saturday, August 13th from 3pm-7pm. There will be food.</p>
+                <p class="typ-body">The open house will take place on <?php echo date("l, F j", $start_datetime->getTimestamp());?> from <?php echo intval($start_datetime->format("h")).$start_datetime->format("a"); ?>-<?php echo intval($end_datetime->format("h")).$end_datetime->format("a"); ?>.<br />There will be food.</p>
             </article><?php
             ?><hr class="mobileOnly" /><?php
             ?><article class="location shortText hotel venue paddedSection">
                 <header>
-                    <img class="important" src="/icons/venue_apartment.svg" />
+                    <img class="important" src="<?php echo $event->location->icon_link; ?>" />
                 </header>
-                <h4 class="typ-subsection-header mapTitle special"><a target="_blank" href="https://www.google.com/maps/place/55-05+Woodside+Ave,+Queens,+NY+11377/@40.746725,-73.9109407,17z/data=!3m1!4b1!4m5!3m4!1s0x89c25f1e59fa9381:0xae737daf9255335!8m2!3d40.746725!4d-73.908752"><span class="mapTitleStarter">Vidya &amp; Micah&rsquo;s Apartment</span></a></h4>
-                <p class="typ-body">55-05 Woodside Ave. #418<br />Woodside, NY 11377</p>
+                <h4 class="typ-subsection-header mapTitle special"><a target="_blank" href="<?php echo $event->location->map_link; ?>"><span class="mapTitleStarter"><?php echo $event->location->name; ?></span></a></h4>
+                <p class="typ-body"><?php echo $event->location->address_line_1; ?> <?php echo $event->location->address_line_2; ?><br /><?php echo $event->location->city; ?>, <?php echo $event->location->state; ?> <?php echo $event->location->zip; ?></p>
             </article><?php
             ?><hr class="mobileOnly" /><?php
             ?><article class="attire shortText paddedSection">
                 <header>
-                    <img class="important" src="/icons/dress_nyc.svg" />
+                    <img class="important" src="<?php echo $event->dress_icon_src; ?>" />
                 </header>
                 <p class="typ-body">Dress to impress!</span></p>
             </article>
         </section>
     <?php } ?>
     <?php if (
-        $session->user->isFriend ||
-        (
-            in_array("nyc", $session->user->events) &&
-            in_array("ceremony", $session->user->events)
-        )
+        in_array("nyc", $session->user->events) &&
+        in_array("ceremony", $session->user->events)
     ) { ?>
         <hr />
     <?php } ?>
-    <?php if ($session->user->isFriend || in_array("ceremony", $session->user->events)) { ?>
-        <section class="infoSection" id="ceremony"><hr class="jumpToPoint" id="ceremony-anchor" /><?php
+    <?php if (in_array("ceremony", $session->user->events)) {
+        foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+            if ($rsvpEvent->event->handle === "ceremony") {
+                $event = $rsvpEvent->event;
+            }
+        }
+        ?>
+        <section class="infoSection" id="<?php echo $event->handle; ?>"><hr class="jumpToPoint" id="<?php echo $event->handle; ?>-anchor" /><?php
             ?><header class="paddedSection"><?php
-                ?><h2 class="typ-title">Ceremony</h2><?php
+                ?><h2 class="typ-title"><?php echo $event->name; ?></h2><?php
                 ?><hr /><?php
             ?></header><?php
             ?><article class="datetime shortText paddedSection">
                 <header>
-                    <img class="important" src="/icons/time_ceremony.svg" />
+                    <img class="important" src="<?php echo $event->time_icon_src; ?>" />
                 </header>
                 <p class="typ-body">The ceremony will take place on Sunday, July 10 at 10:00 am. Lunch will be served at <span class='nobreak'>12:45 pm.</span></p>
             </article><?php
             ?><hr class="mobileOnly" /><?php
             ?><article class="location shortText hotel venue paddedSection">
                 <header>
-                    <img class="important" src="/icons/venue_holiday-inn.svg" />
+                    <img class="important" src="<?php echo $event->location->icon_link; ?>" />
                 </header>
                 <h4 class="typ-subsection-header mapTitle special"><a target="_blank" href="https://www.google.com/maps/place/Holiday+Inn+Binghamton/@42.0970519,-75.9173509,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6e4e78b8ab:0x7775d5f3b0bf4bee"><span class="mapTitleStarter">Holiday Inn Binghamton</span></a></h4>
                 <p class="typ-body">2-8 Hawley Street<br />Binghamton, NY 13905</p>
@@ -126,7 +122,7 @@ if (!isset($session->user)) {
             ?><hr class="mobileOnly" /><?php
             ?><article class="attire shortText paddedSection">
                 <header>
-                    <img class="important" src="/icons/dress_ceremony.svg" />
+                    <img class="important" src="<?php echo $event->dress_icon_src; ?>" />
                 </header>
                 <p class="typ-body">Formal attire from any culture is welcome at <span class='nobreak'>the ceremony!</span></p>
             </article>
@@ -148,18 +144,18 @@ if (!isset($session->user)) {
         </section>
     <?php } ?>
     <?php if (
-        $session->user->isFriend ||
-        (
-            in_array("ceremony", $session->user->events) &&
-            in_array("reception", $session->user->events)
-        )
+        in_array("ceremony", $session->user->events) &&
+        in_array("reception", $session->user->events)
     ) { ?>
         <hr />
     <?php } ?>
-    <?php if (
-        $session->user->isFriend ||
-        in_array("reception", $session->user->events)
-    ) { ?>
+    <?php if (in_array("reception", $session->user->events)) {
+        foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+            if ($rsvpEvent->event->handle === "reception") {
+                $event = $rsvpEvent->event;
+            }
+        }
+        ?>
         <section class="infoSection" id="reception"><hr class="jumpToPoint" id="reception-anchor" /><?php
             ?><header class="paddedSection"><?php
                 ?><h2 class="typ-title">Reception</h2><?php
@@ -167,14 +163,14 @@ if (!isset($session->user)) {
             ?></header><?php
             ?><article class="datetime shortText paddedSection">
                 <header>
-                    <img class="important" src="/icons/time_reception.svg" />
+                    <img class="important" src="<?php echo $event->time_icon_src; ?>" />
                 </header>
                 <p class="typ-body">The reception begins at 6:00 pm with tea and cocktails on Sunday, July 10. Dinner will be served at <span class='nobreak'>8:00 pm.</span></p>
             </article><?php
             ?><hr class="mobileOnly" /><?php
             ?><article class="location shortText hotel venue paddedSection">
                 <header>
-                    <img class="important" src="/icons/venue_holiday-inn.svg" />
+                    <img class="important" src="<?php echo $event->location->icon_link; ?>" />
                 </header>
                 <h4 class="typ-subsection-header mapTitle special"><a target="_blank" href="https://www.google.com/maps/place/Holiday+Inn+Binghamton/@42.0970519,-75.9173509,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6e4e78b8ab:0x7775d5f3b0bf4bee"><span class="mapTitleStarter">Holiday Inn Binghamton</span></a></h4>
                 <p class="typ-body">2-8 Hawley Street<br />Binghamton, NY 13905</p>
@@ -182,14 +178,13 @@ if (!isset($session->user)) {
             ?><hr class="mobileOnly" /><?php
             ?><article class="attire shortText paddedSection">
                 <header>
-                    <img class="important" src="/icons/dress_reception.svg" />
+                    <img class="important" src="<?php echo $event->dress_icon_src; ?>" />
                 </header>
                 <p class="typ-body">We encourage you to get festive with your formal attire at the reception—and bring your <span class='nobreak'>dancing shoes!</span></p>
             </article>
         </section>
     <?php } ?>
     <?php if (
-        $session->user->isFriend ||
         (   in_array("reception", $session->user->events) &&
             in_array("havdalah", $session->user->events)
         ) ||
@@ -200,10 +195,13 @@ if (!isset($session->user)) {
     ) { ?>
         <hr />
     <?php } ?>
-    <?php if (
-        $session->user->isFriend ||
-        in_array("havdalah", $session->user->events)
-    ) { ?>
+    <?php if (in_array("havdalah", $session->user->events)) {
+        foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+            if ($rsvpEvent->event->handle === "havdalah") {
+                $event = $rsvpEvent->event;
+            }
+        }
+        ?>
         <section class="infoSection" id="havdalah"><hr class="jumpToPoint" id="havdalah-anchor" /><?php
             ?><header class="paddedSection"><?php
                 ?><h2 class="typ-title">Mehendi<span class="ampersand">&amp;</span>Havdalah</h2><?php
@@ -211,14 +209,14 @@ if (!isset($session->user)) {
             ?></header><?php
             ?><article class="datetime shortText paddedSection">
                 <header>
-                    <img class="important" src="/icons/time_havdalah.svg" />
+                    <img class="important" src="<?php echo $event->time_icon_src; ?>" />
                 </header>
                 <p class="typ-body">We’ll start the evening at 6:00 pm on Saturday, July 9 with <a target="_blank" href='https://en.wikipedia.org/wiki/Mehndi'><em>mehendi</em></a> and music. Dinner will be served at 7:00 followed by the <a target="_blank" href='https://en.wikipedia.org/wiki/Havdalah'><em>Havdalah</em></a> service <span class='nobreak'>at sundown.</span></p>
             </article><?php
             ?><hr class="mobileOnly" /><?php
             ?><article class="location shortText hotel venue paddedSection">
                 <header>
-                    <img class="important" src="/icons/venue_ICC.svg" />
+                    <img class="important" src="<?php echo $event->location->icon_link; ?>" />
                 </header>
                 <h4 class="typ-subsection-header mapTitle special"><a target="_blank" href="https://www.google.com/maps/place/Holiday+Inn+Binghamton/@42.0970519,-75.9173509,17z/data=!3m1!4b1!4m2!3m1!1s0x89daef6e4e78b8ab:0x7775d5f3b0bf4bee"><span class="mapTitleStarter">India Cultural Centre</span></a></h4>
                 <p class="typ-body">1595 Route 26<br />Vestal, NY 13850</p>
@@ -226,7 +224,7 @@ if (!isset($session->user)) {
             ?><hr class="mobileOnly" /><?php
             ?><article class="attire shortText paddedSection">
                 <header>
-                    <img class="important" src="/icons/dress_havdalah.svg" />
+                    <img class="important" src="<?php echo $event->dress_icon_src; ?>" />
                 </header>
                 <p class="typ-body">This is not a formal event. Dressy casual attire <span class='nobreak'>is welcome.</span></p>
             </article>

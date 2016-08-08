@@ -9,7 +9,7 @@ if (!isset($session)) {
 if (!isset($session->user)) {
   header("Location: /");
 }
-if (!$session->user->rsvp->hasRSVPed) {
+if (!$session->user->rsvp->hasRSVPedForAllFutureEvents()) {
   header("Location: /rsvp");
 }
 ?>
@@ -40,7 +40,7 @@ if (!$session->user->rsvp->hasRSVPed) {
     <hr class="closer" />
     <span class="buttons">
     <?php
-    if ($session->user->rsvp->dueDate->getTimestamp() > time()) {
+    if ($session->user->rsvp->getNextDueDate()->getTimestamp() > time()) {
     ?>
       <a class="typ-categoryTitle" href="/rsvp">Edit response</a>
     <?php } ?>

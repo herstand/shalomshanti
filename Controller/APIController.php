@@ -83,11 +83,11 @@ class APIController {
 
     $clientShareableUser = clone $session->user;
     $clientShareableUser->id = $session->session_id;
-    if ($session->user->rsvp->dueDate->getTimestamp() > time()) {
+    if ($session->user->rsvp->getNextDueDate()->getTimestamp() > time()) {
       $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP by ".
         date(
           "M jS",
-          $clientShareableUser->rsvp->dueDate->getTimestamp() - 1
+          $clientShareableUser->rsvp->getNextDueDate()->getTimestamp() - 1
         );
     } else {
       $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP as soon as possible";
@@ -134,15 +134,19 @@ class APIController {
     global $session;
     $rsvpEvents = array();
     foreach ($rsvp_array["rsvpEvents"] as $rsvpEvent_array) {
-      $rsvpEvents[] = RSVPEvent::createRSVPEvent($rsvpEvent_array);
+      $rsvpEvents[] = RSVPEvent::createRSVPEvent(
+        $rsvpEvent_array,
+        GuestService::getEvent(
+          $rsvpEvent_array["Event handle"]
+        )
+        );
     }
     $session->saveRSVP(
       GuestService::getInstance()->saveRSVP(
         self::getUser()->id,
         new RSVP(
           $rsvp_array["Has RSVPed"],
-          $rsvpEvents,
-          GuestService::getInstance()->getRSVPDueDate(self::getUser()->id)
+          $rsvpEvents
         )
       )
     );
