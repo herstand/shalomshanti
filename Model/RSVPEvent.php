@@ -20,7 +20,7 @@ class RSVPEvent {
   ) {
     $this->event = $event;
     $this->rsvp_due_date = $rsvp_due_date;
-    $this->$hasRSVPed = !!$hasRSVPed;
+    $this->hasRSVPed = $hasRSVPed;
     $this->num_invited = $num_invited;
     $this->attendants = $attendants;
   }

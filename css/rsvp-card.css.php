@@ -4,15 +4,15 @@ if (!isset($session)) {
   $session = SessionController::getSession();
 }
 // TODO: replace with Event and datetime
-$numberOfEvents = in_array("nyc", $session->user->events) ? 1 : count($session->user->events);
+$numberOfEvents = in_array("nyc", $session->user->events) || in_array("nyc2", $session->user->events) ? 1 : count($session->user->events);
 ?>
 body.rsvp > main > form > article:not(.intro) { width:100%; min-height:100px; padding-top:60px; padding-bottom:60px; }
 body.rsvp > main > form > article { position:relative; }
 body.rsvp > main > form > article.ceremony,
-body.rsvp > main > form > article.nyc { z-index:12; }
+body.rsvp > main > form > article[class^="nyc"] { z-index:12; }
 body.rsvp > main > form > article.reception { z-index:11; }
 body.rsvp > main > form > article.havdalah { z-index:10; }
-body.rsvp > main > form > article.nyc *,
+body.rsvp > main > form > article[class^="nyc"] *,
 body.rsvp > main > form > article.ceremony *,
 body.rsvp > main > form > article.reception * { color:white; }
 body.rsvp > main > form > article button {

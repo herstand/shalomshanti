@@ -40,7 +40,13 @@ if (!$session->user->rsvp->hasRSVPedForAllFutureEvents()) {
     <hr class="closer" />
     <span class="buttons">
     <?php
-    if ($session->user->rsvp->getNextDueDate()->getTimestamp() > time()) {
+    $noDueDate = false;
+    try {
+      $session->user->rsvp->getNextDueDate();
+    } catch (Exception $e) {
+      $noDueDate = true;
+    }
+    if (!$noDueDate && $session->user->rsvp->getNextDueDate()->getTimestamp() > time()) {
     ?>
       <a class="typ-categoryTitle" href="/rsvp">Edit response</a>
     <?php } ?>

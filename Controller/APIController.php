@@ -83,14 +83,18 @@ class APIController {
 
     $clientShareableUser = clone $session->user;
     $clientShareableUser->id = $session->session_id;
-    if ($session->user->rsvp->getNextDueDate()->getTimestamp() > time()) {
-      $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP by ".
-        date(
-          "M jS",
-          $clientShareableUser->rsvp->getNextDueDate()->getTimestamp() - 1
-        );
-    } else {
-      $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP as soon as possible";
+    try {
+      if ($session->user->rsvp->getNextDueDate()->getTimestamp() > time()) {
+        $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP by ".
+          date(
+            "M jS",
+            $clientShareableUser->rsvp->getNextDueDate()->getTimestamp() - 1
+          );
+      } else {
+        $clientShareableUser->rsvp->dueDate = "Please be sure to RSVP as soon as possible";
+      }
+    } catch (Exception $e) {
+      $clientShareableUser->rsvp->dueDate = "Sorry, the due date has passed.";
     }
     if (
       in_array("ceremony", $session->user->events) ||

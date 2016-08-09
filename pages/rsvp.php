@@ -58,7 +58,7 @@ if (
       ) {
         continue;
       }
-      ?><article id="<?php echo $rsvpEvent->event->handle; ?>" class="<?php echo $rsvpEvent->event->handle; ?>" data-starttime="<?php echo $rsvpEvent->event->start_datetime; ?>"><?php echo RSVPArticle::createRSVPArticle($rsvpEvent->event->handle); ?></article><?php
+      ?><article id="<?php echo $rsvpEvent->event->handle; ?>" class="<?php echo $rsvpEvent->event->handle; ?>" data-starttime="<?php echo $rsvpEvent->event->start_datetime; ?>"><?php echo RSVPArticle::createRSVPArticle($rsvpEvent->event); ?></article><?php
     }
     ?><button type='submit' class="typ-littleTitle">Save Response</button><?php
     ?></form>

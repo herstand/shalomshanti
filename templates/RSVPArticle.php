@@ -7,22 +7,22 @@ if (!isset($session)) {
 
 class RSVPArticle {
 
-  public static function createRSVPArticle($event_name) {
+  public static function createRSVPArticle($event) {
     global $session;
     $dom = new DOMDocument('1.0', 'utf-8');
 
     $dom->appendChild(
-      self::createTitle($dom, $event_name)
+      self::createTitle($dom, $event->name)
     );
     $dom->appendChild(
-      self::createNumbers($dom, $event_name)
+      self::createNumbers($dom, $event)
     );
     $dom->appendChild(
-      self::createAttendantInputs($dom, $event_name)
+      self::createAttendantInputs($dom, $event)
     );
     if (
-      $session->user->rsvp->numberInvitedTo($event_name) >
-      $session->user->rsvp->numberOfAttendantsAt($event_name)
+      $session->user->rsvp->numberInvitedTo($event->handle) >
+      $session->user->rsvp->numberOfAttendantsAt($event->handle)
     ) {
       $dom->appendChild(self::createAddButton($dom));
     }
@@ -32,37 +32,13 @@ class RSVPArticle {
   private static function createTitle($dom, $event_name) {
     $title = $dom->createElement('h2');
     $title->setAttribute('class', 'typ-title');
-    // TODO: Automate this
-    if ($event_name === "havdalah") {
-      $mehendi = $dom->createElement("span");
-      $mehendi->appendChild($dom->createTextNode("Mehendi"));
-
-      $ampersand = $dom->createElement("span");
-      $ampersand->appendChild($dom->createTextNode("&"));
-      $ampersand->setAttribute("class", "ampersand");
-
-      $havdalah = $dom->createElement("span");
-      $havdalah->appendChild($dom->createTextNode("Havdalah"));
-
-      $title->appendChild($mehendi);
-      $title->appendChild($ampersand);
-      $title->appendChild($havdalah);
-
-    } else if ($event_name === "nyc") {
-      $openhouse = $dom->createElement("span");
-      $openhouse->appendChild($dom->createTextNode("Open House Reception"));
-
-      $title->appendChild($openhouse);
-
-    } else {
-      $title->appendChild($dom->createTextNode($event_name));
-    }
+    $title->appendChild($dom->createTextNode($event_name));
 
 
     return $title;
   }
 
-  private static function createNumbers($dom, $event_name) {
+  private static function createNumbers($dom, $event) {
     global $session;
     $section = $dom->createElement('section');
     $section->setAttribute("class", "legend");
@@ -70,8 +46,8 @@ class RSVPArticle {
     $section->appendChild(
       self::createNumberFigure(
         $dom,
-        $session->user->rsvp->numberOfAttendantsAt($event_name),
-        $event_name,
+        $session->user->rsvp->numberOfAttendantsAt($event->handle),
+        $event->name,
         "attending"
       )
     );
@@ -84,8 +60,8 @@ class RSVPArticle {
     $section->appendChild(
       self::createNumberFigure(
         $dom,
-        $session->user->rsvp->numberInvitedTo($event_name),
-        $event_name,
+        $session->user->rsvp->numberInvitedTo($event->handle),
+        $event->name,
         "invited"
       )
     );
@@ -140,7 +116,7 @@ class RSVPArticle {
     return $fieldset;
   }
 
-  private static function createAttendantInputs($dom, $event_name) {
+  private static function createAttendantInputs($dom, $event) {
     global $session;
     $section = $dom->createElement("section");
     $section->setAttribute(
@@ -149,11 +125,11 @@ class RSVPArticle {
     );
 
     $attendant_inputs = array();
-    for ($i = 0; $i < $session->user->rsvp->numberOfAttendantsAt($event_name); $i++) {
-      $attendant = $session->user->rsvp->getNthAttendantFor($i, $event_name);
+    for ($i = 0; $i < $session->user->rsvp->numberOfAttendantsAt($event->handle); $i++) {
+      $attendant = $session->user->rsvp->getNthAttendantFor($i, $event->handle);
       $fieldset = self::createAttendantFieldset(
         $dom,
-        $event_name,
+        $event->name,
         isset($attendant->id) ? $attendant->id : 0,
         $attendant
       );

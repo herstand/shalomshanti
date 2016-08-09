@@ -50,6 +50,43 @@ if (!isset($session->user)) {
             <p class="typ-body">We are very fortunate to have all that we need to make a home and a life together in our small New York City apartment. The greatest gift you could give us is that of your love and support. We encourage you to check out <a target="_blank" href="http://www.givedirectly.org">GiveDirectly</a>, one of our favorite charities, which allows you to give cash directly to the people who need it most. We’d be honored if you made a donation on our behalf, so we can start off our marriage in the spirit <span class='nobreak'>of giving.</span></p>
             <a target="_blank" href="http://www.givedirectly.org"><img class="logo" alt="Give Directly logo" src="images/givedirectlylogo.png" /></a>
         </article>
+        <?php if (in_array("nyc2", $session->user->events)) {
+            foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
+                if ($rsvpEvent->event->handle === "nyc2") {
+                    $event = $rsvpEvent->event;
+                }
+            }
+            $start_datetime = new DateTime($event->start_datetime);
+            $end_datetime = new DateTime($event->end_datetime);
+        ?>
+        <section class="infoSection" id="<?php echo $event->handle; ?>"><hr class="jumpToPoint" id="<?php echo $event->handle; ?>-anchor" />
+            <header class="paddedSection"><?php
+                ?><h2 class="typ-title"><?php echo $event->name; ?></h2><?php
+                ?><hr /><?php
+            ?></header><?php
+            ?><article class="datetime shortText paddedSection">
+                <header>
+                    <img class="important" src="<?php echo $event->time_icon_src; ?>" />
+                </header>
+                <p class="typ-body">The open house will take place on <?php echo date("l, F j", $start_datetime->getTimestamp());?> from <?php echo intval($start_datetime->format("h")).$start_datetime->format("a"); ?>-<?php echo intval($end_datetime->format("h")).$end_datetime->format("a"); ?>.<br />There will be food.</p>
+            </article><?php
+            ?><hr class="mobileOnly" /><?php
+            ?><article class="location shortText hotel venue paddedSection">
+                <header>
+                    <img class="important" src="<?php echo $event->location->icon_link; ?>" />
+                </header>
+                <h4 class="typ-subsection-header mapTitle special"><a target="_blank" href="<?php echo $event->location->map_link; ?>"><span class="mapTitleStarter"><?php echo $event->location->name; ?></span></a></h4>
+                <p class="typ-body"><?php echo $event->location->address_line_1; ?> <?php echo $event->location->address_line_2; ?><br /><?php echo $event->location->city; ?>, <?php echo $event->location->state; ?> <?php echo $event->location->zip; ?></p>
+            </article><?php
+            ?><hr class="mobileOnly" /><?php
+            ?><article class="attire shortText paddedSection">
+                <header>
+                    <img class="important" src="<?php echo $event->dress_icon_src; ?>" />
+                </header>
+                <p class="typ-body">Dress to impress!</span></p>
+            </article>
+        </section>
+    <?php } ?>
         <?php if (in_array("nyc", $session->user->events)) {
             foreach ($session->user->rsvp->rsvpEvents as $rsvpEvent) {
                 if ($rsvpEvent->event->handle === "nyc") {
