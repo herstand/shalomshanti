@@ -12,12 +12,13 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Force www
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
-RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
+#RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
+#RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
 
 # Load program as homepage until further notice
-RewriteCond %{HTTP_HOST} ^www.shalomshanti.com/?$ [NC]
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^shalomshanti.com/?$ [NC]
 RewriteRule ^(.*)$ https://www.shalomshanti.com/program.pdf [L,R=302,NC]
 
 # Find apis
