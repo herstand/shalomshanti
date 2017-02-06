@@ -18,7 +18,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Load program as homepage until further notice
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^shalomshanti.com/?$ [NC]
+RewriteCond %{HTTP_HOST} shalomshanti.com/?$ [NC]
 RewriteRule ^(.*)$ https://www.shalomshanti.com/program.pdf [L,R=302,NC]
 
 # Find apis
