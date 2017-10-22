@@ -9,12 +9,13 @@ RewriteEngine On
 
 # Force HTTPS on server
 RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^(www\.)?shalomshanti\.com$ [NC]
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Force www
-#RewriteEngine on
-#RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
-#RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^shalomshanti.com [NC]
+RewriteRule ^(.*)$ https://www.shalomshanti.com/$1 [L,R=301,NC]
 
 # Load program as homepage until further notice
 RewriteEngine on
@@ -28,6 +29,10 @@ RewriteRule ^API/(.+)$ /shalomshanti/API/$1.php [L,QSA]
 # Find templates
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^templates/(.+)$ /shalomshanti/templates/$1.php [L,QSA]
+
+# Load latest deepavali invite
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^deepavali/?$ /shalomshanti/deepavali/%{TIME_YEAR}.gif [L,QSA]
 
 # Find pages
 RewriteCond %{REQUEST_FILENAME} !-f
