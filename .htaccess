@@ -32,7 +32,7 @@ RewriteRule ^templates/(.+)$ /shalomshanti/templates/$1.php [L,QSA]
 
 # Load latest deepavali invite
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^deepavali/?$ /shalomshanti/deepavali/%{TIME_YEAR}.gif [L,QSA]
+RewriteRule ^deepavali/?$ deepavali/%{TIME_YEAR}.gif [L,QSA]
 
 # Find pages
 RewriteCond %{REQUEST_FILENAME} !-f
